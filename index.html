@@ -5,145 +5,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anchor Marianas - Digital Solutions Provider</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            background-color: #007BFF;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        h1,
-        h2 {
-            margin-top: 0;
-        }
-
-        .product-list {
-            background-color: white;
-            border-radius: 5px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .product-list ul {
-            padding-left: 20px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
-        }
-
-        footer a {
-            color: #007BFF;
-        }
-
-        .contact-info {
-            background-color: #f8f9fa;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-
-        .product-item {
-            margin-bottom: 20px;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <header>
         <div class="container">
-            <img src="anchor.png" alt="Anchor Marianas Logo" width="200">
+            <div class="logo-container">
+                <img src="anchor.png" alt="Anchor Marianas Logo">
+            </div>
             <h1>Anchor Marianas</h1>
-            <p>Your Trusted Digital Solutions Provider</p>
+            <p>Building in public, shipping daily</p>
         </div>
     </header>
 
-    <main class="container">
-        <section>
-            <h2>About Us</h2>
-            <p>Anchor Marianas LLC is a premier provider of innovative digital solutions and custom software development
-                services. Established in 2024 and based in Guam, we are committed to delivering high-quality, tailored
-                solutions to
-                businesses of all sizes across the Pacific region and beyond.</p>
-        </section>
+    <section class="about-section">
+        <div class="container">
+            <h2>About</h2>
+            <p>Anchor Marianas LLC is an internet-first indie hacking company based in Guam. We build and ship digital
+                products that make the internet more useful and interesting. Our approach is simple: identify problems,
+                build solutions, and share them with the world.</p>
+        </div>
+    </section>
 
-        <section class="product-list">
-            <h2>Our Products and Services</h2>
-            <div class="product-item">
-                <h3>Custom Software Development</h3>
-                <p>Tailored software solutions designed to meet your specific business needs. Our experienced developers
-                    use cutting-edge technologies to create robust, scalable applications.</p>
-                <p>Starting at $5,000 USD</p>
+    <section class="services-section">
+        <div class="container">
+            <div class="shop-cta">
+                <div class="shop-cta-content">
+                    <h2>Check Out Our Digital Products</h2>
+                    <p>Tools, apps, and digital goodies built with ❤️ in Guam</p>
+                    <a href="https://adampang.com/shop" class="cta-button">
+                        <span class="cta-icon">🚀</span>
+                        <span class="cta-text">Visit The Shop</span>
+                        <span class="cta-arrow">→</span>
+                    </a>
+                </div>
             </div>
-            <div class="product-item">
-                <h3>Web Application Design and Development</h3>
-                <p>From simple websites to complex web applications, we create responsive, user-friendly web solutions
-                    that drive engagement and conversions.</p>
-                <p>Starting at $3,000 USD</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2>Connect With Us</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p><a href="mailto:adam@anchormarianas.com">adam@anchormarianas.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p><a href="tel:+14158056804">+1 671-686-2020</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <p><a href="https://www.linkedin.com/company/anchor-marianas/" target="_blank">Anchor Marianas on LinkedIn</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>151 Boman Street, Barrigada, Guam 96913</p>
+                </div>
             </div>
-            <!-- ... (add similar detailed descriptions for other services) ... -->
-            <p>All prices are in USD. Exact pricing depends on project scope and requirements. Contact us for a
-                personalized quote.</p>
-        </section>
-
-        <a href="https://adampangelinan.com/store" class="cta-button">Visit Our Full Store</a>
-
-        <section class="contact-info">
-            <h2>Contact Us</h2>
-            <p>
-                <a href="mailto:adam@anchormarianas.com" title="Email us">
-                    <i class="fas fa-envelope"></i> adam@anchormarianas.com
-                </a>
-            </p>
-            <p>
-                <a href="tel:+14158056804" title="Call us">
-                    <i class="fas fa-phone"></i> +1 415-805-6804
-                </a>
-            </p>
-            <p>
-                <a href="https://www.linkedin.com/company/anchor-marianas/" target="_blank"
-                    title="Visit our LinkedIn page">
-                    <i class="fab fa-linkedin"></i> Anchor Marianas on LinkedIn
-                </a>
-            </p>
-            <p><i class="fas fa-map-marker-alt"></i> 151 Boman Street, Barrigada, Guam 96913</p>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
         <div class="container">
             <p>&copy; 2024 Anchor Marianas LLC. All rights reserved.</p>
-            <p><a href="/privacy-policy.html">Privacy Policy</a> | <a href="/terms-of-service.html">Terms of Service</a>
-            </p>
+            <p class="creator-link">Designed and developed by <a href="https://adampang.com" target="_blank">Adam Pang</a></p>
         </div>
     </footer>
 </body>
