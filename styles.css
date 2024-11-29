@@ -179,7 +179,6 @@ section {
     font-size: 2.5rem;
     margin-bottom: 16px;
     background: linear-gradient(135deg, var(--accent-color), #00a3ff);
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
