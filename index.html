@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anchor Marianas - Digital Solutions Provider</title>
+    <title>Anchor Marianas</title>
+    <link rel="icon" type="image/png" href="media/logos/anchor.png">
+    <link rel="shortcut icon" type="image/png" href="media/logos/anchor.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -14,81 +15,91 @@
     <header>
         <div class="container">
             <div class="logo-container">
-                <img src="anchor.png" alt="Anchor Marianas Logo">
+                <img src="media/logos/anchor.png" alt="Anchor Marianas Logo">
             </div>
             <h1>Anchor Marianas</h1>
-            <p>Building in public, shipping daily</p>
+            <p>An App Studio</p>
+            <div class="stats-container">
+                <div class="challenge-counter">
+                    <span id="projectCounter" class="counter">5</span>
+                    <span class="divider">/</span>
+                    <span class="goal">100</span>
+                    <span class="label">apps in progress</span>
+                </div>
+                <div class="status-counters">
+                    <div class="status-pill">
+                        <span id="liveCounter" class="counter">1</span>
+                        <span class="label">Shipped</span>
+                    </div>
+                    <div class="status-pill">
+                        <span id="devCounter" class="counter">4</span>
+                        <span class="label">In Development</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="about-section">
+    <section class="projects-section">
         <div class="container">
-            <h2>About</h2>
-            <p>Anchor Marianas LLC is an internet-first indie hacking company based in Guam. We build and ship digital
-                products that make the internet more useful and interesting. Our approach is simple: identify problems,
-                build solutions, and share them with the world.</p>
-        </div>
-    </section>
+            <div id="projectsGrid" class="projects-grid">
+                <!-- Hower.app -->
+                <a href="https://hower.app" class="project-card gradient-1" target="_blank">
+                    <h2 class="project-title">hower.app</h2>
+                    <p class="project-status">🚀 Live</p>
+                    <p class="project-description">Overwhelmed by too many todo lists? Hower helps you curate and focus on what truly matters.</p>
+                </a>
 
-    <section class="services-section">
-        <div class="container">
-            <div class="featured-product">
-                <div class="featured-content">
-                    <div class="featured-badge">Featured Product</div>
-                    <h3>Hower.app</h3>
-                    <p class="featured-tagline">Cut your todo list by 80%. Focus on what truly matters.</p>
-                    <p class="featured-description">A todo list tool that helps you identify and focus on the vital 20% of tasks that drive 80% of your results. Stop drowning in todos, start achieving more.</p>
-                    <a href="https://hower.app" class="featured-button" target="_blank">
-                        <span>Try Hower</span>
-                        <span class="featured-arrow">→</span>
-                    </a>
-                </div>
-            </div>
+                <!-- Updated Townhall -->
+                <a href="https://townhall.town" class="project-card gradient-2" target="_blank">
+                    <h2 class="project-title">townhall.town</h2>
+                    <p class="project-status">🛠️ In Development</p>
+                    <p class="project-description">A platform for communities to report local problems, propose solutions, and crowdfund bounties for their execution. Making local change happen, together.</p>
+                </a>
 
-            <div class="shop-cta">
-                <div class="shop-cta-content">
-                    <h2>Check Out Our Digital Products</h2>
-                    <p>Tools, apps, and digital goodies built with ❤️ in Guam</p>
-                    <a href="https://adampang.com" class="cta-button" target="_blank">
-                        <span class="cta-icon">🚀</span>
-                        <span class="cta-text">Made by Adam</span>
-                        <span class="cta-arrow">→</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+                <!-- Updated Skill Supply -->
+                <a href="https://skill.supply" class="project-card gradient-3" target="_blank">
+                    <h2 class="project-title">skill.supply</h2>
+                    <p class="project-status">🛠️ In Development</p>
+                    <p class="project-description">Local service marketplace powered by Solana. Like Facebook Marketplace but for services, with instant USDC payments via Phantom Wallet.</p>
+                </a>
 
-    <section class="contact-section">
-        <div class="container">
-            <h2>Connect With Us</h2>
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <p><a href="mailto:adam@anchormarianas.com">adam@anchormarianas.com</a></p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-phone"></i>
-                    <p><a href="tel:+14158056804">+1 671-686-2020</a></p>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <p><a href="https://www.linkedin.com/company/anchor-marianas/" target="_blank">Anchor Marianas on LinkedIn</a></p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>151 Boman Street, Barrigada, Guam 96913</p>
-                </div>
+                <!-- Updated Caldump -->
+                <a href="https://caldump.com" class="project-card gradient-4" target="_blank">
+                    <h2 class="project-title">caldump.com</h2>
+                    <p class="project-status">🛠️ In Development</p>
+                    <p class="project-description">Chrome extension that lets you dump tasks and automatically schedules them into your calendar. Stop managing your calendar, let it manage itself.</p>
+                </a>
+
+                <!-- Light90 -->
+                <a href="https://light90.com" class="project-card gradient-5" target="_blank">
+                    <h2 class="project-title">light90.com</h2>
+                    <p class="project-status">🛠️ In Development</p>
+                    <p class="project-description">No more morning math. Automated notifications for optimal sunlight and coffee timing.</p>
+                </a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Anchor Marianas LLC. All rights reserved.</p>
-            <p class="creator-link">Designed and developed by <a href="https://adampang.com" target="_blank">Adam Pang</a></p>
+            <p class="creator-link">Built by <a href="https://adampang.com" target="_blank">Adam Pang</a></p>
         </div>
     </footer>
+
+    <script>
+        function updateCounters() {
+            const liveProjects = document.querySelectorAll('.project-card .project-status:contains("🚀 Live")').length;
+            const devProjects = document.querySelectorAll('.project-card .project-status:contains("🛠️ In Development")').length;
+            const totalProjects = liveProjects + devProjects;
+
+            document.getElementById('projectCounter').textContent = totalProjects;
+            document.getElementById('liveCounter').textContent = liveProjects;
+            document.getElementById('devCounter').textContent = devProjects;
+        }
+
+        document.addEventListener('DOMContentLoaded', updateCounters);
+    </script>
 </body>
 
 </html>
