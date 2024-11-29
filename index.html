@@ -89,8 +89,18 @@
 
     <script>
         function updateCounters() {
-            const liveProjects = document.querySelectorAll('.project-card .project-status:contains("🚀 Live")').length;
-            const devProjects = document.querySelectorAll('.project-card .project-status:contains("🛠️ In Development")').length;
+            const allStatuses = document.querySelectorAll('.project-status');
+            let liveProjects = 0;
+            let devProjects = 0;
+
+            allStatuses.forEach(status => {
+                if (status.textContent.includes('🚀 Live')) {
+                    liveProjects++;
+                } else if (status.textContent.includes('🛠️ In Development')) {
+                    devProjects++;
+                }
+            });
+
             const totalProjects = liveProjects + devProjects;
 
             document.getElementById('projectCounter').textContent = totalProjects;
