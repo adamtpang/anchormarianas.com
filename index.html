@@ -7,8 +7,69 @@
     <title>Anchor Marianas</title>
     <link rel="icon" type="image/png" href="media/logos/anchor.png">
     <link rel="shortcut icon" type="image/png" href="media/logos/anchor.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=1.0.0">
+    <style>
+        header {
+            background: linear-gradient(135deg, #1a4b6e 0%, #0b2a4a 100%);
+            padding: 4rem 0;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .section-divider {
+            border: none;
+            height: 1px;
+            background: #eee;
+            margin: 3rem 0;
+        }
+
+        .project-card {
+            padding: 1.5rem;
+            min-height: auto;
+            transition: transform 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .project-description {
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Unique gradients for each project */
+        .gradient-8020 {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+        }
+
+        .gradient-caldump {
+            background: linear-gradient(135deg, #4E54C8 0%, #8F94FB 100%);
+        }
+
+        .gradient-skillsupply {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .gradient-light90 {
+            background: linear-gradient(135deg, #6B48FF 0%, #C850C0 100%);
+        }
+    </style>
 </head>
 
 <body>
@@ -19,63 +80,45 @@
             </div>
             <h1>Anchor Marianas</h1>
             <p>An App Studio</p>
-            <div class="stats-container">
-                <div class="challenge-counter">
-                    <span id="projectCounter" class="counter">5</span>
-                    <span class="divider">/</span>
-                    <span class="goal">100</span>
-                    <span class="label">apps in progress</span>
-                </div>
-                <div class="status-counters">
-                    <div class="status-pill">
-                        <span id="liveCounter" class="counter">1</span>
-                        <span class="label">Shipped</span>
-                    </div>
-                    <div class="status-pill">
-                        <span id="devCounter" class="counter">4</span>
-                        <span class="label">In Development</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </header>
 
     <section class="projects-section">
         <div class="container">
+            <!-- Live Projects -->
+            <h2 class="section-title">Live</h2>
             <div id="projectsGrid" class="projects-grid">
-                <!-- Hower.app -->
-                <a href="https://hower.app" class="project-card gradient-1" target="_blank">
-                    <h2 class="project-title">hower.app</h2>
-                    <p class="project-status">🚀 Live</p>
-                    <p class="project-description">Overwhelmed by too many todo lists? Hower helps you curate and focus on what truly matters.</p>
+                <!-- 8020.best -->
+                <a href="https://8020.best" class="project-card gradient-8020" target="_blank">
+                    <h2 class="project-title">8020.best</h2>
+                    <p class="project-description">Overwhelmed by too many todo lists? 8020.best helps you curate and
+                        focus on what truly matters.</p>
                 </a>
 
-                <!-- Updated Townhall -->
-                <a href="https://townhall.town" class="project-card gradient-2" target="_blank">
-                    <h2 class="project-title">townhall.town</h2>
-                    <p class="project-status">🛠️ In Development</p>
-                    <p class="project-description">A platform for communities to report local problems, propose solutions, and crowdfund bounties for their execution. Making local change happen, together.</p>
-                </a>
-
-                <!-- Updated Skill Supply -->
-                <a href="https://skill.supply" class="project-card gradient-3" target="_blank">
-                    <h2 class="project-title">skill.supply</h2>
-                    <p class="project-status">🛠️ In Development</p>
-                    <p class="project-description">Local service marketplace powered by Solana. Like Facebook Marketplace but for services, with instant USDC payments via Phantom Wallet.</p>
-                </a>
-
-                <!-- Updated Caldump -->
-                <a href="https://caldump.com" class="project-card gradient-4" target="_blank">
+                <!-- Caldump -->
+                <a href="https://caldump.com" class="project-card gradient-caldump" target="_blank">
                     <h2 class="project-title">caldump.com</h2>
-                    <p class="project-status">🛠️ In Development</p>
-                    <p class="project-description">Chrome extension that lets you dump tasks and automatically schedules them into your calendar.</p>
+                    <p class="project-description">Dump tasks and automatically schedule them into your calendar.</p>
+                </a>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Incoming Projects -->
+            <h2 class="section-title">Incoming</h2>
+            <div class="projects-grid">
+                <!-- Skill Supply -->
+                <a href="https://skill.supply" class="project-card gradient-skillsupply" target="_blank">
+                    <h2 class="project-title">skill.supply</h2>
+                    <p class="project-description">Local service marketplace powered by Solana. Like Facebook
+                        Marketplace but for services, with instant USDC payments via Phantom Wallet.</p>
                 </a>
 
                 <!-- Light90 -->
-                <a href="https://light90.com" class="project-card gradient-5" target="_blank">
+                <a href="https://light90.com" class="project-card gradient-light90" target="_blank">
                     <h2 class="project-title">light90.com</h2>
-                    <p class="project-status">🛠️ In Development</p>
-                    <p class="project-description">No more morning math. Automated notifications for optimal sunlight and coffee timing.</p>
+                    <p class="project-description">No more morning math. Automated notifications for optimal sunlight
+                        and coffee timing.</p>
                 </a>
             </div>
         </div>
@@ -83,7 +126,7 @@
 
     <footer>
         <div class="container">
-            <p class="creator-link">Built by <a href="https://adampang.com" target="_blank">Adam Pang</a></p>
+            <p class="creator-link">by <a href="https://adampang.com" target="_blank">adampang.com</a></p>
         </div>
     </footer>
 
@@ -91,21 +134,18 @@
         function updateCounters() {
             const allStatuses = document.querySelectorAll('.project-status');
             let liveProjects = 0;
-            let devProjects = 0;
+            let incomingProjects = 0;
 
             allStatuses.forEach(status => {
                 if (status.textContent.includes('🚀 Live')) {
                     liveProjects++;
-                } else if (status.textContent.includes('🛠️ In Development')) {
-                    devProjects++;
+                } else if (status.textContent.includes('🛠 Incoming')) {
+                    incomingProjects++;
                 }
             });
 
-            const totalProjects = liveProjects + devProjects;
-
-            document.getElementById('projectCounter').textContent = totalProjects;
             document.getElementById('liveCounter').textContent = liveProjects;
-            document.getElementById('devCounter').textContent = devProjects;
+            document.getElementById('devCounter').textContent = incomingProjects;
         }
 
         document.addEventListener('DOMContentLoaded', updateCounters);
