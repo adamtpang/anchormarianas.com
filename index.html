@@ -7,8 +7,9 @@
     <title>Anchor Marianas</title>
     <link rel="icon" type="image/png" href="media/logos/anchor.png">
     <link rel="shortcut icon" type="image/png" href="media/logos/anchor.png">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles/components.css" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #0a0a0a;
@@ -30,7 +31,7 @@
         }
 
         body {
-            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             line-height: 1.6;
@@ -113,14 +114,11 @@
         }
 
         h1 {
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.05em;
-            background: linear-gradient(135deg, var(--text-primary), var(--text-accent));
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+            color: hsl(var(--foreground));
             position: relative;
         }
 
@@ -136,27 +134,25 @@
         }
 
         .subtitle {
-            font-size: clamp(1.2rem, 2vw, 1.8rem);
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
+            font-size: clamp(0.875rem, 1.5vw, 1rem);
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 1.5rem;
             font-family: 'JetBrains Mono', monospace;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .project-count {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--text-accent);
-            margin-top: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: hsl(var(--muted-foreground));
+            margin-top: 1.5rem;
             text-align: center;
             letter-spacing: -0.01em;
-            padding: 1rem 2rem;
-            border: 1px solid var(--text-accent);
-            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            border: 1px solid hsl(var(--border));
+            border-radius: 8px;
             display: inline-block;
-            background: rgba(0, 255, 136, 0.05);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--glow);
+            background: hsl(var(--muted) / 0.3);
         }
 
 
@@ -169,171 +165,98 @@
             width: 100%;
         }
 
-        .featured-project {
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .featured-project::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-            border-radius: 20px;
-        }
-
-        .featured-project > * {
-            position: relative;
-            z-index: 2;
-        }
-
-        .featured-project::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -50%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { left: -50%; }
-            100% { left: 150%; }
-        }
-
-        .featured-badge {
-            display: inline-block;
-            background: rgba(0, 255, 136, 0.9);
-            color: #000000;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            border: 1px solid var(--text-accent);
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
-            backdrop-filter: blur(10px);
-        }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
             padding: 0;
         }
 
         .project-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            transition: var(--transition);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             overflow: hidden;
             cursor: pointer;
             text-decoration: none;
-            min-height: 300px;
+            min-height: 240px;
             position: relative;
             backdrop-filter: blur(10px);
         }
 
-        .project-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-            border-radius: 16px;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent, rgba(0, 255, 136, 0.05));
-            opacity: 0;
-            transition: var(--transition);
-            z-index: 0;
-        }
-
         .project-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), var(--glow);
-            border-color: var(--text-accent);
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-color: hsl(var(--primary) / 0.5);
         }
 
         .project-card.no-link {
-            opacity: 0.7;
+            opacity: 0.8;
             cursor: default;
         }
 
         .project-card.no-link:hover {
             transform: none;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            border-color: var(--border);
-        }
-
-        .project-card.no-link::before {
-            opacity: 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-color: hsl(var(--border));
         }
 
         .status-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            top: 0.75rem;
+            right: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             z-index: 3;
-            backdrop-filter: blur(10px);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .status-badge.live {
-            background: rgba(0, 255, 136, 0.9);
-            color: #000000;
-            border: 1px solid #00ff88;
-            box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
         }
 
         .status-badge.development {
-            background: rgba(255, 193, 7, 0.9);
-            color: #000000;
-            border: 1px solid #ffc107;
-            box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+            background: hsl(53 98% 77%);
+            color: hsl(0 0% 7%);
         }
 
 
+        .project-image {
+            width: 100%;
+            height: 160px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: hsl(var(--muted));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.5rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .project-emoji {
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+
         .card-content {
-            padding: 2rem;
+            padding: 1.25rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -341,49 +264,42 @@
             z-index: 2;
         }
 
-        .project-emoji {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-        }
-
         .project-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-            line-height: 1.3;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: hsl(var(--card-foreground));
+            letter-spacing: -0.01em;
+            line-height: 1.4;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            gap: 0.375rem;
+            margin-bottom: 0.75rem;
         }
 
         .project-tag {
-            background: rgba(0, 0, 0, 0.4);
-            color: rgba(255, 255, 255, 0.9);
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
+            background: hsl(var(--muted));
+            color: hsl(var(--muted-foreground));
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
             font-weight: 500;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
         }
 
         .project-description {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 1rem;
             flex-grow: 1;
-            line-height: 1.6;
+            line-height: 1.5;
             font-weight: 400;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .project-footer {
@@ -391,60 +307,61 @@
             justify-content: space-between;
             align-items: center;
             margin-top: auto;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 0.75rem;
+            border-top: 1px solid hsl(var(--border));
         }
 
         .project-stars {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            color: #ffd700;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            gap: 0.25rem;
+            color: hsl(53 98% 77%);
+            font-size: 0.75rem;
+            font-weight: 500;
         }
 
         .project-arrow {
-            color: #ffffff;
-            font-size: 1.2rem;
-            opacity: 0;
-            transform: translateX(-10px);
-            transition: var(--transition);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            color: hsl(var(--muted-foreground));
+            font-size: 0.875rem;
+            opacity: 0.5;
+            transition: all 0.2s ease;
         }
 
         .project-card:hover .project-arrow {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateX(2px);
         }
 
         .filter-bar {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
 
         .filter-btn {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            color: var(--text-secondary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
+            background: hsl(var(--secondary));
+            border: 1px solid hsl(var(--border));
+            color: hsl(var(--secondary-foreground));
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.2s ease;
             font-family: inherit;
             font-weight: 500;
+            font-size: 0.875rem;
         }
 
-        .filter-btn:hover,
+        .filter-btn:hover {
+            background: hsl(var(--accent));
+            color: hsl(var(--accent-foreground));
+        }
+
         .filter-btn.active {
-            background: var(--text-accent);
-            color: var(--bg-primary);
-            border-color: var(--text-accent);
-            box-shadow: var(--glow);
+            background: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            border-color: hsl(var(--primary));
         }
 
 
@@ -484,6 +401,316 @@
             }
         }
 
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: hsl(var(--foreground));
+        }
+
+        .section-description {
+            font-size: 1rem;
+            color: hsl(var(--muted-foreground));
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 4rem 0;
+        }
+
+        .service-card {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .service-card:nth-child(1) { animation-delay: 0.1s; }
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .service-card:hover {
+            transform: translateY(-2px);
+            border-color: hsl(var(--primary) / 0.5);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: hsl(var(--primary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.25rem;
+            color: hsl(var(--primary-foreground));
+        }
+
+        .service-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: hsl(var(--card-foreground));
+        }
+
+        .service-card p {
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            font-size: 0.875rem;
+        }
+
+        .service-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: hsl(var(--primary));
+            margin-top: auto;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .service-features li {
+            color: hsl(var(--muted-foreground));
+            padding: 0.25rem 0;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features li::before {
+            content: "•";
+            color: hsl(var(--primary));
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            margin: 3rem 0;
+        }
+
+        .case-studies-title {
+            font-size: 1.875rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: hsl(var(--foreground));
+        }
+
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .case-study-card {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards 0.4s;
+        }
+
+        .case-study-card.featured {
+            border-color: hsl(var(--primary));
+            box-shadow: 0 0 0 1px hsl(var(--primary) / 0.1);
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-study-badge {
+            display: inline-block;
+            background: hsl(var(--primary) / 0.1);
+            color: hsl(var(--primary));
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-card.featured .case-study-badge {
+            background: hsl(var(--primary) / 0.15);
+        }
+
+        .case-study-card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: hsl(var(--card-foreground));
+            margin-bottom: 0.375rem;
+        }
+
+        .case-study-subtitle {
+            color: hsl(var(--muted-foreground));
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-content p {
+            color: hsl(var(--muted-foreground));
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .case-study-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.375rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: hsl(var(--muted));
+            color: hsl(var(--muted-foreground));
+            padding: 0.125rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .case-study-results {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-number {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: hsl(var(--primary));
+            margin-bottom: 0.125rem;
+        }
+
+        .result-label {
+            font-size: 0.75rem;
+            color: hsl(var(--muted-foreground));
+        }
+
+        /* Agency CTA */
+        .agency-cta {
+            background: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .agency-cta h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: hsl(var(--card-foreground));
+            margin-bottom: 0.75rem;
+        }
+
+        .agency-cta p {
+            font-size: 1rem;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 1.5rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Tabs styling adjustments */
+        .tabs-container {
+            margin: 2rem 0;
+        }
+
+        .tabs-list {
+            justify-content: center;
+        }
+
+        .tabs-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .tabs-content {
+            border: none;
+            padding: 0;
+            background: transparent;
+            margin-top: 2rem;
+        }
+
+        /* Header Navigation */
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid hsl(var(--border));
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: hsl(var(--foreground));
+        }
+
+        .nav-logo {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-title {
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -515,8 +742,39 @@
             }
 
             .filter-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
+                padding: 0.375rem 0.75rem;
+                font-size: 0.8rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .agency-cta {
+                padding: 1.5rem;
+            }
+
+            .agency-cta h3 {
+                font-size: 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tabs-list {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .tabs-trigger {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -525,12 +783,22 @@
 <body>
     <div class="container">
         <header>
+            <!-- Navigation Bar -->
+            <nav class="header-nav">
+                <div class="nav-brand">
+                    <img src="media/logos/anchor.png" alt="Anchor Marianas" class="nav-logo">
+                    <span class="nav-title">Anchor Marianas</span>
+                </div>
+            </nav>
+            
             <div class="logo-container">
                 <img src="media/logos/anchor.png" alt="Anchor Marianas Logo">
             </div>
             <div class="company-info">
                 <h1>anchormarianas.com</h1>
-                <p class="subtitle">// a digital showcase</p>
+                <p class="subtitle">// app studio</p>
+                
+                
                 <div class="project-count" id="project-count">
                     <i class="fas fa-rocket"></i>
                     <span>Loading projects...</span>
@@ -540,7 +808,9 @@
 
         <main>
             <section class="content-section">
-                <div id="featured-project"></div>
+                <div class="section-header">
+                    <h2 class="section-title">Projects</h2>
+                </div>
                 
                 <div class="filter-bar">
                     <button class="filter-btn active" data-filter="all">All Projects</button>
@@ -560,6 +830,25 @@
     <script>
         let allProjects = [];
         let currentFilter = 'all';
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProjects();
+            setupFilters();
+        });
+        
+        function setupFilters() {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active filter
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    currentFilter = btn.dataset.filter;
+                    displayProjects(allProjects, document.getElementById('projects'));
+                });
+            });
+        }
 
         function getEmojiForProject(name, description) {
             const text = (name + ' ' + (description || '')).toLowerCase();
@@ -646,7 +935,6 @@
 
         async function loadProjects() {
             const projectsContainer = document.getElementById('projects');
-            const featuredContainer = document.getElementById('featured-project');
             const projectCount = document.getElementById('project-count');
 
             projectsContainer.innerHTML = `<div class="loading-container"><div class="loading-spinner"></div></div>`;
@@ -696,23 +984,8 @@
                 const totalProjects = allProjects.length;
                 projectCount.innerHTML = `
                     <i class="fas fa-rocket"></i>
-                    <span>${liveProjects} live • ${featuredProjects} featured • ${totalProjects} total</span>
+                    <span>${totalProjects}/100 projects</span>
                 `;
-
-                // Display featured project (highest starred project)
-                const featuredProject = allProjects
-                    .filter(p => p.featured)
-                    .sort((a, b) => b.stars - a.stars)[0];
-                    
-                if (featuredProject) {
-                    displayFeaturedProject(featuredProject, featuredContainer);
-                } else {
-                    // If no starred repos, show the most recent live project
-                    const latestLiveProject = allProjects.find(p => p.status === 'live');
-                    if (latestLiveProject) {
-                        displayFeaturedProject(latestLiveProject, featuredContainer);
-                    }
-                }
 
                 // Display all projects
                 displayProjects(allProjects, projectsContainer);
@@ -727,74 +1000,6 @@
                 `;
                 projectCount.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error';
             }
-        }
-
-        function displayFeaturedProject(project, container) {
-            const gradientStyle = project.colors ? 
-                `background: linear-gradient(135deg, ${project.colors.from}, ${project.colors.to});` : 
-                'background: linear-gradient(135deg, #667eea, #764ba2);';
-
-            const badgeText = project.featured ? '✨ Featured Project' : '🚀 Latest Project';
-            const statusText = project.status === 'live' ? 'Live' : 'In Development';
-            
-            container.innerHTML = `
-                <div class="featured-project" style="${gradientStyle}">
-                    <div class="featured-badge">${badgeText}</div>
-                    <div class="project-emoji" style="filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));">${project.emoji}</div>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem; color: #ffffff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);">${project.name}</h2>
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                        <span style="background: rgba(0, 0, 0, 0.6); color: #ffffff; padding: 0.5rem 1rem; border-radius: 12px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(10px); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);">
-                            ${statusText}
-                        </span>
-                        ${project.stars > 0 ? `
-                            <span style="display: flex; align-items: center; gap: 0.25rem; color: #ffd700; font-weight: 600; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);">
-                                <i class="fas fa-star"></i> ${project.stars}
-                            </span>
-                        ` : ''}
-                    </div>
-                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: rgba(255,255,255,0.95); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); line-height: 1.6;">${project.description}</p>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        ${project.homepage ? `
-                            <a href="${project.homepage}" target="_blank" style="
-                                display: inline-flex;
-                                align-items: center;
-                                gap: 0.5rem;
-                                background: rgba(0, 0, 0, 0.4);
-                                color: #ffffff;
-                                padding: 1rem 2rem;
-                                border-radius: 50px;
-                                text-decoration: none;
-                                font-weight: 600;
-                                transition: var(--transition);
-                                backdrop-filter: blur(10px);
-                                border: 1px solid rgba(255,255,255,0.4);
-                                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-                            " onmouseover="this.style.background='rgba(0, 0, 0, 0.6)'" onmouseout="this.style.background='rgba(0, 0, 0, 0.4)'">
-                                <i class="fas fa-external-link-alt"></i>
-                                View Live
-                            </a>
-                        ` : ''}
-                        <a href="${project.github_url}" target="_blank" style="
-                            display: inline-flex;
-                            align-items: center;
-                            gap: 0.5rem;
-                            background: rgba(0, 0, 0, 0.6);
-                            color: #ffffff;
-                            padding: 1rem 2rem;
-                            border-radius: 50px;
-                            text-decoration: none;
-                            font-weight: 600;
-                            transition: var(--transition);
-                            backdrop-filter: blur(10px);
-                            border: 1px solid rgba(255,255,255,0.3);
-                            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-                        " onmouseover="this.style.background='rgba(0, 0, 0, 0.8)'" onmouseout="this.style.background='rgba(0, 0, 0, 0.6)'">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                    </div>
-                </div>
-            `;
         }
 
         function displayProjects(projects, container) {
@@ -830,20 +1035,35 @@
                     }
                 });
 
-                const gradientStyle = project.colors ? 
-                    `background: linear-gradient(135deg, ${project.colors.from}, ${project.colors.to});` : 
-                    'background: var(--bg-secondary);';
-
-                card.style.cssText += gradientStyle;
+                // Remove gradient styling - use clean card background
 
                 const statusBadge = project.status === 'live' ? 
                     '<div class="status-badge live"><i class="fas fa-circle"></i> Live</div>' :
                     '<div class="status-badge development"><i class="fas fa-code"></i> Dev</div>';
 
+                // Check for local screenshot first, then use ScreenshotOne API if needed
+                const screenshotPath = `media/screenshots/${project.name.toLowerCase().replace(/\s+/g, '-')}.png`;
+                
+                // ScreenshotOne API configuration
+                const screenshotOneUrl = project.homepage ? 
+                    `https://api.screenshotone.com/take?access_key=zWVQKl-DroC9PQ&secret_key=GeYrlYUJCpDj4g&url=${encodeURIComponent(project.homepage)}&viewport_width=1280&viewport_height=720&device_scale_factor=1&format=jpg&image_quality=80&block_ads=true&block_cookie_banners=true&block_trackers=true&delay=2` : 
+                    '';
+                
+                let projectImage;
+                if (project.homepage) {
+                    // Try local screenshot first, then API, then fallback to emoji
+                    projectImage = `<img src="${screenshotPath}" alt="${project.name}" style="width: 100%; height: 100%; object-fit: cover;" 
+                        onerror="this.onerror=null; this.src='${screenshotOneUrl || '#'}'; this.onerror=function(){this.parentElement.innerHTML='<div class=\\'image-placeholder\\'><span class=\\'project-emoji\\'>${project.emoji}</span></div>'};">`;
+                } else {
+                    projectImage = `<div class="image-placeholder"><span class="project-emoji">${project.emoji}</span></div>`;
+                }
+
                 card.innerHTML = `
                     ${statusBadge}
+                    <div class="project-image">
+                        ${projectImage}
+                    </div>
                     <div class="card-content">
-                        <div class="project-emoji">${project.emoji}</div>
                         <div class="project-title">${project.name} ${project.featured ? '⭐' : ''}</div>
                         <div class="project-description">${project.description}</div>
                         ${project.tags && project.tags.length > 0 ? `
@@ -860,14 +1080,14 @@
                                     </div>
                                 ` : ''}
                                 <a href="${project.github_url}" target="_blank" onclick="event.stopPropagation()" style="
-                                    color: var(--text-secondary);
+                                    color: hsl(var(--muted-foreground));
                                     text-decoration: none;
                                     display: flex;
                                     align-items: center;
                                     gap: 0.25rem;
                                     font-size: 0.9rem;
-                                    transition: var(--transition);
-                                " onmouseover="this.style.color='var(--text-accent)'" onmouseout="this.style.color='var(--text-secondary)'">
+                                    transition: all 0.2s ease;
+                                " onmouseover="this.style.color='hsl(var(--primary))'" onmouseout="this.style.color='hsl(var(--muted-foreground))'">
                                     <i class="fab fa-github"></i>
                                     <span>Code</span>
                                 </a>
@@ -881,22 +1101,6 @@
             });
         }
 
-        // Filter functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            loadProjects();
-
-            // Add filter event listeners
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    // Update active filter
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    
-                    currentFilter = btn.dataset.filter;
-                    displayProjects(allProjects, document.getElementById('projects'));
-                });
-            });
-        });
     </script>
 </body>
 

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub URL Extractor</title>
+    <style>
+        body { 
+            font-family: 'Courier New', monospace; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 2rem;
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .container { background: #111; padding: 2rem; border-radius: 8px; }
+        button { 
+            background: #00ff88; 
+            color: #000; 
+            border: none; 
+            padding: 1rem 2rem; 
+            border-radius: 4px; 
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .results { 
+            margin-top: 2rem; 
+            background: #000; 
+            padding: 1rem; 
+            border-radius: 4px;
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        .url-list {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+        .url-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            border-bottom: 1px solid #333;
+        }
+        .url-item:last-child { border-bottom: none; }
+        .copy-btn {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 GitHub URL Extractor</h1>
+        <p>Extract all live URLs from your GitHub repositories for screenshot tools.</p>
+        
+        <button onclick="runExtraction()">Extract URLs</button>
+        
+        <div id="loading" style="display: none; margin: 1rem 0;">
+            <p>🔄 Fetching repositories...</p>
+        </div>
+        
+        <div id="url-list"></div>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        async function runExtraction() {
+            const loading = document.getElementById('loading');
+            const results = document.getElementById('results');
+            const urlList = document.getElementById('url-list');
+            
+            loading.style.display = 'block';
+            results.innerHTML = '';
+            urlList.innerHTML = '';
+            
+            try {
+                // Fetch repos
+                const response = await fetch('https://api.github.com/users/adamtpang/repos?sort=pushed&per_page=100');
+                const repos = await response.json();
+                
+                // Process repos
+                const excludeRepos = ['adamtpang', 'resume', 'test', 'anchormarianas.com'];
+                const filteredRepos = repos.filter(repo => 
+                    !repo.fork && 
+                    !excludeRepos.includes(repo.name)
+                );
+                
+                const urlsFound = [];
+                const noUrlRepos = [];
+                
+                filteredRepos.forEach(repo => {
+                    const repoInfo = {
+                        name: repo.name,
+                        description: repo.description || '',
+                        homepage: repo.homepage || '',
+                        github_url: repo.html_url,
+                        stars: repo.stargazers_count,
+                        updated: repo.updated_at.split('T')[0]
+                    };
+                    
+                    // Check homepage field
+                    if (repo.homepage && isValidURL(repo.homepage)) {
+                        urlsFound.push({
+                            ...repoInfo,
+                            live_url: repo.homepage,
+                            source: 'homepage'
+                        });
+                        return;
+                    }
+                    
+                    // Check repo name for URL patterns
+                    const urlFromName = extractURLFromName(repo.name);
+                    if (urlFromName) {
+                        urlsFound.push({
+                            ...repoInfo,
+                            live_url: urlFromName,
+                            source: 'repo_name'
+                        });
+                        return;
+                    }
+                    
+                    noUrlRepos.push(repoInfo);
+                });
+                
+                loading.style.display = 'none';
+                
+                // Display URL list for easy copying
+                if (urlsFound.length > 0) {
+                    urlList.innerHTML = `
+                        <h3>📋 URLs Found (${urlsFound.length} total)</h3>
+                        <div class="url-list">
+                            ${urlsFound.map(repo => `
+                                <div class="url-item">
+                                    <div>
+                                        <strong>${repo.name}</strong><br>
+                                        <a href="${repo.live_url}" target="_blank" style="color: #00ff88;">${repo.live_url}</a>
+                                    </div>
+                                    <button class="copy-btn" onclick="copyToClipboard('${repo.live_url}')">Copy</button>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <button onclick="copyAllUrls()">Copy All URLs</button>
+                        <button onclick="copyForScreenshots()">Copy for Screenshot Tool</button>
+                    `;
+                }
+                
+                // Display detailed results
+                let output = `🚀 GitHub URL Extraction Results\n`;
+                output += `================================\n\n`;
+                output += `📊 Total repos analyzed: ${filteredRepos.length}\n`;
+                output += `✅ URLs found: ${urlsFound.length}\n`;
+                output += `❌ No URLs: ${noUrlRepos.length}\n\n`;
+                
+                output += `✅ REPOS WITH LIVE URLS:\n`;
+                output += `========================\n\n`;
+                urlsFound.forEach((repo, i) => {
+                    output += `${i + 1}. ${repo.name}\n`;
+                    output += `   URL: ${repo.live_url}\n`;
+                    output += `   Source: ${repo.source}\n`;
+                    output += `   Updated: ${repo.updated}\n\n`;
+                });
+                
+                if (noUrlRepos.length > 0) {
+                    output += `❌ REPOS WITHOUT URLS:\n`;
+                    output += `======================\n\n`;
+                    noUrlRepos.forEach((repo, i) => {
+                        output += `${i + 1}. ${repo.name}\n`;
+                        output += `   Description: ${repo.description}\n\n`;
+                    });
+                }
+                
+                results.innerHTML = output;
+                
+                // Store data globally for copying
+                window.extractedUrls = urlsFound.map(repo => repo.live_url);
+                window.extractedData = urlsFound;
+                
+            } catch (error) {
+                loading.style.display = 'none';
+                results.innerHTML = `❌ Error: ${error.message}`;
+            }
+        }
+        
+        function isValidURL(string) {
+            try {
+                const url = new URL(string);
+                return url.protocol === 'http:' || url.protocol === 'https:';
+            } catch {
+                return false;
+            }
+        }
+        
+        function extractURLFromName(repoName) {
+            const domainPatterns = [
+                /^([\w-]+\.[\w-]+\.[\w]+)$/,  // subdomain.domain.tld
+                /^([\w-]+\.[\w]+)$/,          // domain.tld
+                /^www\.([\w-]+\.[\w]+)$/      // www.domain.tld
+            ];
+            
+            for (const pattern of domainPatterns) {
+                const match = repoName.match(pattern);
+                if (match) {
+                    const domain = match[1] || match[0];
+                    return `https://${domain.replace(/^www\./, '')}`;
+                }
+            }
+            
+            return null;
+        }
+        
+        async function copyToClipboard(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('Copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
+        }
+        
+        async function copyAllUrls() {
+            if (window.extractedUrls) {
+                const urls = window.extractedUrls.join('\\n');
+                await copyToClipboard(urls);
+            }
+        }
+        
+        async function copyForScreenshots() {
+            if (window.extractedData) {
+                // Format: repo_name,url
+                const formatted = window.extractedData.map(repo => 
+                    `${repo.name},${repo.live_url}`
+                ).join('\\n');
+                await copyToClipboard(formatted);
+            }
+        }
+    </script>
+</body>
+</html>
