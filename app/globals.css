@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 241 250 238; /* F1FAEE - soft cream */
+  --foreground: 29 53 87; /* 1D3557 - dark navy */
+  --card: 241 250 238;
+  --card-foreground: 29 53 87;
+  --popover: 241 250 238;
+  --popover-foreground: 29 53 87;
+  --primary: 69 123 157; /* 457B9D - medium blue */
+  --primary-foreground: 241 250 238;
+  --secondary: 168 218 220; /* A8DADC - light blue/teal */
+  --secondary-foreground: 29 53 87;
+  --muted: 168 218 220;
+  --muted-foreground: 69 123 157;
+  --accent: 168 218 220; /* A8DADC - light teal */
+  --accent-foreground: 29 53 87;
+  --destructive: 230 57 70; /* E63946 - bright red */
+  --destructive-foreground: 241 250 238;
+  --border: 168 218 220;
+  --input: 168 218 220;
+  --ring: 69 123 157;
+  --chart-1: 230 57 70; /* E63946 - red */
+  --chart-2: 168 218 220; /* A8DADC - light blue */
+  --chart-3: 69 123 157; /* 457B9D - medium blue */
+  --chart-4: 241 250 238; /* F1FAEE - cream */
+  --chart-5: 29 53 87; /* 1D3557 - dark navy */
+  --radius: 0.625rem;
+  --sidebar: 241 250 238;
+  --sidebar-foreground: 29 53 87;
+  --sidebar-primary: 69 123 157;
+  --sidebar-primary-foreground: 241 250 238;
+  --sidebar-accent: 168 218 220;
+  --sidebar-accent-foreground: 29 53 87;
+  --sidebar-border: 168 218 220;
+  --sidebar-ring: 69 123 157;
+}
+
+.dark {
+  /* Dark mode using the same color palette */
+  --background: 29 53 87; /* 1D3557 - dark navy */
+  --foreground: 241 250 238; /* F1FAEE - soft cream */
+  --card: 29 53 87;
+  --card-foreground: 241 250 238;
+  --popover: 29 53 87;
+  --popover-foreground: 241 250 238;
+  --primary: 168 218 220; /* A8DADC - light blue/teal */
+  --primary-foreground: 29 53 87;
+  --secondary: 69 123 157; /* 457B9D - medium blue */
+  --secondary-foreground: 241 250 238;
+  --muted: 69 123 157;
+  --muted-foreground: 168 218 220;
+  --accent: 69 123 157; /* 457B9D - medium blue */
+  --accent-foreground: 241 250 238;
+  --destructive: 230 57 70; /* E63946 - bright red */
+  --destructive-foreground: 241 250 238;
+  --border: 69 123 157;
+  --input: 69 123 157;
+  --ring: 168 218 220;
+  --chart-1: 230 57 70; /* E63946 - red */
+  --chart-2: 168 218 220; /* A8DADC - light blue */
+  --chart-3: 69 123 157; /* 457B9D - medium blue */
+  --chart-4: 241 250 238; /* F1FAEE - cream */
+  --chart-5: 29 53 87; /* 1D3557 - dark navy */
+  --sidebar: 29 53 87;
+  --sidebar-foreground: 241 250 238;
+  --sidebar-primary: 168 218 220;
+  --sidebar-primary-foreground: 29 53 87;
+  --sidebar-accent: 69 123 157;
+  --sidebar-accent-foreground: 241 250 238;
+  --sidebar-border: 69 123 157;
+  --sidebar-ring: 168 218 220;
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Dark mode color assignments */
+/* Typography improvements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
