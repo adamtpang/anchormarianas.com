@@ -12,7 +12,7 @@ const testimonials = [
     name: "Sarah Chen",
     role: "CTO, MusicTech Inc",
     company: "MusicTech Inc",
-    image: "/testimonial-1.jpg",
+    image: "/placeholder.svg",
     content:
       "Adam's work on our music composition platform was exceptional. His deep understanding of both technology and music theory helped us create something truly innovative. User engagement increased by 250% after the launch.",
     rating: 5,
@@ -23,7 +23,7 @@ const testimonials = [
     name: "Marcus Rodriguez",
     role: "Founder, ThinkLab",
     company: "ThinkLab",
-    image: "/testimonial-2.jpg",
+    image: "/placeholder.svg",
     content:
       "Working with Adam on our philosophy discussion platform was transformative. He brought both technical excellence and deep intellectual curiosity to the project. The result exceeded all our expectations.",
     rating: 5,
@@ -34,7 +34,7 @@ const testimonials = [
     name: "Emily Watson",
     role: "Product Manager, CreativeFlow",
     company: "CreativeFlow",
-    image: "/testimonial-3.jpg",
+    image: "/placeholder.svg",
     content:
       "Adam's approach to building creative tools is unique. He understands the creative process deeply and translates that into beautiful, functional software. Our user satisfaction scores doubled after his redesign.",
     rating: 5,
@@ -55,7 +55,7 @@ const caseStudies = [
       "Featured in Electronic Musician Magazine",
       "Integrated with major DAWs",
     ],
-    image: "/case-study-harmony.jpg",
+    image: "/placeholder.svg",
     tags: ["React", "AI", "Music Theory", "WebAudio"],
     demoUrl: "https://harmony-engine.vercel.app",
   },
@@ -71,7 +71,7 @@ const caseStudies = [
       "95% positive feedback on discourse quality",
       "Cited by academic philosophers",
     ],
-    image: "/case-study-philosophy.jpg",
+    image: "/placeholder.svg",
     tags: ["Next.js", "MDX", "Philosophy", "Community"],
     demoUrl: "https://essays.adampang.com",
   },
@@ -87,19 +87,19 @@ const caseStudies = [
       "500+ creative teams using the platform",
       "40% increase in team productivity reported",
     ],
-    image: "/case-study-collaboration.jpg",
+    image: "/placeholder.svg",
     tags: ["React", "WebSockets", "Real-time", "Collaboration"],
     demoUrl: "",
   },
 ]
 
 const clientLogos = [
-  { name: "MusicTech", logo: "/client-logo-1.jpg" },
-  { name: "ThinkLab", logo: "/client-logo-2.jpg" },
-  { name: "CreativeFlow", logo: "/client-logo-3.jpg" },
-  { name: "CodeCraft", logo: "/client-logo-4.jpg" },
-  { name: "DesignStudio", logo: "/client-logo-5.jpg" },
-  { name: "InnovateNow", logo: "/client-logo-6.jpg" },
+  { name: "MusicTech", logo: "/placeholder.svg" },
+  { name: "ThinkLab", logo: "/placeholder.svg" },
+  { name: "CreativeFlow", logo: "/placeholder.svg" },
+  { name: "CodeCraft", logo: "/placeholder.svg" },
+  { name: "DesignStudio", logo: "/placeholder.svg" },
+  { name: "InnovateNow", logo: "/placeholder.svg" },
 ]
 
 const stats = [

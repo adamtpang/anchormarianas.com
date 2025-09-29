@@ -117,37 +117,37 @@ export default function HomePage() {
                 title: "TaskFlow Pro",
                 description: "AI-powered project management with smart automation",
                 status: "Live",
-                image: "/modern-task-management-app-interface.jpg",
+                image: "/placeholder.svg",
               },
               {
                 title: "CodeSnap",
                 description: "Beautiful code screenshot generator for developers",
                 status: "Live",
-                image: "/code-editor-syntax.png",
+                image: "/placeholder.svg",
               },
               {
                 title: "MindMap Studio",
                 description: "Collaborative mind mapping for creative teams",
                 status: "Beta",
-                image: "/mind-mapping-software-interface.jpg",
+                image: "/placeholder.svg",
               },
               {
                 title: "DataViz Builder",
                 description: "No-code data visualization platform",
                 status: "Coming Soon",
-                image: "/data-visualization-dashboard.png",
+                image: "/placeholder.svg",
               },
               {
                 title: "WriteFlow",
                 description: "Distraction-free writing environment with AI assistance",
                 status: "Live",
-                image: "/minimal-writing-app-interface.jpg",
+                image: "/placeholder.svg",
               },
               {
                 title: "SoundScape",
                 description: "Ambient sound generator for focus and relaxation",
                 status: "Live",
-                image: "/audio-waveform-visualization.png",
+                image: "/placeholder.svg",
               },
             ].map((project, index) => (
               <div key={index} className="group cursor-pointer">
