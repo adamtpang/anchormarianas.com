@@ -10,103 +10,103 @@ const testimonials = [
   {
     id: 1,
     name: "Sarah Chen",
-    role: "CTO, MusicTech Inc",
-    company: "MusicTech Inc",
-    image: "/placeholder.svg",
+    role: "CEO, TechFlow",
+    company: "TechFlow",
+    image: "/professional-woman-diverse.png",
     content:
-      "Adam's work on our music composition platform was exceptional. His deep understanding of both technology and music theory helped us create something truly innovative. User engagement increased by 250% after the launch.",
+      "AnchorMarianas transformed our vision into a beautiful, functional product. The attention to detail and technical expertise exceeded our expectations. Our user engagement increased by 300% after launch.",
     rating: 5,
-    project: "Music Platform Development",
+    project: "SaaS Dashboard Redesign",
   },
   {
     id: 2,
     name: "Marcus Rodriguez",
-    role: "Founder, ThinkLab",
-    company: "ThinkLab",
-    image: "/placeholder.svg",
+    role: "Founder, GrowthLab",
+    company: "GrowthLab",
+    image: "/professional-man.jpg",
     content:
-      "Working with Adam on our philosophy discussion platform was transformative. He brought both technical excellence and deep intellectual curiosity to the project. The result exceeded all our expectations.",
+      "Working with AnchorMarianas was a game-changer. They delivered our MVP in just 3 weeks, and it helped us secure $500K in seed funding. The code quality and architecture are top-notch.",
     rating: 5,
-    project: "Philosophy Platform",
+    project: "MVP Development",
   },
   {
     id: 3,
     name: "Emily Watson",
-    role: "Product Manager, CreativeFlow",
-    company: "CreativeFlow",
-    image: "/placeholder.svg",
+    role: "Product Manager, DataCorp",
+    company: "DataCorp",
+    image: "/professional-woman-glasses.png",
     content:
-      "Adam's approach to building creative tools is unique. He understands the creative process deeply and translates that into beautiful, functional software. Our user satisfaction scores doubled after his redesign.",
+      "The technical consulting provided by AnchorMarianas saved us months of development time. Their strategic insights and hands-on approach helped us scale from 1K to 50K users seamlessly.",
     rating: 5,
-    project: "Creative Tools Platform",
+    project: "Technical Consulting",
   },
 ]
 
 const caseStudies = [
   {
     id: 1,
-    title: "Harmony Engine: From Concept to 5K+ Users",
-    client: "Personal Project",
-    challenge: "Create an AI-powered music composition tool that actually understands musical theory",
-    solution: "Built an intelligent system that combines machine learning with deep music theory knowledge",
+    title: "TaskFlow Pro: From Idea to 10K Users",
+    client: "Internal Project",
+    challenge: "Create an AI-powered project management tool that stands out in a crowded market",
+    solution: "Built a modern, intuitive interface with smart automation features and seamless integrations",
     results: [
-      "5,000+ active musicians using the platform",
-      "4.9/5 star rating from users",
-      "Featured in Electronic Musician Magazine",
-      "Integrated with major DAWs",
+      "10,000+ active users in first 6 months",
+      "4.8/5 star rating on product review sites",
+      "$50K+ MRR within first year",
+      "Featured in TechCrunch and Product Hunt",
     ],
-    image: "/placeholder.svg",
-    tags: ["React", "AI", "Music Theory", "WebAudio"],
-    demoUrl: "https://harmony-engine.vercel.app",
+    image: "/modern-task-management-app-interface.jpg",
+    tags: ["React", "AI", "SaaS", "Product Design"],
+    demoUrl: "https://taskflow.example.com",
   },
   {
     id: 2,
-    title: "Philosophy Essays Platform",
-    client: "Personal Project",
-    challenge: "Create a platform for deep philosophical discourse that encourages thoughtful engagement",
-    solution: "Developed a unique comment system with threading, emphasis on quality over quantity",
+    title: "E-commerce Platform Transformation",
+    client: "RetailMax",
+    challenge: "Modernize legacy e-commerce platform to improve conversion rates and user experience",
+    solution: "Complete redesign with modern checkout flow, mobile optimization, and performance improvements",
     results: [
-      "10,000+ monthly readers",
-      "Average reading time: 12 minutes",
-      "95% positive feedback on discourse quality",
-      "Cited by academic philosophers",
+      "45% increase in conversion rate",
+      "60% reduction in page load times",
+      "200% increase in mobile sales",
+      "99.9% uptime since launch",
     ],
-    image: "/placeholder.svg",
-    tags: ["Next.js", "MDX", "Philosophy", "Community"],
-    demoUrl: "https://essays.adampang.com",
+    image: "/ecommerce-website-homepage.png",
+    tags: ["Next.js", "E-commerce", "Performance", "UX Design"],
+    demoUrl: "",
   },
   {
     id: 3,
-    title: "Real-time Collaboration Tool for Creatives",
-    client: "CreativeFlow",
-    challenge: "Build a real-time collaboration platform for creative teams with complex workflows",
-    solution: "Architected a WebSocket-based system with conflict resolution and version control",
+    title: "FinTech Dashboard for Investment Firm",
+    client: "WealthTech Partners",
+    challenge: "Create a real-time dashboard for portfolio management with complex data visualizations",
+    solution: "Built a responsive dashboard with real-time data feeds, interactive charts, and advanced filtering",
     results: [
-      "99.9% uptime since launch",
-      "Sub-100ms latency for real-time updates",
-      "500+ creative teams using the platform",
-      "40% increase in team productivity reported",
+      "50% reduction in analysis time",
+      "Real-time data processing for 1M+ transactions",
+      "Improved client satisfaction by 40%",
+      "Scalable architecture supporting 500+ concurrent users",
     ],
-    image: "/placeholder.svg",
-    tags: ["React", "WebSockets", "Real-time", "Collaboration"],
+    image: "/data-visualization-dashboard.png",
+    tags: ["React", "D3.js", "Real-time", "FinTech"],
     demoUrl: "",
   },
 ]
 
 const clientLogos = [
-  { name: "MusicTech", logo: "/placeholder.svg" },
-  { name: "ThinkLab", logo: "/placeholder.svg" },
-  { name: "CreativeFlow", logo: "/placeholder.svg" },
-  { name: "CodeCraft", logo: "/placeholder.svg" },
-  { name: "DesignStudio", logo: "/placeholder.svg" },
-  { name: "InnovateNow", logo: "/placeholder.svg" },
+  { name: "TechFlow", logo: "/tech-company-logo.jpg" },
+  { name: "GrowthLab", logo: "/abstract-startup-logo.png" },
+  { name: "DataCorp", logo: "/data-company-logo.png" },
+  { name: "RetailMax", logo: "/abstract-retail-logo.png" },
+  { name: "WealthTech", logo: "/fintech-logo.png" },
+  { name: "InnovateCo", logo: "/innovation-logo.jpg" },
 ]
 
 const stats = [
-  { label: "Projects Completed", value: "20+", icon: Award },
-  { label: "Happy Clients", value: "15+", icon: Users },
-  { label: "Average Rating", value: "4.9/5", icon: Star },
-  { label: "Years Experience", value: "5+", icon: TrendingUp },
+  { label: "Projects Delivered", value: "50+", icon: Award },
+  { label: "Happy Clients", value: "25+", icon: Users },
+  { label: "Average ROI", value: "300%", icon: TrendingUp },
+  { label: "Client Satisfaction", value: "98%", icon: Star },
 ]
 
 export default function ProofPage() {
@@ -114,19 +114,34 @@ export default function ProofPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-6xl">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-sm border-b border-border z-50">
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-3 text-foreground hover:text-accent transition-colors">
+              <ArrowLeft className="w-5 h-5" />
+              <span className="font-semibold">AnchorMarianas</span>
+            </Link>
+            <div className="text-sm text-muted-foreground">Proof of Work</div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="pt-20">
         {/* Header */}
-        <section className="text-center mb-12 border-b border-border pb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-balance mb-4">Proven Results, Happy Clients</h1>
-          <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
-            Don't just take my word for it. See the real impact I've made for projects and clients with
-            measurable results and testimonials.
-          </p>
+        <section className="py-12 px-6 border-b border-border">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-balance mb-4">Proven Results, Happy Clients</h1>
+            <p className="text-xl text-muted-foreground text-pretty max-w-2xl mx-auto">
+              Don't just take our word for it. See the real impact we've made for businesses across industries with
+              measurable results and client testimonials.
+            </p>
+          </div>
         </section>
 
         {/* Stats */}
-        <section className="mb-20">
-          <div className="bg-muted/30 rounded-2xl p-8">
+        <section className="py-12 px-6 bg-muted/30">
+          <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
@@ -144,161 +159,169 @@ export default function ProofPage() {
         </section>
 
         {/* Client Testimonials */}
-        <section className="mb-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-balance mb-4">What Clients Say</h2>
-            <p className="text-xl text-muted-foreground text-pretty">
-              Real feedback from real clients who've seen real results
-            </p>
-          </div>
+        <section className="py-20 px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-balance mb-4">What Clients Say</h2>
+              <p className="text-xl text-muted-foreground text-pretty">
+                Real feedback from real clients who've seen real results
+              </p>
+            </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-card rounded-2xl p-8 border border-border">
-                <div className="flex items-center gap-1 mb-4">
-                  {Array.from({ length: testimonial.rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-
-                <Quote className="w-8 h-8 text-accent/20 mb-4" />
-
-                <p className="text-muted-foreground mb-6 text-pretty leading-relaxed">{testimonial.content}</p>
-
-                <div className="flex items-center gap-4">
-                  <img
-                    src={testimonial.image || "/placeholder.svg"}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {testimonial.role}, {testimonial.company}
-                    </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial) => (
+                <div key={testimonial.id} className="bg-card rounded-2xl p-8 border border-border">
+                  <div className="flex items-center gap-1 mb-4">
+                    {Array.from({ length: testimonial.rating }).map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
                   </div>
-                </div>
 
-                <Badge variant="outline" className="mt-4">
-                  {testimonial.project}
-                </Badge>
-              </div>
-            ))}
-          </div>
-        </section>
+                  <Quote className="w-8 h-8 text-accent/20 mb-4" />
 
-        {/* Case Studies */}
-        <section className="mb-20">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-balance mb-4">Case Studies</h2>
-            <p className="text-xl text-muted-foreground text-pretty">
-              Deep dives into successful projects and the results achieved
-            </p>
-          </div>
+                  <p className="text-muted-foreground mb-6 text-pretty leading-relaxed">{testimonial.content}</p>
 
-          <div className="space-y-12">
-            {caseStudies.map((study, index) => (
-              <div key={study.id} className="bg-card rounded-2xl overflow-hidden border border-border">
-                <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}>
-                  <div className={`aspect-video lg:aspect-auto ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
+                  <div className="flex items-center gap-4">
                     <img
-                      src={study.image || "/placeholder.svg"}
-                      alt={study.title}
-                      className="w-full h-full object-cover"
+                      src={testimonial.image || "/placeholder.svg"}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover"
                     />
-                  </div>
-
-                  <div className="p-8 lg:p-12 flex flex-col justify-center">
-                    <div className="space-y-6">
-                      <div>
-                        <Badge variant="outline" className="mb-3">
-                          {study.client}
-                        </Badge>
-                        <h3 className="text-2xl font-bold mb-4 text-balance">{study.title}</h3>
+                    <div>
+                      <div className="font-semibold">{testimonial.name}</div>
+                      <div className="text-sm text-muted-foreground">
+                        {testimonial.role}, {testimonial.company}
                       </div>
-
-                      <div className="space-y-4">
-                        <div>
-                          <h4 className="font-semibold text-accent mb-2">Challenge</h4>
-                          <p className="text-muted-foreground text-sm text-pretty">{study.challenge}</p>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-accent mb-2">Solution</h4>
-                          <p className="text-muted-foreground text-sm text-pretty">{study.solution}</p>
-                        </div>
-
-                        <div>
-                          <h4 className="font-semibold text-accent mb-2">Results</h4>
-                          <ul className="space-y-1">
-                            {study.results.map((result, i) => (
-                              <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
-                                <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
-                                {result}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-
-                      <div className="flex flex-wrap gap-2">
-                        {study.tags.map((tag) => (
-                          <Badge key={tag} variant="secondary" className="text-xs">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-
-                      {study.demoUrl && (
-                        <Button asChild className="w-fit">
-                          <Link href={study.demoUrl} target="_blank">
-                            <Play className="w-4 h-4 mr-2" />
-                            View Demo
-                          </Link>
-                        </Button>
-                      )}
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
 
-        {/* Client Logos */}
-        <section className="mb-12 border-t border-border pt-12">
-          <div className="text-center mb-12">
-            <h3 className="text-lg font-semibold text-muted-foreground mb-8">Trusted by innovative teams</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-              {clientLogos.map((client, index) => (
-                <div key={index} className="flex justify-center">
-                  <img
-                    src={client.logo || "/placeholder.svg"}
-                    alt={client.name}
-                    className="h-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
-                  />
+                  <Badge variant="outline" className="mt-4">
+                    {testimonial.project}
+                  </Badge>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
+        {/* Case Studies */}
+        <section className="py-20 px-6 bg-muted/30">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-balance mb-4">Case Studies</h2>
+              <p className="text-xl text-muted-foreground text-pretty">
+                Deep dives into successful projects and the results achieved
+              </p>
+            </div>
+
+            <div className="space-y-12">
+              {caseStudies.map((study, index) => (
+                <div key={study.id} className="bg-background rounded-2xl overflow-hidden border border-border">
+                  <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? "lg:grid-flow-col-dense" : ""}`}>
+                    <div className={`aspect-video lg:aspect-auto ${index % 2 === 1 ? "lg:col-start-2" : ""}`}>
+                      <img
+                        src={study.image || "/placeholder.svg"}
+                        alt={study.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+
+                    <div className="p-8 lg:p-12 flex flex-col justify-center">
+                      <div className="space-y-6">
+                        <div>
+                          <Badge variant="outline" className="mb-3">
+                            {study.client}
+                          </Badge>
+                          <h3 className="text-2xl font-bold mb-4 text-balance">{study.title}</h3>
+                        </div>
+
+                        <div className="space-y-4">
+                          <div>
+                            <h4 className="font-semibold text-accent mb-2">Challenge</h4>
+                            <p className="text-muted-foreground text-sm text-pretty">{study.challenge}</p>
+                          </div>
+
+                          <div>
+                            <h4 className="font-semibold text-accent mb-2">Solution</h4>
+                            <p className="text-muted-foreground text-sm text-pretty">{study.solution}</p>
+                          </div>
+
+                          <div>
+                            <h4 className="font-semibold text-accent mb-2">Results</h4>
+                            <ul className="space-y-1">
+                              {study.results.map((result, i) => (
+                                <li key={i} className="text-muted-foreground text-sm flex items-start gap-2">
+                                  <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
+                                  {result}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div className="flex flex-wrap gap-2">
+                          {study.tags.map((tag) => (
+                            <Badge key={tag} variant="secondary" className="text-xs">
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+
+                        {study.demoUrl && (
+                          <Button asChild className="w-fit">
+                            <Link href={study.demoUrl} target="_blank">
+                              <Play className="w-4 h-4 mr-2" />
+                              View Demo
+                            </Link>
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Client Logos */}
+        <section className="py-12 px-6 border-t border-border">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h3 className="text-lg font-semibold text-muted-foreground mb-8">Trusted by innovative companies</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+                {clientLogos.map((client, index) => (
+                  <div key={index} className="flex justify-center">
+                    <img
+                      src={client.logo || "/placeholder.svg"}
+                      alt={client.name}
+                      className="h-8 opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
-        <section className="text-center bg-accent/5 rounded-2xl p-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-balance mb-4">Ready to Create Something Amazing?</h2>
-          <p className="text-xl text-muted-foreground text-pretty mb-8">
-            Let's discuss how we can work together to bring your vision to life.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
-              <Link href="/work-with-me">Start Your Project</Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/portfolio">
-                View All Work
-                <ExternalLink className="w-5 h-5 ml-2" />
-              </Link>
-            </Button>
+        <section className="py-20 px-6 bg-accent/5">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-balance mb-4">Ready to Join Our Success Stories?</h2>
+            <p className="text-xl text-muted-foreground text-pretty mb-8">
+              Let's discuss how we can help you achieve similar results for your business.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
+                <Link href="/services">Start Your Project</Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <Link href="/portfolio">
+                  View All Work
+                  <ExternalLink className="w-5 h-5 ml-2" />
+                </Link>
+              </Button>
+            </div>
           </div>
         </section>
       </div>
