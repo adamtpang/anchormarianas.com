@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "starter",
+    "name": "Starter Landing",
+    "for": "Founders who need a clean, fast landing that converts.",
+    "deliverables": [
+      "Aesthetic landing page",
+      "Copy polish & optimization",
+      "Analytics & SEO setup",
+      "1 round of tweaks"
+    ],
+    "timeline": "1–2 weeks",
+    "fromPrice": "1000",
+    "stripePriceId": "price_STARTER_TODO",
+    "exclusions": ["Brand-new backend", "Complex CMS"]
+  },
+  {
+    "slug": "growth",
+    "name": "Growth Revamp",
+    "for": "Teams with traffic who need speed + conversion uplift.",
+    "deliverables": [
+      "UX revamp & optimization",
+      "≥95 Lighthouse score",
+      "CRO fundamentals",
+      "A/B test hooks"
+    ],
+    "timeline": "2–4 weeks",
+    "fromPrice": "3000",
+    "stripePriceId": "price_GROWTH_TODO",
+    "exclusions": ["Full rebrand", "Native apps"]
+  },
+  {
+    "slug": "studio",
+    "name": "Custom Studio Build",
+    "for": "MVPs and custom internet products.",
+    "deliverables": [
+      "Technical architecture",
+      "Full MVP development",
+      "Deploy & documentation",
+      "Clean handover"
+    ],
+    "timeline": "4–8 weeks",
+    "fromPrice": "6000",
+    "quoteOnly": true,
+    "exclusions": ["Ongoing operations", "24/7 support"]
+  }
+]

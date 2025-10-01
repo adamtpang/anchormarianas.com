@@ -5,16 +5,14 @@ import { usePathname } from "next/navigation"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { MobileNav } from "@/components/mobile-nav"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
+import siteConfig from "@/content/site.json"
 
 const navigation = [
+  { name: "Work", href: "/work" },
+  { name: "Services", href: "/services" },
   { name: "About", href: "/about" },
-  { name: "Essays", href: "/essays" },
-  { name: "Projects", href: "/projects" },
-  { name: "Stream", href: "/stream" },
-  { name: "Start Here", href: "/start-here" },
-  { name: "Work With Me", href: "/work-with-me" },
-  { name: "Now", href: "/now" },
-  { name: "Support", href: "/support" },
+  { name: "Contact", href: "/contact" },
 ]
 
 export function Header() {
@@ -26,7 +24,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="text-xl font-semibold text-foreground hover:text-accent transition-colors">
-              Adam Pang
+              {siteConfig.studioName}
             </Link>
           </div>
 
@@ -47,6 +45,9 @@ export function Header() {
           </nav>
 
           <div className="flex items-center space-x-4">
+            <Button asChild className="hidden md:inline-flex">
+              <Link href="/quote">Get Quote</Link>
+            </Button>
             <ThemeToggle />
             <MobileNav />
           </div>

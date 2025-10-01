@@ -20,24 +20,24 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Adam Pang - Building code, music & philosophy",
-  description: "Personal site of Adam Pang - developer, creator, and thinker at Network School.",
-  keywords: ["developer", "philosophy", "music", "code", "essays", "projects"],
+  title: "AnchorMarianas - Minimum-Effective Studio",
+  description: "Minimum-effective studio for internet products. Fast development, high performance, conversion-focused design.",
+  keywords: ["web development", "studio", "startup", "minimum viable product", "performance", "conversion"],
   authors: [{ name: "Adam Pang" }],
-  creator: "Adam Pang",
+  creator: "AnchorMarianas",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://adampang.com",
-    title: "Adam Pang",
-    description: "Building code, music & philosophy at Network School.",
-    siteName: "Adam Pang",
+    url: "https://anchormarianas.com",
+    title: "AnchorMarianas - Minimum-Effective Studio",
+    description: "Minimum-effective studio for internet products. Fast development, high performance, conversion-focused design.",
+    siteName: "AnchorMarianas",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adam Pang",
-    description: "Building code, music & philosophy at Network School.",
-    creator: "@adampang",
+    title: "AnchorMarianas - Minimum-Effective Studio",
+    description: "Minimum-effective studio for internet products. Fast development, high performance, conversion-focused design.",
+    creator: "@adamtpang",
   },
   robots: {
     index: true,

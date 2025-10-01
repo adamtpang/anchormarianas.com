@@ -7,16 +7,13 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import { cn } from "@/lib/utils"
+import siteConfig from "@/content/site.json"
 
 const navigation = [
+  { name: "Work", href: "/work" },
+  { name: "Services", href: "/services" },
   { name: "About", href: "/about" },
-  { name: "Essays", href: "/essays" },
-  { name: "Projects", href: "/projects" },
-  { name: "Stream", href: "/stream" },
-  { name: "Start Here", href: "/start-here" },
-  { name: "Work With Me", href: "/work-with-me" },
-  { name: "Now", href: "/now" },
-  { name: "Support", href: "/support" },
+  { name: "Contact", href: "/contact" },
 ]
 
 export function MobileNav() {
@@ -35,7 +32,7 @@ export function MobileNav() {
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between py-4">
             <Link href="/" className="text-xl font-semibold text-foreground" onClick={() => setOpen(false)}>
-              Adam Pang
+              {siteConfig.studioName}
             </Link>
           </div>
 
@@ -57,11 +54,13 @@ export function MobileNav() {
 
           <div className="mt-auto pt-8">
             <div className="flex flex-col space-y-4 text-sm text-muted-foreground">
-              <Link href="/newsletter" className="hover:text-accent transition-colors" onClick={() => setOpen(false)}>
-                Newsletter
-              </Link>
+              <Button asChild className="w-full mb-4">
+                <Link href="/quote" onClick={() => setOpen(false)}>
+                  Get Quote
+                </Link>
+              </Button>
               <Link
-                href="https://twitter.com/adampang"
+                href={siteConfig.socials.x}
                 className="hover:text-accent transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -70,7 +69,7 @@ export function MobileNav() {
                 Twitter
               </Link>
               <Link
-                href="mailto:hello@adampang.com"
+                href={`mailto:${siteConfig.email}`}
                 className="hover:text-accent transition-colors"
                 onClick={() => setOpen(false)}
               >

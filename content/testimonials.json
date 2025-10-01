@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Sarah Chen",
+    "role": "CEO",
+    "company": "TechFlow",
+    "content": "AnchorMarianas transformed our vision into a beautiful, functional product. The attention to detail and technical expertise exceeded our expectations.",
+    "avatar": "/testimonials/sarah.jpg"
+  },
+  {
+    "name": "Marcus Rodriguez",
+    "role": "Founder",
+    "company": "GrowthLab",
+    "content": "They delivered our MVP in just 3 weeks, and it helped us secure $500K in seed funding. The code quality and architecture are top-notch.",
+    "avatar": "/testimonials/marcus.jpg"
+  }
+]

@@ -1,0 +1,13 @@
+[
+  {
+    "slug": "vibecheck.me",
+    "oneLiner": "Auto-playlists from your listening history.",
+    "heroImage": "/apps/vibecheck.jpg",
+    "demoUrl": "https://vibecheck.me",
+    "pricingUrl": "https://vibecheck.me/pro",
+    "featuredStats": [
+      {"label": "users", "value": "1.2k"},
+      {"label": "NPS", "value": "+48"}
+    ]
+  }
+]
