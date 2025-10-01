@@ -9,10 +9,11 @@ import { Button } from "@/components/ui/button"
 import siteConfig from "@/content/site.json"
 
 const navigation = [
+  { name: "Home", href: "/" },
   { name: "Work", href: "/work" },
   { name: "Services", href: "/services" },
   { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "Quote", href: "/quote" },
 ]
 
 export function Header() {
@@ -45,9 +46,14 @@ export function Header() {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <Button asChild className="hidden md:inline-flex">
-              <Link href="/quote">Get Quote</Link>
-            </Button>
+            <a
+              href={siteConfig.personalSite}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Personal → adampang.com
+            </a>
             <ThemeToggle />
             <MobileNav />
           </div>

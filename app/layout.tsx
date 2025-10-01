@@ -20,8 +20,9 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "AnchorMarianas - Minimum-Effective Studio",
-  description: "Minimum-effective studio for internet products. Fast development, high performance, conversion-focused design.",
+  title: "anchormarianas.com",
+  description: "Minimum-effective studio for internet products.",
+  metadataBase: new URL("https://anchormarianas.com"),
   keywords: ["web development", "studio", "startup", "minimum viable product", "performance", "conversion"],
   authors: [{ name: "Adam Pang" }],
   creator: "AnchorMarianas",
@@ -29,14 +30,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://anchormarianas.com",
-    title: "AnchorMarianas - Minimum-Effective Studio",
-    description: "Minimum-effective studio for internet products. Fast development, high performance, conversion-focused design.",
+    title: "anchormarianas.com",
+    description: "Apps & productized services that ship.",
     siteName: "AnchorMarianas",
+    images: [{ url: "/og.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AnchorMarianas - Minimum-Effective Studio",
-    description: "Minimum-effective studio for internet products. Fast development, high performance, conversion-focused design.",
+    title: "anchormarianas.com",
+    description: "Apps & productized services that ship.",
     creator: "@adamtpang",
   },
   robots: {

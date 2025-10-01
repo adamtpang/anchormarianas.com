@@ -236,6 +236,24 @@ export default function QuotePage() {
             </p>
           </div>
 
+          {/* Equity Partnership */}
+          <div className="border border-border rounded-lg p-4 bg-muted/30">
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                {...register("equity")}
+                className="mt-1"
+              />
+              <div>
+                <div className="font-medium mb-1">Open to equity partnership</div>
+                <p className="text-sm text-muted-foreground">
+                  I occasionally partner for equity with founders building something meaningful.
+                  Check this if you'd like to discuss a partnership model.
+                </p>
+              </div>
+            </label>
+          </div>
+
           {/* Submit */}
           <div className="pt-4">
             <Button

@@ -7,5 +7,18 @@
     "x": "https://x.com/adamtpang",
     "github": "https://github.com/adamtpang"
   },
-  "trustLogos": []
+  "trust": [
+    {
+      "name": "Network School",
+      "roleOrOrg": "Bootcamp & builds",
+      "url": "https://thenetworkschool.com",
+      "avatarOrLogo": "/trust/ns.png"
+    },
+    {
+      "name": "IDI",
+      "roleOrOrg": "Family business ops/AI",
+      "url": "https://idi.example.com",
+      "avatarOrLogo": "/trust/idi.png"
+    }
+  ]
 }

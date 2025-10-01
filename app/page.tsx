@@ -29,28 +29,24 @@ export default async function HomePage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <p className="text-muted-foreground text-sm uppercase tracking-wider">
-                  {siteConfig.tagline}
-                </p>
                 <h1 className="text-4xl md:text-6xl font-bold text-balance leading-tight">
-                  Building the future, <span className="text-accent">one app at a time</span>
+                  AnchorMarianas — internet apps & services that ship.
                 </h1>
                 <p className="text-xl text-muted-foreground text-pretty leading-relaxed">
-                  Speed to market. Performance obsessed. Conversion focused.
-                  We ship minimum-effective solutions that actually work.
+                  Clarity, speed, outcomes.
                 </p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
                   <Link href="/quote">
-                    Get Quote
+                    Get a Quote
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/work">
-                    View Work
+                    See Work
                     <ExternalLink className="w-5 h-5 ml-2" />
                   </Link>
                 </Button>
@@ -97,6 +93,34 @@ export default async function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Strip */}
+      <section className="py-12 px-6 border-y border-border">
+        <div className="max-w-6xl mx-auto">
+          <h3 className="text-center text-sm text-muted-foreground mb-8 uppercase tracking-wider">
+            Trusted By
+          </h3>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+            {siteConfig.trust.map((item) => (
+              <a
+                key={item.name}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity"
+              >
+                <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
+                  <span className="text-xs font-bold">{item.name.slice(0, 2)}</span>
+                </div>
+                <div>
+                  <div className="font-semibold text-sm">{item.name}</div>
+                  <div className="text-xs text-muted-foreground">{item.roleOrOrg}</div>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </section>

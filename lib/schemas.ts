@@ -30,7 +30,8 @@ export const QuoteSchema = z.object({
   timeline: z.enum(["1-2w", "2-4w", "flexible"]),
   budget: z.enum(["1k-3k", "3k-10k", "10k-25k", "25k+"]),
   package: z.enum(["starter", "growth", "studio", "custom"]),
-  link: z.string().url().optional().or(z.literal(""))
+  link: z.string().url().optional().or(z.literal("")),
+  equity: z.boolean().default(false)
 });
 
 export type QuotePayload = z.infer<typeof QuoteSchema>;
@@ -60,7 +61,12 @@ export const SiteConfigSchema = z.object({
     x: z.string().url(),
     github: z.string().url()
   }),
-  trustLogos: z.array(z.string())
+  trust: z.array(z.object({
+    name: z.string(),
+    roleOrOrg: z.string(),
+    url: z.string().url(),
+    avatarOrLogo: z.string()
+  }))
 });
 
 export type SiteConfig = z.infer<typeof SiteConfigSchema>;

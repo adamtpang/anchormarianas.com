@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
+import caseStudies from "@/content/caseStudies.json";
 
 export const metadata: Metadata = {
   title: "Work | AnchorMarianas",
@@ -30,6 +31,11 @@ export default async function WorkPage() {
           </p>
         </div>
 
+        {/* Section A: GitHub Apps */}
+        <div className="mb-20">
+          <h2 className="text-2xl font-bold mb-8">
+            GitHub Apps
+          </h2>
         {/* Apps Grid */}
         {apps.length === 0 ? (
           <div className="text-center py-12">
@@ -136,6 +142,35 @@ export default async function WorkPage() {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+        </div>
+
+        {/* Section B: Case Studies */}
+        {caseStudies.length > 0 && (
+          <div className="mb-20">
+            <h2 className="text-2xl font-bold mb-8">
+              Case Studies
+            </h2>
+            <div className="space-y-8">
+              {caseStudies.map((study: any) => (
+                <div
+                  key={study.slug}
+                  className="bg-card border border-border rounded-xl p-8 hover:shadow-lg transition-all duration-200"
+                >
+                  <h3 className="text-xl font-semibold mb-2">{study.title}</h3>
+                  <p className="text-muted-foreground mb-4">{study.description}</p>
+                  {study.url && (
+                    <Button asChild variant="outline" size="sm">
+                      <Link href={study.url} target="_blank">
+                        <ExternalLink className="w-3 h-3 mr-2" />
+                        View Case Study
+                      </Link>
+                    </Button>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         )}
 

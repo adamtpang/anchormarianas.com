@@ -112,7 +112,7 @@ export default function ServicesPage() {
                         Get Custom Quote
                       </Link>
                     </Button>
-                  ) : service.stripePriceId ? (
+                  ) : service.stripePriceId && !service.stripePriceId.includes("TODO") ? (
                     <Button
                       onClick={() => handleCheckout(service.stripePriceId!)}
                       disabled={loadingCheckout === service.stripePriceId}
@@ -121,13 +121,13 @@ export default function ServicesPage() {
                     >
                       {loadingCheckout === service.stripePriceId
                         ? "Starting checkout..."
-                        : "Start Project"
+                        : "Buy Now"
                       }
                     </Button>
                   ) : (
                     <Button asChild className="w-full" size="lg">
                       <Link href={`/quote?package=${service.slug}`}>
-                        Get Quote
+                        Get a Quote
                       </Link>
                     </Button>
                   )}

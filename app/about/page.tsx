@@ -102,6 +102,33 @@ export default function AboutPage() {
           </p>
         </div>
 
+        {/* Trust Section */}
+        <div id="trust" className="mb-16">
+          <h2 className="text-2xl font-bold mb-8 text-center">
+            Trusted By
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+            {siteConfig.trust.map((item) => (
+              <a
+                key={item.name}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 p-4 rounded-lg border border-border hover:border-accent/50 transition-all duration-300 hover:shadow-md bg-card"
+              >
+                <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-sm font-bold">{item.name.slice(0, 2)}</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold">{item.name}</h3>
+                  <p className="text-sm text-muted-foreground">{item.roleOrOrg}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
         {/* Partnerships */}
         <div className="bg-muted/50 rounded-2xl p-8 mb-16">
           <h2 className="text-2xl font-bold mb-4 text-center">
