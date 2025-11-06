@@ -40,7 +40,7 @@ export function filterRepos(repos: any[]): any[] {
 export function normalizeRepo(repo: any): Repo {
   const normalized = {
     slug: repo.name,
-    title: repo.name.replace(/-/g, " ").replace(/\b\w/g, (l: string) => l.toUpperCase()),
+    title: repo.name.replace(/-/g, " ").toLowerCase(),
     oneLiner: repo.description || "No description available",
     url: repo.homepage || repo.html_url,
     stars: repo.stargazers_count,

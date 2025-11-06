@@ -1,0 +1,174 @@
+# AnchorMarianas.com Context - Session 2025-11-04
+
+## Project Goal
+Reach the "platonic ideal" of a personal holding company website - a **money-making machine** that converts visitors into customers through three revenue streams:
+1. **Buy my products** (indie apps/media)
+2. **Hire me** (client work/services)
+3. **Invest in me** (partnerships/equity deals)
+
+### Core Purpose
+The site exists to make money for the shareholder (Adam). Every element optimized for conversion through proof, credibility, and clear CTAs.
+
+## Research Findings: What Makes a Great Personal Holding Company Site
+
+### Key Principles (from Indie Hackers, WPMinds, etc.)
+1. **Identity Hierarchy**: YOU are the brand, not just the company name
+2. **Dual Credibility**:
+   - Indie projects → creativity, speed, modern tech
+   - Client work → reliability, professional delivery, trust
+3. **Live Proof**: Real apps people can use, not just screenshots
+4. **Essential Elements**:
+   - Clear hero statement (who you are, what you do)
+   - Portfolio with LIVE links and context
+   - About page with your story
+   - Testimonials/proof with recognizable names
+   - Simple navigation (<10 sec to find anything)
+   - Your personality throughout
+
+### Examples Referenced
+- Pieter Levels (levels.io): $210K+/mo from laptop, portfolio of 70+ startups
+- Patrick McKenzie (kalzumeus.com): Personal brand → multiple properties
+- Jason Fried/37signals: Multi-product strategy (Basecamp, HEY, Once)
+- **Warplabs HQ (warplabshq.com)**: Dark glassmorphic design, card-based portfolio with status badges, hover animations
+
+## Current Site Analysis (app/page.tsx)
+
+### What's Working ✅
+- Clear value prop: "Apps & services that ship"
+- 100 apps concept with visual progress indicator
+- Trust strip (Network School, IDI)
+- Live GitHub integration (auto-pulls projects)
+- Clean, fast design matching "performance obsessed" messaging
+- Good trust indicators (Lighthouse scores, delivery time)
+
+### The Gap to Platonic Ideal ❌
+
+1. **Identity Problem**
+   - Current: "AnchorMarianas" is front and center
+   - Missing: Adam Pangelinan as the personal brand
+   - Fix: Add "About Adam" section or make creator more prominent
+
+2. **Client Work Missing**
+   - Current: Only Network School & IDI in trust strip
+   - **MISSING: Prospera, Hilton Guam** (huge credibility!)
+   - Need: Dedicated "Client Work" section with case studies
+   - Need: Results, before/after, live links if possible
+
+3. **Old Projects Not Showcased**
+   - Current: Just 6 recent GitHub repos
+   - Missing: Curated, deployed, LIVE apps people can use
+   - Need: Mix of old classics + new experiments showing sustained execution
+
+4. **Only Showing Indie Track**
+   - Missing the professional/client work credibility track
+   - Platonic ideal would show BOTH:
+     * Indie Apps (100 concept) → "I ship fast and experiment"
+     * Client Work (Prospera, Hilton) → "I deliver for serious clients"
+
+## Proposed Platonic Ideal Structure
+
+```
+┌─────────────────────────────────┐
+│  Adam Pangelinan               │ ← YOU are the brand
+│  Building: AnchorMarianas       │ ← Studio is the vehicle
+└─────────────────────────────────┘
+          │
+          ├─ Indie Apps (100 concept)
+          │  ├─ Live demos people can try
+          │  └─ GitHub repos
+          │
+          └─ Client Work
+             ├─ Prospera (what was built)
+             ├─ Hilton Guam (what was delivered)
+             └─ Results/testimonials if available
+```
+
+### Recommended Page Structure
+1. **Hero**: "I'm Adam. I build digital products—for myself and for clients."
+2. **Trust Strip**: ADD Prospera + Hilton Guam to existing Network School/IDI
+3. **Two Portfolio Sections**:
+   - "Studio Apps" (100 apps concept with live, clickable demos)
+   - "Client Work" (Prospera, Hilton, others with case studies)
+4. **About**: Your story, why you build both indie + client work
+5. **Services**: Keep current CTA structure (it's good)
+
+## Questions to Answer Before Proceeding
+
+1. **Prospera & Hilton Guam Details**
+   - What did you build for each?
+   - Any metrics/results to share?
+   - Live links available?
+   - Can we get testimonials?
+
+2. **Old Projects to Revive**
+   - List top 3-5 you're most proud of
+   - Do they need hosting or just linking?
+   - Are they still functional/deployable?
+
+3. **Personal Brand Strategy**
+   - "Adam Pangelinan / AnchorMarianas" (personal brand first?)
+   - Or keep AnchorMarianas as primary with you in background?
+
+4. **Client Work Tone**
+   - Humble case studies approach?
+   - Or bold "Here's what I shipped" energy?
+
+## Current Site Config (content/site.json)
+```json
+{
+  "studioName": "AnchorMarianas",
+  "tagline": "Minimum-effective studio for internet products",
+  "email": "adam@anchormarianas.com",
+  "personalSite": "https://adampang.com",
+  "socials": {
+    "x": "https://x.com/adamtpang",
+    "github": "https://github.com/adamtpang"
+  },
+  "trust": [
+    { "name": "Network School", ... },
+    { "name": "IDI", ... }
+  ]
+}
+```
+
+**TODO**: Add Prospera, Hilton Guam to trust array
+
+## COMPLETED (Session 2025-11-04)
+✅ Added `status` field to schema (active/beta/archived/sunset/building)
+✅ Created Warplabs-inspired AppCard component with:
+   - Glassmorphic backdrop effects
+   - Hover animations (lift, glow, scale)
+   - Status badges with color coding
+   - Hero images/logos
+   - Featured stats display
+   - Tech topic badges
+✅ Updated apps-overrides.json with rich data for all 5 apps
+✅ Created placeholder SVG logos in public/apps/
+✅ Enhanced homepage to use new card system
+
+### Reference: adamtomas.fun
+User's personal site is at **adamtomas.fun** (not adamtpang.com in config)
+
+### Client Work Confirmed
+- **Prospera** (need details)
+- **Hilton Guam** (need details)
+- **Network School (ns.com)** (already listed)
+- **adapt.school** (need details)
+- **weewee.com** (need details)
+- **IDI** (already listed)
+
+## Next Steps (Still Needed)
+1. Get details on each client project (what was built, results, links)
+2. Add prominent "Adam Pangelinan" branding to hero
+3. Create dedicated "Client Work" section with case studies
+4. Add equity/partnership CTA section
+5. Update trust strip with all client logos
+6. Link to adamtomas.fun in header/hero
+7. Replace placeholder logos with real brand assets
+
+## Technical Notes
+- Site uses Next.js with app router
+- GitHub integration in lib/github.ts pulls apps dynamically
+- Revalidation set to 6 hours (21600s)
+- Current design uses shadcn/ui components
+- Clean black/white design system (from recent commits)

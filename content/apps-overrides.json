@@ -1,13 +1,47 @@
 [
   {
     "slug": "vibecheck.me",
-    "oneLiner": "Auto-playlists from your listening history.",
+    "title": "VibeCheck",
+    "oneLiner": "Auto-playlists from your listening history. AI-powered music discovery that learns your taste.",
     "heroImage": "/apps/vibecheck.jpg",
     "demoUrl": "https://vibecheck.me",
     "pricingUrl": "https://vibecheck.me/pro",
+    "status": "active",
     "featuredStats": [
       {"label": "users", "value": "1.2k"},
       {"label": "NPS", "value": "+48"}
     ]
+  },
+  {
+    "slug": "8020.best",
+    "title": "80/20 Best",
+    "oneLiner": "Pareto-optimized guides for learning anything faster. The 20% that gives you 80% results.",
+    "heroImage": "/apps/8020.jpg",
+    "demoUrl": "https://8020.best",
+    "status": "active"
+  },
+  {
+    "slug": "TalkToABook",
+    "title": "Talk To A Book",
+    "oneLiner": "AI-powered conversations with books. Ask questions, get answers from literature.",
+    "heroImage": "/apps/talktoacook.jpg",
+    "demoUrl": "https://github.com/adamtpang/TalkToABook",
+    "status": "beta"
+  },
+  {
+    "slug": "iscout.tools",
+    "title": "iScout Tools",
+    "oneLiner": "Scout and analyze internet businesses. Market research tools for indie hackers.",
+    "heroImage": "/apps/iscout.jpg",
+    "demoUrl": "https://iscout.tools",
+    "status": "building"
+  },
+  {
+    "slug": "darienvillage.vercel.app",
+    "title": "Darien Village",
+    "oneLiner": "Community platform demo. Modern neighborhood engagement and local commerce.",
+    "heroImage": "/apps/darienvillage.jpg",
+    "demoUrl": "https://darienvillage.vercel.app",
+    "status": "archived"
   }
 ]

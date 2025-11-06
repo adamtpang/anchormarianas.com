@@ -2,10 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { ScrollToTop } from "@/components/scroll-to-top"
+import { OceanFooter } from "@/components/ocean-footer"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -20,25 +18,29 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "anchormarianas.com",
-  description: "Minimum-effective studio for internet products.",
+  title: "⚓ AnchorMarianas | Products & Services",
+  description: "We build internet products. We deliver for clients.",
   metadataBase: new URL("https://anchormarianas.com"),
-  keywords: ["web development", "studio", "startup", "minimum viable product", "performance", "conversion"],
-  authors: [{ name: "Adam Pang" }],
+  keywords: ["web development", "studio", "startup", "products", "services", "apps"],
+  authors: [{ name: "Adam Pangelinan" }],
   creator: "AnchorMarianas",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://anchormarianas.com",
-    title: "anchormarianas.com",
-    description: "Apps & productized services that ship.",
+    title: "⚓ AnchorMarianas",
+    description: "We build internet products. We deliver for clients.",
     siteName: "AnchorMarianas",
     images: [{ url: "/og.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "anchormarianas.com",
-    description: "Apps & productized services that ship.",
+    title: "⚓ AnchorMarianas",
+    description: "We build internet products. We deliver for clients.",
     creator: "@adamtpang",
   },
   robots: {
@@ -61,15 +63,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
-      <body className="font-sans antialiased min-h-screen bg-background text-foreground" suppressHydrationWarning>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <div className="relative flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <ScrollToTop />
-          </div>
-        </ThemeProvider>
+      <body className="font-sans antialiased min-h-screen bg-white text-foreground" suppressHydrationWarning>
+        <div className="relative flex min-h-screen flex-col">
+          <Header />
+          <main className="flex-1 bg-white">{children}</main>
+          <OceanFooter />
+        </div>
       </body>
     </html>
   )

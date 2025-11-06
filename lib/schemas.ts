@@ -12,6 +12,7 @@ export const RepoSchema = z.object({
   demoUrl: z.string().url().optional(),
   pricingUrl: z.string().url().optional(),
   heroImage: z.string().optional(),
+  status: z.enum(["active", "beta", "archived", "sunset", "building"]).optional(),
   featuredStats: z.array(z.object({
     label: z.string(),
     value: z.string()
