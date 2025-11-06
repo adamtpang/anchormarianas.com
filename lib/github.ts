@@ -53,8 +53,12 @@ export function normalizeRepo(repo: any): Repo {
 
 export function mergeOverrides(repos: Repo[]): Repo[] {
   return repos.map(repo => {
-    const override = overrides.find(o => o.slug === repo.slug);
-    return override ? { ...repo, ...override } : repo;
+    const override = overrides.find((o: any) => o.slug === repo.slug);
+    if (!override) return repo;
+
+    // Merge and validate the result
+    const merged = { ...repo, ...override };
+    return RepoSchema.parse(merged);
   });
 }
 
