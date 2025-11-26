@@ -68,6 +68,27 @@ export async function getStudioApps(): Promise<Repo[]> {
   const normalized = filtered.map(normalizeRepo);
   const merged = mergeOverrides(normalized);
 
+  // If no repos found, return overrides as standalone apps
+  if (merged.length === 0 && overrides.length > 0) {
+    return overrides.map((override: any) => {
+      const fallback = {
+        slug: override.slug,
+        title: override.title || override.slug,
+        oneLiner: override.oneLiner || "No description available",
+        url: override.demoUrl || override.url || "https://anchormarianas.com",
+        stars: override.stars || 0,
+        lastPush: override.lastPush || new Date().toISOString(),
+        topics: override.topics || [],
+        demoUrl: override.demoUrl,
+        pricingUrl: override.pricingUrl,
+        heroImage: override.heroImage,
+        status: override.status,
+        featuredStats: override.featuredStats
+      };
+      return RepoSchema.parse(fallback);
+    });
+  }
+
   return merged.sort((a, b) => {
     // Sort by featured stats first, then stars, then last push
     if (a.featuredStats && !b.featuredStats) return -1;

@@ -26,12 +26,12 @@ export function AppCard({ app }: AppCardProps) {
       rel="noopener noreferrer"
       className="group block"
     >
-      <div className="relative h-full bg-card rounded-lg border border-border transition-all duration-200 hover:border-accent hover:shadow-md">
+      <div className="relative h-full bg-white rounded-lg border border-gray-200 transition-all duration-200 hover:border-accent hover:shadow-md">
         <div className="p-5 space-y-3">
           {/* Header */}
           <div className="space-y-2">
             <div className="flex items-start justify-between gap-3">
-              <h3 className="font-semibold text-lg group-hover:text-accent transition-colors">
+              <h3 className="font-semibold text-lg text-gray-900 group-hover:text-accent transition-colors">
                 {app.title}
               </h3>
               {status && (
@@ -41,18 +41,18 @@ export function AppCard({ app }: AppCardProps) {
               )}
             </div>
 
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed">
               {app.oneLiner}
             </p>
           </div>
 
           {/* Stats */}
           {app.featuredStats && app.featuredStats.length > 0 && (
-            <div className="flex items-center gap-4 pt-2 border-t border-border">
+            <div className="flex items-center gap-4 pt-2 border-t border-gray-200">
               {app.featuredStats.map((stat, i) => (
                 <div key={i} className="space-y-1">
                   <div className="text-xl font-bold text-accent">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider">
+                  <div className="text-xs text-gray-500 uppercase tracking-wider">
                     {stat.label}
                   </div>
                 </div>
@@ -67,7 +67,7 @@ export function AppCard({ app }: AppCardProps) {
               {app.topics.slice(0, 3).map((topic) => (
                 <span
                   key={topic}
-                  className="text-xs px-2 py-0.5 rounded-md bg-muted text-muted-foreground"
+                  className="text-xs px-2 py-0.5 rounded-md bg-gray-100 text-gray-600"
                 >
                   {topic}
                 </span>
@@ -83,7 +83,7 @@ export function AppCard({ app }: AppCardProps) {
 
           {/* GitHub stars */}
           {app.stars > 0 && (
-            <div className="flex items-center gap-1 text-xs text-muted-foreground pt-1">
+            <div className="flex items-center gap-1 text-xs text-gray-500 pt-1">
               <Star className="w-3 h-3" />
               {app.stars}
             </div>

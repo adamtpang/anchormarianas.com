@@ -1,47 +1,182 @@
-[
-  {
-    "slug": "starter",
-    "name": "Starter Landing",
-    "for": "Founders who need a clean, fast landing that converts.",
-    "deliverables": [
-      "Aesthetic landing page",
-      "Copy polish & optimization",
-      "Analytics & SEO setup",
-      "1 round of tweaks"
+{
+  "buildPackages": [
+    {
+      "slug": "quick-build",
+      "name": "Quick Build",
+      "price": 900,
+      "pages": "1 landing page",
+      "timeline": "12 days",
+      "description": "Perfect for founders who need to ship fast and validate their idea.",
+      "features": [
+        "Single landing page design",
+        "Responsive mobile & desktop",
+        "SEO optimization",
+        "Performance optimized",
+        "Logo design included",
+        "Analytics setup",
+        "Contact form integration"
+      ],
+      "ideal": "MVP launches, product validation, event pages"
+    },
+    {
+      "slug": "standard-build",
+      "name": "Standard Build",
+      "price": 2200,
+      "pages": "Up to 8 webpages",
+      "timeline": "14 days",
+      "featured": true,
+      "description": "Full website for established businesses and growing startups.",
+      "features": [
+        "Multi-page website (8 pages max)",
+        "Custom design & branding",
+        "Responsive mobile & desktop",
+        "SEO optimization",
+        "Performance optimized",
+        "Logo design included",
+        "Analytics & tracking",
+        "Contact/booking forms",
+        "Social media integration"
+      ],
+      "ideal": "Business websites, portfolios, service companies"
+    },
+    {
+      "slug": "custom-build",
+      "name": "Custom Build",
+      "price": 2600,
+      "priceNote": "Starting at $2,600+",
+      "pages": "9+ webpages",
+      "timeline": "Under 30 days",
+      "description": "Complex projects with custom features and integrations.",
+      "features": [
+        "Unlimited pages",
+        "Custom functionality",
+        "Advanced integrations",
+        "Database & backend",
+        "User authentication",
+        "Payment processing",
+        "API development",
+        "Custom CMS setup",
+        "Priority support"
+      ],
+      "ideal": "SaaS products, web apps, marketplaces",
+      "quoteOnly": true
+    }
+  ],
+  "maintenancePlans": [
+    {
+      "slug": "basic",
+      "name": "Basic Plan",
+      "price": 49,
+      "perMonth": true,
+      "revisionsPerYear": 10,
+      "turnaround": "Under 72 hours",
+      "description": "Essential maintenance for Quick Build sites.",
+      "features": [
+        "10 site revisions per year",
+        "Hosting included",
+        "SSL certificate",
+        "Basic security updates",
+        "Email support",
+        "72-hour turnaround"
+      ],
+      "ideal": "Quick Build sites"
+    },
+    {
+      "slug": "starter",
+      "name": "Starter Plan",
+      "price": 99,
+      "perMonth": true,
+      "revisionsPerYear": 60,
+      "turnaround": "Under 48 hours",
+      "description": "Regular updates and maintenance for Standard Build sites.",
+      "features": [
+        "60 site revisions per year",
+        "Hosting included",
+        "SSL certificate",
+        "Security updates",
+        "DNS management",
+        "Email support",
+        "48-hour turnaround"
+      ],
+      "ideal": "Standard Build sites"
+    },
+    {
+      "slug": "pro",
+      "name": "Pro Plan",
+      "price": 149,
+      "perMonth": true,
+      "revisionsPerYear": "Unlimited",
+      "turnaround": "Under 48 hours",
+      "featured": true,
+      "description": "Unlimited updates with priority support for growing businesses.",
+      "features": [
+        "Unlimited site revisions",
+        "Unlimited integrations",
+        "Custom CMS setup",
+        "Advanced security",
+        "Performance optimization",
+        "Priority support",
+        "48-hour turnaround",
+        "Monthly strategy calls"
+      ],
+      "ideal": "Custom Build sites"
+    }
+  ],
+  "revisionScope": {
+    "included": [
+      "Text and copy changes",
+      "Color adjustments",
+      "Image/media updates",
+      "Link updates",
+      "Content repositioning",
+      "Minor layout tweaks"
     ],
-    "timeline": "1–2 weeks",
-    "fromPrice": "1000",
-    "stripePriceId": "price_STARTER_TODO",
-    "exclusions": ["Brand-new backend", "Complex CMS"]
+    "excluded": [
+      "Structural changes to templates",
+      "Adding new pages",
+      "Major redesigns",
+      "New feature development"
+    ]
   },
-  {
-    "slug": "growth",
-    "name": "Growth Revamp",
-    "for": "Teams with traffic who need speed + conversion uplift.",
-    "deliverables": [
-      "UX revamp & optimization",
-      "≥95 Lighthouse score",
-      "CRO fundamentals",
-      "A/B test hooks"
-    ],
-    "timeline": "2–4 weeks",
-    "fromPrice": "3000",
-    "stripePriceId": "price_GROWTH_TODO",
-    "exclusions": ["Full rebrand", "Native apps"]
-  },
-  {
-    "slug": "studio",
-    "name": "Custom Studio Build",
-    "for": "MVPs and custom internet products.",
-    "deliverables": [
-      "Technical architecture",
-      "Full MVP development",
-      "Deploy & documentation",
-      "Clean handover"
-    ],
-    "timeline": "4–8 weeks",
-    "fromPrice": "6000",
-    "quoteOnly": true,
-    "exclusions": ["Ongoing operations", "24/7 support"]
+  "addOns": [
+    {
+      "name": "Rush Delivery",
+      "price": 500,
+      "description": "Cut timeline in half"
+    },
+    {
+      "name": "Extra Revisions",
+      "price": 200,
+      "description": "Additional round of revisions"
+    },
+    {
+      "name": "Code Export",
+      "price": 0,
+      "description": "Full code for self-hosting (free)"
+    }
+  ],
+  "process": {
+    "steps": [
+      {
+        "number": 1,
+        "title": "Book a Call",
+        "description": "Free 20-minute consultation to discuss your project needs and timeline."
+      },
+      {
+        "number": 2,
+        "title": "Choose Your Build",
+        "description": "Select the package that fits your scope: Quick, Standard, or Custom."
+      },
+      {
+        "number": 3,
+        "title": "We Build",
+        "description": "Email updates every 48 hours. You stay in the loop without endless meetings."
+      },
+      {
+        "number": 4,
+        "title": "Launch & Maintain",
+        "description": "Site goes live. Choose a maintenance plan to keep it fresh and running smooth."
+      }
+    ]
   }
-]
+}

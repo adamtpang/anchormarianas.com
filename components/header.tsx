@@ -52,14 +52,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <a
-              href={siteConfig.personalSite}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:inline-flex text-sm text-blue-200 hover:text-white transition-colors"
-            >
-              adamtomas.fun →
-            </a>
+            {/* Personal site link moved to team section */}
           </div>
         </div>
       </div>

@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "⚓ AnchorMarianas | Products & Services",
+  title: "AnchorMarianas | Products & Services",
   description: "We build internet products. We deliver for clients.",
   metadataBase: new URL("https://anchormarianas.com"),
   keywords: ["web development", "studio", "startup", "products", "services", "apps"],
@@ -32,14 +32,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://anchormarianas.com",
-    title: "⚓ AnchorMarianas",
+    title: "AnchorMarianas",
     description: "We build internet products. We deliver for clients.",
     siteName: "AnchorMarianas",
     images: [{ url: "/og.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "⚓ AnchorMarianas",
+    title: "AnchorMarianas",
     description: "We build internet products. We deliver for clients.",
     creator: "@adamtpang",
   },
