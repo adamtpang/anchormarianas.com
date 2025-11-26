@@ -18,16 +18,12 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "AnchorMarianas | Products & Services",
+  title: "anchormarianas.com",
   description: "We build internet products. We deliver for clients.",
   metadataBase: new URL("https://anchormarianas.com"),
   keywords: ["web development", "studio", "startup", "products", "services", "apps"],
   authors: [{ name: "Adam Pangelinan" }],
   creator: "AnchorMarianas",
-  icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",

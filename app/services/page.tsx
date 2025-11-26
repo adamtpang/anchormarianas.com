@@ -21,9 +21,10 @@ export default function ServicesPage() {
             Productized Services
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold">
-            Ship Your Website.<br />Fast & Fixed Price.
+            Ship Your Website.
           </h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+            Fast & Fixed Price.<br />
             No hourly rates. No scope creep. Choose your package, get a timeline, and launch.
           </p>
 

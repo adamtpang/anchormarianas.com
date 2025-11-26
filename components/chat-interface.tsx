@@ -64,18 +64,10 @@ export function ChatInterface() {
   return (
     <div className="w-full max-w-3xl mx-auto">
       <div className="bg-white rounded-2xl border-2 border-border shadow-2xl overflow-hidden">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-primary-900 to-accent text-white p-6">
-          <div>
-            <h3 className="text-xl font-bold">Tell Us What You Need</h3>
-            <p className="text-sm text-blue-100">We'll get back to you within 48 hours</p>
-          </div>
-        </div>
-
         {/* Form */}
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2">
+            <label htmlFor="email" className="block text-sm font-bold text-black mb-2">
               Your Email
             </label>
             <input
@@ -84,14 +76,14 @@ export function ChatInterface() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:border-accent transition-colors"
+              className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:border-accent transition-colors text-black placeholder:text-gray-500"
               disabled={isLoading}
               required
             />
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2">
+            <label htmlFor="message" className="block text-sm font-bold text-black mb-2">
               What do you want to build?
             </label>
             <textarea
@@ -100,7 +92,7 @@ export function ChatInterface() {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Describe your project idea, the problem you're solving, key features you need, timeline, etc."
               rows={6}
-              className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:border-accent transition-colors resize-none"
+              className="w-full px-4 py-3 border-2 border-border rounded-xl focus:outline-none focus:border-accent transition-colors resize-none text-black placeholder:text-gray-500"
               disabled={isLoading}
               required
             />
@@ -110,16 +102,17 @@ export function ChatInterface() {
             type="submit"
             size="lg"
             disabled={!email.trim() || !message.trim() || isLoading}
-            className="w-full"
+            className="w-full bg-white text-black border-2 border-border hover:bg-gray-100"
+            variant="outline"
           >
             {isLoading ? "Sending..." : "Send Message"}
             <Send className="w-5 h-5 ml-2" />
           </Button>
 
-          <p className="text-xs text-center text-muted-foreground">
+          <p className="text-xs text-center text-black">
             Or email us directly at{" "}
-            <a href="mailto:hello@anchormarianas.com" className="text-accent hover:underline">
-              hello@anchormarianas.com
+            <a href="mailto:adam@anchormarianas.com" className="text-black font-bold hover:underline">
+              adam@anchormarianas.com
             </a>
           </p>
         </form>

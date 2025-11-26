@@ -10,8 +10,8 @@ import { cn } from "@/lib/utils"
 import siteConfig from "@/content/site.json"
 
 const navigation = [
-  { name: "Work", href: "/work" },
-  { name: "Services", href: "/services" },
+  { name: "Apps", href: "/#products" },
+  { name: "Services", href: "/#services" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ]

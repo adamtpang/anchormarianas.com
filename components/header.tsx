@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 import siteConfig from "@/content/site.json"
 
 const navigation = [
-  { name: "Products", href: "/#products" },
+  { name: "Apps", href: "/#products" },
   { name: "Services", href: "/#services" },
   { name: "Team", href: "/#team" },
 ]

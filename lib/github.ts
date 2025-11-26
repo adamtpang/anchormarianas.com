@@ -66,34 +66,46 @@ export async function getStudioApps(): Promise<Repo[]> {
   const repos = await fetchRepos();
   const filtered = filterRepos(repos);
   const normalized = filtered.map(normalizeRepo);
-  const merged = mergeOverrides(normalized);
+  // Create a map of repos by slug for easy lookup
+  const repoMap = new Map(normalized.map(repo => [repo.slug, repo]));
 
-  // If no repos found, return overrides as standalone apps
-  if (merged.length === 0 && overrides.length > 0) {
-    return overrides.map((override: any) => {
-      const fallback = {
-        slug: override.slug,
-        title: override.title || override.slug,
-        oneLiner: override.oneLiner || "No description available",
-        url: override.demoUrl || override.url || "https://anchormarianas.com",
-        stars: override.stars || 0,
-        lastPush: override.lastPush || new Date().toISOString(),
-        topics: override.topics || [],
-        demoUrl: override.demoUrl,
-        pricingUrl: override.pricingUrl,
-        heroImage: override.heroImage,
-        status: override.status,
-        featuredStats: override.featuredStats
+  // Process overrides: merge with existing repo or create new entry
+  const allApps = overrides.reduce<Repo[]>((acc, override: any) => {
+    try {
+      const existingRepo = repoMap.get(override.slug);
+
+      const merged = {
+        ...(existingRepo || {}),
+        ...override,
+        // Ensure required fields are present if it's a standalone override
+        title: override.title || existingRepo?.title || override.slug,
+        oneLiner: override.oneLiner || existingRepo?.oneLiner || "No description available",
+        url: override.demoUrl || override.url || existingRepo?.url || "https://anchormarianas.com",
+        stars: override.stars || existingRepo?.stars || 0,
+        lastPush: override.lastPush || existingRepo?.lastPush || new Date().toISOString(),
+        topics: override.topics || existingRepo?.topics || [],
       };
-      return RepoSchema.parse(fallback);
-    });
-  }
 
-  return merged.sort((a, b) => {
-    // Sort by featured stats first, then stars, then last push
-    if (a.featuredStats && !b.featuredStats) return -1;
-    if (!a.featuredStats && b.featuredStats) return 1;
-    if (a.stars !== b.stars) return b.stars - a.stars;
+      const parsed = RepoSchema.parse(merged);
+      acc.push(parsed);
+
+      // Remove from map so we know it's handled
+      if (existingRepo) {
+        repoMap.delete(override.slug);
+      }
+    } catch (err) {
+      console.error(`Failed to parse app for ${override.slug}:`, err);
+    }
+    return acc;
+  }, []);
+
+  // Add remaining repos that didn't have overrides
+  repoMap.forEach(repo => {
+    allApps.push(repo);
+  });
+
+  return allApps.sort((a, b) => {
+    // Sort by recency (lastPush) first
     return new Date(b.lastPush).getTime() - new Date(a.lastPush).getTime();
   });
 }

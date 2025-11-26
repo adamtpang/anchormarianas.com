@@ -40,7 +40,7 @@ export function Footer() {
               className="hover:text-accent transition-colors flex items-center gap-1"
             >
               <Mail className="h-4 w-4" />
-              Email
+              {siteConfig.email}
             </Link>
           </div>
 
