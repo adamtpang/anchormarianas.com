@@ -26,6 +26,7 @@ export function Header() {
                 alt="AnchorMarianas"
                 width={32}
                 height={32}
+                sizes="32px"
                 className="w-8 h-8"
               />
               {siteConfig.studioName}

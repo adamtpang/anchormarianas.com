@@ -86,6 +86,7 @@ export default function HomePage() {
               width={200}
               height={200}
               priority
+              sizes="(max-width: 768px) 96px, 128px"
               className="w-24 h-24 md:w-32 md:h-32 opacity-90"
             />
           </div>
