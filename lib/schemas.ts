@@ -54,20 +54,19 @@ export type Service = z.infer<typeof ServiceSchema>;
 
 // Site config schema
 export const SiteConfigSchema = z.object({
-  studioName: z.string(),
+  companyName: z.string(),
+  legalName: z.string(),
   tagline: z.string(),
+  founder: z.string(),
   email: z.string().email(),
-  personalSite: z.string().url(),
+  phone: z.string(),
+  phoneDisplay: z.string(),
+  calendly: z.string().url(),
   socials: z.object({
     x: z.string().url(),
-    github: z.string().url()
-  }),
-  trust: z.array(z.object({
-    name: z.string(),
-    roleOrOrg: z.string(),
-    url: z.string().url(),
-    avatarOrLogo: z.string()
-  }))
+    github: z.string().url(),
+    linkedin: z.string().url()
+  })
 });
 
 export type SiteConfig = z.infer<typeof SiteConfigSchema>;

@@ -1,24 +1,19 @@
 {
-  "studioName": "AnchorMarianas",
-  "tagline": "Minimum-effective studio for internet products",
+  "companyName": "Anchor",
+  "legalName": "Anchor Marianas LLC",
+  "tagline": "AI engineers who build what you need.",
+  "founder": "Adam Tomas Pangelinan",
   "email": "adam@anchormarianas.com",
-  "personalSite": "https://adampang.com",
+  "phone": "+14158056804",
+  "phoneDisplay": "(415) 805-6804",
+  "phone2": "+16019798173",
+  "phone2Display": "(601) 979-8173",
+  "whatsapp": "+16716862020",
+  "whatsappLink": "https://wa.me/16716862020",
+  "calendly": "https://calendly.com/adamtpang",
   "socials": {
     "x": "https://x.com/adamtpang",
-    "github": "https://github.com/adamtpang"
-  },
-  "trust": [
-    {
-      "name": "Network School",
-      "roleOrOrg": "Bootcamp & builds",
-      "url": "https://thenetworkschool.com",
-      "avatarOrLogo": "/trust/ns.png"
-    },
-    {
-      "name": "IDI",
-      "roleOrOrg": "Family business ops/AI",
-      "url": "https://idi.example.com",
-      "avatarOrLogo": "/trust/idi.png"
-    }
-  ]
+    "github": "https://github.com/adamtpang",
+    "linkedin": "https://linkedin.com/in/adamtpang"
+  }
 }
