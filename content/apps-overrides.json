@@ -1,47 +1,81 @@
 [
   {
+    "slug": "redmart.xyz",
+    "title": "RedMart",
+    "oneLiner": "AI broker that matches supply and demand. Tell Red what you need; he finds it.",
+    "demoUrl": "https://redmart.xyz",
+    "status": "active",
+    "topics": ["ai", "marketplace", "broker"]
+  },
+  {
+    "slug": "optimism.fun",
+    "title": "Optimism",
+    "oneLiner": "Ranks humanity's most pressing problems and maps solutions, founders, and funding.",
+    "demoUrl": "https://optimism.fun",
+    "status": "active",
+    "topics": ["civic-tech", "research", "altruism"]
+  },
+  {
+    "slug": "sellsniper.com",
+    "title": "SellSniper",
+    "oneLiner": "Identifies ideal audiences and drafts outreach messages for any shareable content.",
+    "demoUrl": "https://sellsniper.com",
+    "status": "active",
+    "topics": ["ai", "marketing", "outreach"]
+  },
+  {
     "slug": "vibecheck.me",
     "title": "VibeCheck",
     "oneLiner": "Auto-playlists from your listening history. AI-powered music discovery that learns your taste.",
     "heroImage": "/apps/vibecheck.jpg",
     "demoUrl": "https://vibecheck.me",
-    "pricingUrl": "https://vibecheck.me/pro",
     "status": "active",
     "featuredStats": [
       {"label": "users", "value": "1.2k"},
       {"label": "NPS", "value": "+48"}
-    ]
+    ],
+    "topics": ["ai", "music", "consumer"]
   },
   {
     "slug": "8020.best",
     "title": "80/20 Best",
-    "oneLiner": "Pareto-optimized guides for learning anything faster. The 20% that gives you 80% results.",
+    "oneLiner": "Pareto-optimized guides for learning anything faster — the 20% that gives you 80% results.",
     "heroImage": "/apps/8020.jpg",
     "demoUrl": "https://8020.best",
-    "status": "active"
-  },
-  {
-    "slug": "TalkToABook",
-    "title": "Talk To A Book",
-    "oneLiner": "AI-powered conversations with books. Ask questions, get answers from literature.",
-    "heroImage": "/apps/talktoacook.jpg",
-    "demoUrl": "https://github.com/adamtpang/TalkToABook",
-    "status": "beta"
+    "status": "active",
+    "topics": ["ai", "learning", "guides"]
   },
   {
     "slug": "iscout.tools",
-    "title": "iScout Tools",
+    "title": "iScout",
     "oneLiner": "Scout and analyze internet businesses. Market research tools for indie hackers.",
     "heroImage": "/apps/iscout.jpg",
     "demoUrl": "https://iscout.tools",
-    "status": "building"
+    "status": "building",
+    "topics": ["research", "indie", "tools"]
   },
   {
-    "slug": "darienvillage.vercel.app",
-    "title": "Darien Village",
-    "oneLiner": "Community platform demo. Modern neighborhood engagement and local commerce.",
-    "heroImage": "/apps/darienvillage.jpg",
-    "demoUrl": "https://darienvillage.vercel.app",
-    "status": "archived"
+    "slug": "technodemocracy.app",
+    "title": "Technodemocracy",
+    "oneLiner": "Onchain voting platform — stake USDC, join ideological houses, vote on proposals.",
+    "demoUrl": "https://technodemocracy.app",
+    "status": "active",
+    "topics": ["crypto", "governance", "voting"]
+  },
+  {
+    "slug": "antlist",
+    "title": "Antlist",
+    "oneLiner": "Converts unorganized text, markdown, or zip files into a structured task list.",
+    "demoUrl": "https://antlist.vercel.app",
+    "status": "active",
+    "topics": ["productivity", "ai", "tools"]
+  },
+  {
+    "slug": "thesolarpunks.art",
+    "title": "The Solarpunks",
+    "oneLiner": "A fictional solarpunk universe told in three acts across multiple creative formats.",
+    "demoUrl": "https://thesolarpunks.art",
+    "status": "active",
+    "topics": ["creative", "fiction", "art"]
   }
 ]
