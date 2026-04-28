@@ -2,77 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: 0 0% 100%; /* Pure white */
-  --foreground: 210 100% 20%; /* Navy blue */
-  --card: 0 0% 100%;
-  --card-foreground: 210 100% 20%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 210 100% 20%;
-  --primary: 210 100% 25%; /* Navy blue */
-  --primary-foreground: 0 0% 100%;
-  --secondary: 210 40% 96%; /* Light blue-gray */
-  --secondary-foreground: 210 100% 20%;
-  --muted: 210 30% 95%;
-  --muted-foreground: 210 30% 40%;
-  --accent: 210 100% 50%; /* Bright blue accent */
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 210 20% 88%;
-  --input: 210 20% 88%;
-  --ring: 210 100% 50%;
-  --chart-1: 210 100% 25%;
-  --chart-2: 210 80% 40%;
-  --chart-3: 210 60% 55%;
-  --chart-4: 210 40% 70%;
-  --chart-5: 210 20% 85%;
+/* ──────────────────────────────────────────────
+   ANCHOR · Dual-theme palette
+   Dark (default) — abyssal: near-black with deep
+   navy undertone, bioluminescent teal accent.
+   Light — editorial: warm cream paper, deep navy
+   ink. Reads like Stripe Press, not generic SaaS.
+   ────────────────────────────────────────────── */
+
+:root,
+.light {
+  --background: 30 30% 97%;            /* warm cream */
+  --foreground: 220 80% 8%;             /* deep navy ink */
+  --card: 30 35% 99%;                   /* near-pure cream */
+  --card-foreground: 220 80% 8%;
+  --popover: 30 35% 99%;
+  --popover-foreground: 220 80% 8%;
+  --primary: 220 80% 10%;
+  --primary-foreground: 30 30% 97%;
+  --secondary: 30 18% 92%;
+  --secondary-foreground: 220 80% 10%;
+  --muted: 30 18% 93%;
+  --muted-foreground: 220 25% 35%;
+  --accent: 220 75% 22%;                /* deep navy ink accent */
+  --accent-foreground: 30 30% 97%;
+  --destructive: 0 70% 45%;
+  --destructive-foreground: 30 30% 97%;
+  --border: 30 18% 87%;
+  --input: 30 18% 87%;
+  --ring: 220 75% 22%;
   --radius: 0.5rem;
-  --sidebar: 210 40% 98%;
-  --sidebar-foreground: 210 100% 20%;
-  --sidebar-primary: 210 100% 25%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 210 40% 96%;
-  --sidebar-accent-foreground: 210 100% 20%;
-  --sidebar-border: 210 20% 88%;
-  --sidebar-ring: 210 100% 50%;
+
+  --depth-glow: 220 75% 22%;            /* used in sonar pulse */
+  --on-surface-overlay: 220 80% 8% / 0.04;
 }
 
 .dark {
-  --background: 0 0% 3.9%; /* Dark background */
-  --foreground: 0 0% 98%; /* Light text */
-  --card: 0 0% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 0 0% 98%;
-  --primary-foreground: 0 0% 9%;
-  --secondary: 0 0% 14.9%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 14.9%;
-  --muted-foreground: 0 0% 63.9%;
-  --accent: 0 0% 14.9%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 14.9%;
-  --input: 0 0% 14.9%;
-  --ring: 0 0% 83.1%;
-  --chart-1: 0 0% 98%;
-  --chart-2: 0 0% 63.9%;
-  --chart-3: 0 0% 45.1%;
-  --chart-4: 0 0% 27.1%;
-  --chart-5: 0 0% 14.9%;
-  --sidebar: 0 0% 3.9%;
-  --sidebar-foreground: 0 0% 98%;
-  --sidebar-primary: 0 0% 98%;
-  --sidebar-primary-foreground: 0 0% 3.9%;
-  --sidebar-accent: 0 0% 14.9%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-border: 0 0% 14.9%;
-  --sidebar-ring: 0 0% 83.1%;
-}
+  --background: 220 50% 4%;             /* abyssal */
+  --foreground: 200 20% 96%;
+  --card: 220 45% 6%;
+  --card-foreground: 200 20% 96%;
+  --popover: 220 45% 6%;
+  --popover-foreground: 200 20% 96%;
+  --primary: 200 20% 96%;
+  --primary-foreground: 220 50% 4%;
+  --secondary: 220 35% 10%;
+  --secondary-foreground: 200 20% 96%;
+  --muted: 220 35% 10%;
+  --muted-foreground: 200 15% 65%;
+  --accent: 180 85% 55%;                /* bioluminescent teal */
+  --accent-foreground: 220 50% 4%;
+  --destructive: 0 65% 45%;
+  --destructive-foreground: 200 20% 96%;
+  --border: 220 25% 14%;
+  --input: 220 25% 14%;
+  --ring: 180 85% 55%;
 
+  --depth-glow: 180 85% 55%;
+  --on-surface-overlay: 180 85% 55% / 0.06;
+}
 
 @layer base {
   * {
@@ -80,34 +68,89 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
   }
+  h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
+  p { text-wrap: pretty; }
 }
 
-/* Dark mode color assignments */
-/* Typography improvements */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
+/* Editorial display font — Instrument Serif on hero H1 etc. */
+.font-display {
+  font-family: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
-p {
-  text-wrap: pretty;
+.font-display-italic {
+  font-family: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
-body {
-  color: hsl(var(--foreground));
-  background: hsl(var(--background));
-  font-feature-settings: "rlig" 1, "calt" 1;
+/* Mono for coordinates / brand signatures */
+.font-mono-anchor {
+  font-family: var(--font-geist-mono), "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+  font-feature-settings: "ss02" 1, "tnum" 1;
 }
 
-.text-balance {
-  text-wrap: balance;
+.text-balance { text-wrap: balance; }
+.text-pretty  { text-wrap: pretty; }
+
+/* ─── Sonar pulse — used next to "we ship." mark ─── */
+@keyframes anchor-sonar {
+  0%   { transform: scale(0.5); opacity: 0.9; }
+  80%  { transform: scale(2.4); opacity: 0;   }
+  100% { transform: scale(2.4); opacity: 0;   }
 }
 
-.text-pretty {
-  text-wrap: pretty;
+.sonar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.sonar::before,
+.sonar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid hsl(var(--depth-glow));
+  animation: anchor-sonar 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.sonar::after {
+  animation-delay: 1.3s;
+}
+
+.sonar > span {
+  width: 0.4rem;
+  height: 0.4rem;
+  background: hsl(var(--depth-glow));
+  border-radius: 9999px;
+  box-shadow: 0 0 12px hsl(var(--depth-glow));
+}
+
+/* Subtle gradient veil on sections to hint depth in dark mode */
+.depth-veil {
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    hsl(var(--on-surface-overlay)),
+    transparent 70%
+  );
+}
+
+/* ─── Smooth theme transitions ─── */
+html {
+  color-scheme: light dark;
+}
+
+body,
+button,
+a,
+[class*="border-"] {
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
