@@ -84,7 +84,7 @@ The site exists to make money for the shareholder (Adam). Every element optimize
 ```
 
 ### Recommended Page Structure
-1. **Hero**: "I'm Adam. I build digital products—for myself and for clients."
+1. **Hero**: "I'm Adam. I build digital products, for myself and for clients."
 2. **Trust Strip**: ADD Prospera + Hilton Guam to existing Network School/IDI
 3. **Two Portfolio Sections**:
    - "Studio Apps" (100 apps concept with live, clickable demos)
