@@ -635,9 +635,7 @@ export default function HomePage() {
           </motion.div>
           <motion.div variants={fadeUp} className="flex flex-wrap gap-3 pt-2">
             <Button size="lg" asChild>
-              <a
-                href={`mailto:${siteConfig.email}?subject=Come%20aboard%20Anchor&body=Hi%20Adam%2C%0A%0AI%27d%20like%20to%20come%20aboard%20Anchor.%20Here%27s%20a%20bit%20about%20me%3A%0A%0A`}
-              >
+              <a href="/careers">
                 Express interest
                 <ArrowRight className="w-4 h-4 ml-2" />
               </a>
