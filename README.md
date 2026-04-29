@@ -1,8 +1,8 @@
 # Anchor Marianas
 
-This website is the digital headquarters for my work—a central "anchor" for my ventures in software. It serves two primary functions:
+This website is the digital headquarters for my work, a central "anchor" for my ventures in software. It serves two primary functions:
 
-1.  **My App Studio:** A showcase for the applications I build and manage. Each project is a solution to a problem I've encountered or a product I believe should exist. This is where I play the "money game"—building assets, creating value, and shipping products.
+1.  **My App Studio:** A showcase for the applications I build and manage. Each project is a solution to a problem I've encountered or a product I believe should exist. This is where I play the "money game": building assets, creating value, and shipping products.
 2.  **My Software Agency:** A portfolio of my work for clients. It demonstrates my ability to deliver high-quality, professional software solutions for others.
 
 ## The Vision
@@ -11,7 +11,7 @@ The core principle of this site is **"Show, don't just tell."**
 
 Instead of a static portfolio, this site is a living, breathing representation of my work. It's built to pull data directly from my GitHub repositories in real-time. The descriptions, activity, and even the README files are dynamically loaded. What you see here is a direct reflection of the code I'm shipping.
 
-This approach ensures the portfolio is always current and provides a transparent look into my projects—from their conceptual stage (🌱) to being feature-complete (🚀).
+This approach ensures the portfolio is always current and provides a transparent look into my projects, from their conceptual stage (🌱) to being feature-complete (🚀).
 
 ## Technology
 

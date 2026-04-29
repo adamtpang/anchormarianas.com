@@ -27,9 +27,9 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Anchor — The AI layer of your business.",
+  title: "Anchor: The AI layer of your business.",
   description:
-    "Anchor builds AI products and services for businesses entering the AI age. From Guam, near the deepest place on Earth — we ship.",
+    "Anchor builds AI products and services for businesses entering the AI age. From Guam, near the deepest place on Earth. We ship.",
   metadataBase: new URL("https://anchormarianas.com"),
   keywords: [
     "AI agency",
@@ -46,14 +46,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://anchormarianas.com",
-    title: "Anchor — The AI layer of your business.",
+    title: "Anchor: The AI layer of your business.",
     description:
       "AI products and services for businesses entering the AI age. We ship.",
     siteName: "Anchor",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anchor — The AI layer of your business.",
+    title: "Anchor: The AI layer of your business.",
     description:
       "AI products and services for businesses entering the AI age. We ship.",
     creator: "@adamtpang",

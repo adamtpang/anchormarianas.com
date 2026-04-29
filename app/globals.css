@@ -4,9 +4,9 @@
 
 /* ──────────────────────────────────────────────
    ANCHOR · Dual-theme palette
-   Dark (default) — abyssal: near-black with deep
+   Dark (default), abyssal: near-black with deep
    navy undertone, bioluminescent teal accent.
-   Light — editorial: warm cream paper, deep navy
+   Light, editorial: warm cream paper, deep navy
    ink. Reads like Stripe Press, not generic SaaS.
    ────────────────────────────────────────────── */
 
@@ -74,7 +74,7 @@
   p { text-wrap: pretty; }
 }
 
-/* Editorial display font — Instrument Serif on hero H1 etc. */
+/* Editorial display font: Instrument Serif on hero H1 etc. */
 .font-display {
   font-family: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
   font-weight: 400;
@@ -96,7 +96,7 @@
 .text-balance { text-wrap: balance; }
 .text-pretty  { text-wrap: pretty; }
 
-/* ─── Sonar pulse — used next to "we ship." mark ─── */
+/* ─── Sonar pulse used next to "we ship." mark ─── */
 @keyframes anchor-sonar {
   0%   { transform: scale(0.5); opacity: 0.9; }
   80%  { transform: scale(2.4); opacity: 0;   }

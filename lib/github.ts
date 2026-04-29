@@ -1,7 +1,9 @@
 import { Octokit } from "@octokit/rest";
 import { Repo, RepoSchema } from "./schemas";
 import allowlist from "@/content/github-allowlist.json";
-import overrides from "@/content/apps-overrides.json";
+import overridesData from "@/content/apps-overrides.json";
+
+const overrides: any[] = overridesData as any[];
 
 const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN

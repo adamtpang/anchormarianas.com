@@ -6,9 +6,10 @@ import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const nav = [
-  { href: "/#apps", label: "Apps" },
+  { href: "/#services", label: "Services" },
+  { href: "/#products", label: "Products" },
   { href: "/#clients", label: "Clients" },
-  { href: "/#come-aboard", label: "Come aboard" },
+  { href: "/careers", label: "Careers" },
 ]
 
 export function Header() {
