@@ -6,9 +6,9 @@ import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const nav = [
+  { href: "/#problems", label: "Problems" },
   { href: "/#services", label: "Services" },
-  { href: "/#products", label: "Products" },
-  { href: "/#clients", label: "Clients" },
+  { href: "/#team", label: "Team" },
   { href: "/careers", label: "Careers" },
 ]
 

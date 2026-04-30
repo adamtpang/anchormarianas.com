@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "slug": "ai-readiness-audit",
+    "name": "AI Readiness Audit",
+    "tagline": "Where AI saves you the most. Ranked, scored, scoped.",
+    "price": "$2,500",
+    "timeline": "7 days",
+    "deliverables": [
+      "20-page PDF report",
+      "Loom video walkthrough",
+      "Top 10 AI workflows ranked by ROI",
+      "Vendor and tooling shortlist",
+      "90-day implementation roadmap"
+    ],
+    "ideal": "Cashflowing SMBs ready to put AI to work without hiring an engineer.",
+    "ctaUrl": "https://calendly.com/adamtpang",
+    "ctaLabel": "Get the audit"
+  },
+  {
+    "slug": "ai-workflow-build",
+    "name": "AI Workflow Build",
+    "tagline": "One end-to-end AI workflow, shipped. Fixed price, fixed timeline.",
+    "price": "$7,500",
+    "timeline": "3 weeks",
+    "deliverables": [
+      "Scoped, designed, built, deployed",
+      "Source code or n8n flows handed over",
+      "30 days of post-launch support",
+      "15% revshare on net new revenue (24 months, capped at $50k)"
+    ],
+    "ideal": "Operators who completed the Audit and know exactly what to build.",
+    "ctaUrl": "https://calendly.com/adamtpang",
+    "ctaLabel": "Scope a build"
+  },
+  {
+    "slug": "fractional-ai-engineer",
+    "name": "Fractional AI Engineer",
+    "tagline": "Anchor on retainer. Pause any week.",
+    "price": "$4,950 / mo",
+    "timeline": "20 hrs / month",
+    "deliverables": [
+      "Slack channel access",
+      "Weekly async standup",
+      "All builds shipped that month",
+      "Pause or cancel any week"
+    ],
+    "ideal": "Businesses that need AI work continuously, not one-off projects.",
+    "ctaUrl": "https://calendly.com/adamtpang",
+    "ctaLabel": "Discuss retainer"
+  }
+]

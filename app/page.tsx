@@ -19,7 +19,7 @@ import servicesData from "@/content/services.json"
 import assetsData from "@/content/assets.json"
 import testimonials from "@/content/testimonials.json"
 
-// ─── Scaffold schemas. Edit the matching JSON files in /content. ───
+// ─── Schemas. Edit the matching JSON in /content. ───
 type Product = {
   slug: string
   name: string
@@ -96,6 +96,33 @@ const Section = ({
   </motion.section>
 )
 
+const problems = [
+  {
+    pain: "We know AI can save us hours, but no idea where to start.",
+    fix: "AI Readiness Audit. Top 10 ROI-ranked workflows in 7 days.",
+  },
+  {
+    pain: "We tried ChatGPT, it was cool, nothing actually changed.",
+    fix: "Workflows shipped into your stack, not screenshots in a deck.",
+  },
+  {
+    pain: "Our team isn't technical. We can't build AI tools ourselves.",
+    fix: "Anchor builds it. We hand over working software, not Notion docs.",
+  },
+  {
+    pain: "We can't tell good vendors from snake oil.",
+    fix: "We've shipped enough to call it. Vendor shortlist in every audit.",
+  },
+  {
+    pain: "We need this continuously, not as a one-off project.",
+    fix: "Fractional retainer. Pause any week.",
+  },
+  {
+    pain: "We want results, not hourly billing or surprise scope creep.",
+    fix: "Fixed price, fixed timeline, fixed deliverables. Or you don't pay.",
+  },
+]
+
 export default function HomePage() {
   return (
     <div className="min-h-screen">
@@ -163,10 +190,7 @@ export default function HomePage() {
             </Button>
           </motion.div>
 
-          <motion.div
-            variants={fadeUp}
-            className="flex items-center gap-3"
-          >
+          <motion.div variants={fadeUp} className="flex items-center gap-3">
             <span className="sonar" aria-hidden>
               <span />
             </span>
@@ -177,64 +201,119 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* ── What we do ──────────────────────────────── */}
-      <Section className="py-20 px-6 border-t border-border/40">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-5xl tracking-tight">
-            What we do
-          </motion.h2>
-
-          <motion.div
-            variants={fadeUp}
-            className="space-y-6 text-lg text-muted-foreground leading-relaxed"
-          >
-            <p>
-              You run a business. The AI age is here. Maybe you're not technical, or
-              maybe you are but you don't have time to build it yourself.
-            </p>
-            <p>
-              <strong className="text-foreground">
-                Anchor is your AI layer.
-              </strong>{" "}
-              We figure out what to build, then we build it. Products, services,
-              integrations. Fast, transparent, delivered on a date you can hold us to.
+      {/* ── Problems we solve ───────────────────────── */}
+      <Section
+        id="problems"
+        className="py-20 px-6 border-t border-border/40 scroll-mt-20"
+      >
+        <div className="max-w-5xl mx-auto">
+          <motion.div variants={fadeUp} className="mb-10 max-w-3xl">
+            <h2 className="font-display text-3xl md:text-5xl tracking-tight">
+              Problems we solve
+            </h2>
+            <p className="text-muted-foreground mt-2">
+              Real pains, not pitch decks. If any of these sound familiar,
+              we&apos;re built for you.
             </p>
           </motion.div>
 
           <motion.div
             variants={stagger}
-            className="grid sm:grid-cols-3 gap-4 pt-2"
+            className="grid sm:grid-cols-2 gap-4"
           >
-            {[
-              {
-                t: "AI Products",
-                d: "Apps and tools we license to you, or build white-label for your business.",
-              },
-              {
-                t: "AI Services",
-                d: "Custom builds. Internal tools. Automations and integrations that save real hours.",
-              },
-              {
-                t: "AI Strategy",
-                d: "What to build, what to skip, how to operate. We've shipped a lot. We'll save you the wrong turns.",
-              },
-            ].map((p) => (
+            {problems.map((p) => (
               <motion.div
-                key={p.t}
+                key={p.pain}
                 variants={fadeUp}
                 whileHover={{ y: -3, borderColor: "hsl(var(--accent))" }}
                 transition={{ type: "spring", stiffness: 350, damping: 22 }}
-                className="border border-border rounded-lg p-5 bg-card"
+                className="border border-border rounded-lg p-6 bg-card flex flex-col gap-3"
               >
-                <div className="font-semibold mb-1">{p.t}</div>
-                <p className="text-sm text-muted-foreground">{p.d}</p>
+                <p className="font-display-italic text-lg leading-snug">
+                  &ldquo;{p.pain}&rdquo;
+                </p>
+                <p className="text-sm text-muted-foreground border-t border-border/60 pt-3">
+                  <span className="font-mono-anchor uppercase tracking-wider text-[10px] text-accent mr-2">
+                    Anchor
+                  </span>
+                  {p.fix}
+                </p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </Section>
 
-      {/* ── Services (scaffold) ─────────────────────── */}
+      {/* ── Team ─────────────────────────────────────── */}
+      <Section
+        id="team"
+        className="py-20 px-6 bg-muted/30 border-t border-border/40 scroll-mt-20"
+      >
+        <div className="max-w-3xl mx-auto">
+          <motion.div variants={fadeUp} className="mb-10">
+            <h2 className="font-display text-3xl md:text-5xl tracking-tight">
+              Team
+            </h2>
+            <p className="text-muted-foreground mt-2">
+              Today, Anchor is one person. By design.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            className="bg-card rounded-xl border border-border p-6 md:p-8 mb-10"
+          >
+            <p className="text-lg leading-relaxed mb-3">
+              <span className="font-display text-2xl">
+                {siteConfig.founder}.
+              </span>{" "}
+              Founder. Engineer. Operator.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Anchor runs lean on purpose. Fewer hands means tighter feedback
+              loops, faster shipping, no internal sales-engineering ping-pong.
+              When the work outgrows one operator, we bring in trusted
+              collaborators on a project basis. Never bodies-on-billable-hours.
+            </p>
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="space-y-4">
+            <div className="flex items-center gap-2 text-xs font-mono-anchor uppercase tracking-[0.3em] text-muted-foreground">
+              <AnchorIcon className="w-4 h-4" />
+              Come aboard
+            </div>
+            <h3 className="font-display text-2xl md:text-3xl tracking-tight">
+              Builders, this door is open.
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              Engineers, designers, writers, marketers, operators. If you ship
+              and want to ship more, send us your last 90 days of work. Cash
+              work, equity work, side bets, open-source contributions all on
+              the table.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Button asChild>
+                <a href="/careers">
+                  Express interest
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </a>
+              </Button>
+              <Button variant="outline" asChild>
+                <a
+                  href={siteConfig.socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open source on GitHub
+                  <ArrowUpRight className="w-4 h-4 ml-2" />
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </Section>
+
+      {/* ── Services ─────────────────────────────────── */}
       {services.length > 0 && (
         <Section
           id="services"
@@ -264,7 +343,9 @@ export default function HomePage() {
                 >
                   <div>
                     <h3 className="font-semibold text-lg">{s.name}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">{s.tagline}</p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {s.tagline}
+                    </p>
                   </div>
 
                   <div className="flex items-baseline gap-2">
@@ -310,7 +391,7 @@ export default function HomePage() {
         </Section>
       )}
 
-      {/* ── Products (scaffold) ─────────────────────── */}
+      {/* ── Products ─────────────────────────────────── */}
       {products.length > 0 && (
         <Section
           id="products"
@@ -387,7 +468,7 @@ export default function HomePage() {
         </Section>
       )}
 
-      {/* ── Assets (scaffold) ───────────────────────── */}
+      {/* ── Assets ───────────────────────────────────── */}
       {assets.length > 0 && (
         <Section
           id="assets"
@@ -399,7 +480,7 @@ export default function HomePage() {
                 Assets
               </h2>
               <p className="text-muted-foreground mt-2">
-                Equity, revshare, and ownership stakes Anchor holds.
+                Newsletters, libraries, equity, revshare. Stuff Anchor owns.
               </p>
             </motion.div>
 
@@ -449,7 +530,7 @@ export default function HomePage() {
         </Section>
       )}
 
-      {/* ── Recent work (Hilton) ────────────────────── */}
+      {/* ── Recent work (Hilton) ─────────────────────── */}
       <Section
         id="clients"
         className="py-20 px-6 bg-muted/30 border-t border-border/40 scroll-mt-20"
@@ -488,7 +569,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── Testimonial ─────────────────────────────── */}
+      {/* ── Testimonial ──────────────────────────────── */}
       {testimonials.length > 0 && (
         <Section className="py-20 px-6 border-t border-border/40">
           <div className="max-w-3xl mx-auto">
@@ -497,7 +578,7 @@ export default function HomePage() {
               className="bg-card rounded-xl border border-border p-8 md:p-10 flex flex-col gap-6"
             >
               <blockquote className="font-display-italic text-2xl md:text-3xl leading-snug">
-                "{testimonials[0].quote}"
+                &ldquo;{testimonials[0].quote}&rdquo;
               </blockquote>
               <figcaption className="text-sm text-muted-foreground border-t border-border/60 pt-4">
                 <div className="font-semibold text-foreground">
@@ -512,7 +593,7 @@ export default function HomePage() {
         </Section>
       )}
 
-      {/* ── How it works ────────────────────────────── */}
+      {/* ── How it works ─────────────────────────────── */}
       <Section className="py-20 px-6 bg-muted/30 border-t border-border/40">
         <div className="max-w-3xl mx-auto space-y-8">
           <motion.h2
@@ -553,7 +634,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── Limited offer ───────────────────────────── */}
+      {/* ── Limited offer ────────────────────────────── */}
       <Section className="py-20 px-6">
         <div className="max-w-3xl mx-auto">
           <motion.div
@@ -569,9 +650,9 @@ export default function HomePage() {
               50% off for our first 10 clients.
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We're building our portfolio and reputation. You get top-quality
-              AI engineering at half price. In return, we ask for an honest
-              testimonial when we deliver.
+              We&apos;re building our portfolio and reputation. You get
+              top-quality AI engineering at half price. In return, we ask for an
+              honest testimonial when we deliver.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <Button size="lg" asChild>
@@ -599,61 +680,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── Come aboard ─────────────────────────────── */}
-      <Section
-        id="come-aboard"
-        className="py-20 px-6 bg-muted/30 border-t border-border/40 scroll-mt-20"
-      >
-        <div className="max-w-3xl mx-auto space-y-6">
-          <motion.div
-            variants={fadeUp}
-            className="flex items-center gap-2 text-xs font-mono-anchor uppercase tracking-[0.3em] text-muted-foreground"
-          >
-            <AnchorIcon className="w-4 h-4" />
-            Come aboard
-          </motion.div>
-          <motion.h2
-            variants={fadeUp}
-            className="font-display text-3xl md:text-5xl tracking-tight"
-          >
-            Internet creatives, problem-solvers, AI builders: join the ship.
-          </motion.h2>
-          <motion.div
-            variants={fadeUp}
-            className="space-y-4 text-lg text-muted-foreground leading-relaxed"
-          >
-            <p>
-              Anchor is more than a studio. It's a vehicle. We're building toward
-              the kind of holding company that ships software, services, and ideas
-              across the Pacific and beyond.
-            </p>
-            <p>
-              If you're an engineer, designer, writer, or operator who wants to
-              build cool things with sharp people, we want to talk. Cash work,
-              equity work, side projects, all on the table.
-            </p>
-          </motion.div>
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-3 pt-2">
-            <Button size="lg" asChild>
-              <a href="/careers">
-                Express interest
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <a
-                href={siteConfig.socials.x}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                DM on X
-              </a>
-            </Button>
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* ── Contact ─────────────────────────────────── */}
+      {/* ── Contact ──────────────────────────────────── */}
       <Section className="py-20 px-6 border-t border-border/40">
         <div className="max-w-3xl mx-auto space-y-6">
           <motion.h2
