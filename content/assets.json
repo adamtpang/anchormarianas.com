@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "slug": "poor-adams-almanack",
+    "name": "Poor Adam's Almanack",
+    "summary": "Weekly newsletter on building from Guam in the AI age. Founder OS, mental models, ship logs. Free Sunday issue plus paid bonus issues.",
+    "metric": "coming soon",
+    "type": "owned"
+  }
+]

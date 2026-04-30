@@ -1,4 +1,0 @@
-{
-  "_note": "Legacy file kept for backwards compatibility. Real app data lives in content/apps-overrides.json and is rendered by app/page.tsx. To add or change an app, edit apps-overrides.json.",
-  "projects": []
-}
