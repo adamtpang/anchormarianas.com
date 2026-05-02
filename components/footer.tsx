@@ -64,6 +64,10 @@ export function Footer() {
             </div>
           </div>
         </div>
+        <div className="mt-10 pt-6 border-t border-border/30 text-center text-xs text-muted-foreground">
+          Built by <a href="https://adampang.com" className="hover:text-accent transition-colors underline">Adam Pangelinan</a>
+          {' · '}<a href="https://sellsniper.com" className="hover:text-accent transition-colors underline">More projects in the Aether</a>
+        </div>
       </div>
     </footer>
   )
