@@ -155,40 +155,49 @@ export default function HomePage() {
             {siteConfig.elevator}
           </motion.p>
 
-          <motion.p
+          <motion.div
             variants={fadeUp}
-            className="font-display-italic text-lg text-muted-foreground/90 mb-10"
+            className="inline-flex items-center gap-2 text-sm md:text-base bg-accent/10 text-accent border border-accent/30 rounded-full px-4 py-2 mb-8"
           >
-            {siteConfig.originNote}
-          </motion.p>
+            <span className="font-mono-anchor text-[10px] uppercase tracking-wider opacity-80">
+              Featured
+            </span>
+            <span className="font-medium">
+              AI Reception Pilot. Live in 7 days. $5K + $500/mo.
+            </span>
+          </motion.div>
 
-          <motion.div variants={fadeUp} className="flex flex-wrap gap-3 mb-12">
+          <motion.div
+            variants={fadeUp}
+            className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-10"
+          >
             <Button size="lg" className="text-base px-6 py-5" asChild>
               <a
                 href={siteConfig.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Book a Discovery Call
+                Book a 20-min call
                 <ArrowRight className="w-4 h-4 ml-2" />
               </a>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-base px-6 py-5"
-              asChild
+            <a
+              href={siteConfig.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-base text-muted-foreground hover:text-foreground underline-offset-4 hover:underline transition-colors"
             >
-              <a
-                href={siteConfig.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                WhatsApp
-              </a>
-            </Button>
+              <MessageCircle className="w-4 h-4" />
+              or WhatsApp
+            </a>
           </motion.div>
+
+          <motion.p
+            variants={fadeUp}
+            className="font-display-italic text-sm text-muted-foreground/70 mb-8 max-w-xl"
+          >
+            {siteConfig.originNote}
+          </motion.p>
 
           <motion.div variants={fadeUp} className="flex items-center gap-3">
             <span className="sonar" aria-hidden>
@@ -199,6 +208,30 @@ export default function HomePage() {
             </span>
           </motion.div>
         </motion.div>
+      </section>
+
+      {/* ── Proof bar (one-second credibility) ───────── */}
+      <section className="py-6 px-6 border-y border-border/40 bg-muted/20">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+          <div className="flex items-center gap-4 shrink-0">
+            <div className="text-[10px] uppercase tracking-[0.25em] font-mono-anchor text-muted-foreground">
+              Client
+            </div>
+            <div className="relative h-7 w-24">
+              <Image
+                src="/partners/hilton.png"
+                alt="Hilton Guam"
+                fill
+                className="object-contain object-left dark:invert dark:brightness-0 dark:opacity-90"
+                sizes="96px"
+              />
+            </div>
+          </div>
+          <div className="text-sm text-muted-foreground/90 italic leading-snug">
+            &ldquo;master vibe coder · cranks out a MERN app unassisted&rdquo;
+            <span className="not-italic"> — chovin (warm intro to Hilton Guam)</span>
+          </div>
+        </div>
       </section>
 
       {/* ── Problems we solve ───────────────────────── */}
@@ -240,75 +273,6 @@ export default function HomePage() {
                 </p>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* ── Team ─────────────────────────────────────── */}
-      <Section
-        id="team"
-        className="py-20 px-6 bg-muted/30 border-t border-border/40 scroll-mt-20"
-      >
-        <div className="max-w-3xl mx-auto">
-          <motion.div variants={fadeUp} className="mb-10">
-            <h2 className="font-display text-3xl md:text-5xl tracking-tight">
-              Team
-            </h2>
-            <p className="text-muted-foreground mt-2">
-              Today, Anchor is one person. By design.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            className="bg-card rounded-xl border border-border p-6 md:p-8 mb-10"
-          >
-            <p className="text-lg leading-relaxed mb-3">
-              <span className="font-display text-2xl">
-                {siteConfig.founder}.
-              </span>{" "}
-              Founder. Engineer. Operator.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Anchor runs lean on purpose. Fewer hands means tighter feedback
-              loops, faster shipping, no internal sales-engineering ping-pong.
-              When the work outgrows one operator, we bring in trusted
-              collaborators on a project basis. Never bodies-on-billable-hours.
-            </p>
-          </motion.div>
-
-          <motion.div variants={fadeUp} className="space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono-anchor uppercase tracking-[0.3em] text-muted-foreground">
-              <AnchorIcon className="w-4 h-4" />
-              Come aboard
-            </div>
-            <h3 className="font-display text-2xl md:text-3xl tracking-tight">
-              Builders, this door is open.
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Engineers, designers, writers, marketers, operators. If you ship
-              and want to ship more, send us your last 90 days of work. Cash
-              work, equity work, side bets, open-source contributions all on
-              the table.
-            </p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Button asChild>
-                <a href="/careers">
-                  Express interest
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </a>
-              </Button>
-              <Button variant="outline" asChild>
-                <a
-                  href={siteConfig.socials.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Open source on GitHub
-                  <ArrowUpRight className="w-4 h-4 ml-2" />
-                </a>
-              </Button>
-            </div>
           </motion.div>
         </div>
       </Section>
@@ -390,6 +354,63 @@ export default function HomePage() {
           </div>
         </Section>
       )}
+
+      {/* ── Objection handler (real questions a real buyer asks) ── */}
+      <Section
+        id="why-anchor"
+        className="py-20 px-6 border-t border-border/40 scroll-mt-20"
+      >
+        <div className="max-w-3xl mx-auto space-y-10">
+          <motion.div variants={fadeUp}>
+            <h2 className="font-display text-3xl md:text-5xl tracking-tight">
+              Why Anchor
+            </h2>
+            <p className="text-muted-foreground mt-2">
+              Three questions every honest buyer asks a solo agency.
+            </p>
+          </motion.div>
+
+          <motion.div variants={stagger} className="space-y-8">
+            <motion.div variants={fadeUp}>
+              <h3 className="font-display text-xl md:text-2xl tracking-tight mb-2">
+                What if you get hit by a bus?
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Every Anchor build hands over the source code, the n8n / Vapi /
+                Retell flows, and a written runbook on Day 7. You own the stack.
+                If Anchor disappears tomorrow, your AI Receptionist still
+                answers the phone, your engineer down the road can pick it up,
+                and you owe Anchor nothing.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeUp}>
+              <h3 className="font-display text-xl md:text-2xl tracking-tight mb-2">
+                Why Anchor instead of a bigger agency?
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Bigger agencies bill bodies-on-hours. Anchor ships fixed-scope,
+                fixed-price work that goes live in 7 days. The founder writes
+                the code. There is no junior on your account. There is no scope
+                creep, because the scope is in the Stripe receipt.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeUp}>
+              <h3 className="font-display text-xl md:text-2xl tracking-tight mb-2">
+                What does post-launch look like?
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Thirty days of tuning are included in every Reception Pilot:
+                voice tweaks, FAQ updates, escalation tweaks. After that, the
+                $500/mo keeps the agent improving with new conversation data,
+                or you take it in-house. If you want continuous AI work, the
+                Fractional retainer below covers it. Pause any week.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </Section>
 
       {/* ── Products ─────────────────────────────────── */}
       {products.length > 0 && (
@@ -569,10 +590,16 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ── Testimonial ──────────────────────────────── */}
+      {/* ── Testimonial (peer endorsement, not client quote) ── */}
       {testimonials.length > 0 && (
         <Section className="py-20 px-6 border-t border-border/40">
           <div className="max-w-3xl mx-auto">
+            <motion.h2
+              variants={fadeUp}
+              className="font-display text-2xl md:text-3xl tracking-tight mb-8 text-muted-foreground"
+            >
+              Endorsement
+            </motion.h2>
             <motion.figure
               variants={fadeUp}
               className="bg-card rounded-xl border border-border p-8 md:p-10 flex flex-col gap-6"
@@ -580,13 +607,18 @@ export default function HomePage() {
               <blockquote className="font-display-italic text-2xl md:text-3xl leading-snug">
                 &ldquo;{testimonials[0].quote}&rdquo;
               </blockquote>
-              <figcaption className="text-sm text-muted-foreground border-t border-border/60 pt-4">
+              <figcaption className="text-sm text-muted-foreground border-t border-border/60 pt-4 space-y-1">
                 <div className="font-semibold text-foreground">
                   {testimonials[0].author}
                 </div>
                 <div>
                   {testimonials[0].role} · {testimonials[0].organization}
                 </div>
+                {(testimonials[0] as { context?: string }).context && (
+                  <div className="pt-2 text-xs text-muted-foreground/70 italic">
+                    {(testimonials[0] as { context?: string }).context}
+                  </div>
+                )}
               </figcaption>
             </motion.figure>
           </div>
@@ -630,52 +662,6 @@ export default function HomePage() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* ── Limited offer ────────────────────────────── */}
-      <Section className="py-20 px-6">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            variants={fadeUp}
-            whileHover={{ scale: 1.005 }}
-            transition={{ type: "spring", stiffness: 250, damping: 22 }}
-            className="border-2 border-accent/60 rounded-xl p-8 md:p-10 space-y-4 bg-card"
-          >
-            <div className="inline-block bg-accent/10 text-accent text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider font-mono-anchor">
-              Limited offer
-            </div>
-            <h2 className="font-display text-3xl md:text-4xl tracking-tight">
-              50% off for our first 10 clients.
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              We&apos;re building our portfolio and reputation. You get
-              top-quality AI engineering at half price. In return, we ask for an
-              honest testimonial when we deliver.
-            </p>
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Button size="lg" asChild>
-                <a
-                  href={siteConfig.calendly}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Claim Your Spot
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a
-                  href={siteConfig.whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Message on WhatsApp
-                </a>
-              </Button>
-            </div>
           </motion.div>
         </div>
       </Section>
