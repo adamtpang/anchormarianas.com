@@ -4,7 +4,55 @@
     "name": "SellSniper",
     "tagline": "Paste your launch link. Get the 20 best places to post it, with the message already written.",
     "url": "https://sellsniper.com",
-    "price": "Free + $29 / mo",
+    "price": "Free + $19/mo + $499 lifetime",
+    "status": "live"
+  },
+  {
+    "slug": "summon-guide",
+    "name": "Summon",
+    "tagline": "Summon any historical genius as a Claude skill. Build your own super-team of legends.",
+    "url": "https://summon.guide",
+    "price": "Free + $19/mo + $199 lifetime",
+    "status": "live"
+  },
+  {
+    "slug": "sprite-email",
+    "name": "Sprite",
+    "tagline": "Inbox-zero on autopilot. AI sweeps, sorts, and drafts replies for Gmail power users.",
+    "url": "https://sprite.email",
+    "price": "Free + $9/mo + $49 lifetime",
+    "status": "live"
+  },
+  {
+    "slug": "vibecheck-style",
+    "name": "VibeCheck",
+    "tagline": "Auto-playlists from your Spotify history. AI-powered music discovery that learns your taste.",
+    "url": "https://vibecheck.style",
+    "price": "Free + $9/mo + $39 lifetime",
+    "status": "live"
+  },
+  {
+    "slug": "deathmoney-fyi",
+    "name": "Death Money",
+    "tagline": "Calculate the financial cost of your time. ML-powered tier shows compounding life-value.",
+    "url": "https://deathmoney.fyi",
+    "price": "Free + $9/mo + $49 lifetime",
+    "status": "live"
+  },
+  {
+    "slug": "book-movie",
+    "name": "Book.Movie",
+    "tagline": "Turn any PDF into a short-form video reel. ElevenLabs-powered narration.",
+    "url": "https://book.movie",
+    "price": "Free + $19/mo + $99 lifetime",
+    "status": "beta"
+  },
+  {
+    "slug": "pokedex-life",
+    "name": "Pokedex.life",
+    "tagline": "Catch and track real-world experiences. Gamified life-logging.",
+    "url": "https://pokedex.life",
+    "price": "Free + $9/mo + $99 lifetime",
     "status": "live"
   }
 ]

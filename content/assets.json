@@ -3,7 +3,23 @@
     "slug": "poor-adams-almanack",
     "name": "Poor Adam's Almanack",
     "summary": "Weekly newsletter on building from Guam in the AI age. Founder OS, mental models, ship logs. Free Sunday issue plus paid bonus issues.",
-    "metric": "coming soon",
+    "url": "https://adamanack.com",
+    "metric": "free + $9/mo",
     "type": "owned"
+  },
+  {
+    "slug": "anchorscan-reports",
+    "name": "AnchorScan Reports",
+    "summary": "Programmatic AI diagnostics for any business URL. Free top-of-funnel today. Paid annual subscription tier coming.",
+    "url": "https://anchormarianas.com/scan",
+    "metric": "in build",
+    "type": "owned"
+  },
+  {
+    "slug": "workflow-revshare",
+    "name": "Workflow Build revshare stakes",
+    "summary": "15% of net new revenue attributable to each AI Workflow Build, for 24 months, capped at $50k per client. Stacks silently with every closed deal.",
+    "metric": "0 stakes (pre-revenue)",
+    "type": "revshare"
   }
 ]

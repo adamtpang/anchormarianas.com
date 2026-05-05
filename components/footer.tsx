@@ -21,9 +21,9 @@ export function Footer() {
             <div className="text-muted-foreground uppercase tracking-wider text-xs mb-3">
               Site
             </div>
-            <a href="/#apps" className="block text-foreground/90 hover:text-accent transition-colors">Apps</a>
+            <a href="/#services" className="block text-foreground/90 hover:text-accent transition-colors">Services</a>
             <a href="/#clients" className="block text-foreground/90 hover:text-accent transition-colors">Clients</a>
-            <a href="/#come-aboard" className="block text-foreground/90 hover:text-accent transition-colors">Come aboard</a>
+            <a href="/careers" className="block text-foreground/90 hover:text-accent transition-colors">Careers</a>
             <a href={siteConfig.calendly} target="_blank" rel="noopener noreferrer" className="block text-foreground/90 hover:text-accent transition-colors">Book a call</a>
           </div>
 
@@ -66,7 +66,6 @@ export function Footer() {
         </div>
         <div className="mt-10 pt-6 border-t border-border/30 text-center text-xs text-muted-foreground">
           Built by <a href="https://adampang.com" className="hover:text-accent transition-colors underline">Adam Pangelinan</a>
-          {' · '}<a href="https://sellsniper.com" className="hover:text-accent transition-colors underline">More projects in the Aether</a>
         </div>
       </div>
     </footer>

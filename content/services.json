@@ -1,25 +1,26 @@
 [
   {
-    "slug": "ai-readiness-audit",
-    "name": "AI Readiness Audit",
-    "tagline": "Where AI saves you the most. Ranked, scored, scoped.",
-    "price": "$2,500",
+    "slug": "ai-reception-pilot",
+    "name": "AI Reception Pilot",
+    "tagline": "24/7 AI receptionist on your existing number. Live in 7 days.",
+    "price": "$5,000 + $500/mo",
     "timeline": "7 days",
     "deliverables": [
-      "20-page PDF report",
-      "Loom video walkthrough",
-      "Top 10 AI workflows ranked by ROI",
-      "Vendor and tooling shortlist",
-      "90-day implementation roadmap"
+      "Voice agent on a forwarded number (you keep your main line)",
+      "Configured for your top 10 FAQs, booking flow, escalation rules",
+      "Multilingual coverage (JP / KR / EN out of the box)",
+      "Loom walkthrough + admin login + 30 days of tuning",
+      "Written 90-day ROI memo (the audit, baked in)",
+      "5/5 stars or full refund. No fine print."
     ],
-    "ideal": "Cashflowing SMBs ready to put AI to work without hiring an engineer.",
-    "ctaUrl": "https://calendly.com/adamtpang",
-    "ctaLabel": "Get the audit"
+    "ideal": "Hotels, dive ops, restaurants, professional services. Anyone losing money to missed calls.",
+    "ctaUrl": "https://cal.com/adampang",
+    "ctaLabel": "Book a 20-min call"
   },
   {
     "slug": "ai-workflow-build",
     "name": "AI Workflow Build",
-    "tagline": "One end-to-end AI workflow, shipped. Fixed price, fixed timeline.",
+    "tagline": "One end-to-end AI workflow shipped. Fixed price, fixed timeline.",
     "price": "$7,500",
     "timeline": "3 weeks",
     "deliverables": [
@@ -28,8 +29,8 @@
       "30 days of post-launch support",
       "15% revshare on net new revenue (24 months, capped at $50k)"
     ],
-    "ideal": "Operators who completed the Audit and know exactly what to build.",
-    "ctaUrl": "https://calendly.com/adamtpang",
+    "ideal": "Operators who shipped Reception and know which workflow to ship next.",
+    "ctaUrl": "https://cal.com/adampang",
     "ctaLabel": "Scope a build"
   },
   {
@@ -45,7 +46,23 @@
       "Pause or cancel any week"
     ],
     "ideal": "Businesses that need AI work continuously, not one-off projects.",
-    "ctaUrl": "https://calendly.com/adamtpang",
+    "ctaUrl": "https://cal.com/adampang",
     "ctaLabel": "Discuss retainer"
+  },
+  {
+    "slug": "anchorscan",
+    "name": "AnchorScan",
+    "tagline": "Free 5-minute AI diagnostic for any business URL.",
+    "price": "Free",
+    "timeline": "5 minutes",
+    "deliverables": [
+      "1-page programmatic diagnostic",
+      "Top 3 AI workflow opportunities for your business",
+      "Annual dollar-impact estimate per workflow",
+      "Direct path to the AI Reception Pilot if it fits"
+    ],
+    "ideal": "Operators not yet sure what AI can do for them.",
+    "ctaUrl": "https://anchormarianas.com/scan",
+    "ctaLabel": "Run a free scan"
   }
 ]

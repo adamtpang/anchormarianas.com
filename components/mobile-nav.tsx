@@ -8,9 +8,10 @@ import { Menu } from "lucide-react"
 import siteConfig from "@/content/site.json"
 
 const nav = [
+  { href: "/scan", label: "Free Audit" },
   { href: "/#problems", label: "Problems" },
   { href: "/#services", label: "Services" },
-  { href: "/#team", label: "Team" },
+  { href: "/#clients", label: "Clients" },
   { href: "/careers", label: "Careers" },
 ]
 
