@@ -2,6 +2,9 @@
 
 Append-only. Newest entries at the top.
 
+## 2026-05-22
+- **Anchor Scan roadmap sequenced by data source.** v1 = Google Maps reviews (current build). Future avenues, in priority order: mobile app store reviews (iOS App Store + Google Play), Chrome Web Store extension reviews, Yelp, TripAdvisor, Booking.com / hotel OTAs, Facebook Page reviews, Reddit / forum mentions, Trustpilot / G2 / Capterra (B2B SaaS), YouTube comments (creator businesses), GitHub issues (open-source / dev tools), Glassdoor / Indeed (employer brand diagnostics). Underlying thesis: Anchor Scan is "AI diagnostics from public customer signal" — anywhere customers leave structured feedback at scale, the same scan → analyze → report → discovery-call loop applies. Adam to sequence build order against where his next ICP cohorts actually live.
+
 ## 2026-05-18
 - **Cross-tool memory pattern adopted.** /context/cofounder/ and /context/claude/ committed to repo as the shared memory between Cofounder and Claude. Either tool reads both lanes; each writes only its own.
 

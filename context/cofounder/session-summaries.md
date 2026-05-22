@@ -2,6 +2,11 @@
 
 Append-only rolling log. One entry per substantive Cofounder session. Newest at top.
 
+## 2026-05-22 — Anchor Scan roadmap expansion
+- Confirmed v1 build target: Google Maps reviews → AI diagnostic report → discovery-call CTA.
+- Logged future avenues (mobile app reviews, Chrome extension reviews, Yelp, TripAdvisor, OTAs, Facebook, Reddit, Trustpilot/G2/Capterra, YouTube comments, GitHub issues, Glassdoor/Indeed).
+- Reframed Anchor Scan thesis: "AI diagnostics from public customer signal" — broader than reviews, broader than Marianas.
+
 ## 2026-05-18 — Cross-tool memory + Anchor Scan strategy refinement
 - Decided to adopt shared /context/ directory pattern for Cofounder + Claude memory.
 - Refined Anchor Scan from prescriptive ("here are 3 AI fixes") to diagnostic ("here are the patterns + questions") — demand-led discovery.
