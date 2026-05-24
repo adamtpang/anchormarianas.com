@@ -5,11 +5,16 @@ import siteConfig from "@/content/site.json"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
+const scanMailto = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
+  "Free Anchor Scan for my business"
+)}&body=${encodeURIComponent(
+  "Hi Adam,\n\nI'd like a Free Anchor Scan for my business.\n\nBusiness name:\nGoogle Maps link:\nContact name:\nBest phone/email:\n\nThanks."
+)}`
+
 const nav = [
-  { href: "/scan", label: "Free Audit" },
-  { href: "/#problems", label: "Problems" },
-  { href: "/#services", label: "Services" },
-  { href: "/#clients", label: "Clients" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/#founder-pilot", label: "$750 Pilot" },
+  { href: "/#use-cases", label: "Use cases" },
   { href: "/careers", label: "Careers" },
 ]
 
@@ -39,12 +44,10 @@ export function Header() {
             ))}
             <ThemeToggle />
             <a
-              href={siteConfig.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={scanMailto}
               className="font-semibold bg-foreground text-background px-4 py-2 rounded-lg hover:bg-foreground/90 transition-colors"
             >
-              Book a Call
+              Free Scan
             </a>
           </nav>
 

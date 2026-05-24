@@ -28,15 +28,15 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Anchor: The AI layer of your business.",
+  title: "Anchor Marianas: Free Anchor Scan for Guam businesses",
   description:
-    "Anchor builds AI products and services for businesses entering the AI age. From Guam, near the deepest place on Earth. We ship.",
+    "Turn public customer reviews into one practical AI-assisted workflow in 7 days. Free Anchor Scan diagnostics and $750 Review-to-Revenue Sprint for Guam and Pacific businesses.",
   metadataBase: new URL("https://anchormarianas.com"),
   keywords: [
-    "AI agency",
-    "AI engineering",
-    "AI products",
-    "AI services",
+    "Anchor Scan",
+    "Google Maps review analysis",
+    "Guam AI workflows",
+    "customer review diagnostics",
     "software development",
     "Guam",
     "Pacific",
@@ -47,16 +47,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://anchormarianas.com",
-    title: "Anchor: The AI layer of your business.",
+    title: "Anchor Marianas: Free Anchor Scan for Guam businesses",
     description:
-      "AI products and services for businesses entering the AI age. We ship.",
+      "Free customer review diagnostics and a $750 Review-to-Revenue Sprint for Guam and Pacific businesses.",
     siteName: "Anchor",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anchor: The AI layer of your business.",
+    title: "Anchor Marianas: Free Anchor Scan for Guam businesses",
     description:
-      "AI products and services for businesses entering the AI age. We ship.",
+      "Free customer review diagnostics and a $750 Review-to-Revenue Sprint for Guam and Pacific businesses.",
     creator: "@adamtpang",
   },
   robots: { index: true, follow: true },
