@@ -1,737 +1,267 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
+import siteConfig from "@/content/site.json"
 import {
   ArrowRight,
-  ArrowUpRight,
+  CheckCircle2,
+  ClipboardList,
+  Compass,
   Mail,
-  Phone,
-  MessageCircle,
-  Calendar,
-  Anchor as AnchorIcon,
-  Check,
+  MapPin,
+  MessageSquareQuote,
+  Search,
+  Sparkles,
+  Wrench,
 } from "lucide-react"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import siteConfig from "@/content/site.json"
-import productsData from "@/content/products.json"
-import servicesData from "@/content/services.json"
-import assetsData from "@/content/assets.json"
-import testimonials from "@/content/testimonials.json"
 
-// ─── Schemas. Edit the matching JSON in /content. ───
-type Product = {
-  slug: string
-  name: string
-  tagline: string
-  url?: string
-  price?: string
-  image?: string
-  status?: "live" | "beta" | "building" | "archived"
-}
+const scanMailto = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
+  "Free Anchor Scan for my business"
+)}&body=${encodeURIComponent(
+  "Hi Adam,\n\nI'd like a Free Anchor Scan for my business.\n\nBusiness name:\nGoogle Maps link:\nContact name:\nBest phone/email:\n\nThanks."
+)}`
 
-type Service = {
-  slug: string
-  name: string
-  tagline: string
-  price: string
-  timeline?: string
-  deliverables?: string[]
-  ideal?: string
-  ctaUrl?: string
-  ctaLabel?: string
-}
-
-type Asset = {
-  slug: string
-  name: string
-  summary: string
-  url?: string
-  metric?: string
-  type?: "equity" | "revshare" | "owned"
-}
-
-const products = productsData as Product[]
-const services = servicesData as Service[]
-const assets = assetsData as Asset[]
-
-const statusStyles: Record<string, string> = {
-  live: "bg-emerald-500/10 text-emerald-500 border-emerald-500/30",
-  active: "bg-emerald-500/10 text-emerald-500 border-emerald-500/30",
-  beta: "bg-sky-500/10 text-sky-500 border-sky-500/30",
-  archived: "bg-muted text-muted-foreground border-border",
-  building: "bg-violet-500/10 text-violet-500 border-violet-500/30",
-}
-
-const ease = [0.2, 0.8, 0.2, 1] as const
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
-}
-
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
-}
-
-const Section = ({
-  children,
-  className = "",
-  id,
-}: {
-  children: React.ReactNode
-  className?: string
-  id?: string
-}) => (
-  <motion.section
-    id={id}
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: true, margin: "-80px" }}
-    variants={stagger}
-    className={className}
-  >
-    {children}
-  </motion.section>
-)
-
-const problems = [
+const steps = [
   {
-    pain: "We know AI can save us hours, but no idea where to start.",
-    fix: "AI Readiness Audit. Top 10 ROI-ranked workflows in 7 days.",
+    icon: Search,
+    title: "Scan",
+    body: "We analyze public Google Maps reviews for repeated customer signals.",
   },
   {
-    pain: "We tried ChatGPT, it was cool, nothing actually changed.",
-    fix: "Workflows shipped into your stack, not screenshots in a deck.",
+    icon: ClipboardList,
+    title: "Diagnose",
+    body: "We surface what customers love, recurring friction, example quotes, and likely operational causes.",
   },
   {
-    pain: "Our team isn't technical. We can't build AI tools ourselves.",
-    fix: "Anchor builds it. We hand over working software, not Notion docs.",
+    icon: Wrench,
+    title: "Fix One Thing",
+    body: "In a 7-day sprint, we turn one priority issue into a practical workflow your team can use.",
   },
-  {
-    pain: "We can't tell good vendors from snake oil.",
-    fix: "We've shipped enough to call it. Vendor shortlist in every audit.",
-  },
-  {
-    pain: "We need this continuously, not as a one-off project.",
-    fix: "Fractional retainer. Pause any week.",
-  },
-  {
-    pain: "We want results, not hourly billing or surprise scope creep.",
-    fix: "Fixed price, fixed timeline, fixed deliverables. Or you don't pay.",
-  },
+]
+
+const scanSections = [
+  "What customers love",
+  "Recurring friction points",
+  "Example review quotes",
+  "Likely operational signals",
+  "Questions to ask the owner",
+  "CTA to book a 15-minute walkthrough",
+]
+
+const sprintOutputs = [
+  "Review response system",
+  "Missed inquiry tracker",
+  "Booking FAQ response workflow",
+  "After-hours inquiry workflow",
+  "Customer complaint dashboard",
+  "Staff handoff checklist",
+  "Upsell and cross-sell response templates",
+]
+
+const useCases = [
+  ["Tour operators", "Reduce missed booking inquiries before they become lost revenue."],
+  ["Hotels", "Improve after-hours guest response without adding another inbox to manage."],
+  ["Restaurants", "Respond faster to recurring service complaints and spot patterns."],
+  ["Dive shops", "Turn FAQ and booking questions into reusable response flows."],
+  ["Local services", "Identify repeated customer friction and fix one workflow first."],
 ]
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
-      {/* ── Hero ─────────────────────────────────────── */}
-      <section className="relative py-24 md:py-32 px-6 depth-veil">
-        <motion.div
-          initial="hidden"
-          animate="show"
-          variants={stagger}
-          className="max-w-3xl mx-auto"
-        >
-          <motion.div
-            variants={fadeUp}
-            className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground font-mono-anchor mb-7"
-          >
-            {siteConfig.origin}
-          </motion.div>
-
-          <motion.h1
-            variants={fadeUp}
-            className="font-display text-5xl md:text-7xl leading-[1.02] tracking-tight mb-6 text-balance"
-          >
-            The AI layer of <span className="font-display-italic">your business.</span>
-          </motion.h1>
-
-          <motion.p
-            variants={fadeUp}
-            className="text-xl text-muted-foreground leading-relaxed mb-3 max-w-2xl"
-          >
-            {siteConfig.elevator}
-          </motion.p>
-
-          <motion.div
-            variants={fadeUp}
-            className="inline-flex items-center gap-2 text-sm md:text-base bg-accent/10 text-accent border border-accent/30 rounded-full px-4 py-2 mb-8"
-          >
-            <span className="font-mono-anchor text-[10px] uppercase tracking-wider opacity-80">
-              Featured
-            </span>
-            <span className="font-medium">
-              AI Reception Pilot. Live in 7 days. $5K + $500/mo.
-            </span>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-wrap items-center gap-x-6 gap-y-3 mb-10"
-          >
-            <Button size="lg" className="text-base px-6 py-5" asChild>
-              <a
-                href={siteConfig.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Book a 20-min call
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
-            <a
-              href={siteConfig.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-base text-muted-foreground hover:text-foreground underline-offset-4 hover:underline transition-colors"
-            >
-              <MessageCircle className="w-4 h-4" />
-              or WhatsApp
-            </a>
-          </motion.div>
-
-          <motion.p
-            variants={fadeUp}
-            className="font-display-italic text-sm text-muted-foreground/70 mb-8 max-w-xl"
-          >
-            {siteConfig.originNote}
-          </motion.p>
-
-          <motion.div variants={fadeUp} className="flex items-center gap-3">
-            <span className="sonar" aria-hidden>
-              <span />
-            </span>
-            <span className="font-mono-anchor text-xs uppercase tracking-[0.4em] text-muted-foreground">
-              we ship.
-            </span>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* ── Proof bar (one-second credibility) ───────── */}
-      <section className="py-6 px-6 border-y border-border/40 bg-muted/20">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
-          <div className="flex items-center gap-4 shrink-0">
-            <div className="text-[10px] uppercase tracking-[0.25em] font-mono-anchor text-muted-foreground">
-              Client
+    <div className="min-h-screen bg-[#f8f4ec] text-[#10233d] dark:bg-background dark:text-foreground">
+      <section className="relative overflow-hidden border-b border-[#d9cdbd]/80 dark:border-border/50">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_12%,rgba(20,132,145,0.16),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.65),rgba(248,244,236,0))] dark:bg-[radial-gradient(circle_at_80%_12%,rgba(45,212,191,0.13),transparent_32%)]" />
+        <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-16 sm:py-20 lg:grid-cols-[1.08fr_0.92fr] lg:px-8 lg:py-24">
+          <div className="flex flex-col justify-center">
+            <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-[#c9b89f] bg-white/65 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#2b5d66] shadow-sm dark:border-border dark:bg-white/5 dark:text-accent">
+              <MapPin className="h-3.5 w-3.5" /> Built locally for Guam, CNMI, and Pacific businesses.
             </div>
-            <div className="relative h-7 w-24">
-              <Image
-                src="/partners/hilton.png"
-                alt="Hilton Guam"
-                fill
-                className="object-contain object-left dark:invert dark:brightness-0 dark:opacity-90"
-                sizes="96px"
-              />
+            <h1 className="max-w-4xl text-balance text-5xl font-semibold tracking-[-0.045em] text-[#071b33] sm:text-6xl lg:text-7xl dark:text-foreground">
+              Turn customer reviews into revenue-saving AI workflows.
+            </h1>
+            <p className="mt-6 max-w-2xl text-pretty text-lg leading-8 text-[#405169] sm:text-xl dark:text-muted-foreground">
+              Anchor Marianas helps Guam and Pacific businesses scan public customer reviews, find recurring friction, and turn one problem into a practical AI-assisted workflow in 7 days.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg" className="h-12 rounded-xl bg-[#0a3047] px-6 text-base text-white hover:bg-[#124861] dark:bg-accent dark:text-accent-foreground dark:hover:bg-accent/90">
+                <a href={scanMailto}>
+                  Get a Free Anchor Scan <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="h-12 rounded-xl border-[#bda98d] bg-white/50 px-6 text-base text-[#10233d] hover:bg-white dark:border-border dark:bg-transparent dark:text-foreground">
+                <a href="#founder-pilot">See the $750 Founder Pilot</a>
+              </Button>
             </div>
-          </div>
-          <div className="text-sm text-muted-foreground/90 italic leading-snug">
-            &ldquo;master vibe coder · cranks out a MERN app unassisted&rdquo;
-            <span className="not-italic"> — chovin (warm intro to Hilton Guam)</span>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Problems we solve ───────────────────────── */}
-      <Section
-        id="problems"
-        className="py-20 px-6 border-t border-border/40 scroll-mt-20"
-      >
-        <div className="max-w-5xl mx-auto">
-          <motion.div variants={fadeUp} className="mb-10 max-w-3xl">
-            <h2 className="font-display text-3xl md:text-5xl tracking-tight">
-              Problems we solve
-            </h2>
-            <p className="text-muted-foreground mt-2">
-              Real pains, not pitch decks. If any of these sound familiar,
-              we&apos;re built for you.
+            <p className="mt-4 text-sm text-[#66758a] dark:text-muted-foreground">
+              Email CTA asks for your business name, Google Maps link, and contact name.
             </p>
-          </motion.div>
-
-          <motion.div
-            variants={stagger}
-            className="grid sm:grid-cols-2 gap-4"
-          >
-            {problems.map((p) => (
-              <motion.div
-                key={p.pain}
-                variants={fadeUp}
-                whileHover={{ y: -3, borderColor: "hsl(var(--accent))" }}
-                transition={{ type: "spring", stiffness: 350, damping: 22 }}
-                className="border border-border rounded-lg p-6 bg-card flex flex-col gap-3"
-              >
-                <p className="font-display-italic text-lg leading-snug">
-                  &ldquo;{p.pain}&rdquo;
-                </p>
-                <p className="text-sm text-muted-foreground border-t border-border/60 pt-3">
-                  <span className="font-mono-anchor uppercase tracking-wider text-[10px] text-accent mr-2">
-                    Anchor
-                  </span>
-                  {p.fix}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* ── Services ─────────────────────────────────── */}
-      {services.length > 0 && (
-        <Section
-          id="services"
-          className="py-20 px-6 border-t border-border/40 scroll-mt-20"
-        >
-          <div className="max-w-5xl mx-auto">
-            <motion.div variants={fadeUp} className="mb-10">
-              <h2 className="font-display text-3xl md:text-5xl tracking-tight">
-                Services
-              </h2>
-              <p className="text-muted-foreground mt-2">
-                Fixed-scope AI engineering. Pick a tier, ship a date.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={stagger}
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-            >
-              {services.map((s) => (
-                <motion.div
-                  key={s.slug}
-                  variants={fadeUp}
-                  whileHover={{ y: -4 }}
-                  transition={{ type: "spring", stiffness: 350, damping: 22 }}
-                  className="bg-card rounded-lg border border-border p-6 flex flex-col gap-4 hover:border-accent transition-colors"
-                >
-                  <div>
-                    <h3 className="font-semibold text-lg">{s.name}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {s.tagline}
-                    </p>
-                  </div>
-
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-display text-3xl">{s.price}</span>
-                    {s.timeline && (
-                      <span className="text-xs text-muted-foreground font-mono-anchor uppercase tracking-wider">
-                        {s.timeline}
-                      </span>
-                    )}
-                  </div>
-
-                  {s.deliverables && s.deliverables.length > 0 && (
-                    <ul className="space-y-1.5 text-sm">
-                      {s.deliverables.map((d) => (
-                        <li key={d} className="flex items-start gap-2">
-                          <Check className="w-3.5 h-3.5 mt-1 text-accent shrink-0" />
-                          <span className="text-muted-foreground">{d}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {s.ideal && (
-                    <p className="text-xs text-muted-foreground italic">
-                      Ideal for: {s.ideal}
-                    </p>
-                  )}
-
-                  <Button asChild variant="outline" className="mt-auto">
-                    <a
-                      href={s.ctaUrl || siteConfig.calendly}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {s.ctaLabel || "Book a call"}
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </a>
-                  </Button>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
-        </Section>
-      )}
 
-      {/* ── Objection handler (real questions a real buyer asks) ── */}
-      <Section
-        id="why-anchor"
-        className="py-20 px-6 border-t border-border/40 scroll-mt-20"
-      >
-        <div className="max-w-3xl mx-auto space-y-10">
-          <motion.div variants={fadeUp}>
-            <h2 className="font-display text-3xl md:text-5xl tracking-tight">
-              Why Anchor
-            </h2>
-            <p className="text-muted-foreground mt-2">
-              Three questions every honest buyer asks a solo agency.
-            </p>
-          </motion.div>
-
-          <motion.div variants={stagger} className="space-y-8">
-            <motion.div variants={fadeUp}>
-              <h3 className="font-display text-xl md:text-2xl tracking-tight mb-2">
-                What if you get hit by a bus?
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Every Anchor build hands over the source code, the n8n / Vapi /
-                Retell flows, and a written runbook on Day 7. You own the stack.
-                If Anchor disappears tomorrow, your AI Receptionist still
-                answers the phone, your engineer down the road can pick it up,
-                and you owe Anchor nothing.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeUp}>
-              <h3 className="font-display text-xl md:text-2xl tracking-tight mb-2">
-                Why Anchor instead of a bigger agency?
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Bigger agencies bill bodies-on-hours. Anchor ships fixed-scope,
-                fixed-price work that goes live in 7 days. The founder writes
-                the code. There is no junior on your account. There is no scope
-                creep, because the scope is in the Stripe receipt.
-              </p>
-            </motion.div>
-
-            <motion.div variants={fadeUp}>
-              <h3 className="font-display text-xl md:text-2xl tracking-tight mb-2">
-                What does post-launch look like?
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Thirty days of tuning are included in every Reception Pilot:
-                voice tweaks, FAQ updates, escalation tweaks. After that, the
-                $500/mo keeps the agent improving with new conversation data,
-                or you take it in-house. If you want continuous AI work, the
-                Fractional retainer below covers it. Pause any week.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* ── Products ─────────────────────────────────── */}
-      {products.length > 0 && (
-        <Section
-          id="products"
-          className="py-20 px-6 border-t border-border/40 bg-muted/30 scroll-mt-20"
-        >
-          <div className="max-w-5xl mx-auto">
-            <motion.div variants={fadeUp} className="mb-10">
-              <h2 className="font-display text-3xl md:text-5xl tracking-tight">
-                Products
-              </h2>
-              <p className="text-muted-foreground mt-2">
-                Software Anchor owns and ships. Use it, or have us white-label it.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={stagger}
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-            >
-              {products.map((p) => (
-                <motion.a
-                  key={p.slug}
-                  variants={fadeUp}
-                  whileHover={{ y: -4 }}
-                  transition={{ type: "spring", stiffness: 350, damping: 22 }}
-                  href={p.url || "#"}
-                  target={p.url ? "_blank" : undefined}
-                  rel={p.url ? "noopener noreferrer" : undefined}
-                  className="group block bg-card rounded-lg border border-border hover:border-accent transition-colors overflow-hidden"
-                >
-                  {p.image && (
-                    <div className="relative aspect-[16/9] bg-muted">
-                      <Image
-                        src={p.image}
-                        alt={p.name}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    </div>
-                  )}
-                  <div className="p-5 space-y-3">
-                    <div className="flex items-start justify-between gap-3">
-                      <h3 className="font-semibold text-base group-hover:text-accent transition-colors">
-                        {p.name}
-                      </h3>
-                      {p.status && (
-                        <span
-                          className={`text-[10px] uppercase tracking-wider font-medium px-2 py-0.5 rounded-full border ${statusStyles[p.status] ?? statusStyles.live}`}
-                        >
-                          {p.status}
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {p.tagline}
-                    </p>
-                    <div className="flex items-center justify-between pt-2">
-                      {p.price && (
-                        <span className="font-display text-lg">{p.price}</span>
-                      )}
-                      {p.url && (
-                        <span className="font-mono-anchor text-[11px] uppercase tracking-wider text-muted-foreground group-hover:text-accent transition-colors flex items-center gap-1">
-                          Open
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </motion.div>
-          </div>
-        </Section>
-      )}
-
-      {/* ── Assets ───────────────────────────────────── */}
-      {assets.length > 0 && (
-        <Section
-          id="assets"
-          className="py-20 px-6 border-t border-border/40 scroll-mt-20"
-        >
-          <div className="max-w-5xl mx-auto">
-            <motion.div variants={fadeUp} className="mb-10">
-              <h2 className="font-display text-3xl md:text-5xl tracking-tight">
-                Assets
-              </h2>
-              <p className="text-muted-foreground mt-2">
-                Newsletters, libraries, equity, revshare. Stuff Anchor owns.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={stagger}
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
-            >
-              {assets.map((a) => (
-                <motion.div
-                  key={a.slug}
-                  variants={fadeUp}
-                  whileHover={{ y: -3 }}
-                  transition={{ type: "spring", stiffness: 350, damping: 22 }}
-                  className="bg-card rounded-lg border border-border p-5 flex flex-col gap-3 hover:border-accent transition-colors"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-semibold">{a.name}</h3>
-                    {a.type && (
-                      <span className="text-[10px] uppercase tracking-wider font-mono-anchor text-muted-foreground border border-border px-2 py-0.5 rounded-full">
-                        {a.type}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                    {a.summary}
+          <div className="rounded-[2rem] border border-[#d9cdbd] bg-[#fffaf1]/88 p-5 shadow-2xl shadow-[#8c7250]/10 backdrop-blur dark:border-border dark:bg-card/70 dark:shadow-black/20">
+            <div className="rounded-[1.4rem] border border-[#e6dac8] bg-white p-6 dark:border-border dark:bg-background/80">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.22em] text-[#1a8a93] dark:text-accent">Free lead magnet</div>
+                  <h2 className="mt-3 text-3xl font-semibold tracking-tight">Anchor Scan</h2>
+                  <p className="mt-3 text-sm leading-6 text-[#56657a] dark:text-muted-foreground">
+                    A one-page diagnostic report built from your public Google Maps reviews, designed to start a useful owner walkthrough.
                   </p>
-                  <div className="flex items-center justify-between pt-1">
-                    {a.metric && (
-                      <span className="font-display text-base">{a.metric}</span>
-                    )}
-                    {a.url && (
-                      <a
-                        href={a.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-mono-anchor text-[11px] uppercase tracking-wider text-muted-foreground hover:text-accent flex items-center gap-1"
-                      >
-                        View
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </a>
-                    )}
+                </div>
+                <div className="rounded-2xl bg-[#eaf7f6] p-3 text-[#0f7178] dark:bg-accent/10 dark:text-accent">
+                  <MessageSquareQuote className="h-6 w-6" />
+                </div>
+              </div>
+              <div className="mt-6 grid gap-3">
+                {scanSections.map((item) => (
+                  <div key={item} className="flex items-center gap-3 rounded-xl bg-[#f6f1e8] px-3 py-2.5 text-sm text-[#263a52] dark:bg-muted/40 dark:text-foreground/90">
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#18818a] dark:text-accent" />
+                    {item}
                   </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </Section>
-      )}
-
-      {/* ── Recent work (Hilton) ─────────────────────── */}
-      <Section
-        id="clients"
-        className="py-20 px-6 bg-muted/30 border-t border-border/40 scroll-mt-20"
-      >
-        <div className="max-w-3xl mx-auto">
-          <motion.h2
-            variants={fadeUp}
-            className="font-display text-3xl md:text-5xl tracking-tight mb-2"
-          >
-            Recent work
-          </motion.h2>
-          <motion.p variants={fadeUp} className="text-muted-foreground mb-10">
-            Brands that paid Anchor to ship for them.
-          </motion.p>
-
-          <motion.div
-            variants={fadeUp}
-            whileHover={{ y: -3 }}
-            transition={{ type: "spring", stiffness: 350, damping: 22 }}
-            className="bg-card rounded-xl border border-border p-8 hover:border-accent transition-colors"
-          >
-            <div className="relative h-10 w-32 mb-5">
-              <Image
-                src="/partners/hilton.png"
-                alt="Hilton Guam"
-                fill
-                className="object-contain object-left dark:invert dark:brightness-0 dark:opacity-90"
-                sizes="128px"
-              />
+                ))}
+              </div>
             </div>
-            <p className="text-lg leading-relaxed">
-              Hospitality web product for Hilton Guam. Quick turnaround, polished
-              delivery, on spec.
-            </p>
-          </motion.div>
-        </div>
-      </Section>
-
-      {/* ── Testimonial (peer endorsement, not client quote) ── */}
-      {testimonials.length > 0 && (
-        <Section className="py-20 px-6 border-t border-border/40">
-          <div className="max-w-3xl mx-auto">
-            <motion.h2
-              variants={fadeUp}
-              className="font-display text-2xl md:text-3xl tracking-tight mb-8 text-muted-foreground"
-            >
-              Endorsement
-            </motion.h2>
-            <motion.figure
-              variants={fadeUp}
-              className="bg-card rounded-xl border border-border p-8 md:p-10 flex flex-col gap-6"
-            >
-              <blockquote className="font-display-italic text-2xl md:text-3xl leading-snug">
-                &ldquo;{testimonials[0].quote}&rdquo;
-              </blockquote>
-              <figcaption className="text-sm text-muted-foreground border-t border-border/60 pt-4 space-y-1">
-                <div className="font-semibold text-foreground">
-                  {testimonials[0].author}
-                </div>
-                <div>
-                  {testimonials[0].role} · {testimonials[0].organization}
-                </div>
-                {(testimonials[0] as { context?: string }).context && (
-                  <div className="pt-2 text-xs text-muted-foreground/70 italic">
-                    {(testimonials[0] as { context?: string }).context}
-                  </div>
-                )}
-              </figcaption>
-            </motion.figure>
           </div>
-        </Section>
-      )}
-
-      {/* ── How it works ─────────────────────────────── */}
-      <Section className="py-20 px-6 bg-muted/30 border-t border-border/40">
-        <div className="max-w-3xl mx-auto space-y-8">
-          <motion.h2
-            variants={fadeUp}
-            className="font-display text-3xl md:text-5xl tracking-tight"
-          >
-            How it works
-          </motion.h2>
-          <motion.div variants={stagger} className="space-y-6">
-            {[
-              {
-                n: 1,
-                t: "Discovery call",
-                d: "You tell us what you need. We ask the right questions. 20 minutes, free, no commitment.",
-              },
-              {
-                n: 2,
-                t: "Spec & price",
-                d: "We write a clear tech spec: what gets built, how long it takes, what it costs. No surprises.",
-              },
-              {
-                n: 3,
-                t: "Build & ship",
-                d: "Our AI engineers build it. You get updates. We deliver on time, or you don't pay.",
-              },
-            ].map((s) => (
-              <motion.div key={s.n} variants={fadeUp} className="flex gap-4">
-                <div className="shrink-0 w-9 h-9 rounded-full bg-foreground text-background flex items-center justify-center text-sm font-bold font-mono-anchor">
-                  {s.n}
-                </div>
-                <div>
-                  <div className="font-semibold text-lg">{s.t}</div>
-                  <p className="text-muted-foreground">{s.d}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
-      </Section>
+      </section>
 
-      {/* ── Contact ──────────────────────────────────── */}
-      <Section className="py-20 px-6 border-t border-border/40">
-        <div className="max-w-3xl mx-auto space-y-6">
-          <motion.h2
-            variants={fadeUp}
-            className="font-display text-3xl md:text-5xl tracking-tight"
-          >
-            Talk to us
-          </motion.h2>
-          <motion.p variants={fadeUp} className="text-lg text-muted-foreground">
-            Pick whichever way works for you.
-          </motion.p>
+      <section id="problem" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1a8a93] dark:text-accent">The problem</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Your customers are already telling you what is broken.</h2>
+          </div>
+          <div className="grid gap-4 text-base leading-7 text-[#485a70] dark:text-muted-foreground sm:grid-cols-2">
+            <p>Reviews contain repeated complaints, missed revenue, and operational bottlenecks hiding in plain sight.</p>
+            <p>Most business owners do not have time to analyze every review manually or turn patterns into process changes.</p>
+            <p className="sm:col-span-2">AI can help turn that signal into practical workflows: faster replies, better handoffs, clearer FAQs, and small operational fixes your team can actually use.</p>
+          </div>
+        </div>
+      </section>
 
-          <motion.div variants={stagger} className="grid sm:grid-cols-2 gap-4">
-            {[
-              {
-                href: siteConfig.calendly,
-                icon: Calendar,
-                title: "Book a Call",
-                sub: "Free 20 min discovery call",
-                external: true,
-              },
-              {
-                href: siteConfig.whatsappLink,
-                icon: MessageCircle,
-                title: "WhatsApp",
-                sub: siteConfig.phoneDisplay,
-                external: true,
-              },
-              {
-                href: `mailto:${siteConfig.email}`,
-                icon: Mail,
-                title: "Email",
-                sub: siteConfig.email,
-              },
-              {
-                href: `tel:${siteConfig.phone}`,
-                icon: Phone,
-                title: "Call",
-                sub: siteConfig.phoneDisplay,
-              },
-            ].map((c) => {
-              const Icon = c.icon
+      <section id="how-it-works" className="border-y border-[#d9cdbd]/80 bg-white/45 dark:border-border/50 dark:bg-muted/10">
+        <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+          <div className="max-w-2xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1a8a93] dark:text-accent">How it works</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Scan the reviews. Diagnose the friction. Fix one thing.</h2>
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-3">
+            {steps.map((step, index) => {
+              const Icon = step.icon
               return (
-                <motion.a
-                  key={c.title}
-                  variants={fadeUp}
-                  whileHover={{ y: -3 }}
-                  transition={{ type: "spring", stiffness: 350, damping: 22 }}
-                  href={c.href}
-                  {...(c.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  className="flex items-center gap-4 p-5 rounded-xl border border-border bg-card hover:border-accent transition-colors"
-                >
-                  <Icon className="w-6 h-6 text-accent shrink-0" />
-                  <div>
-                    <div className="font-semibold">{c.title}</div>
-                    <div className="text-sm text-muted-foreground">{c.sub}</div>
+                <div key={step.title} className="rounded-2xl border border-[#d9cdbd] bg-[#fffaf1] p-6 shadow-sm dark:border-border dark:bg-card">
+                  <div className="flex items-center justify-between">
+                    <div className="rounded-xl bg-[#eaf7f6] p-3 text-[#0f7178] dark:bg-accent/10 dark:text-accent"><Icon className="h-5 w-5" /></div>
+                    <span className="font-mono-anchor text-xs text-[#8a7357] dark:text-muted-foreground">0{index + 1}</span>
                   </div>
-                </motion.a>
+                  <h3 className="mt-6 text-xl font-semibold">{step.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[#56657a] dark:text-muted-foreground">{step.body}</p>
+                </div>
               )
             })}
-          </motion.div>
+          </div>
         </div>
-      </Section>
+      </section>
+
+      <section id="founder-pilot" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+        <div className="max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1a8a93] dark:text-accent">The offer</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Start free. Then fix one revenue leak in a 7-day founder pilot.</h2>
+        </div>
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <article className="rounded-[1.75rem] border border-[#d9cdbd] bg-white p-7 shadow-sm dark:border-border dark:bg-card">
+            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-[#1a8a93] dark:text-accent">Free Anchor Scan</div>
+            <div className="mt-4 flex items-end gap-3"><span className="text-5xl font-semibold tracking-tight">Free</span><span className="pb-2 text-sm text-muted-foreground">1-page diagnostic</span></div>
+            <p className="mt-5 text-[#485a70] dark:text-muted-foreground">Built from public reviews so you can see what customers love, where friction repeats, and what questions to ask next.</p>
+            <Button asChild className="mt-7 rounded-xl bg-[#0a3047] text-white hover:bg-[#124861] dark:bg-accent dark:text-accent-foreground">
+              <a href={scanMailto}>Request scan <Mail className="ml-2 h-4 w-4" /></a>
+            </Button>
+          </article>
+
+          <article className="rounded-[1.75rem] border-2 border-[#0f7178] bg-[#0a3047] p-7 text-white shadow-xl shadow-[#0a3047]/15 dark:border-accent dark:bg-card">
+            <div className="text-sm font-semibold uppercase tracking-[0.18em] text-[#80d8d8] dark:text-accent">Review-to-Revenue Sprint</div>
+            <div className="mt-4 flex flex-wrap items-end gap-3"><span className="text-5xl font-semibold tracking-tight">$750</span><span className="pb-2 text-sm text-white/75">founder pilot · 7 days</span></div>
+            <p className="mt-5 text-white/82 dark:text-muted-foreground">For Guam SMBs with public reviews: turn one recurring customer complaint into one practical AI-assisted workflow, template, or tool.</p>
+            <ul className="mt-6 space-y-3 text-sm text-white/88 dark:text-foreground/90">
+              {[
+                "Free Anchor Scan diagnostic",
+                "15-minute owner walkthrough",
+                "One selected business problem to fix",
+                "One workflow/template/tool delivered in 7 days",
+                "Simple before/after success metric",
+              ].map((item) => (
+                <li key={item} className="flex gap-3"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#80d8d8] dark:text-accent" />{item}</li>
+              ))}
+            </ul>
+            <Button asChild className="mt-7 rounded-xl bg-white text-[#0a3047] hover:bg-[#f6f1e8] dark:bg-accent dark:text-accent-foreground">
+              <a href={siteConfig.calendly} target="_blank" rel="noopener noreferrer">Book walkthrough <ArrowRight className="ml-2 h-4 w-4" /></a>
+            </Button>
+          </article>
+        </div>
+      </section>
+
+      <section className="border-y border-[#d9cdbd]/80 bg-white/45 dark:border-border/50 dark:bg-muted/10">
+        <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1a8a93] dark:text-accent">Sprint outputs</p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Concrete, low-risk fixes. Not vague AI consulting.</h2>
+              <p className="mt-4 text-[#485a70] dark:text-muted-foreground">The sprint focuses on one practical asset your team can use immediately.</p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {sprintOutputs.map((output) => (
+                <div key={output} className="rounded-xl border border-[#d9cdbd] bg-[#fffaf1] px-4 py-3 text-sm font-medium dark:border-border dark:bg-card">{output}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="use-cases" className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1a8a93] dark:text-accent">Example use cases</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Built around the kinds of businesses owners run here.</h2>
+        </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {useCases.map(([title, body]) => (
+            <div key={title} className="rounded-2xl border border-[#d9cdbd] bg-white p-5 dark:border-border dark:bg-card">
+              <h3 className="font-semibold">{title}</h3>
+              <p className="mt-3 text-sm leading-6 text-[#56657a] dark:text-muted-foreground">{body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6 pb-16 lg:px-8">
+        <div className="grid gap-8 rounded-[2rem] border border-[#d9cdbd] bg-[#fffaf1] p-7 shadow-sm dark:border-border dark:bg-card md:grid-cols-[0.75fr_1.25fr] md:p-9">
+          <div className="flex items-center gap-3">
+            <div className="rounded-2xl bg-[#e8ded0] p-4 text-[#0a3047] dark:bg-accent/10 dark:text-accent"><Compass className="h-7 w-7" /></div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#1a8a93] dark:text-accent">Founder-led</p>
+              <h2 className="mt-1 text-2xl font-semibold">Adam at Anchor Marianas</h2>
+            </div>
+          </div>
+          <p className="text-lg leading-8 text-[#405169] dark:text-muted-foreground">
+            I’m Adam, founder of Anchor Marianas. I’m building practical AI tools for Pacific businesses, starting with simple review diagnostics and 7-day workflow sprints that help owners save time, reduce customer friction, and capture missed revenue.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-[#071b33] text-white dark:bg-card">
+        <div className="mx-auto max-w-6xl px-6 py-16 text-center lg:px-8">
+          <Sparkles className="mx-auto h-6 w-6 text-[#80d8d8] dark:text-accent" />
+          <h2 className="mx-auto mt-5 max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">Want to see what your reviews are telling you?</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/72">No pitch in the report. Just useful signal from your own customers.</p>
+          <div className="mt-8">
+            <Button asChild size="lg" className="h-12 rounded-xl bg-white px-6 text-base text-[#071b33] hover:bg-[#f6f1e8] dark:bg-accent dark:text-accent-foreground">
+              <a href={scanMailto}>Get a Free Anchor Scan <ArrowRight className="ml-2 h-4 w-4" /></a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#d9cdbd] bg-[#fffaf1]/95 p-3 shadow-2xl backdrop-blur md:hidden dark:border-border dark:bg-background/95">
+        <Button asChild className="w-full rounded-xl bg-[#0a3047] text-white hover:bg-[#124861] dark:bg-accent dark:text-accent-foreground">
+          <a href={scanMailto}>Get a Free Anchor Scan</a>
+        </Button>
+      </div>
     </div>
   )
 }

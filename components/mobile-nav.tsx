@@ -7,11 +7,16 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import siteConfig from "@/content/site.json"
 
+const scanMailto = `mailto:${siteConfig.email}?subject=${encodeURIComponent(
+  "Free Anchor Scan for my business"
+)}&body=${encodeURIComponent(
+  "Hi Adam,\n\nI'd like a Free Anchor Scan for my business.\n\nBusiness name:\nGoogle Maps link:\nContact name:\nBest phone/email:\n\nThanks."
+)}`
+
 const nav = [
-  { href: "/scan", label: "Free Audit" },
-  { href: "/#problems", label: "Problems" },
-  { href: "/#services", label: "Services" },
-  { href: "/#clients", label: "Clients" },
+  { href: "/#how-it-works", label: "How it works" },
+  { href: "/#founder-pilot", label: "$750 Pilot" },
+  { href: "/#use-cases", label: "Use cases" },
   { href: "/careers", label: "Careers" },
 ]
 
@@ -56,13 +61,8 @@ export function MobileNav() {
 
           <div className="mt-auto pt-8 space-y-3">
             <Button className="w-full" asChild>
-              <a
-                href={siteConfig.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-              >
-                Book a Call
+              <a href={scanMailto} onClick={() => setOpen(false)}>
+                Get a Free Anchor Scan
               </a>
             </Button>
             <Button className="w-full" variant="outline" asChild>
