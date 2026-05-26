@@ -7,10 +7,12 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import siteConfig from "@/content/site.json"
 
-const bookUrl = siteConfig.calendly
+const bookUrl = siteConfig.discoveryCal
 
 const nav = [
-  { href: "/careers", label: "Careers" },
+  { href: "/builds", label: "Builds" },
+  { href: "/writing", label: "Writing" },
+  { href: "/anchor", label: "Anchor" },
 ]
 
 export function MobileNav() {
@@ -32,11 +34,8 @@ export function MobileNav() {
               className="font-display text-2xl"
               onClick={() => setOpen(false)}
             >
-              Anchor
+              Adam Pang
             </Link>
-            <div className="text-[10px] uppercase tracking-[0.25em] font-mono-anchor text-muted-foreground mt-1">
-              we ship.
-            </div>
           </div>
 
           <nav className="flex flex-col gap-1 mt-6">
@@ -55,17 +54,7 @@ export function MobileNav() {
           <div className="mt-auto pt-8 space-y-3">
             <Button className="w-full" asChild>
               <a href={bookUrl} onClick={() => setOpen(false)}>
-                Book a 15-minute call
-              </a>
-            </Button>
-            <Button className="w-full" variant="outline" asChild>
-              <a
-                href={siteConfig.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-              >
-                WhatsApp
+                Book a free 30-min discovery call
               </a>
             </Button>
             <div className="text-sm text-muted-foreground space-y-2 pt-2">
@@ -74,12 +63,6 @@ export function MobileNav() {
                 className="block hover:text-foreground"
               >
                 {siteConfig.email}
-              </a>
-              <a
-                href={`tel:${siteConfig.phone}`}
-                className="block hover:text-foreground"
-              >
-                {siteConfig.phoneDisplay}
               </a>
             </div>
           </div>
