@@ -21,9 +21,7 @@ export function Footer() {
             <div className="text-muted-foreground uppercase tracking-wider text-xs mb-3">
               Site
             </div>
-            <a href="/#how-it-works" className="block text-foreground/90 hover:text-accent transition-colors">How it works</a>
-            <a href="/#founder-pilot" className="block text-foreground/90 hover:text-accent transition-colors">$750 Founder Pilot</a>
-            <a href="/#use-cases" className="block text-foreground/90 hover:text-accent transition-colors">Use cases</a>
+            <a href={siteConfig.calendly} className="block text-foreground/90 hover:text-accent transition-colors">Book a call</a>
             <a href="/careers" className="block text-foreground/90 hover:text-accent transition-colors">Careers</a>
           </div>
 
