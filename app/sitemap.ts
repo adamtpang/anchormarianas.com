@@ -1,14 +1,14 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://anchormarianas.com";
+const SITE_URL = "https://adampang.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: SITE_URL,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-  ];
+  const now = new Date();
+  const routes = ["", "/builds", "/writing", "/anchor"];
+  return routes.map((path) => ({
+    url: `${SITE_URL}${path}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: path === "" ? 1 : 0.7,
+  }));
 }

@@ -28,35 +28,33 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Anchor Marianas: Free Anchor Scan for Guam businesses",
+  title: "Adam Pang — Musician. Philosopher. Builder.",
   description:
-    "Turn public customer reviews into one practical AI-assisted workflow in 7 days. Free Anchor Scan diagnostics and $750 Review-to-Revenue Sprint for Guam and Pacific businesses.",
-  metadataBase: new URL("https://anchormarianas.com"),
+    "I diagnose your biggest operational bottleneck, then build you a working AI cure in 5 days. AI Build Sprints by Adam Pang.",
+  metadataBase: new URL("https://adampang.com"),
   keywords: [
-    "Anchor Scan",
-    "Google Maps review analysis",
-    "Guam AI workflows",
-    "customer review diagnostics",
-    "software development",
+    "Adam Pang",
+    "AI Build Sprints",
+    "AI consultant",
     "Guam",
-    "Pacific",
+    "Anchor Marianas",
   ],
   authors: [{ name: "Adam Tomas Pangelinan" }],
-  creator: "Anchor Marianas LLC",
+  creator: "Adam Pang",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://anchormarianas.com",
-    title: "Anchor Marianas: Free Anchor Scan for Guam businesses",
+    url: "https://adampang.com",
+    title: "Adam Pang — Musician. Philosopher. Builder.",
     description:
-      "Free customer review diagnostics and a $750 Review-to-Revenue Sprint for Guam and Pacific businesses.",
-    siteName: "Anchor",
+      "I diagnose your biggest operational bottleneck, then build you a working AI cure in 5 days.",
+    siteName: "Adam Pang",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anchor Marianas: Free Anchor Scan for Guam businesses",
+    title: "Adam Pang — Musician. Philosopher. Builder.",
     description:
-      "Free customer review diagnostics and a $750 Review-to-Revenue Sprint for Guam and Pacific businesses.",
+      "I diagnose your biggest operational bottleneck, then build you a working AI cure in 5 days.",
     creator: "@adamtpang",
   },
   robots: { index: true, follow: true },

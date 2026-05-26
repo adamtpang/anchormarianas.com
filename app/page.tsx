@@ -1,6 +1,13 @@
+import Link from "next/link"
 import siteConfig from "@/content/site.json"
 
-const bookUrl = siteConfig.calendly
+const bookUrl = siteConfig.discoveryCal
+
+export const metadata = {
+  title: "Adam Pang — Musician. Philosopher. Builder.",
+  description:
+    "I diagnose your biggest operational bottleneck, then build you a working AI cure in 5 days.",
+}
 
 export default function HomePage() {
   return (
@@ -8,86 +15,76 @@ export default function HomePage() {
       <style>{`:root{--ink:#0b3b5c}`}</style>
 
       {/* Hero */}
-      <section className="mx-auto max-w-3xl px-6 pt-24 pb-20 sm:pt-32 sm:pb-28">
-        <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
-          Anchor · Built on Guam
-        </p>
-        <h1 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-          AI workflows for Guam businesses.
-          <span className="block text-neutral-500">Fixed price. Shipped in 7 days.</span>
+      <section className="mx-auto max-w-3xl px-6 pt-20 pb-16 sm:pt-32 sm:pb-24">
+        <h1 className="text-balance text-5xl font-semibold leading-[1.05] tracking-tight sm:text-7xl">
+          Adam Pang
         </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-neutral-600">
-          One workflow that saves your team real hours. $750. If it doesn&rsquo;t help, you don&rsquo;t pay.
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-700 sm:text-xl">
+          Musician. Philosopher. Builder. I diagnose your biggest operational bottleneck, then build you a working AI cure in 5 days.
         </p>
-        <div className="mt-10">
+
+        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
           <a
             href={bookUrl}
             className="inline-flex items-center justify-center rounded-full bg-[var(--ink)] px-8 py-4 text-base font-semibold text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ink)] focus-visible:ring-offset-2"
           >
-            Book a 15-minute call
+            Book a free 30-min discovery call
           </a>
-          <p className="mt-3 text-sm text-neutral-500">
-            Free. No pitch deck. We talk about your business and one thing AI could fix.
+          <p className="text-sm text-neutral-600">
+            Or see what I build{" "}
+            <Link href="/builds" className="underline underline-offset-4 hover:text-neutral-900">
+              → /builds
+            </Link>
           </p>
         </div>
       </section>
 
-      {/* What you get */}
+      {/* Pillars */}
       <section className="border-t border-neutral-200">
-        <div className="mx-auto max-w-3xl px-6 py-20">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            What $750 buys you
-          </h2>
-          <ul className="mt-8 space-y-5 text-lg leading-relaxed text-neutral-700">
-            <li>One AI workflow that removes repeated manual work in your business.</li>
-            <li>Built and shipped in 7 days. Walkthrough video and two cleanup passes included.</li>
-            <li>Fixed $750. Pay after we ship. If it doesn&rsquo;t help, you don&rsquo;t pay.</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Who it's for */}
-      <section className="border-t border-neutral-200 bg-neutral-50">
-        <div className="mx-auto max-w-3xl px-6 py-20">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Who this is for</h2>
-          <p className="mt-4 text-lg leading-relaxed text-neutral-600">
-            Small businesses in Guam and the Marianas with too much manual work and not enough hours.
-            Hotels, tour and dive operators, restaurants, retail, local services.
-          </p>
-        </div>
-      </section>
-
-      {/* Founder + CTA */}
-      <section className="border-t border-neutral-200">
-        <div className="mx-auto max-w-3xl px-6 py-20">
-          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Built by Adam Pangelinan
-          </h2>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-neutral-600">
-            Local founder on Guam. I build the workflow with you, ship it in a week, and stick around to make sure it actually saves time.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
-            <a
-              href={bookUrl}
-              className="inline-flex items-center justify-center rounded-full bg-[var(--ink)] px-8 py-4 text-base font-semibold text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ink)] focus-visible:ring-offset-2"
-            >
-              Book a 15-minute call
-            </a>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="text-neutral-700 underline-offset-4 hover:underline"
-            >
-              {siteConfig.email}
-            </a>
-            <a
-              href={siteConfig.whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-700 underline-offset-4 hover:underline"
-            >
-              WhatsApp
-            </a>
+        <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20 grid gap-12 sm:grid-cols-3">
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Music</h2>
+            <p className="mt-4 text-base leading-relaxed text-neutral-700">
+              {/* TODO */}I write and record songs from Guam. Quiet, patient music about ocean, family, and time.
+            </p>
           </div>
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Philosophy</h2>
+            <p className="mt-4 text-base leading-relaxed text-neutral-700">
+              {/* TODO */}I think and write about agency, attention, and what it means to live well in an accelerating world. Short essays, no jargon.
+            </p>
+          </div>
+          <div>
+            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">Business</h2>
+            <p className="mt-4 text-base leading-relaxed text-neutral-700">
+              {/* TODO */}I run AI Build Sprints: 5 days, one bottleneck, one working artifact. Past work includes{" "}
+              <Link href="/anchor" className="underline underline-offset-4 hover:text-neutral-900">Anchor Marianas</Link>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Links */}
+      <section className="border-t border-neutral-200 bg-neutral-50">
+        <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20 space-y-4 text-lg">
+          <p>
+            <Link href="/builds" className="font-semibold underline underline-offset-4 hover:text-neutral-900">
+              AI Build Sprints →
+            </Link>{" "}
+            <span className="text-neutral-600">5-day diagnosis + build. $500 flat.</span>
+          </p>
+          <p>
+            <Link href="/anchor" className="font-semibold underline underline-offset-4 hover:text-neutral-900">
+              Anchor Marianas →
+            </Link>{" "}
+            <span className="text-neutral-600">Productized AI for Guam businesses. Currently paused.</span>
+          </p>
+          <p>
+            <Link href="/writing" className="font-semibold underline underline-offset-4 hover:text-neutral-900">
+              Writing →
+            </Link>{" "}
+            <span className="text-neutral-600">Essays on agency, building, and the Pacific.</span>
+          </p>
         </div>
       </section>
     </div>

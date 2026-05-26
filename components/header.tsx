@@ -5,10 +5,12 @@ import siteConfig from "@/content/site.json"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
-const bookUrl = siteConfig.calendly
+const bookUrl = siteConfig.discoveryCal
 
 const nav = [
-  { href: "/careers", label: "Careers" },
+  { href: "/builds", label: "Builds" },
+  { href: "/writing", label: "Writing" },
+  { href: "/anchor", label: "Anchor" },
 ]
 
 export function Header() {
@@ -18,10 +20,7 @@ export function Header() {
         <div className="flex h-14 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <span className="font-display text-xl tracking-tight group-hover:text-accent transition-colors">
-              Anchor
-            </span>
-            <span className="hidden sm:inline-flex items-center text-[10px] uppercase tracking-[0.25em] font-mono-anchor text-muted-foreground">
-              we&nbsp;ship.
+              Adam Pang
             </span>
           </Link>
 
