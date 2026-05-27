@@ -21,7 +21,7 @@ export default function AnchorPage() {
             <strong>Anchor Marianas</strong> — a project by Adam Pang. Currently paused.
           </span>
           <Link href="/" className="underline underline-offset-4 hover:text-neutral-900">
-            ← back to adampang.com
+            ← back to anchormarianas.com
           </Link>
         </div>
       </div>
