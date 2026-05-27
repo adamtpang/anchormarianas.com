@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   title: "Adam Pang — Musician. Philosopher. Builder.",
   description:
     "I diagnose your biggest operational bottleneck, then build you a working AI cure in 5 days. AI Build Sprints by Adam Pang.",
-  metadataBase: new URL("https://adampang.com"),
+  metadataBase: new URL("https://anchormarianas.com"),
   keywords: [
     "Adam Pang",
     "AI Build Sprints",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://adampang.com",
+    url: "https://anchormarianas.com",
     title: "Adam Pang — Musician. Philosopher. Builder.",
     description:
       "I diagnose your biggest operational bottleneck, then build you a working AI cure in 5 days.",
