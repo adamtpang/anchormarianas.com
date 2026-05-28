@@ -4,7 +4,7 @@ const SITE_URL = "https://anchormarianas.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const routes = ["", "/builds", "/writing", "/anchor"];
+  const routes = ["", "/work", "/about"];
   return routes.map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,

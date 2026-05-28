@@ -10,9 +10,8 @@ import siteConfig from "@/content/site.json"
 const bookUrl = siteConfig.discoveryCal
 
 const nav = [
-  { href: "/builds", label: "Builds" },
-  { href: "/writing", label: "Writing" },
-  { href: "/anchor", label: "Anchor" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
 ]
 
 export function MobileNav() {
@@ -34,7 +33,7 @@ export function MobileNav() {
               className="font-display text-2xl"
               onClick={() => setOpen(false)}
             >
-              Adam Pang
+              Anchor Marianas
             </Link>
           </div>
 
@@ -54,7 +53,7 @@ export function MobileNav() {
           <div className="mt-auto pt-8 space-y-3">
             <Button className="w-full" asChild>
               <a href={bookUrl} onClick={() => setOpen(false)}>
-                Book a free 30-min discovery call
+                Book the untangling call
               </a>
             </Button>
             <div className="text-sm text-muted-foreground space-y-2 pt-2">
