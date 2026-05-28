@@ -8,9 +8,8 @@ import { ThemeToggle } from "@/components/theme-toggle"
 const bookUrl = siteConfig.discoveryCal
 
 const nav = [
-  { href: "/builds", label: "Builds" },
-  { href: "/writing", label: "Writing" },
-  { href: "/anchor", label: "Anchor" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
 ]
 
 export function Header() {
@@ -20,7 +19,7 @@ export function Header() {
         <div className="flex h-14 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <span className="font-display text-xl tracking-tight group-hover:text-accent transition-colors">
-              Adam Pang
+              Anchor Marianas
             </span>
           </Link>
 
@@ -39,7 +38,7 @@ export function Header() {
               href={bookUrl}
               className="font-semibold bg-foreground text-background px-4 py-2 rounded-lg hover:bg-foreground/90 transition-colors"
             >
-              Book a call
+              Book the call
             </a>
           </nav>
 

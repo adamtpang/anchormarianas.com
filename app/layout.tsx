@@ -27,34 +27,36 @@ const geistMono = Geist_Mono({
   display: "swap",
 })
 
+const title = "Anchor Marianas — 5-day AI builds for founders, creators, and operators"
+const description =
+  "Sit with us for 30 minutes. We find the knot in your work and ship the AI piece that unties it in 5 days."
+
 export const metadata: Metadata = {
-  title: "Adam Pang — Musician. Philosopher. Builder.",
-  description:
-    "I diagnose your biggest operational bottleneck, then build you a working AI cure in 5 days. AI Build Sprints by Adam Pang.",
+  title,
+  description,
   metadataBase: new URL("https://anchormarianas.com"),
   keywords: [
-    "Adam Pang",
-    "AI Build Sprints",
-    "AI consultant",
-    "Guam",
     "Anchor Marianas",
+    "AI build sprint",
+    "AI for founders",
+    "AI for creators",
+    "AI for operators",
+    "5-day AI build",
   ],
-  authors: [{ name: "Adam Tomas Pangelinan" }],
-  creator: "Adam Pang",
+  authors: [{ name: "Anchor Marianas" }],
+  creator: "Anchor Marianas",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://anchormarianas.com",
-    title: "Adam Pang — Musician. Philosopher. Builder.",
-    description:
-      "I diagnose your biggest operational bottleneck, then build you a working AI cure in 5 days.",
-    siteName: "Adam Pang",
+    title,
+    description,
+    siteName: "Anchor Marianas",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adam Pang — Musician. Philosopher. Builder.",
-    description:
-      "I diagnose your biggest operational bottleneck, then build you a working AI cure in 5 days.",
+    title,
+    description,
     creator: "@adamtpang",
   },
   robots: { index: true, follow: true },
