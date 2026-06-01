@@ -1,0 +1,263 @@
+/* ──────────────────────────────────────────────────────────────────
+   ANCHOR MARIANAS · Design tokens
+   Operated by Adam Tomas Pangelinan from Guam · 11°22′N 142°35′E
+   Closer to Challenger Deep than to any continent.
+   ────────────────────────────────────────────────────────────────── */
+
+/* ─── Web fonts (Google Fonts mirrors of the next/font stack) ─── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&display=swap");
+
+:root,
+.light {
+  /* Editorial / cream paper · default-light surface
+     reads like Stripe Press, not generic SaaS. */
+  --bg:               #fbf6ee;          /* warm cream paper      30 30% 97% */
+  --bg-elev:          #fefbf5;          /* near-pure cream card */
+  --bg-soft:          #f1ebde;          /* secondary block       30 18% 92% */
+  --fg:               #051a2f;          /* deep navy ink         220 80% 8% */
+  --fg-soft:          #46556a;          /* muted ink             220 25% 35% */
+  --fg-faint:         #6e7a8a;
+  --accent:           #0e2d5c;          /* deep navy ink accent  220 75% 22% */
+  --accent-fg:        #fbf6ee;
+  --border:           #d6cebc;          /* hairline on cream     30 18% 87% */
+  --border-strong:    #b6ad99;
+  --depth-glow:       #0e2d5c;          /* sonar in light theme */
+  --surface-overlay:  rgba(5, 26, 47, 0.04);
+  --destructive:      #b9341f;
+
+  --radius:           0.5rem;           /* 8px, site-wide       */
+  --radius-pill:      9999px;
+  --radius-sm:        0.375rem;         /* radius - 2 */
+  --radius-xs:        0.25rem;          /* radius - 4 */
+}
+
+.dark {
+  /* Abyssal / near-black with deep navy undertone.
+     Accent is bioluminescent teal, the only color that
+     glows below the photic zone. Use sparingly. */
+  --bg:               #060c19;          /* abyssal              220 50% 4% */
+  --bg-elev:          #0a1322;          /* card surface         220 45% 6% */
+  --bg-soft:          #111b2d;          /* secondary block      220 35% 10% */
+  --fg:               #f1f5f7;          /* foam white           200 20% 96% */
+  --fg-soft:          #9bb1be;          /* muted               200 15% 65% */
+  --fg-faint:         #6f8492;
+  --accent:           #21e3f0;          /* bioluminescent teal  180 85% 55% */
+  --accent-fg:        #060c19;
+  --border:           #1d2a40;          /* hairline             220 25% 14% */
+  --border-strong:    #2b3c57;
+  --depth-glow:       #21e3f0;
+  --surface-overlay:  rgba(33, 227, 240, 0.06);
+  --destructive:      #cc3d3d;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   Production crosswalk (single source of truth)
+
+   The live site (app/globals.css) is authoritative. It declares the
+   SAME palette as shadcn HSL triplets, consumed with hsl(var(--token)).
+   This file mirrors that palette as hex so a standalone artifact (a
+   deck, a mock, a one-off HTML file with no Tailwind) is drop-in.
+   Same palette, two formats. Map either direction with this table.
+
+   skill token (hex)   production token        HSL triplet (authoritative)
+   LIGHT
+   --bg       #fbf6ee  --background            30 30% 97%
+   --bg-elev  #fefbf5  --card / --popover      30 35% 99%
+   --bg-soft  #f1ebde  --muted / --secondary   30 18% 92%
+   --fg       #051a2f  --foreground            220 80% 8%
+   --fg-soft  #46556a  --muted-foreground      220 25% 35%
+   --accent   #0e2d5c  --accent / --ring       220 75% 22%
+   --accent-fg#fbf6ee  --accent-foreground     30 30% 97%
+   --border   #d6cebc  --border / --input      30 18% 87%
+   DARK
+   --bg       #060c19  --background            220 50% 4%
+   --bg-elev  #0a1322  --card / --popover      220 45% 6%
+   --bg-soft  #111b2d  --muted / --secondary   220 35% 10%
+   --fg       #f1f5f7  --foreground            200 20% 96%
+   --fg-soft  #9bb1be  --muted-foreground      200 15% 65%
+   --accent   #21e3f0  --accent / --ring       180 85% 55%
+   --accent-fg#060c19  --accent-foreground     220 50% 4%
+   --border   #1d2a40  --border / --input      220 25% 14%
+
+   Production code: use the shadcn tokens (bg-background, text-muted-
+   foreground, hsl(var(--accent))). Standalone artifact: use the hex
+   tokens above. The class names .font-display-italic and
+   .font-mono-anchor below match the live site's class names exactly.
+   ────────────────────────────────────────────────────────────────── */
+
+/* ─── Brand mark color (logo-only, do NOT use as UI accent) ─── */
+:root {
+  --brand-anchor:     #4301ff;          /* electric indigo, literal logo color */
+}
+
+/* ─── Typography stack ─── */
+:root {
+  --font-sans:        "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display:     "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-mono:        "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* ─── Semantic type scale ─── */
+.font-sans       { font-family: var(--font-sans); }
+.font-display    { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
+.font-display-i  { font-family: var(--font-display); font-weight: 400; font-style: italic; letter-spacing: -0.005em; }
+.font-mono       { font-family: var(--font-mono); font-feature-settings: "ss02" 1, "tnum" 1; }
+
+/* Aliases that match the live site's class names exactly (app/globals.css).
+   Use these in production-bound markup so lifted components drop straight in. */
+.font-display-italic { font-family: var(--font-display); font-weight: 400; font-style: italic; letter-spacing: -0.005em; }
+.font-mono-anchor    { font-family: var(--font-mono); font-feature-settings: "ss02" 1, "tnum" 1; }
+
+.t-hero {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(2.5rem, 5vw + 1rem, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.t-hero-serif {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 5.5vw + 1rem, 4.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.t-h1 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.t-h2 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 2rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.t-h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+.t-body-lg {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+.t-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+.t-small {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+.t-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--fg-soft);
+}
+.t-coord {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: var(--fg-soft);
+  font-feature-settings: "tnum" 1, "ss02" 1;
+}
+.t-code {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+/* ─── Spacing scale (matches Tailwind 4 / shadcn convention) ─── */
+:root {
+  --space-0:  0;
+  --space-1:  0.25rem;   /* 4  */
+  --space-2:  0.5rem;    /* 8  */
+  --space-3:  0.75rem;   /* 12 */
+  --space-4:  1rem;      /* 16 */
+  --space-6:  1.5rem;    /* 24 */
+  --space-8:  2rem;      /* 32 */
+  --space-10: 2.5rem;    /* 40 */
+  --space-12: 3rem;      /* 48 */
+  --space-16: 4rem;      /* 64 */
+  --space-20: 5rem;      /* 80 */
+  --space-24: 6rem;      /* 96 */
+}
+
+/* ─── Elevation · matches shadcn shadow scale ─── */
+:root {
+  --shadow-sm:  0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08);
+  --shadow-md:  0 4px 6px -1px rgb(0 0 0 / 0.10), 0 2px 4px -2px rgb(0 0 0 / 0.10);
+  --shadow-lg:  0 10px 15px -3px rgb(0 0 0 / 0.10), 0 4px 6px -4px rgb(0 0 0 / 0.10);
+  --shadow-xl:  0 20px 25px -5px rgb(0 0 0 / 0.12), 0 10px 10px -5px rgb(0 0 0 / 0.06);
+
+  /* Bioluminescent halo · dark theme only. Use very sparingly. */
+  --glow-teal-sm: 0 0 12px rgb(33 227 240 / 0.35);
+  --glow-teal-md: 0 0 28px rgb(33 227 240 / 0.45);
+}
+
+/* ─── Sonar pulse · brand signature motion ─── */
+@keyframes anchor-sonar {
+  0%   { transform: scale(0.5); opacity: 0.9; }
+  80%  { transform: scale(2.4); opacity: 0;   }
+  100% { transform: scale(2.4); opacity: 0;   }
+}
+.sonar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+.sonar::before, .sonar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 1px solid var(--depth-glow);
+  animation: anchor-sonar 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+.sonar::after { animation-delay: 1.3s; }
+.sonar > span {
+  width: 0.4rem; height: 0.4rem;
+  background: var(--depth-glow);
+  border-radius: 9999px;
+  box-shadow: 0 0 12px var(--depth-glow);
+}
+
+/* ─── Depth veil · subtle radial gradient hint, dark sections ─── */
+.depth-veil {
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    var(--surface-overlay),
+    transparent 70%
+  );
+}
+
+/* ─── Smooth theme transitions (interactive elements only, body bg swaps instantly so var() updates resolve reliably) ─── */
+html { color-scheme: light dark; }
+button, a, [class*="border-"] {
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}

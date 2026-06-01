@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 26px 32px; box-sizing: border-box; }
+  .head { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-soft); margin: 0 0 18px; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #0e2d5c; color: #fbf6ee;
+    border: 0; cursor: pointer;
+    border-radius: 9999px;
+    padding: 14px 28px;
+    font: 600 14px/1 var(--font-sans);
+    transition: opacity 150ms ease;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-outline {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; color: var(--fg);
+    border: 1px solid var(--border-strong);
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 13px 22px;
+    font: 500 14px/1 var(--font-sans);
+    transition: background 150ms ease, color 150ms ease;
+  }
+  .btn-outline:hover { background: #0e2d5c; color: #fbf6ee; border-color: #0e2d5c; }
+  .btn-link {
+    background: transparent; border: 0; cursor: pointer; padding: 4px 0;
+    font: 500 14px/1 var(--font-sans);
+    color: var(--fg);
+    text-decoration: underline; text-underline-offset: 4px;
+  }
+  .btn-link:hover { color: var(--accent); }
+  .arr { margin-left: 8px; }
+  .note { font-family: var(--font-sans); font-size: 12px; color: var(--fg-soft); margin-top: 14px; }
+</style>
+</head>
+<body>
+  <p class="head">Buttons · light</p>
+  <div class="row">
+    <button class="btn-primary">Book the untangling call <span class="arr">→</span></button>
+    <button class="btn-outline">See case studies</button>
+    <button class="btn-link">Or read the case studies →</button>
+  </div>
+  <p class="note">Primary is the full pill, deep-navy fill, white type. Hover dims to 90% opacity, never darkens.</p>
+</body>
+</html>

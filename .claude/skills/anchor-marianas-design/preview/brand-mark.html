@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 24px 32px; box-sizing: border-box; }
+  .row { display: flex; align-items: center; gap: 32px; }
+  .mark {
+    width: 110px; height: 110px;
+    display: flex; align-items: center; justify-content: center;
+    background: #fefbf5;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .mark img { width: 70%; height: 70%; object-fit: contain; }
+  .meta { display: flex; flex-direction: column; gap: 6px; }
+  .name { font-family: var(--font-display); font-size: 32px; letter-spacing: -0.01em; line-height: 1; }
+  .swatch-row { display: flex; gap: 8px; margin-top: 8px; }
+  .sw { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; color: var(--fg-soft); }
+  .sw .dot { width: 14px; height: 14px; border-radius: 3px; border: 1px solid var(--border); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="mark"><img src="../assets/logo-anchor.png" alt="Anchor mark" /></div>
+    <div class="meta">
+      <span class="t-eyebrow">Brand mark</span>
+      <span class="name">Anchor Marianas</span>
+      <div class="swatch-row">
+        <span class="sw"><span class="dot" style="background:#4301ff;border-color:#4301ff;"></span>#4301ff · electric indigo</span>
+      </div>
+      <span class="t-coord">11°22′N&nbsp;&nbsp;142°35′E · Guam</span>
+    </div>
+  </div>
+</body>
+</html>
