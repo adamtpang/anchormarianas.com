@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #060c19; }
+  body { font-family: var(--font-sans); color: #f1f5f7; padding: 26px 32px; box-sizing: border-box; }
+  .head { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9bb1be; margin: 0 0 18px; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #f1f5f7; color: #060c19;
+    border: 0; cursor: pointer;
+    border-radius: 8px;
+    padding: 12px 22px;
+    font: 600 14px/1 var(--font-sans);
+    transition: opacity 150ms ease;
+  }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-accent {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; color: #21e3f0;
+    border: 1px solid #21e3f0;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 11px 20px;
+    font: 500 14px/1 var(--font-sans);
+    box-shadow: 0 0 28px rgba(33,227,240,0.18);
+    transition: background 150ms ease, color 150ms ease;
+  }
+  .btn-accent:hover { background: #21e3f0; color: #060c19; }
+  .btn-link {
+    background: transparent; border: 0; cursor: pointer; padding: 4px 0;
+    font: 500 14px/1 var(--font-sans);
+    color: #f1f5f7;
+    text-decoration: underline; text-underline-offset: 4px;
+  }
+  .btn-link:hover { color: #21e3f0; }
+  .arr { margin-left: 8px; }
+  .note { font-family: var(--font-sans); font-size: 12px; color: #9bb1be; margin-top: 14px; }
+</style>
+</head>
+<body>
+  <p class="head">Buttons · dark</p>
+  <div class="row">
+    <button class="btn-primary">Book the call <span class="arr">→</span></button>
+    <button class="btn-accent">Run a free scan</button>
+    <button class="btn-link">See work →</button>
+  </div>
+  <p class="note">Primary is foam-white pill in dark mode. The teal-outline variant is for accent CTAs only, one per screen.</p>
+</body>
+</html>

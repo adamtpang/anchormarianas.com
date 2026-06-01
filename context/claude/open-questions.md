@@ -8,8 +8,8 @@ Technical/implementation questions for Cofounder agents or the user to weigh in 
 
 - **Deployment of record.** `.vercel/project.json` is Vercel project `anchormarianas.com` (`prj_Dz3Ej8...`), production tracks `main` (origin default HEAD), and there is no `prod` branch. The Claude-lane task brief referenced a cofounder.ai-managed Vercel project `anchor-bbb827` with a `prod` production branch, and a cofounder.co repo-migration was attempted in a prior session but errored ("Import Needs Changes: no managed Vercel project to relink"). Which is the deployment of record going forward: the existing Vercel `anchormarianas.com` on `main`, or a cofounder-managed `anchor-bbb827` on `prod`? `implementation-notes.md` currently documents the verified repo reality.
 
-- **No CI gate.** There are no `.github/workflows`, so a "green" PR means mergeable only, with no typecheck or build check. Worth adding a minimal CI (tsc/next build) before "merge when green" can be trusted as a quality gate.
+- **Homepage direction: keyframe pass vs Cofounder business-first rebrand.** This session produced a keyframe.agency-inspired homepage treatment (floating CTA, bigger-agency-vs-Anchor comparison panel) on the AI Reception Pilot homepage. In parallel, Cofounder shipped a business-first rebrand to `origin/main` (PR #19), plus a "revnu-style single-action layout" and a "Review-to-Revenue Sprint" offer, which replaced that homepage with a light/neutral single-offer design. The two directions diverge (dual-theme abyssal/teal editorial vs light single-action revnu style). Which is canonical? Until decided, Claude shipped only non-homepage parts. The design-system skill encodes the dual-theme editorial system; if the revnu rebrand is canonical, the skill's visual direction may need reconciling.
 
 ## Recently resolved
 
-- (none yet)
+- **No CI gate** -> RESOLVED (2026-06-01). `origin/main` now has CI (visible in the rebrand history, e.g. "Fix CI checks for landing page PR"). PRs now get an automated check, so "merge when green" is meaningful.

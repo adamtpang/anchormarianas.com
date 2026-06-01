@@ -2,6 +2,14 @@
 
 Append-only rolling log. One entry per substantive Claude Code or Claude Chat session. Newest at top.
 
+## 2026-06-01 — Design-system skill + standardization, plus a cross-tool collision
+
+- Imported the Anchor Marianas design-system kit from Adam's desktop as a project skill at `.claude/skills/anchor-marianas-design/` (56 files: SKILL.md, README, `colors_and_type.css`, assets, content JSON, 28 preview cards, a React UI kit).
+- Standardized it: added a production-token crosswalk and `.font-display-italic` / `.font-mono-anchor` class aliases to the skill CSS, lifted the semantic type scale (`.t-*`) into `app/globals.css` as additive utilities so app and skill share one type vocabulary, purged every em and en dash skill-wide, flipped the skill's contradictory "em dashes everywhere" rule to "no em dashes ever" (matches Adam's standing style rule), fixed stale dead-client partner references (Prospera, Network School, IDI) to Hilton-only, and fixed a `#0b3b5c` color typo.
+- Also did a keyframe.agency-inspired homepage UX pass (a persistent floating CTA, a bigger-agency-vs-Anchor comparison panel, copy cuts) on the then-current AI Reception Pilot homepage.
+- Collision found at ship time: this working directory is a fresh clone, local `main` was 15 commits behind `origin/main`, and Cofounder had rebranded production in parallel (PR #19 "Anchor Marianas business-first", plus "revnu-style single-action layout" and a "Review-to-Revenue Sprint"). The keyframe pass was built on a homepage that rebrand superseded, and the keyframe work was never committed so the re-clone wiped it.
+- Per Adam's call, shipped only the safe, additive survivors that do not fight the rebrand: the design-system skill and the `globals.css` type scale, via a branch off current `origin/main`. Did not reconstruct the keyframe homepage onto Cofounder's new design.
+
 ## 2026-05-18 — Anchor Scan v1 build + Claude lane initialized
 
 - Built Anchor Scan v1 end to end as a separate module (existing `/scan` website-audit untouched): swappable `ReviewsSource` interface (Google Places v1 default, Apify/SerpAPI/manual), one Haiku 4.5 analysis call, Markdown + branded printable HTML, JSON-on-disk store, `tsx` CLI (`npm run scan`), and a password-gated `/anchor-scan` web form with `app/api/anchor-scan` route. Project type-checks clean (0 errors). The real "Dusit Beach Resort Guam" run is blocked only on a missing local `ANTHROPIC_API_KEY`; rendering was verified against a synthetic sample artifact.
