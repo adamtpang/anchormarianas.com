@@ -1,13 +1,13 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "AnchorScan — Free AI Diagnostic for Your Business | Anchor",
+  title: "AnchorScan: free AI diagnostic for your business | Anchor",
   description:
-    "Paste your URL. Get your top 3 AI workflow opportunities ranked by dollar impact. Free, instant, no account required.",
+    "Paste your URL. We surface the operational patterns worth a conversation and the questions worth answering. Free, no account, no pitch.",
   openGraph: {
-    title: "AnchorScan — Free AI Diagnostic for Your Business",
+    title: "AnchorScan: free AI diagnostic for your business",
     description:
-      "Paste your URL. Get your top 3 AI workflow opportunities ranked by dollar impact. Free, instant, no account required.",
+      "Paste your URL. We surface the operational patterns worth a conversation and the questions worth answering. Free, no account, no pitch.",
     url: "https://anchormarianas.com/scan",
   },
 }

@@ -2,6 +2,14 @@
 
 Append-only. Newest entries at the top. Technical and implementation decisions made in Claude Code or Claude Chat sessions.
 
+## 2026-06-01 (later)
+
+- **AnchorScan is diagnostic, not prescriptive.** Adam: "anchor scan should be diagnostic." The live `/scan` tool was prescriptive (returned AI-workflow `opportunities` with invented `annualValue`, a "tackle this first" `topRecommendation`, and a `readyForReception` sales flag). Rewrote the system prompt and JSON schema to surface `observations` (evidence-backed patterns), `questions` (demand-led discovery), and a `focus` framed as a question. No invented dollar values, ROI, or percentages; no product prescription. This matches Cofounder's 2026-05-18 demand-led decision. Code: `app/api/scan/route.ts`, `app/scan/page.tsx`, `app/scan/layout.tsx`. Model left as `claude-opus-4-5` (Cofounder's choice).
+
+- **Deployment of record is the existing Vercel `anchormarianas.com` on `main`.** Adam: "use the existing vercel anchormarianas.com one." Dropped the cofounder.ai-managed `anchor-bbb827` / `prod` branch and the cofounder.co repo-migration. Production deploys from GitHub `main` via the existing Vercel GitHub integration (the "Vercel" PR check confirms it).
+
+- **No new CI added; existing CI is sufficient.** Adam: "sure add a minimal CI." On inspection `origin/main` already has it (`.github/workflows/`: frontend-type-check, nextjs-build, frontend-tests as a Biome check, package-security-check). Adding another would be redundant, so none was added. Note: the Biome config currently scopes `files.includes` to `biome.json` only, so the Biome gate does not actually lint app code yet; the real gates are tsc and the Next build.
+
 ## 2026-06-01
 
 - **Design-system skill is the single brand source, standardized against production.** Installed `.claude/skills/anchor-marianas-design/` and made it conform to the live token system rather than inventing a second one. The app's shadcn HSL tokens stay authoritative (every `components/ui/*` depends on them, so no token was renamed). The skill keeps its hex `--bg/--fg/--accent` vocabulary (30 files inside the skill consume it, and hex is correct for standalone artifacts that have no Tailwind), now bridged to production via a documented crosswalk plus `.font-display-italic` / `.font-mono-anchor` class aliases. The semantic type scale (`.t-hero`, `.t-h1`, `.t-eyebrow`, `.t-coord`, etc.) was lifted into `app/globals.css` as additive utilities so both surfaces share one type vocabulary. `globals.css` change is purely additive (0 removed lines).
