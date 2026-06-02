@@ -2,6 +2,13 @@
 
 Append-only rolling log. One entry per substantive Claude Code or Claude Chat session. Newest at top.
 
+## 2026-06-01 — AnchorScan made diagnostic; deployment + CI questions resolved
+
+- Adam answered three open questions. Converted the live `/scan` (AnchorScan) from prescriptive to diagnostic: it no longer returns AI-workflow `opportunities` with invented `annualValue` dollar figures, a "tackle this first" `topRecommendation`, or a `readyForReception` sales flag. It now returns `observations` (evidence-backed operational patterns, each citing what on the site triggered it), `questions` (genuinely diagnostic discovery prompts), and a `focus` framed as a question. The system prompt forbids invented numbers and product prescriptions, in Anchor's voice (no em dashes, no emoji). Files: `app/api/scan/route.ts`, `app/scan/page.tsx`, `app/scan/layout.tsx`.
+- Resolved "deployment of record": the existing Vercel `anchormarianas.com` deploying from GitHub `main` (Adam: "use the existing vercel anchormarianas.com one"). Dropped the cofounder.ai `anchor-bbb827` / `prod` and the cofounder.co migration.
+- Resolved "CI": it already exists on `origin/main` (frontend type-check, Next build, a Biome check, package security, plus Supabase DB workflows). No new workflow needed; confirmed it gates PRs.
+- Verified against current production reality: this and the design-system PR were cut from a fresh worktree off `origin/main`, which Cofounder had rebranded (PR #19). The standalone Anchor Scan reviews tool from a prior session stays wiped; if rebuilt it should follow the same diagnostic shape.
+
 ## 2026-06-01 — Design-system skill + standardization, plus a cross-tool collision
 
 - Imported the Anchor Marianas design-system kit from Adam's desktop as a project skill at `.claude/skills/anchor-marianas-design/` (56 files: SKILL.md, README, `colors_and_type.css`, assets, content JSON, 28 preview cards, a React UI kit).

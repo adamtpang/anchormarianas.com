@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, Loader2, AlertCircle, TrendingUp, Zap, Phone, DollarSign, Calendar } from "lucide-react"
+import { ArrowRight, Loader2, AlertCircle, Calendar, Search, HelpCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import siteConfig from "@/content/site.json"
 
@@ -18,36 +18,18 @@ const stagger = {
   show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
 }
 
-type Opportunity = {
+type Observation = {
   title: string
-  workflow: string
-  impact: string
-  annualValue: string
-  category: "reception" | "sales" | "operations" | "marketing" | "support"
+  detail: string
+  evidence: string
 }
 
 type ScanResult = {
   businessName: string
   businessSummary: string
-  opportunities: Opportunity[]
-  topRecommendation: string
-  readyForReception: boolean
-}
-
-const categoryIcon = {
-  reception: Phone,
-  sales: TrendingUp,
-  operations: Zap,
-  marketing: TrendingUp,
-  support: Phone,
-}
-
-const categoryColor: Record<string, string> = {
-  reception: "text-accent border-accent/30 bg-accent/10",
-  sales: "text-emerald-500 border-emerald-500/30 bg-emerald-500/10",
-  operations: "text-violet-500 border-violet-500/30 bg-violet-500/10",
-  marketing: "text-sky-500 border-sky-500/30 bg-sky-500/10",
-  support: "text-amber-500 border-amber-500/30 bg-amber-500/10",
+  observations: Observation[]
+  questions: string[]
+  focus: string
 }
 
 export default function ScanPage() {
@@ -110,7 +92,7 @@ export default function ScanPage() {
             variants={fadeUp}
             className="font-display text-4xl md:text-6xl leading-[1.05] tracking-tight mb-4 text-balance"
           >
-            What could AI do for{" "}
+            What would we notice about{" "}
             <span className="font-display-italic">your business?</span>
           </motion.h1>
 
@@ -118,8 +100,9 @@ export default function ScanPage() {
             variants={fadeUp}
             className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl"
           >
-            Paste your URL. In under a minute, we surface your top 3 AI workflow
-            opportunities — ranked by dollar impact. No pitch deck. No fluff.
+            Paste your URL. We read your site and surface the operational
+            patterns worth a conversation, plus the questions we would ask. No
+            pitch, no invented numbers. The call is the work.
           </motion.p>
 
           {/* ── Scan form ── */}
@@ -143,7 +126,7 @@ export default function ScanPage() {
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Scanning…
+                    Reading…
                   </>
                 ) : (
                   <>
@@ -164,7 +147,7 @@ export default function ScanPage() {
             />
 
             <p className="text-xs text-muted-foreground/60">
-              Free. No account required. Results in ~45 seconds.
+              Free. No account required. Results in about 45 seconds.
             </p>
           </motion.form>
         </motion.div>
@@ -186,11 +169,11 @@ export default function ScanPage() {
                 </span>
               </div>
               <p className="font-mono-anchor text-xs uppercase tracking-[0.35em] text-muted-foreground">
-                Analyzing…
+                Reading…
               </p>
               <p className="text-sm text-muted-foreground/70">
-                Reviewing your site, mapping AI workflow opportunities, estimating
-                dollar impact.
+                Reading your site, noting how you operate, writing down the
+                questions worth asking.
               </p>
             </div>
           </motion.section>
@@ -242,96 +225,109 @@ export default function ScanPage() {
               </div>
             </section>
 
-            {/* Opportunities */}
+            {/* Observations */}
             <section className="py-16 px-6 border-t border-border/40">
               <div className="max-w-2xl mx-auto space-y-6">
                 <motion.div variants={fadeUp}>
                   <h2 className="font-display text-2xl md:text-3xl tracking-tight">
-                    Top 3 AI opportunities
+                    What we noticed
                   </h2>
                   <p className="text-muted-foreground mt-1 text-sm">
-                    Ranked by estimated annual impact.
+                    Patterns in how you appear to operate. Each one is something
+                    to confirm, not a conclusion.
                   </p>
                 </motion.div>
 
-                {result.opportunities.map((opp, i) => {
-                  const Icon = categoryIcon[opp.category] ?? Zap
-                  const colorClass = categoryColor[opp.category] ?? categoryColor.operations
+                {result.observations.map((obs, i) => (
+                  <motion.div
+                    key={i}
+                    variants={fadeUp}
+                    className="bg-card rounded-xl border border-border p-6 flex flex-col gap-3"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center text-xs font-bold font-mono-anchor shrink-0">
+                        {i + 1}
+                      </div>
+                      <h3 className="font-semibold text-lg leading-tight">
+                        {obs.title}
+                      </h3>
+                    </div>
 
-                  return (
-                    <motion.div
-                      key={i}
-                      variants={fadeUp}
-                      whileHover={{ y: -3 }}
-                      transition={{ type: "spring", stiffness: 350, damping: 22 }}
-                      className="bg-card rounded-xl border border-border p-6 hover:border-accent transition-colors flex flex-col gap-4"
-                    >
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center text-xs font-bold font-mono-anchor shrink-0">
-                            {i + 1}
-                          </div>
-                          <h3 className="font-semibold text-lg leading-tight">{opp.title}</h3>
-                        </div>
-                        <span
-                          className={`shrink-0 text-[10px] uppercase tracking-wider font-mono-anchor border px-2.5 py-1 rounded-full flex items-center gap-1.5 ${colorClass}`}
-                        >
-                          <Icon className="w-3 h-3" />
-                          {opp.category}
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {obs.detail}
+                    </p>
+
+                    {obs.evidence && (
+                      <p className="text-xs text-muted-foreground/70 border-t border-border/60 pt-3 flex items-start gap-2">
+                        <Search className="w-3.5 h-3.5 mt-0.5 shrink-0 text-accent" />
+                        <span>
+                          <span className="font-mono-anchor uppercase tracking-wider text-[10px] text-accent mr-2">
+                            On the site
+                          </span>
+                          {obs.evidence}
                         </span>
-                      </div>
-
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {opp.workflow}
                       </p>
-
-                      <div className="flex items-center justify-between border-t border-border/60 pt-4">
-                        <div className="space-y-0.5">
-                          <div className="text-[10px] uppercase tracking-wider font-mono-anchor text-muted-foreground">
-                            Est. annual impact
-                          </div>
-                          <div className="font-display text-2xl flex items-center gap-1.5">
-                            <DollarSign className="w-4 h-4 text-accent" />
-                            {opp.annualValue}
-                          </div>
-                        </div>
-                        <p className="text-xs text-muted-foreground/70 italic max-w-[200px] text-right">
-                          {opp.impact}
-                        </p>
-                      </div>
-                    </motion.div>
-                  )
-                })}
+                    )}
+                  </motion.div>
+                ))}
               </div>
             </section>
 
-            {/* Top recommendation */}
-            <section className="py-12 px-6 border-t border-border/40 bg-muted/20">
-              <div className="max-w-2xl mx-auto">
-                <motion.div variants={fadeUp} className="space-y-3">
-                  <div className="text-[10px] uppercase tracking-[0.3em] font-mono-anchor text-accent">
-                    Anchor's recommendation
-                  </div>
-                  <p className="text-lg leading-relaxed">{result.topRecommendation}</p>
-                </motion.div>
-              </div>
-            </section>
+            {/* Questions */}
+            {result.questions.length > 0 && (
+              <section className="py-16 px-6 border-t border-border/40 bg-muted/20">
+                <div className="max-w-2xl mx-auto space-y-6">
+                  <motion.div variants={fadeUp}>
+                    <h2 className="font-display text-2xl md:text-3xl tracking-tight">
+                      Questions worth answering
+                    </h2>
+                    <p className="text-muted-foreground mt-1 text-sm">
+                      If you can answer these, you already know where AI would
+                      help. If you cannot, that is the place to start.
+                    </p>
+                  </motion.div>
+
+                  <motion.ul variants={fadeUp} className="space-y-4">
+                    {result.questions.map((q, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <HelpCircle className="w-5 h-5 mt-0.5 shrink-0 text-accent" />
+                        <span className="text-base leading-relaxed">{q}</span>
+                      </li>
+                    ))}
+                  </motion.ul>
+                </div>
+              </section>
+            )}
+
+            {/* Focus */}
+            {result.focus && (
+              <section className="py-12 px-6 border-t border-border/40">
+                <div className="max-w-2xl mx-auto">
+                  <motion.div variants={fadeUp} className="space-y-3">
+                    <div className="text-[10px] uppercase tracking-[0.3em] font-mono-anchor text-accent">
+                      Where we would start the conversation
+                    </div>
+                    <p className="font-display-italic text-xl md:text-2xl leading-snug">
+                      {result.focus}
+                    </p>
+                  </motion.div>
+                </div>
+              </section>
+            )}
 
             {/* CTA */}
-            <section className="py-16 px-6 border-t border-border/40">
+            <section className="py-16 px-6 border-t border-border/40 bg-muted/20">
               <motion.div
                 variants={fadeUp}
                 className="max-w-2xl mx-auto space-y-5"
               >
                 <h2 className="font-display text-2xl md:text-3xl tracking-tight">
-                  {result.readyForReception
-                    ? "You're a strong AI Reception candidate."
-                    : "Ready to move on one of these?"}
+                  Want to talk it through?
                 </h2>
                 <p className="text-muted-foreground">
-                  {result.readyForReception
-                    ? "The AI Reception Pilot ships in 7 days. Fixed price. Full refund if you score below 5/5."
-                    : "Book a free 20-min call. We'll scope which workflow to ship first and give you a fixed price on the spot."}
+                  Book a free 15-minute call. We go through what we noticed
+                  together, you fill in the parts a website cannot show, and if
+                  there is a fit we say so. If there is not, we say that too.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <Button size="lg" className="text-base px-6 py-5" asChild>
@@ -340,7 +336,7 @@ export default function ScanPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Book a 20-min call
+                      Book a 15-min call
                       <Calendar className="w-4 h-4 ml-2" />
                     </a>
                   </Button>
@@ -363,7 +359,7 @@ export default function ScanPage() {
                     setBusinessContext("")
                     window.scrollTo({ top: 0, behavior: "smooth" })
                   }}
-                  className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors block"
                 >
                   Scan a different URL
                 </button>
@@ -373,7 +369,7 @@ export default function ScanPage() {
         )}
       </AnimatePresence>
 
-      {/* ── Social proof (below fold, always visible) ── */}
+      {/* ── How it works (below fold, always visible) ── */}
       {!result && !loading && (
         <section className="py-16 px-6 border-t border-border/40 bg-muted/20">
           <div className="max-w-2xl mx-auto space-y-8">
@@ -385,17 +381,17 @@ export default function ScanPage() {
                 {
                   n: 1,
                   t: "Paste your URL",
-                  d: "We read your site to understand your business: what you sell, who you serve, how you operate.",
+                  d: "We read your site to understand your business: what you sell, who you serve, how you appear to operate.",
                 },
                 {
                   n: 2,
-                  t: "AI identifies workflow gaps",
-                  d: "We map your operations against proven AI workflow patterns. Reception, sales, ops, marketing — wherever AI saves real money.",
+                  t: "We note the patterns",
+                  d: "Where the site suggests manual work, slow handoffs, or friction. Grounded in what is actually on the page, not assumptions.",
                 },
                 {
                   n: 3,
-                  t: "You get a ranked impact report",
-                  d: "Top 3 opportunities, estimated annual dollar value, and a clear recommendation on where to start.",
+                  t: "You get observations and questions",
+                  d: "A short, honest read on what we noticed and the questions worth answering. No invented dollar values, no prescription.",
                 },
               ].map((s) => (
                 <div key={s.n} className="flex gap-4">
