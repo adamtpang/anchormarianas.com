@@ -4,10 +4,35 @@ import siteConfig from "@/content/site.json"
 const bookUrl = siteConfig.discoveryCal
 
 export const metadata = {
-  title: "Anchor Marianas — 5-day AI builds for founders, creators, and operators",
+  title: "Anchor Marianas — Anchor Scan: turn your reviews into a growth plan",
   description:
-    "Sit with us for 30 minutes. We find the knot in your work and ship the AI piece that unties it in 5 days.",
+    "We read what your customers are already telling you in your Google reviews, then find where AI can save you time and grow revenue. Built for Guam businesses. Working with Hilton.",
 }
+
+const steps = [
+  {
+    n: "01",
+    title: "We analyze your Google reviews",
+    body: "We pull and read what your own customers are already telling you — every review, every recurring complaint, every pattern you're too close to see.",
+  },
+  {
+    n: "02",
+    title: "We deliver the diagnostic",
+    body: "A clear report of what's quietly costing you customers, and exactly where AI and software can save you time, cut cost, and grow revenue.",
+  },
+  {
+    n: "03",
+    title: "We work with you to fix it",
+    body: "The scan is the starting point. From there we build and implement the fixes with you — not a slide deck, working software.",
+  },
+]
+
+const deliverables = [
+  "A ranked list of the recurring problems your customers name in their reviews.",
+  "What each problem is likely costing you in lost repeat business and referrals.",
+  "The specific AI and software opportunities that address them, ranked by dollar impact.",
+  "A plain-English action plan you can run with — with us, or on your own.",
+]
 
 export default function HomePage() {
   return (
@@ -15,19 +40,20 @@ export default function HomePage() {
       <style>{`:root{--ink:#0b3b5c}`}</style>
 
       {/* Hero */}
-      <section className="mx-auto max-w-3xl px-6 pt-20 pb-16 sm:pt-32 sm:pb-24">
+      <section className="mx-auto max-w-3xl px-6 pt-20 pb-12 sm:pt-32 sm:pb-16">
         <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
-          Anchor Marianas
+          Anchor Marianas · Guam
         </p>
         <h1 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-          We sit with you for 30 minutes, find the knot,
+          We read what your customers are already telling you,
           <span className="block text-neutral-500">
-            then ship the AI piece that unties it in 5 days.
+            and find where AI can save you time and grow revenue.
           </span>
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-700 sm:text-xl">
-          Anchor Marianas builds with founders, creators, and operators whose work we respect.
-          One at a time. The call is the work — not a sales qualifier.
+          Anchor Scan analyzes your Google reviews, surfaces the problems costing you
+          customers, and shows you exactly where software and AI pay off. Built for Guam
+          businesses that want to grow.
         </p>
 
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -35,152 +61,92 @@ export default function HomePage() {
             href={bookUrl}
             className="inline-flex items-center justify-center rounded-full bg-[var(--ink)] px-8 py-4 text-base font-semibold text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ink)] focus-visible:ring-offset-2"
           >
-            Book the free 30-min untangling call
+            Book a free discovery call
           </a>
           <p className="text-sm text-neutral-600">
-            Or read the{" "}
-            <Link href="/work" className="underline underline-offset-4 hover:text-neutral-900">
-              case studies →
-            </Link>
+            30 minutes. No pitch. We tell you if a scan is worth it.
           </p>
         </div>
       </section>
 
-      {/* Offer */}
-      <section className="border-t border-neutral-200">
-        <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
-            The offer
-          </h2>
-          <div className="mt-8 grid gap-10 sm:grid-cols-2">
-            <div>
-              <h3 className="text-xl font-semibold tracking-tight">
-                Step 1 — The untangling call
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-neutral-700">
-                Free. 30 minutes. Not a sales call — we sit with the problem.
-                You walk us through your week. We ask the questions that surface the one knot
-                quietly tangling the other twelve. You leave with the knot named and an honest
-                read on whether 5 days can untie it.
-              </p>
-              <p className="mt-3 text-sm text-neutral-600">
-                If it&rsquo;s not a fit, we say so on the call. No follow-up. No nurture sequence.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold tracking-tight">
-                Step 2 — The 5-day AI build
-              </h3>
-              <p className="mt-3 text-base leading-relaxed text-neutral-700">
-                Day 1 we lock the scope of the cure. Days 2–4 we build it — a daily Loom,
-                ~3 minutes, so you watch it take shape. Day 5 you have a working artifact and a
-                one-page run doc your team can use without us.
-              </p>
-              <p className="mt-3 text-sm text-neutral-600">
-                First pilots are free in exchange for permission to publish the case study.
-                After that, $500 flat. Refund if it doesn&rsquo;t work.
-              </p>
-            </div>
-          </div>
+      {/* Social proof bar */}
+      <section className="border-y border-neutral-200 bg-neutral-50">
+        <div className="mx-auto max-w-3xl px-6 py-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+            Working with
+          </span>
+          <span className="font-display text-2xl tracking-tight text-neutral-900">
+            Hilton
+          </span>
+          <span className="text-sm text-neutral-600">
+            and Guam operators who want to grow on what their customers already say.
+          </span>
         </div>
       </section>
 
-      {/* How it works */}
+      {/* How Anchor Scan works */}
+      <section className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
+          How Anchor Scan works
+        </h2>
+        <div className="mt-8 space-y-8">
+          {steps.map((s) => (
+            <div key={s.n} className="flex gap-5 sm:gap-6">
+              <div className="font-mono text-sm text-neutral-400 pt-1">{s.n}</div>
+              <div>
+                <h3 className="text-xl font-semibold tracking-tight">{s.title}</h3>
+                <p className="mt-2 text-base leading-relaxed text-neutral-700">{s.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* What you get */}
       <section className="border-t border-neutral-200 bg-neutral-50">
         <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
           <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
-            How a sprint runs
+            What you get — the Anchor Scan report
           </h2>
-          <ol className="mt-8 space-y-6 text-base leading-relaxed text-neutral-800">
-            <li className="flex gap-4">
-              <span className="font-mono text-sm text-neutral-500 pt-0.5">01</span>
-              <p>
-                <strong className="text-neutral-900">Day 1 — Lock the cure.</strong>{" "}
-                We agree on the smallest version of the build that still unties the knot.
-              </p>
-            </li>
-            <li className="flex gap-4">
-              <span className="font-mono text-sm text-neutral-500 pt-0.5">02</span>
-              <p>
-                <strong className="text-neutral-900">Days 2–4 — Build.</strong>{" "}
-                ~3-minute Loom each day. You watch it take shape. You answer one or two questions.
-              </p>
-            </li>
-            <li className="flex gap-4">
-              <span className="font-mono text-sm text-neutral-500 pt-0.5">03</span>
-              <p>
-                <strong className="text-neutral-900">Day 5 — Handoff.</strong>{" "}
-                You get a working artifact and a one-page run doc. Most of it is in your hands
-                and running within 2 hours of the Day 5 call.
-              </p>
-            </li>
-          </ol>
+          <ul className="mt-8 space-y-4">
+            {deliverables.map((d) => (
+              <li key={d} className="flex gap-3 text-base leading-relaxed text-neutral-800">
+                <span aria-hidden className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[var(--ink)]" />
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
-      {/* Who this is for */}
-      <section className="border-t border-neutral-200">
-        <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20 grid gap-10 sm:grid-cols-2">
-          <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
-              Who this is for
-            </h2>
-            <p className="mt-6 text-base leading-relaxed text-neutral-700">
-              Founders, creators, indie hackers, podcasters, and operators whose work we already
-              respect. People we&rsquo;d want to learn from on the call regardless.
-            </p>
-            <p className="mt-3 text-base leading-relaxed text-neutral-700">
-              If you&rsquo;re on our Dream 25 list, you know. If not, this page is mostly here
-              so the people we&rsquo;re working with have something to point at.
-            </p>
-          </div>
-          <div>
-            <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
-              What you bring
-            </h2>
-            <ul className="mt-6 space-y-3 text-base leading-relaxed text-neutral-700">
-              <li>One real recurring loop on the call. Not &ldquo;explore AI.&rdquo; A specific knot.</li>
-              <li>Access to the tools or data the cure would touch. Read-only is fine.</li>
-              <li>Yourself. You&rsquo;re the one who decides.</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Proof / empty state */}
-      <section className="border-t border-neutral-200 bg-neutral-50">
-        <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
-            Case studies
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed text-neutral-700">
-            First case study shipping soon. The trade for pilot #1 is permission to write it up
-            honestly — the knot, the build, what worked, what didn&rsquo;t.
-          </p>
-          <p className="mt-4">
-            <Link
-              href="/work"
-              className="font-semibold underline underline-offset-4 hover:text-neutral-900"
-            >
-              See work →
-            </Link>
-          </p>
-        </div>
+      {/* Who it's for */}
+      <section className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
+          Who it&rsquo;s for
+        </h2>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-700">
+          Guam businesses with real customers and real reviews — hotels, restaurants, clinics,
+          shops, services. If people are already talking about you online, there&rsquo;s a
+          growth plan hiding in what they say. We find it.
+        </p>
       </section>
 
       {/* CTA */}
       <section className="border-t border-neutral-200">
-        <div className="mx-auto max-w-3xl px-6 py-20 sm:py-28 text-center">
+        <div className="mx-auto max-w-3xl px-6 py-16 sm:py-24 text-center">
           <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-            Book the untangling call.
+            Start with a free discovery call.
           </h2>
-          <p className="mt-4 text-base text-neutral-600">30 minutes. Free. The call is the work.</p>
+          <p className="mt-4 mx-auto max-w-xl text-base leading-relaxed text-neutral-600">
+            30 minutes. We look at your business, talk through what a scan would surface, and
+            tell you honestly whether it&rsquo;s worth doing.
+          </p>
           <div className="mt-8">
             <a
               href={bookUrl}
               className="inline-flex items-center justify-center rounded-full bg-[var(--ink)] px-8 py-4 text-base font-semibold text-white transition hover:opacity-90"
             >
-              Book the call →
+              Book a free discovery call →
             </a>
           </div>
         </div>
