@@ -10,23 +10,14 @@ export function Footer() {
           <div>
             <div className="font-display text-xl">Anchor Marianas</div>
             <p className="text-sm text-muted-foreground mt-1 max-w-sm">
-              5-day AI builds for founders, creators, and operators whose work we respect.
+              We turn your customer reviews into a growth plan. Built for Guam businesses.
             </p>
             <p className="text-xs text-muted-foreground/80 mt-3">
               Operated by{" "}
               <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
                 Adam Pang
               </Link>
-              . A nod to{" "}
-              <a
-                href="https://optimism.fun"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-4 hover:text-foreground"
-              >
-                optimism.fun
-              </a>
-              .
+              . Working with Hilton.
             </p>
           </div>
 

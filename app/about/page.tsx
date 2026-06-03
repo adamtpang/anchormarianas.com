@@ -6,7 +6,7 @@ const bookUrl = siteConfig.discoveryCal
 export const metadata = {
   title: "About — Anchor Marianas",
   description:
-    "Anchor Marianas is a one-person AI build studio operated by Adam Pang. 5-day builds for founders, creators, and operators whose work we respect.",
+    "Anchor Marianas helps Guam businesses grow by turning their customer reviews into a clear plan. Operated by founder Adam Pang. Working with Hilton.",
 }
 
 export default function AboutPage() {
@@ -19,25 +19,26 @@ export default function AboutPage() {
           About
         </p>
         <h1 className="text-balance text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">
-          Anchor Marianas is one person, one sprint at a time.
+          A Guam company that grows Guam businesses.
         </h1>
       </section>
 
       <section className="mx-auto max-w-2xl px-6 pb-20 space-y-8 text-base leading-relaxed text-neutral-800">
         <p>
-          Anchor exists because most operators don&rsquo;t need a strategy or another tool.
-          They need someone to sit next to them, ask the right questions, find the thing
-          that&rsquo;s quietly tangling everything else, and then actually build the piece of
-          software that unties it.
+          Anchor Marianas exists because the answer to &ldquo;how do we grow?&rdquo; is usually
+          already written down — in the reviews your customers leave. Most operators are too
+          busy running the business to read them as a system. We do that for you, then build
+          the software and AI that fixes what we find.
         </p>
         <p>
-          That&rsquo;s the work. A 30-minute untangling call. Then, if it&rsquo;s a fit, a
-          5-day build that ends in a working artifact and a one-page run doc.
+          It starts with Anchor Scan: we analyze your Google reviews, deliver a clear
+          diagnostic of what&rsquo;s costing you customers and where AI helps, and then work
+          with you to implement the fixes.
         </p>
 
         <div className="border-t border-neutral-200 pt-8">
           <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
-            The operator
+            The founder
           </h2>
           <p className="mt-4">
             Anchor is operated by{" "}
@@ -49,30 +50,22 @@ export default function AboutPage() {
             >
               Adam Pang
             </a>
-            . He&rsquo;s the founder, not the brand. One client at a time, full attention —
-            the Rick Rubin model: sit with the artist, find the thing, then ship.
+            . He&rsquo;s the founder, not the headline. The work happens under Anchor, one
+            business at a time, with full attention.
           </p>
           <p className="mt-4 text-sm text-neutral-600">
-            adampang.com redirects here. The work happens under Anchor.
+            adampang.com redirects here.
           </p>
         </div>
 
         <div className="border-t border-neutral-200 pt-8">
           <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
-            The thesis
+            Who we work with
           </h2>
           <p className="mt-4">
-            Positive-sum, craft-respecting, optimistic capitalism — a small nod to{" "}
-            <a
-              href="https://optimism.fun"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-4 hover:text-neutral-900"
-            >
-              optimism.fun
-            </a>
-            . We work with founders, creators, and operators whose work we respect. We&rsquo;d
-            rather build one thing that actually unties a knot than ten things that don&rsquo;t.
+            Guam businesses that want to grow — including{" "}
+            <span className="font-medium text-neutral-900">Hilton</span>. If your customers are
+            already talking about you online, there&rsquo;s a growth plan in what they say.
           </p>
         </div>
 
@@ -93,7 +86,7 @@ export default function AboutPage() {
               href={bookUrl}
               className="inline-flex items-center justify-center rounded-full bg-[var(--ink)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
             >
-              Book the untangling call →
+              Book a free discovery call →
             </a>
           </p>
         </div>

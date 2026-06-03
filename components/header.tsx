@@ -38,7 +38,7 @@ export function Header() {
               href={bookUrl}
               className="font-semibold bg-foreground text-background px-4 py-2 rounded-lg hover:bg-foreground/90 transition-colors"
             >
-              Book the call
+Book a call
             </a>
           </nav>
 

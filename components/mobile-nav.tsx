@@ -53,7 +53,7 @@ export function MobileNav() {
           <div className="mt-auto pt-8 space-y-3">
             <Button className="w-full" asChild>
               <a href={bookUrl} onClick={() => setOpen(false)}>
-                Book the untangling call
+Book a free discovery call
               </a>
             </Button>
             <div className="text-sm text-muted-foreground space-y-2 pt-2">

@@ -27,9 +27,9 @@ const geistMono = Geist_Mono({
   display: "swap",
 })
 
-const title = "Anchor Marianas — 5-day AI builds for founders, creators, and operators"
+const title = "Anchor Marianas — Anchor Scan for Guam businesses"
 const description =
-  "Sit with us for 30 minutes. We find the knot in your work and ship the AI piece that unties it in 5 days."
+  "We read what your customers are already telling you in your Google reviews, then find where AI can save you time and grow revenue. Working with Hilton."
 
 export const metadata: Metadata = {
   title,
@@ -37,11 +37,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://anchormarianas.com"),
   keywords: [
     "Anchor Marianas",
-    "AI build sprint",
-    "AI for founders",
-    "AI for creators",
-    "AI for operators",
-    "5-day AI build",
+    "Anchor Scan",
+    "Guam business",
+    "Google reviews analysis",
+    "AI for Guam businesses",
+    "customer review diagnostic",
   ],
   authors: [{ name: "Anchor Marianas" }],
   creator: "Anchor Marianas",
