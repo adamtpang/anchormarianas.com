@@ -27,7 +27,7 @@ High-fidelity recreation of [anchormarianas.com](https://anchormarianas.com), bu
 
 - The header **Work** and **About** links swap the visible view in-place (no URL change: this is a prototype).
 - The **theme toggle** swaps light ↔ dark. Default is dark, matching production.
-- **Book the call** and external social links open in a new tab to `cal.com/adampang/discovery` (the real URL from `content/site.json`).
+- **Book the call** and external social links open in a new tab to `cal.com/adamtpang` (the real URL from `content/site.json`).
 - The hero secondary link and the footer **Work** link both navigate to the Work view.
 
 ## Mapped to source
