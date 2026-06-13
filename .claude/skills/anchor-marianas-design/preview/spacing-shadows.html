@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 26px 32px; box-sizing: border-box; }
+  .row { display: flex; gap: 22px; align-items: center; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 12px; flex: 1; }
+  .surf { width: 110px; height: 70px; background: #fefbf5; border-radius: 8px; }
+  .s-none { border: 1px solid var(--border); }
+  .s-sm   { box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.08); }
+  .s-md   { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.10), 0 2px 4px -2px rgb(0 0 0 / 0.10); }
+  .s-lg   { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.10), 0 4px 6px -4px rgb(0 0 0 / 0.10); }
+  .lbl { font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft); text-align: center; line-height: 1.5; }
+  .lbl b { display: block; color: var(--fg); font-family: var(--font-sans); font-size: 12px; font-weight: 500; }
+  .head { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-soft); margin: 0 0 18px; }
+  .note { font-family: var(--font-sans); font-size: 12px; color: var(--fg-soft); margin-top: 14px; font-style: italic; }
+</style>
+</head>
+<body>
+  <p class="head">Elevation · use sparingly</p>
+  <div class="row">
+    <div class="item"><div class="surf s-none"></div><div class="lbl"><b>hairline</b>1px border<br>default</div></div>
+    <div class="item"><div class="surf s-sm"></div><div class="lbl"><b>--shadow-sm</b>cards over bg-soft</div></div>
+    <div class="item"><div class="surf s-md"></div><div class="lbl"><b>--shadow-md</b>popovers, sheets</div></div>
+    <div class="item"><div class="surf s-lg"></div><div class="lbl"><b>--shadow-lg</b>modals (rare)</div></div>
+  </div>
+  <p class="note">Depth in this system comes from cream-vs-abyssal contrast, not from drop shadows. Default to hairlines.</p>
+</body>
+</html>

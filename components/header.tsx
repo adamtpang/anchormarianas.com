@@ -5,12 +5,11 @@ import siteConfig from "@/content/site.json"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
 
+const bookUrl = siteConfig.discoveryCal
+
 const nav = [
-  { href: "/scan", label: "Free Audit" },
-  { href: "/#problems", label: "Problems" },
-  { href: "/#services", label: "Services" },
-  { href: "/#clients", label: "Clients" },
-  { href: "/careers", label: "Careers" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
 ]
 
 export function Header() {
@@ -20,10 +19,7 @@ export function Header() {
         <div className="flex h-14 items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <span className="font-display text-xl tracking-tight group-hover:text-accent transition-colors">
-              Anchor
-            </span>
-            <span className="hidden sm:inline-flex items-center text-[10px] uppercase tracking-[0.25em] font-mono-anchor text-muted-foreground">
-              we&nbsp;ship.
+              Anchor Marianas
             </span>
           </Link>
 
@@ -39,12 +35,10 @@ export function Header() {
             ))}
             <ThemeToggle />
             <a
-              href={siteConfig.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={bookUrl}
               className="font-semibold bg-foreground text-background px-4 py-2 rounded-lg hover:bg-foreground/90 transition-colors"
             >
-              Book a Call
+Book a call
             </a>
           </nav>
 
