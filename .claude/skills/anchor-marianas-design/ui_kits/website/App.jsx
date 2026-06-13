@@ -11,7 +11,7 @@ const SITE = {
   },
 };
 
-const BOOK_URL = "https://cal.com/adampang/discovery";
+const BOOK_URL = "https://cal.com/adamtpang";
 
 const TRUST_PARTNERS = [
   { kind: "logo", name: "Hilton Guam Resort & Spa", src: "../../assets/partners/hilton-guam.png" },
