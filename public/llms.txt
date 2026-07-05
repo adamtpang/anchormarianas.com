@@ -1,0 +1,16 @@
+# Anchor Marianas (anchormarianas.com)
+
+> Anchor is a one-person AI build studio out of Guam that ships productized AI workflows for small and mid-sized businesses at a fixed price and a fixed timeline.
+
+Anchor Marianas LLC sells scoped AI engineering as products, not open-ended consulting. You pick a workflow, it ships fast, and the price is set up front. The flagship offer is the AI Reception Pilot: a 24/7 voice receptionist on your existing number, live in 7 days, $5K setup plus $500/mo, with a 5/5 or full-refund guarantee. Other offers include a fixed-price AI Workflow Build, a Fractional AI Engineer retainer, and AnchorScan, a free 5-minute AI diagnostic for any business URL.
+
+It is built for operators losing money to missed calls and manual work: hotels, dive ops, restaurants, and professional services. Hilton Guam is a client. The site itself is a Next.js app; the studio is run by founder Adam Pangelinan.
+
+## Key links
+- [Home](https://anchormarianas.com/): the studio, its offers, pricing, and how to book a call.
+- [AnchorScan](https://anchormarianas.com/scan): free 5-minute AI diagnostic that returns the top 3 AI workflow opportunities for a business URL.
+- [Careers](https://anchormarianas.com/careers): how to come aboard or reach the studio.
+
+## About
+- Part of adam.inc, the internet portfolio of Adam Pangelinan (Anchor Marianas LLC).
+- Builder: https://adampang.com
