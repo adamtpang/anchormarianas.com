@@ -2,6 +2,13 @@
 
 Append-only rolling log. One entry per substantive Claude Code or Claude Chat session. Newest at top.
 
+## 2026-07-05 — Orchestrator decision + AnchorScan v1 (subscription-fuelled)
+
+- Confirmed (twice, from primary sources) that cofounder.co cannot be fuelled by Adam's Claude subscription: Cofounder refuses BYOK, and Anthropic prohibits third-party products consuming subscription/OAuth credentials (Jan 9 2026 enforcement, Apr 4 2026 terms; a May 13-14 re-sanctioning announcement was PAUSED on Jun 15 2026 and not resumed). Credited Adam for remembering the real May headline.
+- Chose the orchestrator: build Claude-native under his own account (Agent SDK / Claude Code + headless `claude -p`), not a hosted platform. Logged the full stack and the subscription-vs-API-key line in decisions-log.
+- Built AnchorScan v1 as that self-run loop under `scripts/anchorscan/` plus an interactive `/anchorscan` command, shipped via PR (branch claude/anchorscan-v1). Fetcher/renderer/runner all parse clean; schema valid; renderer smoke-tested.
+- Earlier this session: fixed the `/timeline` skill visibility (user-invocable + slash command), vendored and populated the `vitals/` company OS, shipped the landing v2 preview at `public/v2.html` (PR #26), and fixed the CI security gate (protobufjs override, PR #27).
+
 ## 2026-06-01 — AnchorScan made diagnostic; deployment + CI questions resolved
 
 - Adam answered three open questions. Converted the live `/scan` (AnchorScan) from prescriptive to diagnostic: it no longer returns AI-workflow `opportunities` with invented `annualValue` dollar figures, a "tackle this first" `topRecommendation`, or a `readyForReception` sales flag. It now returns `observations` (evidence-backed operational patterns, each citing what on the site triggered it), `questions` (genuinely diagnostic discovery prompts), and a `focus` framed as a question. The system prompt forbids invented numbers and product prescriptions, in Anchor's voice (no em dashes, no emoji). Files: `app/api/scan/route.ts`, `app/scan/page.tsx`, `app/scan/layout.tsx`.

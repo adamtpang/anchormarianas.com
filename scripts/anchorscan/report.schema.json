@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AnchorScan report",
+  "description": "Diagnostic (not prescriptive) read of a business from its real Google Maps reviews. No invented numbers.",
+  "type": "object",
+  "properties": {
+    "businessName": { "type": "string" },
+    "location": { "type": "string" },
+    "businessSummary": { "type": "string", "description": "1 to 2 sentences: what they do and how they appear to operate, from the reviews" },
+    "reviewsRead": { "type": "integer" },
+    "rating": { "type": ["number", "null"] },
+    "observations": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string", "description": "3 to 7 word label for the pattern" },
+          "detail": { "type": "string", "description": "1 to 2 sentences, specific to this business" },
+          "evidence": { "type": "string", "description": "a short verbatim quote or paraphrase from a real review that supports this" }
+        },
+        "required": ["title", "detail", "evidence"]
+      }
+    },
+    "questions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": { "type": "string", "description": "a genuinely diagnostic question the owner should answer (how often, how many, who handles it, what happens when)" }
+    },
+    "focus": { "type": "string", "description": "the single area most worth a conversation, framed as a question, never a product pitch" }
+  },
+  "required": ["businessName", "businessSummary", "reviewsRead", "observations", "questions", "focus"]
+}
