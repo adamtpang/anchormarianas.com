@@ -1,7 +1,11 @@
 import Link from "next/link"
 import siteConfig from "@/content/site.json"
+import servicesData from "@/content/services.json"
 
 const bookUrl = siteConfig.discoveryCal
+
+const offerSlugs = ["landing-page-5-day", "mvp-5-day"]
+const offers = servicesData.filter((s) => offerSlugs.includes(s.slug))
 
 export const metadata = {
   title: "Anchor Marianas — Anchor Scan: turn your reviews into a growth plan",
@@ -84,8 +88,54 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How Anchor Scan works */}
+      {/* Flat-price builds */}
       <section className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
+        <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
+          Two flat-price builds, live in 5 days
+        </h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          {offers.map((o) => (
+            <div key={o.slug} className="flex flex-col rounded-2xl border border-neutral-200 p-6">
+              <h3 className="text-xl font-semibold tracking-tight">{o.name}</h3>
+              <p className="mt-1 text-sm text-neutral-600">{o.tagline}</p>
+              <p className="mt-4 text-3xl font-semibold tracking-tight">
+                {o.price}
+              </p>
+              <ul className="mt-4 space-y-2 text-sm leading-relaxed text-neutral-700">
+                {o.deliverables.map((d) => (
+                  <li key={d} className="flex gap-2">
+                    <span aria-hidden className="mt-2 h-1 w-1 flex-none rounded-full bg-[var(--ink)]" />
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={o.ctaUrl}
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-[var(--ink)] px-6 py-3 text-base font-semibold text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ink)] focus-visible:ring-offset-2"
+              >
+                {o.ctaLabel}
+              </a>
+            </div>
+          ))}
+        </div>
+        <p className="mt-5 text-sm text-neutral-600">
+          Pay above and we start today. Prefer to talk first?{" "}
+          <a href={bookUrl} className="underline underline-offset-4 hover:text-neutral-900">
+            Book a free call
+          </a>{" "}
+          or{" "}
+          <a href={siteConfig.whatsappLink} className="underline underline-offset-4 hover:text-neutral-900">
+            WhatsApp us
+          </a>
+          .
+        </p>
+        <p className="mt-2 text-sm text-neutral-600">
+          Both builds can add the $500/mo care plan after launch: hosting, edits, and monitoring.
+        </p>
+      </section>
+
+      {/* How Anchor Scan works */}
+      <section className="border-t border-neutral-200 mx-auto max-w-3xl px-6 py-16 sm:py-20">
         <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
           How Anchor Scan works
         </h2>
