@@ -1,0 +1,2 @@
+# Scraped Guam Google Maps datasets land here as <sector>.json shards.
+# Populated by the ingest workflow once the Apify account limit is lifted; build.mjs reads *.json here.
