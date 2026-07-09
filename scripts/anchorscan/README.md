@@ -33,6 +33,7 @@ node scripts/anchorscan/scan.mjs "Some Cafe" --source manual --file reviews.txt
 - `GOOGLE_PLACES_API_KEY` for `--source google` (default; enable "Places API (New)").
 - `SERPAPI_API_KEY` for `--source serpapi` (free tier ~250 searches/mo).
 - `OUTSCRAPER_API_KEY` for `--source outscraper` (first ~500 records free).
+- `APIFY_API_TOKEN` for `--source apify` (compass/google-maps-reviews-scraper; deep review history, ~$0.02/business, pay per run). The volume engine for scanning many businesses a week.
 - `DISCOVERY_CALL_URL` to override the booking link in the rendered report.
 
 No key is needed for `--source manual`. Reports land in `reports/anchorscan/` (gitignore that folder if you want to keep client data local).
