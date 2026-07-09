@@ -20,8 +20,8 @@ import siteConfig from "@/content/site.json"
 // Mint a Stripe payment link for the paid audit and paste it here. Until it is
 // set, the CTA routes to a booking call to arrange the audit (correct for the
 // manual pre-sell phase of the roadmap). Set the price to match the link.
-const PAYMENT_LINK = ""
-const AUDIT_PRICE = "$2,500"
+const PAYMENT_LINK = "https://buy.stripe.com/3cIcN53IK54x9AsecVaMU0q"
+const AUDIT_PRICE = "$1,500"
 // ────────────────────────────────────────────────────────────────────────────
 
 const ease = [0.2, 0.8, 0.2, 1] as const
