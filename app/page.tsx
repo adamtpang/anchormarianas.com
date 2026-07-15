@@ -9,7 +9,7 @@ const offerSlugs = ["landing-page-5-day", "mvp-5-day"]
 const offers = servicesData.filter((s) => offerSlugs.includes(s.slug))
 
 export const metadata = {
-  title: "Anchor Marianas — the AI layer of your business",
+  title: "Anchor Marianas - the AI layer of your business",
   description:
     "We read what your customers already tell you, then build the fix. Free review scan and flat-price builds, from Guam. Working with Hilton.",
 }
@@ -99,6 +99,26 @@ export default function HomePage() {
             </a>
             .
           </p>
+        </div>
+      </section>
+
+      {/* Selected work */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
+          <p className="t-eyebrow">Selected work</p>
+          <Link
+            href="/work"
+            className="mt-6 flex flex-col gap-3 rounded-2xl border border-border bg-card p-7 transition-colors duration-200 hover:border-accent sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div>
+              <h2 className="t-h3">International Distributors, Inc.</h2>
+              <p className="t-small mt-1 text-muted-foreground">
+                Retained software engineering for a 46-year Guam wholesaler. Production
+                site, wholesale lead funnel, internal Company OS.
+              </p>
+            </div>
+            <span className="t-small font-semibold text-accent">Case study &rarr;</span>
+          </Link>
         </div>
       </section>
 
