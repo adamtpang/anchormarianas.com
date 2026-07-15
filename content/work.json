@@ -1,0 +1,34 @@
+{
+  "intro": "Real engagements, verified facts, live links. No invented numbers.",
+  "caseStudies": [
+    {
+      "slug": "idi",
+      "client": "International Distributors, Inc.",
+      "shortName": "IDI",
+      "location": "Barrigada, Guam",
+      "tagline": "Retained software engineering for a 46-year island wholesaler",
+      "summary": "IDI is a family wholesale food distributor serving Guam, Rota, Tinian, Saipan, and Majuro since 1980. Anchor Marianas is IDI's retained software engineer, shipping and maintaining the company's web presence and internal tooling.",
+      "engagement": "Retained software engineering, $2,000/month",
+      "liveUrl": "https://idiguam.vercel.app",
+      "deliverables": [
+        "Production Next.js 14 / TypeScript site, live at idiguam.vercel.app",
+        "Open a Wholesale Account lead-capture funnel (/account) with reliable form delivery and email fallback",
+        "LocalBusiness JSON-LD, per-page SEO, dynamic sitemap and OG image, llms.txt",
+        "Vercel Analytics and Speed Insights wired in",
+        "Internal zero-dependency Company OS dashboard",
+        "Python data-intake validator for operations data"
+      ],
+      "footprint": [
+        { "label": "Commits shipped", "value": "13" },
+        { "label": "First-party code", "value": "~2,914 lines" },
+        { "label": "Serving", "value": "Guam · Rota · Tinian · Saipan · Majuro" }
+      ],
+      "images": [
+        { "src": "/work/idi/homepage.png", "alt": "IDI homepage, production Next.js site", "caption": "The live site" },
+        { "src": "/work/idi/account-funnel.png", "alt": "Open a Wholesale Account lead-capture funnel", "caption": "Wholesale account funnel" },
+        { "src": "/work/idi/products.png", "alt": "IDI products catalog pages", "caption": "Product lines" },
+        { "src": "/work/idi/commit-ledger.png", "alt": "Commit ledger of first-party work", "caption": "The commit ledger" }
+      ]
+    }
+  ]
+}

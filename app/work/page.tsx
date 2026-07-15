@@ -1,73 +1,129 @@
+import Image from "next/image"
 import Link from "next/link"
 import siteConfig from "@/content/site.json"
+import work from "@/content/work.json"
 
 const bookUrl = siteConfig.discoveryCal
 
 export const metadata = {
-  title: "Work — Anchor Marianas",
+  title: "Work - Anchor Marianas",
   description:
-    "Anchor Marianas works with Guam businesses, starting with Hilton. Case studies from Anchor Scan diagnostics and the AI work that follows.",
+    "Real client engagements from Anchor Marianas: retained software engineering and AI for island businesses. Verified facts, live links, no invented numbers.",
 }
+
+const quietLink =
+  "underline underline-offset-4 decoration-border transition hover:text-foreground hover:decoration-foreground"
 
 export default function WorkPage() {
   return (
-    <div className="bg-white text-neutral-900">
-      <style>{`:root{--ink:#0b3b5c}`}</style>
-
-      <section className="mx-auto max-w-3xl px-6 pt-20 pb-16 sm:pt-28 sm:pb-20">
-        <p className="mb-6 text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
-          Work
-        </p>
-        <h1 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-          Working with Guam businesses, starting with Hilton.
-        </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-700">
-          Every engagement starts the same way: we read what customers are already saying,
-          deliver the Anchor Scan diagnostic, then build the fixes. The public record of that
-          work lives here.
-        </p>
-      </section>
-
-      <section className="border-t border-neutral-200 bg-neutral-50">
-        <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
-          <div className="rounded-md border border-dashed border-neutral-300 bg-white px-6 py-12 text-center">
-            <p className="text-sm font-mono uppercase tracking-[0.18em] text-neutral-500">
-              In progress
-            </p>
-            <h2 className="mt-4 text-2xl font-semibold tracking-tight">
-              First case study shipping soon.
-            </h2>
-            <p className="mt-3 mx-auto max-w-xl text-base leading-relaxed text-neutral-600">
-              We&rsquo;re writing up the first Anchor Scan: the review patterns we found, what
-              they were costing, and the AI fixes that followed.
-            </p>
-            <div className="mt-8">
-              <a
-                href={bookUrl}
-                className="inline-flex items-center justify-center rounded-full bg-[var(--ink)] px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90"
-              >
-                Want a scan for your business? Book a call →
-              </a>
-            </div>
-          </div>
+    <div>
+      {/* Hero */}
+      <section className="depth-veil">
+        <div className="mx-auto max-w-4xl px-6 pt-24 pb-14 sm:pt-32 sm:pb-16">
+          <p className="t-coord">Anchor Marianas · work</p>
+          <h1 className="t-hero-serif mt-8">
+            Built for <span className="font-display-italic text-accent">island businesses.</span>
+          </h1>
+          <p className="t-body-lg mt-6 max-w-xl text-muted-foreground">{work.intro}</p>
         </div>
       </section>
 
-      <section className="border-t border-neutral-200">
-        <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-neutral-500">
-            What a case study will contain
+      {/* Case studies */}
+      {work.caseStudies.map((cs) => (
+        <section key={cs.slug} className="border-t border-border">
+          <div className="mx-auto max-w-4xl px-6 py-16 sm:py-20">
+            <p className="t-eyebrow">Case study · {cs.location}</p>
+            <h2 className="font-display mt-4 text-3xl leading-tight tracking-tight sm:text-4xl">
+              {cs.client}
+            </h2>
+            <p className="t-body-lg mt-2 text-accent">{cs.tagline}</p>
+            <p className="t-body mt-5 max-w-2xl text-muted-foreground">{cs.summary}</p>
+
+            {/* Engagement + footprint */}
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-accent/30 bg-accent/5 p-6">
+                <p className="t-eyebrow">The engagement</p>
+                <p className="font-display mt-3 text-2xl tracking-tight">{cs.engagement}</p>
+                <a
+                  href={cs.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="t-small mt-3 inline-block text-accent transition hover:opacity-80"
+                >
+                  {cs.liveUrl.replace("https://", "")} &rarr;
+                </a>
+              </div>
+              <div className="rounded-2xl border border-border bg-card p-6">
+                <p className="t-eyebrow">Footprint</p>
+                <ul className="mt-3 space-y-1.5">
+                  {cs.footprint.map((f) => (
+                    <li key={f.label} className="t-small text-muted-foreground">
+                      <span className="font-mono-anchor text-foreground">{f.value}</span> · {f.label}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Deliverables */}
+            <div className="mt-10">
+              <p className="t-eyebrow">What shipped</p>
+              <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
+                {cs.deliverables.map((d) => (
+                  <li key={d} className="flex items-start gap-2.5 t-small text-muted-foreground">
+                    <span aria-hidden className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-accent" />
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Proof images */}
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              {cs.images.map((img) => (
+                <figure
+                  key={img.src}
+                  className="overflow-hidden rounded-2xl border border-border bg-card"
+                >
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    width={1280}
+                    height={800}
+                    className="h-auto w-full"
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                  />
+                  <figcaption className="t-small border-t border-border px-4 py-2.5 text-muted-foreground">
+                    {img.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+
+      {/* CTA */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-4xl px-6 py-16 text-center">
+          <h2 className="font-display text-3xl leading-tight tracking-tight sm:text-4xl">
+            Your business could be next.
           </h2>
-          <ul className="mt-6 space-y-4 text-base leading-relaxed text-neutral-700">
-            <li>The signal — the recurring problems customers named in the reviews.</li>
-            <li>The cost — what those problems were quietly costing in lost repeat business.</li>
-            <li>The fix — the AI and software we built, and whether it moved the numbers.</li>
-          </ul>
-          <p className="mt-10 text-sm text-neutral-600">
-            <Link href="/" className="underline underline-offset-4 hover:text-neutral-900">
-              ← Back to Anchor Scan
-            </Link>
+          <p className="t-body mt-4 text-muted-foreground">
+            Start with the free scan, or{" "}
+            <a href={bookUrl} className={quietLink}>
+              book a call
+            </a>
+            .
           </p>
+          <div className="mt-7">
+            <Link
+              href="/audit"
+              className="inline-flex items-center justify-center rounded-full bg-accent px-7 py-3.5 text-[0.95rem] font-semibold text-accent-foreground transition hover:opacity-90"
+            >
+              Run the free scan &rarr;
+            </Link>
+          </div>
         </div>
       </section>
     </div>
