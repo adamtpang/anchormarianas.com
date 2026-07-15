@@ -103,23 +103,6 @@ export default function WorkPage() {
         </section>
       ))}
 
-      {/* Pending */}
-      {work.pending.length > 0 && (
-        <section className="border-t border-border bg-muted/20">
-          <div className="mx-auto max-w-4xl px-6 py-14">
-            <p className="t-eyebrow">Also in the shop</p>
-            <div className="mt-4 space-y-3">
-              {work.pending.map((p) => (
-                <div key={p.client} className="rounded-2xl border border-dashed border-border p-6">
-                  <h3 className="t-h3">{p.client}</h3>
-                  <p className="t-small mt-1 text-muted-foreground">{p.note}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* CTA */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-4xl px-6 py-16 text-center">
