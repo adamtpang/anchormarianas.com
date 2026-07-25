@@ -1,6 +1,7 @@
 import Link from "next/link"
 import siteConfig from "@/content/site.json"
 import servicesData from "@/content/services.json"
+import testimonials from "@/content/testimonials.json"
 
 const bookUrl = siteConfig.discoveryCal
 const whatsappUrl = siteConfig.whatsappLink
@@ -11,7 +12,7 @@ const offers = servicesData.filter((s) => offerSlugs.includes(s.slug))
 export const metadata = {
   title: "Anchor Marianas - the AI layer of your business",
   description:
-    "We read what your customers already tell you, then build the fix. Free review scan and flat-price builds, from Guam. Working with Hilton.",
+    "We read what your customers already tell you, then build the fix. Free review scan and flat-price builds, from Guam. Retained software engineer for International Distributors, Inc.",
 }
 
 const scanBtn =
@@ -49,19 +50,75 @@ export default function HomePage() {
             </a>
           </div>
 
-          <div className="mt-16 flex items-center gap-3 border-t border-border/60 pt-6">
+          {/* Price and timeline, stated up front */}
+          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3">
+            <div className="bg-background p-5">
+              <p className="font-display text-2xl tracking-tight">$497</p>
+              <p className="t-small mt-1 text-muted-foreground">Landing page, live in 5 days</p>
+            </div>
+            <div className="bg-background p-5">
+              <p className="font-display text-2xl tracking-tight">$1,997</p>
+              <p className="t-small mt-1 text-muted-foreground">MVP web app, live in 5 days</p>
+            </div>
+            <div className="bg-background p-5">
+              <p className="font-display text-2xl tracking-tight">$500/mo</p>
+              <p className="t-small mt-1 text-muted-foreground">Care plan, cancel anytime</p>
+            </div>
+          </div>
+          <p className="t-small mt-3 text-muted-foreground">
+            Fixed prices, no quotes.{" "}
+            <Link href="/pricing" className={quietLink}>
+              See the full menu
+            </Link>
+            .
+          </p>
+
+          <div className="mt-14 flex flex-wrap items-center gap-3 border-t border-border/60 pt-6">
             <span className="sonar" aria-hidden>
               <span />
             </span>
-            <span className="t-eyebrow">we ship</span>
+            <span className="t-eyebrow">taking work now</span>
             <span className="text-border" aria-hidden>
               /
             </span>
             <span className="t-small text-muted-foreground">
-              working with{" "}
-              <span className="font-display text-foreground">Hilton</span>
+              retained software engineer for{" "}
+              <Link
+                href="/work"
+                className="font-display text-foreground underline underline-offset-4 decoration-border hover:decoration-foreground"
+              >
+                International Distributors, Inc.
+              </Link>
             </span>
           </div>
+        </div>
+      </section>
+
+      {/* Proof: verified numbers from the IDI engagement */}
+      <section className="border-t border-border bg-muted/20">
+        <div className="mx-auto max-w-4xl px-6 py-12 sm:py-14">
+          <p className="t-eyebrow">Client proof</p>
+          <div className="mt-6 grid grid-cols-2 gap-6 sm:grid-cols-4">
+            {[
+              { n: "$2,000/mo", l: "Retained engagement" },
+              { n: "46 years", l: "Client operating since 1980" },
+              { n: "5 islands", l: "Distribution network served" },
+              { n: "2,914", l: "Lines of first-party code" },
+            ].map((m) => (
+              <div key={m.l}>
+                <p className="font-display text-2xl tracking-tight sm:text-3xl">{m.n}</p>
+                <p className="t-small mt-1 text-muted-foreground">{m.l}</p>
+              </div>
+            ))}
+          </div>
+          <figure className="mt-10 border-l-2 border-accent/40 pl-5">
+            <blockquote className="t-body text-foreground">
+              &ldquo;{testimonials[0].quote}&rdquo;
+            </blockquote>
+            <figcaption className="t-small mt-2 text-muted-foreground">
+              {testimonials[0].author} · {testimonials[0].organization}
+            </figcaption>
+          </figure>
         </div>
       </section>
 
