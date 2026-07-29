@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 24px 28px; box-sizing: border-box; }
+  .card {
+    border: 1px solid var(--border);
+    background: var(--bg-elev);
+    border-radius: 10px;
+    padding: 24px 26px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 18px 22px;
+    align-items: start;
+  }
+  .logo {
+    width: 54px; height: 54px;
+    background: var(--fg);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .logo img { width: 86%; height: 86%; }
+  .body h3 {
+    font-family: var(--font-display); font-weight: 400;
+    font-size: 26px; letter-spacing: -0.01em; line-height: 1.15;
+    margin: 0 0 6px;
+  }
+  .body .eb {
+    font: 500 11px/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.18em;
+    color: var(--fg-soft); margin: 0 0 8px;
+  }
+  .body p { margin: 0; font-size: 13.5px; line-height: 1.55; color: var(--fg-soft); max-width: 460px; }
+  .meta {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+    font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft);
+  }
+  .meta .badge {
+    border: 1px solid var(--border-strong); padding: 4px 10px; border-radius: 9999px;
+    color: var(--fg); font-family: var(--font-sans); font-weight: 500; font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">
+      <img src="../assets/partners/hilton-guam.png" alt="" />
+    </div>
+    <div class="body">
+      <p class="eb">Case study</p>
+      <h3>Hilton Guam Resort &amp; Spa</h3>
+      <p>One AI workflow, shipped in 5 days. Knot → cure → after-read. Live case-study writeup is in progress; fill this card from the real engagement details.</p>
+    </div>
+    <div class="meta">
+      <span class="badge">5-day build</span>
+      <span>Live</span>
+      <span>Hospitality · Guam</span>
+    </div>
+  </div>
+</body>
+</html>

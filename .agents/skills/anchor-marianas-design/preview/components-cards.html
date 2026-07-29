@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 26px 32px; box-sizing: border-box; }
+  .head { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-soft); margin: 0 0 18px; }
+  .card {
+    border: 1px solid var(--border);
+    background: #fefbf5;
+    border-radius: 8px;
+    padding: 22px 24px;
+    max-width: 480px;
+  }
+  .card h3 { margin: 0 0 8px; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+  .card p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--fg-soft); }
+  .card .price { font-family: var(--font-mono); font-size: 13px; color: var(--fg); margin-top: 12px; font-feature-settings: "tnum" 1; }
+  .row { display: flex; gap: 18px; align-items: flex-start; }
+  .dashed {
+    border: 1px dashed var(--border-strong);
+    background: #fefbf5;
+    border-radius: 6px;
+    padding: 22px 24px;
+    text-align: center;
+    flex: 1;
+  }
+  .dashed .eb { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--fg-soft); }
+  .dashed h4 { margin: 8px 0 6px; font-size: 16px; font-weight: 600; }
+  .dashed p { margin: 0; font-size: 12.5px; color: var(--fg-soft); }
+</style>
+</head>
+<body>
+  <p class="head">Card surfaces</p>
+  <div class="row">
+    <div class="card">
+      <h3>Step 2. The 5-day AI build</h3>
+      <p>Day 1 we lock the scope. Days 2 to 4 we build it, a daily Loom, ~3 minutes, so you watch it take shape.</p>
+      <div class="price">$500 flat · refund if it doesn't work</div>
+    </div>
+    <div class="dashed">
+      <div class="eb">In progress</div>
+      <h4>First case study shipping soon.</h4>
+      <p>Pilot #1 is mid-sprint.</p>
+    </div>
+  </div>
+</body>
+</html>

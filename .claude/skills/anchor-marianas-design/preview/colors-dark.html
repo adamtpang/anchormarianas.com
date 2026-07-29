@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #060c19; }
+  body { font-family: var(--font-sans); color: #f1f5f7; padding: 28px 32px; box-sizing: border-box; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .sw {
+    flex: 1 1 calc(20% - 14px);
+    min-width: 110px;
+    background: var(--bg-elev);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #1d2a40;
+    display: flex; flex-direction: column;
+  }
+  .chip { height: 56px; }
+  .lbl { padding: 8px 10px; font-family: var(--font-mono); font-size: 10.5px; color: #9bb1be; display: flex; flex-direction: column; gap: 2px; }
+  .lbl b { color: #f1f5f7; font-weight: 500; font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.02em; }
+  h3 { margin: 0 0 14px; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9bb1be; }
+</style>
+</head>
+<body>
+  <h3>Dark · abyssal water, bioluminescent teal</h3>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:#060c19;border-bottom:1px solid #1d2a40;"></div><div class="lbl"><b>--bg</b>#060c19</div></div>
+    <div class="sw"><div class="chip" style="background:#0a1322;"></div><div class="lbl"><b>--bg-elev</b>#0a1322</div></div>
+    <div class="sw"><div class="chip" style="background:#111b2d;"></div><div class="lbl"><b>--bg-soft</b>#111b2d</div></div>
+    <div class="sw"><div class="chip" style="background:#1d2a40;"></div><div class="lbl"><b>--border</b>#1d2a40</div></div>
+    <div class="sw"><div class="chip" style="background:#f1f5f7;"></div><div class="lbl"><b>--fg</b>#f1f5f7</div></div>
+    <div class="sw"><div class="chip" style="background:#9bb1be;"></div><div class="lbl"><b>--fg-soft</b>#9bb1be</div></div>
+    <div class="sw"><div class="chip" style="background:#21e3f0;box-shadow:inset 0 0 18px rgba(33,227,240,0.45);"></div><div class="lbl"><b>--accent</b>#21e3f0 teal</div></div>
+    <div class="sw"><div class="chip" style="background:#cc3d3d;"></div><div class="lbl"><b>--destructive</b>#cc3d3d</div></div>
+  </div>
+</body>
+</html>

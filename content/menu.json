@@ -1,0 +1,91 @@
+{
+  "tagline": "Every problem has a price.",
+  "subtitle": "The scan finds the problems. This menu prices them. Pick what you need.",
+  "free": {
+    "problem": "Show me where AI would even help.",
+    "name": "AnchorScan",
+    "price": "Free",
+    "href": "/audit",
+    "cta": "Run the free scan"
+  },
+  "groups": [
+    {
+      "group": "The diagnostic",
+      "items": [
+        {
+          "problem": "Tell me exactly what to fix and what it's worth.",
+          "name": "AI Opportunity Audit",
+          "price": "$1,500",
+          "cadence": "one-time",
+          "href": "https://buy.stripe.com/3cIcN53IK54x9AsecVaMU0q",
+          "live": true,
+          "note": "Scored report, quantified payoff, prioritized roadmap, one scoped first build. Fee credits toward the build."
+        }
+      ]
+    },
+    {
+      "group": "One-time fixes",
+      "items": [
+        {
+          "problem": "I don't have a website.",
+          "name": "5-day landing page",
+          "price": "$497",
+          "cadence": "one-time",
+          "href": "https://buy.stripe.com/6oUfZhdjk8gJcME6KtaMU0m",
+          "live": true,
+          "note": "One page that sells one thing. Live in 5 days."
+        },
+        {
+          "problem": "My idea needs to actually work.",
+          "name": "5-day MVP web app",
+          "price": "$1,997",
+          "cadence": "one-time",
+          "href": "https://buy.stripe.com/eVqfZhbbc68BdQI1q9aMU0n",
+          "live": true,
+          "note": "One core workflow, built end to end. Live in 5 days."
+        }
+      ]
+    },
+    {
+      "group": "Ongoing",
+      "items": [
+        {
+          "problem": "I'm losing customers to missed calls.",
+          "name": "AI Receptionist",
+          "price": "$5,000 + $500/mo",
+          "cadence": "setup + monthly",
+          "href": "https://cal.com/adamtpang",
+          "live": false,
+          "note": "24/7 AI on your existing line. Answers, books, escalates."
+        },
+        {
+          "problem": "Nobody ever replies to my reviews.",
+          "name": "AI Review Responder",
+          "price": "$150/mo",
+          "cadence": "monthly",
+          "href": "https://cal.com/adamtpang",
+          "live": false,
+          "note": "A drafted reply to every Google review. Google rewards it."
+        },
+        {
+          "problem": "Keep it running and improving.",
+          "name": "Care plan",
+          "price": "$500/mo",
+          "cadence": "monthly",
+          "href": "https://cal.com/adamtpang",
+          "live": false,
+          "note": "Hosting, edits, and monitoring after launch."
+        },
+        {
+          "problem": "I need AI work every week, not one-offs.",
+          "name": "Fractional AI Engineer",
+          "price": "$4,950/mo",
+          "cadence": "monthly",
+          "href": "https://cal.com/adamtpang",
+          "live": false,
+          "note": "Anchor on retainer. Pause any week."
+        }
+      ]
+    }
+  ]
+}

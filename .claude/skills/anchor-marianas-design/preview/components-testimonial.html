@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 28px 32px; box-sizing: border-box; }
+  .head { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-soft); margin: 0 0 16px; }
+  blockquote {
+    margin: 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    color: var(--fg);
+    text-wrap: pretty;
+    max-width: 600px;
+  }
+  .quote-mark { color: var(--fg-faint); font-family: var(--font-display); font-style: normal; }
+  .attr { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+  .attr .who b { font-family: var(--font-sans); font-style: normal; font-size: 13px; font-weight: 600; color: var(--fg); }
+  .attr .who span { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft); margin-top: 2px; }
+  .attr .x {
+    font-family: var(--font-mono); font-size: 11px; color: var(--fg-faint);
+    border: 1px solid var(--border); padding: 4px 8px; border-radius: 9999px;
+  }
+</style>
+</head>
+<body>
+  <p class="head">Testimonial · long-form</p>
+  <blockquote>
+    <span class="quote-mark">“</span>was great making stuff with @adampang. master vibe coder before it was even a thing and can crank out a MERN app unassisted when needed.<span class="quote-mark">”</span>
+  </blockquote>
+  <div class="attr">
+    <div class="who"><b>chovin</b><span>warm intro to Hilton Guam · 2025-06-17</span></div>
+    <span class="x">@chovin on X</span>
+  </div>
+</body>
+</html>

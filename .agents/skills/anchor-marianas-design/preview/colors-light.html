@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 28px 32px; box-sizing: border-box; }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .sw {
+    flex: 1 1 calc(20% - 14px);
+    min-width: 110px;
+    background: var(--bg-elev);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    display: flex; flex-direction: column;
+  }
+  .chip { height: 56px; }
+  .lbl { padding: 8px 10px; font-family: var(--font-mono); font-size: 10.5px; color: var(--fg-soft); display: flex; flex-direction: column; gap: 2px; }
+  .lbl b { color: var(--fg); font-weight: 500; font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.02em; }
+  h3 { margin: 0 0 14px; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-soft); }
+</style>
+</head>
+<body>
+  <h3>Light · warm cream paper, deep navy ink</h3>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:#fbf6ee;border-bottom:1px solid var(--border);"></div><div class="lbl"><b>--bg</b>#fbf6ee</div></div>
+    <div class="sw"><div class="chip" style="background:#fefbf5;"></div><div class="lbl"><b>--bg-elev</b>#fefbf5</div></div>
+    <div class="sw"><div class="chip" style="background:#f1ebde;"></div><div class="lbl"><b>--bg-soft</b>#f1ebde</div></div>
+    <div class="sw"><div class="chip" style="background:#d6cebc;"></div><div class="lbl"><b>--border</b>#d6cebc</div></div>
+    <div class="sw"><div class="chip" style="background:#051a2f;"></div><div class="lbl"><b>--fg</b>#051a2f</div></div>
+    <div class="sw"><div class="chip" style="background:#46556a;"></div><div class="lbl"><b>--fg-soft</b>#46556a</div></div>
+    <div class="sw"><div class="chip" style="background:#0e2d5c;"></div><div class="lbl"><b>--accent</b>#0e2d5c ink</div></div>
+    <div class="sw"><div class="chip" style="background:#b9341f;"></div><div class="lbl"><b>--destructive</b>#b9341f</div></div>
+  </div>
+</body>
+</html>

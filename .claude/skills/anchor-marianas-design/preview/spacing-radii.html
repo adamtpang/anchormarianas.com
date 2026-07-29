@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 26px 32px; box-sizing: border-box; }
+  .row { display: flex; gap: 22px; align-items: center; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; }
+  .box { width: 110px; height: 78px; background: #fefbf5; border: 1px solid var(--border); }
+  .b-xs { border-radius: 4px; }
+  .b-sm { border-radius: 6px; }
+  .b-md { border-radius: 8px; }
+  .b-pill { border-radius: 9999px; }
+  .lbl { font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft); text-align: center; line-height: 1.45; }
+  .lbl b { display: block; color: var(--fg); font-family: var(--font-sans); font-size: 12px; font-weight: 500; }
+  .head { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-soft); margin: 0 0 18px; }
+</style>
+</head>
+<body>
+  <p class="head">Radii · cards 8px · CTAs full pill</p>
+  <div class="row">
+    <div class="item"><div class="box b-xs"></div><div class="lbl"><b>--radius-xs</b>4px · inputs sm</div></div>
+    <div class="item"><div class="box b-sm"></div><div class="lbl"><b>--radius-sm</b>6px · buttons sm</div></div>
+    <div class="item"><div class="box b-md"></div><div class="lbl"><b>--radius</b>8px · cards, inputs</div></div>
+    <div class="item"><div class="box b-pill"></div><div class="lbl"><b>--radius-pill</b>9999px · primary CTA, badges</div></div>
+  </div>
+</body>
+</html>

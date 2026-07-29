@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 28px 32px; box-sizing: border-box; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: center; }
+  .panel { padding: 18px 20px; border-radius: 8px; border: 1px solid; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .panel.dark { background: #060c19; border-color: #1d2a40; color: #f1f5f7; }
+  .panel.light { background: #fbf6ee; border-color: #d6cebc; color: #051a2f; }
+  .accent-chip { width: 56px; height: 56px; border-radius: 8px; flex-shrink: 0; }
+  .accent-teal { background: #21e3f0; box-shadow: 0 0 28px rgba(33,227,240,0.55); }
+  .accent-ink { background: #0e2d5c; }
+  .info b { display: block; font-family: var(--font-sans); font-weight: 500; font-size: 13px; }
+  .info span { font-family: var(--font-mono); font-size: 11.5px; opacity: 0.7; }
+  .head { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-soft); margin: 0 0 14px; }
+  .indigo { grid-column: 1 / -1; padding: 16px 20px; border: 1px dashed #d6cebc; border-radius: 8px; display: flex; gap: 16px; align-items: center; background: #fefbf5; }
+  .indigo .chip { width: 44px; height: 44px; border-radius: 8px; background: #4301ff; }
+  .indigo p { margin: 0; font-size: 12.5px; color: var(--fg-soft); line-height: 1.5; }
+  .indigo p b { color: var(--fg); font-weight: 600; }
+</style>
+</head>
+<body>
+  <h3 class="head">Accents · one per screen</h3>
+  <div class="grid">
+    <div class="panel dark">
+      <div class="info"><b>Bioluminescent teal</b><span>#21e3f0 · dark only</span></div>
+      <div class="accent-chip accent-teal"></div>
+    </div>
+    <div class="panel light">
+      <div class="info"><b>Deep navy ink</b><span>#0e2d5c · light only</span></div>
+      <div class="accent-chip accent-ink"></div>
+    </div>
+    <div class="indigo">
+      <div class="chip"></div>
+      <p><b>Brand mark only · #4301ff electric indigo.</b> The literal color of the anchor PNG. Do not extend it to buttons, links or backgrounds. Reserved for the mark.</p>
+    </div>
+  </div>
+</body>
+</html>

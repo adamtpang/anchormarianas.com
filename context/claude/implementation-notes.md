@@ -5,17 +5,15 @@ Architecture choices, things tried and rejected, gotchas, local conventions. Not
 ## Stack
 - Next.js 15.1.9 (app router), React 18.3, TypeScript (strict), Tailwind CSS, Framer Motion, Radix UI primitives.
 - PostHog analytics (`posthog-js`).
-- Anthropic SDK (`@anthropic-ai/sdk`). The model in use is `claude-haiku-4-5-20251001` for both `/scan` (`app/api/scan/route.ts`) and Anchor Scan (`lib/anchor-scan/core.ts`, overridable via `ANCHOR_SCAN_MODEL`). The lane-seed text said "Claude Opus for /scan"; that is not what the code does. Documented here as the verified reality.
-- Deployment: Vercel project `anchormarianas.com` (`prj_Dz3Ej8GdWxpIKAc21Lw6NFI5Jo1d`, from `.vercel/project.json`). Production tracks `main` (origin default HEAD). There is no `prod` branch. A cofounder.ai-managed Vercel project `anchor-bbb827` with a `prod` branch was referenced in tasking, and a cofounder.co migration was attempted in a prior session but is not in effect in this repo as of 2026-05-18. See `open-questions.md` (Deployment of record).
-- No CI: there are no `.github/workflows`, so "PR green" means mergeable only.
+- Anthropic SDK (`@anthropic-ai/sdk`). The live `/scan` tool (`app/api/scan/route.ts`) uses `claude-opus-4-5` (Cofounder's choice) and is now DIAGNOSTIC (returns `observations` + `questions` + `focus`, no invented dollar values). See decisions-log 2026-06-01.
+- Deployment (RESOLVED 2026-06-01): the existing Vercel project `anchormarianas.com` deploying from GitHub `main` is the deployment of record. No `prod` branch; production is `main`. The cofounder.ai `anchor-bbb827` / `prod` and the cofounder.co migration are dropped.
+- CI (RESOLVED 2026-06-01): `.github/workflows/` exists with frontend-type-check, nextjs-build, frontend-tests (a Biome check), package-security-check, plus Supabase DB migration workflows. PRs are gated. Caveat: `biome.json` currently scopes `files.includes` to `biome.json` only, so the Biome step does not lint app code yet; tsc and the Next build are the real gates.
 
-## Anchor Scan (wedge product)
-- Separate module. The pre-existing `/scan` is a different tool (website audit) and was deliberately left untouched.
-- One-file core `lib/anchor-scan/core.ts` with no internal relative imports, so the Next route and the `tsx` CLI share it without module-resolution or extension friction. CLI: `scripts/anchor-scan.ts` via `npm run scan`. Web: `app/anchor-scan/page.tsx` + `components/anchor-scan/console.tsx` + `app/api/anchor-scan/route.ts` (Node runtime, gated by `ANCHOR_SCAN_PASSWORD`).
-- `ReviewsSource` is a swappable interface: Google Places API v1 (default, reliable, ~5 reviews), Apify and SerpAPI behind env keys for volume, manual paste as the always-available fallback.
-- The LLM returns structured JSON; Markdown and branded printable HTML are rendered deterministically so branding lives in code, not in the model output.
-- Storage is JSON on disk under `data/anchor-scan/` (gitignored) because there is no database in the repo. Swap for Postgres later behind the same record shape.
-- Strategy watch-item: Cofounder wants Anchor Scan diagnostic and demand-led, not prescriptive. v1 still emits "3 AI fixes". Tracked in `open-questions.md`.
+## AnchorScan (the live `/scan` tool)
+- The live tool is `/scan` (`app/scan/page.tsx` + `app/scan/layout.tsx` + `app/api/scan/route.ts`). It reads a business URL, fetches the homepage text, and runs one Claude call. As of 2026-06-01 it is DIAGNOSTIC: it returns `observations` (each with `title`, `detail`, and `evidence` citing what on the site triggered it), `questions` (demand-led discovery prompts), and a `focus` framed as a question. It deliberately does NOT invent dollar values or prescribe products. In-memory 24h cache keyed by hostname.
+
+## Anchor Scan reviews tool (WIPED, not in repo)
+- A separate standalone Anchor Scan reviews tool was built in a prior session (`lib/anchor-scan/core.ts` single-file core, `scripts/anchor-scan.ts` CLI, `app/anchor-scan/` web form, swappable `ReviewsSource` for Google Places / Apify / SerpAPI / manual paste, JSON-on-disk store). It was never committed and was wiped by a working-directory re-clone. It is NOT on `origin/main`. If rebuilt, it should be diagnostic from the start (same shape as the live `/scan`) and should not duplicate Cofounder's reviews work. Full source remains in the originating chat transcript.
 
 ## Conventions
 - Read both `context/` lanes before substantive work; append a session summary after; update `decisions-log.md` / `open-questions.md` / `implementation-notes.md` as needed; commit context with the related code.

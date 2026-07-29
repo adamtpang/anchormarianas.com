@@ -4,8 +4,10 @@ import { Inter, Instrument_Serif, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { StructuredData } from "@/components/structured-data"
 import { ThemeProvider } from "@/components/theme-provider"
 import { PostHogProvider } from "./providers"
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,36 +29,36 @@ const geistMono = Geist_Mono({
   display: "swap",
 })
 
+const title = "Anchor Marianas — Anchor Scan for Guam businesses"
+const description =
+  "We read what your customers are already telling you in your Google reviews, then find where AI can save you time and grow revenue. Working with Hilton."
+
 export const metadata: Metadata = {
-  title: "Anchor: The AI layer of your business.",
-  description:
-    "Anchor builds AI products and services for businesses entering the AI age. From Guam, near the deepest place on Earth. We ship.",
+  title,
+  description,
   metadataBase: new URL("https://anchormarianas.com"),
   keywords: [
-    "AI agency",
-    "AI engineering",
-    "AI products",
-    "AI services",
-    "software development",
-    "Guam",
-    "Pacific",
+    "Anchor Marianas",
+    "Anchor Scan",
+    "Guam business",
+    "Google reviews analysis",
+    "AI for Guam businesses",
+    "customer review diagnostic",
   ],
-  authors: [{ name: "Adam Tomas Pangelinan" }],
-  creator: "Anchor Marianas LLC",
+  authors: [{ name: "Anchor Marianas" }],
+  creator: "Anchor Marianas",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://anchormarianas.com",
-    title: "Anchor: The AI layer of your business.",
-    description:
-      "AI products and services for businesses entering the AI age. We ship.",
-    siteName: "Anchor",
+    title,
+    description,
+    siteName: "Anchor Marianas",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anchor: The AI layer of your business.",
-    description:
-      "AI products and services for businesses entering the AI age. We ship.",
+    title,
+    description,
     creator: "@adamtpang",
   },
   robots: { index: true, follow: true },
@@ -77,6 +79,7 @@ export default function RootLayout({
         className="font-sans antialiased min-h-screen bg-background text-foreground"
         suppressHydrationWarning
       >
+        <StructuredData />
         <PostHogProvider>
           <ThemeProvider
             attribute="class"
@@ -91,6 +94,7 @@ export default function RootLayout({
             </div>
           </ThemeProvider>
         </PostHogProvider>
+        <Analytics />
       </body>
     </html>
   )

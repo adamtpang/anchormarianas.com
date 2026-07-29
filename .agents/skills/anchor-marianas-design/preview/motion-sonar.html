@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #060c19; }
+  body { font-family: var(--font-sans); color: #f1f5f7; padding: 32px 32px; box-sizing: border-box; display: flex; align-items: center; gap: 40px; }
+  .stage {
+    display: inline-flex; align-items: center; gap: 18px;
+    padding: 14px 20px;
+    border: 1px solid #1d2a40; border-radius: 9999px;
+    background: rgba(33,227,240,0.04);
+  }
+  .stage .sonar { width: 10px; height: 10px; }
+  .stage .sonar::before, .stage .sonar::after { border-color: #21e3f0; }
+  .stage .sonar > span { background: #21e3f0; box-shadow: 0 0 14px #21e3f0; }
+  .stage .tag { font-family: var(--font-sans); font-weight: 500; font-size: 16px; }
+  .meta { font-family: var(--font-mono); font-size: 11px; color: #9bb1be; line-height: 1.55; max-width: 360px; }
+  .meta b { display: block; color: #f1f5f7; font-family: var(--font-sans); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <span class="sonar"><span></span></span>
+    <span class="tag">we ship.</span>
+  </div>
+  <div class="meta">
+    <b>Sonar pulse</b>
+    Brand-signature motion. Two concentric rings,
+    2.6s cubic-bezier(0.2, 0.8, 0.2, 1), 1.3s offset.
+    The only animation that loops in the system.
+  </div>
+</body>
+</html>

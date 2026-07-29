@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 26px 32px; box-sizing: border-box; }
+  .row { display: flex; gap: 24px; align-items: baseline; padding: 6px 0; }
+  .label { width: 140px; flex-shrink: 0; font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft); letter-spacing: 0.04em; }
+  .v { font-family: var(--font-mono); font-feature-settings: "tnum" 1, "ss02" 1; color: var(--fg); }
+  .coord { font-size: 17px; letter-spacing: 0.05em; }
+  .nums { font-size: 17px; letter-spacing: 0.02em; }
+  .ord { font-size: 13px; color: var(--fg-soft); }
+  .price { font-size: 22px; font-weight: 500; letter-spacing: -0.005em; }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 14px 0; }
+  .head { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-soft); margin: 0 0 12px; }
+</style>
+</head>
+<body>
+  <p class="head">Mono · Geist Mono</p>
+  <div class="row"><span class="label">coordinates</span><span class="v coord">11°22′N 142°35′E</span></div>
+  <div class="row"><span class="label">price</span><span class="v price">$5,000 + $500/mo</span></div>
+  <div class="row"><span class="label">ordered list</span><span class="v ord">01. Lock the cure</span></div>
+  <div class="row"><span class="label">timeline</span><span class="v nums">5 days · 7 days · 3 weeks</span></div>
+</body>
+</html>

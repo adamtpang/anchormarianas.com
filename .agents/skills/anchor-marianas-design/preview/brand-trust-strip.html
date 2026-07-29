@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 26px 32px; box-sizing: border-box; }
+  .head { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-soft); margin: 0 0 18px; }
+  .strip {
+    display: flex; gap: 36px; align-items: center; flex-wrap: wrap;
+    padding: 22px 0;
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .hilton {
+    width: 66px; height: 66px;
+    /* white-on-transparent source → flip to ink-black on cream */
+    filter: brightness(0);
+    opacity: 0.82;
+  }
+  .partner { font-family: var(--font-display); font-size: 22px; letter-spacing: -0.005em; color: var(--fg-soft); opacity: 0.82; }
+  .partner.bold { font-family: var(--font-sans); font-weight: 600; font-size: 16px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--fg-soft); }
+  .note { font-family: var(--font-sans); font-size: 12px; color: var(--fg-soft); margin-top: 14px; line-height: 1.55; max-width: 620px; }
+  .note b { color: var(--fg); font-weight: 500; }
+</style>
+</head>
+<body>
+  <p class="head">Trust strip · live clients</p>
+  <div class="strip">
+    <img class="hilton" src="../assets/partners/hilton-guam.png" alt="Hilton Guam Resort & Spa" />
+    <span class="partner">Network School</span>
+    <span class="partner bold">IDI</span>
+    <span class="partner">adapt.school</span>
+  </div>
+  <p class="note"><b>Hilton Guam is a live client.</b> Treat the strip as social proof: Hilton sits first, sized larger than the wordmarks. (Prospera was removed; not a client.)</p>
+</body>
+</html>

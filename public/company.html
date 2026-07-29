@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Anchor Marianas — Company</title>
+<meta name="description" content="Anchor Marianas builds AnchorScan, a proprietary AI diagnostic for Pacific and ASEAN small businesses. Company overview." />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&display=swap" />
+<style>
+  :root {
+    --bg:#070d18; --panel:#0c1424; --well:#060b14;
+    --fg:#eef3f6; --fg-soft:#a4b6c2; --fg-faint:#71828f;
+    --accent:#2ad4e0; --line:rgba(164,182,194,.14); --line-2:rgba(42,212,224,.22);
+    --sans:"Inter",system-ui,sans-serif; --disp:"Instrument Serif",Georgia,serif; --mono:"Geist Mono",ui-monospace,monospace;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--fg); font-family:var(--sans); line-height:1.62; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; }
+  .wrap { max-width:60rem; margin:0 auto; padding:0 1.6rem; }
+  .disp { font-family:var(--disp); font-weight:400; letter-spacing:-.015em; }
+  .eyebrow { font-family:var(--mono); font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--fg-faint); }
+  .accent { color:var(--accent); }
+
+  header { position:sticky; top:0; z-index:50; border-bottom:1px solid var(--line); background:color-mix(in srgb,var(--bg) 78%,transparent); backdrop-filter:blur(16px); }
+  header .bar { display:flex; align-items:center; justify-content:space-between; height:60px; }
+  .brand { font-family:var(--disp); font-size:1.4rem; }
+  .brand small { font-family:var(--mono); font-size:.6rem; letter-spacing:.18em; color:var(--fg-faint); text-transform:uppercase; margin-left:.5rem; }
+  nav a { font-size:.85rem; color:var(--fg-soft); text-decoration:none; margin-left:1.4rem; transition:color .15s; }
+  nav a:hover { color:var(--fg); }
+  .btn { display:inline-flex; align-items:center; gap:.5rem; font-weight:500; font-size:.95rem; border-radius:8px; padding:.7rem 1.15rem; text-decoration:none; transition:opacity .15s, background .15s, color .15s; }
+  .btn-solid { background:var(--accent); color:#04121a; }
+  .btn-solid:hover { opacity:.9; }
+  .btn-ghost { border:1px solid var(--line-2); color:var(--accent); }
+  .btn-ghost:hover { background:rgba(42,212,224,.08); }
+
+  section { padding:4.5rem 0; border-top:1px solid var(--line); }
+  section:first-of-type { border-top:0; }
+  h1 { font-family:var(--disp); font-weight:400; font-size:clamp(2.6rem,6vw,4rem); line-height:1.04; letter-spacing:-.02em; margin:1.2rem 0 0; }
+  h2 { font-family:var(--disp); font-weight:400; font-size:clamp(1.9rem,3.5vw,2.6rem); letter-spacing:-.015em; margin-bottom:.4rem; }
+  h3 { font-size:1.05rem; font-weight:600; margin-bottom:.3rem; }
+  .lede { font-size:1.2rem; color:var(--fg-soft); max-width:44rem; margin-top:1.4rem; }
+  p.body { color:var(--fg-soft); max-width:44rem; margin-top:.8rem; }
+  .sec-label { margin-bottom:1.6rem; }
+
+  .cta-row { margin-top:2.2rem; display:flex; flex-wrap:wrap; gap:.9rem 1rem; align-items:center; }
+  .sonar { position:relative; display:inline-flex; width:.5rem; height:.5rem; margin-right:.5rem; }
+  .sonar::before { content:""; position:absolute; inset:0; border-radius:9999px; background:var(--accent); box-shadow:0 0 10px var(--accent); }
+
+  .grid3 { display:grid; grid-template-columns:1fr; gap:1rem; margin-top:2rem; }
+  @media (min-width:720px){ .grid3 { grid-template-columns:repeat(3,1fr); } }
+  .card { border:1px solid var(--line); background:var(--panel); border-radius:12px; padding:1.4rem; }
+  .card .n { font-family:var(--mono); font-size:.72rem; color:var(--accent); letter-spacing:.1em; }
+  .card p { color:var(--fg-soft); font-size:.92rem; margin-top:.4rem; }
+
+  .proof { display:grid; grid-template-columns:1fr; gap:1rem; margin-top:2rem; }
+  @media (min-width:720px){ .proof { grid-template-columns:repeat(2,1fr); } }
+  .proof .item { border:1px solid var(--line); border-radius:12px; padding:1.3rem 1.4rem; background:var(--panel); }
+  .proof .item .k { font-family:var(--mono); font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-faint); }
+  .proof .item .v { font-size:1.05rem; margin-top:.3rem; }
+  .proof .item .d { color:var(--fg-soft); font-size:.9rem; margin-top:.35rem; }
+  .honest { margin-top:1.6rem; font-size:.95rem; color:var(--fg-soft); border-left:2px solid var(--line-2); padding-left:1rem; }
+
+  ul.clean { list-style:none; margin-top:1.4rem; display:flex; flex-direction:column; gap:.7rem; }
+  ul.clean li { color:var(--fg-soft); padding-left:1.4rem; position:relative; }
+  ul.clean li::before { content:""; position:absolute; left:0; top:.62em; width:6px; height:6px; border-radius:9999px; background:var(--accent); }
+
+  .two { display:grid; grid-template-columns:1fr; gap:2rem; }
+  @media (min-width:800px){ .two { grid-template-columns:1fr 1fr; } }
+
+  .road { margin-top:1.8rem; display:flex; flex-direction:column; }
+  .road .row { display:grid; grid-template-columns:8rem 1fr; gap:1.2rem; padding:1.1rem 0; border-top:1px solid var(--line); }
+  .road .row:last-child { border-bottom:1px solid var(--line); }
+  .road .when { font-family:var(--mono); font-size:.8rem; color:var(--accent); }
+  .road .what { color:var(--fg-soft); }
+
+  .founder { display:grid; grid-template-columns:1fr; gap:1.4rem; margin-top:1.8rem; }
+  @media (min-width:720px){ .founder { grid-template-columns:auto 1fr; align-items:start; } }
+  .founder .badge { font-family:var(--mono); font-size:.72rem; color:var(--fg-faint); border:1px solid var(--line); border-radius:10px; padding:1rem 1.2rem; }
+  .founder .badge b { color:var(--fg); display:block; font-family:var(--sans); font-size:1rem; margin-bottom:.2rem; }
+
+  footer { border-top:1px solid var(--line); background:var(--well); padding:2.6rem 0; font-family:var(--mono); font-size:.8rem; color:var(--fg-soft); }
+  footer a { color:var(--accent); text-decoration:none; }
+  .note { font-family:var(--mono); font-size:.72rem; color:var(--fg-faint); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand disp">Anchor Marianas<small>company</small></div>
+    <nav>
+      <a href="#product">Product</a>
+      <a href="#market">Market</a>
+      <a href="#founder">Founder</a>
+      <a href="/scan">Try it</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO: product-first thesis -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Anchor Marianas · Guam · building toward Malaysia</div>
+      <h1>Proprietary AI diagnostics for <span class="disp accent" style="font-style:italic">Pacific and ASEAN small businesses.</span></h1>
+      <p class="lede">Anchor builds <strong>AnchorScan</strong>, an AI system that reads a small business's public signals, its website and its Google reviews, and returns a plain-language diagnosis of where it is losing customers, plus the specific fixes. It runs live, free, in under a minute.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="/scan"><span class="sonar"></span>Run a live scan</a>
+        <a class="btn btn-ghost" href="#product">See how it works</a>
+        <span class="note">A working product, not a slide. Free, no account.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PRODUCT -->
+  <section id="product">
+    <div class="wrap">
+      <div class="eyebrow sec-label">01 · The product</div>
+      <h2>AnchorScan</h2>
+      <p class="body">Small businesses are surrounded by signals they cannot read: reviews that name the same complaint every week, a site that quietly turns customers away, calls that go unanswered. The AI tools to fix this exist, but an owner running a restaurant or a repair shop cannot wield them. AnchorScan is the layer in between. It ingests those public signals and returns a diagnosis in the owner's language, not a dashboard, and not a pitch.</p>
+      <div class="grid3">
+        <div class="card"><div class="n">01 / INGEST</div><h3>Read the signals</h3><p>Pulls the business's website text and its Google Maps reviews, the record of what customers already say.</p></div>
+        <div class="card"><div class="n">02 / DIAGNOSE</div><h3>Find the pattern</h3><p>A language model surfaces the recurring operational problems, evidence-backed, with no invented numbers.</p></div>
+        <div class="card"><div class="n">03 / RETURN</div><h3>Hand back the read</h3><p>A short report: what is costing them customers, and the questions worth answering. Diagnostic, not prescriptive.</p></div>
+      </div>
+      <div class="cta-row"><a class="btn btn-ghost" href="/scan">Run it on any business now</a></div>
+    </div>
+  </section>
+
+  <!-- TRACTION / PROOF, honest -->
+  <section id="proof">
+    <div class="wrap">
+      <div class="eyebrow sec-label">02 · Where things stand</div>
+      <h2>Traction, stated plainly</h2>
+      <div class="proof">
+        <div class="item"><div class="k">Product</div><div class="v">AnchorScan is live</div><div class="d">A working AI diagnostic anyone can run free at anchormarianas.com/scan. The product is the proof.</div></div>
+        <div class="item"><div class="k">Client work</div><div class="v">Hilton Guam</div><div class="d">A delivered web product and a reference relationship. Anchor's first real client engagement.</div></div>
+        <div class="item"><div class="k">Endorsement</div><div class="v">Peer reference</div><div class="d">"Master vibe coder, cranks out a MERN app unassisted." chovin (@chovin), the warm intro into Guam hospitality.</div></div>
+        <div class="item"><div class="k">Portfolio</div><div class="v">Shipped, in public</div><div class="d">A public track record of shipped web and AI products (github.com/adamtpang), the founder's execution credential.</div></div>
+      </div>
+      <p class="honest">Honest line: Anchor is pre-revenue on the AI-services line, with no paying AI clients yet. The product is live, the first client work is delivered, and paid pilots are in the pipeline. This page never claims otherwise.</p>
+    </div>
+  </section>
+
+  <!-- MARKET + WHY NOW -->
+  <section id="market">
+    <div class="wrap">
+      <div class="eyebrow sec-label">03 · Market and why now</div>
+      <div class="two">
+        <div>
+          <h2>The underserved majority</h2>
+          <p class="body">Small and medium businesses are the backbone of the Asia-Pacific economy and the least served by AI. The frontier models are aimed at engineers and enterprises. The owner-operator, a hotelier, a clinic, a trades business, is left out, even though they generate the reviews, the calls, and the demand that AI is best at reading. Anchor's wedge is meeting that owner where they already are: their public footprint, diagnosed for free, in their own words.</p>
+        </div>
+        <div>
+          <h2>Why now</h2>
+          <p class="body">Two things arrived at once: models good enough to read messy real-world business signals reliably, and an SMB base finally aware they are behind. The gap is not capability, it is a translation layer built for people who do not code. That layer is a product, and it did not exist for this segment. AnchorScan is Anchor building it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY MALAYSIA -->
+  <section id="malaysia">
+    <div class="wrap">
+      <div class="eyebrow sec-label">04 · Why Malaysia</div>
+      <h2>Malaysia as the ASEAN base</h2>
+      <p class="body">Anchor's motion was proven on Guam, a small, English-speaking, SMB-dense Pacific market. Malaysia is the same problem at a scale that matters: a large, digitally-maturing SMB economy, multilingual in exactly the languages the Pacific and ASEAN share, and the natural gateway into the wider ASEAN market Anchor is built to serve. The Malaysia Digital ecosystem (MDEC, the Digital Hubs, the tech-entrepreneur pathway) is designed to host a company like this, and the free-diagnostic-then-productize motion ports directly to Malaysian hospitality, food, and services SMBs.</p>
+      <p class="note" style="margin-top:1rem">Draft thesis. Sharpen with the specific Malaysia SMB numbers and the chosen Malaysia Digital Hub before submission.</p>
+    </div>
+  </section>
+
+  <!-- GO TO MARKET -->
+  <section id="gtm">
+    <div class="wrap">
+      <div class="eyebrow sec-label">05 · How the product reaches the market</div>
+      <h2>One product-led motion</h2>
+      <p class="body">Anchor does not sell consulting. It uses a free version of its own product to earn the relationship, then monetizes the fix. The motion is deliberately narrow so it looks focused and repeatable, not scattershot.</p>
+      <ul class="clean">
+        <li><strong>Wedge:</strong> a free AnchorScan (and a free one-page site for businesses that lack one) starts every relationship with demonstrated value, not a pitch. This lowers acquisition cost to near zero.</li>
+        <li><strong>Land:</strong> the owner sees a real problem in their own reviews, then buys the fix. Care and monitoring at a low monthly rate is the recurring base.</li>
+        <li><strong>Expand:</strong> the highest-value fix, a 24/7 multilingual AI receptionist, ships in about a week for a setup fee plus a monthly retainer. This is distribution and revenue for the product, not the company's identity.</li>
+        <li><strong>Beachhead:</strong> one segment first, Pacific and Malaysian hospitality and food SMBs of 5 to 100 staff, so the funnel math is legible and the motion is provably scalable.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section id="founder">
+    <div class="wrap">
+      <div class="eyebrow sec-label">06 · Founder</div>
+      <h2>Adam Pangelinan</h2>
+      <div class="founder">
+        <div class="badge">
+          <b>Adam Pangelinan</b>
+          Technical solo founder<br />Guam · 11°22′N 142°35′E<br />
+          <span class="accent">github.com/adamtpang</span>
+        </div>
+        <div>
+          <p class="body" style="margin-top:0">A self-taught engineer who ships. Anchor is built on a public portfolio of shipped web and AI products, which stands in for a formal degree as proof of execution capability. The insight behind AnchorScan is first-hand: working with Pacific SMBs, the same pattern kept repeating, owners sitting on clear signals they had no way to read or act on. AnchorScan is that pattern turned into a product.</p>
+          <p class="body">Anchor is a one-founder company today, built to add a technical or commercial cofounder as it scales, which the tech-entrepreneur pathway supports.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section id="roadmap">
+    <div class="wrap">
+      <div class="eyebrow sec-label">07 · Roadmap</div>
+      <h2>Next 12 to 24 months</h2>
+      <div class="road">
+        <div class="row"><div class="when">0 to 6 mo</div><div class="what">Deepen AnchorScan (reviews + site + call signals in one read), convert the warm Guam pipeline into the first paid pilots, and establish the Malaysia base.</div></div>
+        <div class="row"><div class="when">6 to 12 mo</div><div class="what">Run the free-scan-to-pilot motion against a Malaysian hospitality and food beachhead, reach a repeatable recurring base, add the first cofounder or hire.</div></div>
+        <div class="row"><div class="when">12 to 24 mo</div><div class="what">Productize the diagnosis-to-fix loop so it scales beyond the founder, and expand from the Malaysian beachhead into the wider ASEAN SMB market.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="eyebrow sec-label">08 · Contact</div>
+      <h2>Talk to the founder</h2>
+      <p class="body">The fastest way to understand Anchor is to run the product. Then a conversation.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="/scan">Run a live scan</a>
+        <a class="btn btn-ghost" href="mailto:adam@anchormarianas.com">adam@anchormarianas.com</a>
+      </div>
+      <p class="body" style="margin-top:1.4rem">Anchor's 5/5-or-refund delivery is a standing policy on paid engagements, not a claim about volume. The company is small, early, and building in the open.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Anchor Marianas LLC &nbsp;·&nbsp; <a href="mailto:adam@anchormarianas.com">adam@anchormarianas.com</a> &nbsp;·&nbsp; <a href="/scan">anchormarianas.com/scan</a> &nbsp;·&nbsp; Guam 11&deg;22&prime;N 142&deg;35&prime;E<br />
+    <span class="note" style="display:block;margin-top:.8rem">Company overview prepared for evaluation. Founder: Adam Pangelinan.</span>
+  </div>
+</footer>
+
+</body>
+</html>

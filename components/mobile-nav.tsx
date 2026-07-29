@@ -7,12 +7,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import siteConfig from "@/content/site.json"
 
+const bookUrl = siteConfig.discoveryCal
+
 const nav = [
-  { href: "/scan", label: "Free Audit" },
-  { href: "/#problems", label: "Problems" },
-  { href: "/#services", label: "Services" },
-  { href: "/#clients", label: "Clients" },
-  { href: "/careers", label: "Careers" },
+  { href: "/work", label: "Work" },
+  { href: "/about", label: "About" },
 ]
 
 export function MobileNav() {
@@ -34,11 +33,8 @@ export function MobileNav() {
               className="font-display text-2xl"
               onClick={() => setOpen(false)}
             >
-              Anchor
+              Anchor Marianas
             </Link>
-            <div className="text-[10px] uppercase tracking-[0.25em] font-mono-anchor text-muted-foreground mt-1">
-              we ship.
-            </div>
           </div>
 
           <nav className="flex flex-col gap-1 mt-6">
@@ -56,23 +52,8 @@ export function MobileNav() {
 
           <div className="mt-auto pt-8 space-y-3">
             <Button className="w-full" asChild>
-              <a
-                href={siteConfig.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-              >
-                Book a Call
-              </a>
-            </Button>
-            <Button className="w-full" variant="outline" asChild>
-              <a
-                href={siteConfig.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-              >
-                WhatsApp
+              <a href={bookUrl} onClick={() => setOpen(false)}>
+Book a free discovery call
               </a>
             </Button>
             <div className="text-sm text-muted-foreground space-y-2 pt-2">
@@ -81,12 +62,6 @@ export function MobileNav() {
                 className="block hover:text-foreground"
               >
                 {siteConfig.email}
-              </a>
-              <a
-                href={`tel:${siteConfig.phone}`}
-                className="block hover:text-foreground"
-              >
-                {siteConfig.phoneDisplay}
               </a>
             </div>
           </div>

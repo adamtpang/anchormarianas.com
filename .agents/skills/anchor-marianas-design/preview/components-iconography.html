@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 26px 32px; box-sizing: border-box; }
+  .head { font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-soft); margin: 0 0 18px; }
+  .row { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+  .ic { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 64px; }
+  .ic i, .ic svg { width: 22px; height: 22px; color: var(--fg); }
+  .ic span { font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft); }
+  .note { font-family: var(--font-sans); font-size: 12px; color: var(--fg-soft); margin-top: 18px; line-height: 1.5; max-width: 600px; }
+</style>
+</head>
+<body>
+  <p class="head">Iconography · Lucide (in-use set)</p>
+  <div class="row">
+    <div class="ic"><i data-lucide="anchor"></i><span>anchor</span></div>
+    <div class="ic"><i data-lucide="mail"></i><span>mail</span></div>
+    <div class="ic"><i data-lucide="github"></i><span>github</span></div>
+    <div class="ic"><i data-lucide="twitter"></i><span>twitter</span></div>
+    <div class="ic"><i data-lucide="arrow-right"></i><span>arrow-right</span></div>
+    <div class="ic"><i data-lucide="check"></i><span>check</span></div>
+    <div class="ic"><i data-lucide="x"></i><span>x</span></div>
+  </div>
+  <p class="note">Lucide stroke icons, 2px stroke, currentColor. Sizes 16px (inline) or 20px (standalone). No emoji. No filled icons. The vocabulary is intentionally word-first, icon-second.</p>
+  <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: #fbf6ee; }
+  body { font-family: var(--font-sans); color: var(--fg); padding: 24px 32px; box-sizing: border-box; }
+  .row { display: grid; grid-template-columns: 130px 1fr 110px; gap: 22px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .row:last-child { border-bottom: 0; }
+  .tag { font-family: var(--font-mono); font-size: 11px; color: var(--fg-soft); letter-spacing: 0.04em; }
+  .meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--fg-soft); text-align: right; }
+  .h1 { font-weight: 600; font-size: 36px; letter-spacing: -0.025em; line-height: 1.05; }
+  .h2 { font-weight: 600; font-size: 26px; letter-spacing: -0.02em; line-height: 1.15; }
+  .h3 { font-weight: 600; font-size: 18px; letter-spacing: -0.01em; line-height: 1.25; }
+  .body-lg { font-weight: 400; font-size: 17px; line-height: 1.55; }
+  .body { font-weight: 400; font-size: 15px; line-height: 1.55; }
+  .small { font-weight: 400; font-size: 13px; line-height: 1.5; color: var(--fg-soft); }
+</style>
+</head>
+<body>
+  <div class="row"><span class="tag">.t-h1</span><span class="h1">Sentence-case headline</span><span class="meta">600 · 48/52</span></div>
+  <div class="row"><span class="tag">.t-h2</span><span class="h2">Section heading</span><span class="meta">600 · 32/37</span></div>
+  <div class="row"><span class="tag">.t-h3</span><span class="h3">Sub-section</span><span class="meta">600 · 20/25</span></div>
+  <div class="row"><span class="tag">.t-body-lg</span><span class="body-lg">Lead paragraph. The call is the work.</span><span class="meta">400 · 18/29</span></div>
+  <div class="row"><span class="tag">.t-body</span><span class="body">Body. Day 5 you have a working artifact.</span><span class="meta">400 · 16/26</span></div>
+  <div class="row"><span class="tag">.t-small</span><span class="small">No follow-up. No nurture sequence.</span><span class="meta">400 · 14/22</span></div>
+</body>
+</html>

@@ -9,3 +9,6 @@ _site/
 .DS_Store
 tsconfig.tsbuildinfo
 .claude/settings.local.json
+
+# AnchorScan generated reports (may contain client data)
+/reports/anchorscan/

@@ -1,0 +1,263 @@
+<title>Vercel Estate — adamtpang</title>
+<style>
+  :root{
+    --bg:#0b0d10; --panel:#12151b; --panel2:#171b22; --line:#242a33; --line2:#2e3644;
+    --text:#e7ebf1; --muted:#8892a2; --faint:#5a6473;
+    --accent:#5b8cff; --accent-dim:#33406a;
+    --live:#43c667; --live-bg:#123020;
+    --warn:#e0a72e; --warn-bg:#332612;
+    --dead:#f2624a; --dead-bg:#331813;
+    --crit:#ff4d6d; --crit-bg:#3a1420;
+    --steel:#7a8595; --steel-bg:#1c222b;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono","Cascadia Code",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;
+    -webkit-font-smoothing:antialiased;margin:0;
+    background-image:radial-gradient(1200px 600px at 80% -10%, #12161f 0%, transparent 60%);}
+  .wrap{max-width:1120px;margin:0 auto;padding:38px 22px 90px;}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+
+  /* header */
+  header.top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:26px}
+  header.top h1{font-size:30px;font-weight:650;margin:6px 0 0;letter-spacing:-.02em;text-wrap:balance}
+  header.top h1 .tri{color:var(--accent)}
+  header.top .sub{color:var(--muted);font-size:14px;margin-top:6px;max-width:52ch}
+  .stamp{font-family:var(--mono);font-size:12px;color:var(--faint);text-align:right;line-height:1.7}
+
+  /* KPI strip */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px}
+  .kpi .n{font-family:var(--mono);font-size:30px;font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1}
+  .kpi .l{font-size:12px;color:var(--muted);margin-top:7px}
+  .kpi .bars{display:flex;gap:5px;margin-top:11px;flex-wrap:wrap}
+  .tag{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:20px;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+  .dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+  .t-live{color:var(--live);background:var(--live-bg)} .d-live{background:var(--live)}
+  .t-warn{color:var(--warn);background:var(--warn-bg)} .d-warn{background:var(--warn)}
+  .t-dead{color:var(--dead);background:var(--dead-bg)} .d-dead{background:var(--dead)}
+  .t-steel{color:var(--steel);background:var(--steel-bg)} .d-steel{background:var(--steel)}
+  .t-crit{color:var(--crit);background:var(--crit-bg)} .d-crit{background:var(--crit)}
+  .t-accent{color:var(--accent);background:var(--accent-dim)}
+
+  .waste{background:linear-gradient(90deg,var(--warn-bg),transparent 70%);border:1px solid var(--line2);
+    border-left:3px solid var(--warn);border-radius:12px;padding:15px 18px;margin-bottom:30px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .waste .big{font-family:var(--mono);font-size:26px;color:var(--warn);font-variant-numeric:tabular-nums}
+  .waste .txt{font-size:13.5px;color:var(--text)}
+  .waste .txt b{color:var(--warn)}
+
+  /* section titles */
+  h2.sec{font-size:13px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    margin:34px 0 14px;display:flex;align-items:center;gap:12px}
+  h2.sec::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* action cards */
+  .acts{display:flex;flex-direction:column;gap:10px}
+  .act{background:var(--panel);border:1px solid var(--line);border-left-width:3px;border-radius:10px;
+    padding:14px 16px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start}
+  .act.crit{border-left-color:var(--crit)} .act.high{border-left-color:var(--warn)}
+  .act.win{border-left-color:var(--live)} .act.tidy{border-left-color:var(--steel)}
+  .act .rank{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding-top:2px}
+  .act.crit .rank{color:var(--crit)} .act.high .rank{color:var(--warn)}
+  .act.win .rank{color:var(--live)} .act.tidy .rank{color:var(--steel)}
+  .act h3{margin:0 0 4px;font-size:15px;font-weight:600}
+  .act p{margin:0;font-size:13px;color:var(--muted)}
+  .act p code{font-family:var(--mono);color:var(--text);background:var(--panel2);padding:1px 5px;border-radius:5px;font-size:12px}
+  .act .metric{font-family:var(--mono);font-size:20px;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  .act.crit .metric{color:var(--crit)} .act.high .metric{color:var(--warn)}
+  .act.win .metric{color:var(--live)} .act.tidy .metric{color:var(--steel)}
+
+  /* explorer */
+  .exp{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:8px}
+  .tabs{display:flex;border-bottom:1px solid var(--line);background:var(--panel2)}
+  .tab{flex:0 0 auto;padding:14px 22px;font-size:14px;color:var(--muted);cursor:pointer;border:none;background:none;
+    font-family:var(--sans);border-bottom:2px solid transparent;display:flex;align-items:center;gap:9px}
+  .tab .c{font-family:var(--mono);font-size:12px;color:var(--faint);background:var(--bg);padding:1px 8px;border-radius:20px}
+  .tab[aria-selected="true"]{color:var(--text);border-bottom-color:var(--accent)}
+  .tab[aria-selected="true"] .c{color:var(--accent)}
+  .controls{display:flex;gap:10px;align-items:center;padding:14px 16px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+  .search{flex:1;min-width:180px;position:relative}
+  .search input{width:100%;background:var(--bg);border:1px solid var(--line2);border-radius:8px;color:var(--text);
+    font-family:var(--mono);font-size:13px;padding:9px 12px 9px 32px}
+  .search input:focus{outline:2px solid var(--accent-dim);border-color:var(--accent)}
+  .search svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;stroke:var(--faint)}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{font-family:var(--mono);font-size:11.5px;padding:6px 11px;border-radius:20px;border:1px solid var(--line2);
+    background:transparent;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+  .chip[aria-pressed="true"]{color:var(--text);border-color:var(--accent);background:var(--accent-dim)}
+  .chip .dot{opacity:.9}
+  .tblwrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}
+  thead th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);font-weight:500;padding:11px 16px;border-bottom:1px solid var(--line);
+    position:sticky;top:0;background:var(--panel2);cursor:pointer;white-space:nowrap;user-select:none}
+  thead th .ar{opacity:0;margin-left:4px}
+  thead th.sorted .ar{opacity:1;color:var(--accent)}
+  tbody td{padding:10px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tbody tr:hover{background:var(--panel2)}
+  tbody tr:last-child td{border-bottom:none}
+  td.name{font-family:var(--mono);font-size:13px;color:var(--text);white-space:nowrap}
+  td.name a{color:var(--text)} td.name a:hover{color:var(--accent)}
+  td.dim{color:var(--faint);font-family:var(--mono);font-size:12px;white-space:nowrap}
+  td.serving{color:var(--muted);max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .pill{font-family:var(--mono);font-size:11px;padding:3px 9px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+  .empty{padding:40px 16px;text-align:center;color:var(--faint);font-family:var(--mono);font-size:13px}
+  .foot{margin-top:16px;color:var(--faint);font-size:12px;font-family:var(--mono)}
+  @media(max-width:720px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .act{grid-template-columns:1fr auto;gap:8px}
+    .act .rank{grid-column:1/-1}
+    header.top{align-items:flex-start}
+  }
+  @media(prefers-reduced-motion:no-preference){
+    tr,.chip,.tab{transition:background .12s ease,color .12s ease,border-color .12s ease}
+  }
+</style>
+
+<main class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Vercel · team adamtpangs-projects</div>
+      <h1><span class="tri">▲</span> The Estate</h1>
+      <div class="sub">Every project and domain in your Vercel account, verified live over HTTP — sorted into what's working, what's broken, and what's quietly costing you money.</div>
+    </div>
+    <div class="stamp">SNAPSHOT<br>2026-07-07<br><span style="color:var(--muted)">94 projects · 64 domains</span></div>
+  </header>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="waste">
+    <div class="big" id="wasteBig">$309</div>
+    <div class="txt"><b>per year</b> is going to <b>12 domains that serve nothing</b> — registered on Vercel, auto-renewing, every one returning a 404 or dead. Cancel renewal before each expiry date (listed below) to stop the bleed.</div>
+  </div>
+
+  <h2 class="sec">Do this first</h2>
+  <div class="acts" id="acts"></div>
+
+  <h2 class="sec">Explore everything</h2>
+  <div class="exp">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" aria-selected="true" data-view="domains">Domains <span class="c">64</span></button>
+      <button class="tab" role="tab" aria-selected="false" data-view="projects">Projects <span class="c">94</span></button>
+    </div>
+    <div class="controls">
+      <label class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
+        <input id="q" type="text" placeholder="filter by name…" autocomplete="off" aria-label="Filter by name">
+      </label>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="tblwrap"><table id="tbl"><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
+  </div>
+  <div class="foot" id="foot"></div>
+</main>
+
+<script>
+const DATA = {"counts":{"projects":94,"domains":64,"live":44,"scratch":46,"broken":3,"duplicate":1,"domLive":45,"domDead":18,"domWrong":1,"wastedCount":12,"wastedYearly":309.48},"domains":[{"name":"finn.monster","registrar":"Vercel","expiresAt":"2027-07-07","status":"noresponse","code":"000","title":"","renewal":17.99},{"name":"300words.app","registrar":"Vercel","expiresAt":"2027-07-01","status":"dead404","code":"404","title":"","renewal":15},{"name":"arcarena.xyz","registrar":"Vercel","expiresAt":"2027-06-24","status":"live","code":"200","title":"arcarena, where problems meet talent meets capital","renewal":13},{"name":"vitals.run","registrar":"Vercel","expiresAt":"2027-06-24","status":"live","code":"200","title":"vitals.run — the operating system for every company you run","renewal":22},{"name":"moneymeta.fun","registrar":"Vercel","expiresAt":"2027-06-24","status":"live","code":"200","title":"moneymeta.fun, the capitalism meta report","renewal":27},{"name":"beeper.chat","registrar":"Vercel","expiresAt":"2027-06-22","status":"live","code":"200","title":"beeper.chat: inbox zero by importance × urgency","renewal":32},{"name":"portal.voyage","registrar":"Vercel","expiresAt":"2027-06-22","status":"live","code":"200","title":"portal.voyage · Where on Earth should you live?","renewal":51.69},{"name":"crucible.camp","registrar":"Vercel","expiresAt":"2027-06-22","status":"live","code":"200","title":"Arc Hackathon, a Base + Solana + Bitcoin builder weekend","renewal":46},{"name":"archimedes.life","registrar":"Vercel","expiresAt":"2027-06-16","status":"live","code":"200","title":"archimedes · the leverage diagnosis","renewal":31},{"name":"asap.deals","registrar":"Vercel","expiresAt":"2027-06-16","status":"live","code":"200","title":"asap.deals · The deal desk for founders, investors & int","renewal":34},{"name":"iron.credit","registrar":"Vercel","expiresAt":"2027-06-08","status":"live","code":"200","title":"Iron · Bitcoin Credit Card","renewal":95},{"name":"darktalent.tech","registrar":"Vercel","expiresAt":"2027-05-25","status":"live","code":"200","title":"darktalent — Moneyball for tech & business","renewal":49},{"name":"tabula.asia","registrar":"Vercel","expiresAt":"2027-05-25","status":"live","code":"200","title":"Tabula — Live Event Audio-Visual Production","renewal":14.5},{"name":"founderchurch.com","registrar":"Vercel","expiresAt":"2027-05-25","status":"dead404","code":"404","title":"","renewal":11.25},{"name":"countriesmarketcap.com","registrar":"Vercel","expiresAt":"2027-05-13","status":"live","code":"200","title":"Countries Market Cap — National Wealth, GDP & Debt Ranki","renewal":11.25},{"name":"worldcupelo.com","registrar":"Vercel","expiresAt":"2027-05-13","status":"live","code":"200","title":"World Cup Elo · Live ELO Ratings for National Teams","renewal":11.25},{"name":"conjecture.school","registrar":"Vercel","expiresAt":"2027-05-10","status":"live","code":"200","title":"Conjecture & Refutations","renewal":30},{"name":"zcash.school","registrar":"Vercel","expiresAt":"2027-05-10","status":"live","code":"200","title":"Private money, explained from scratch | zcash.school","renewal":30},{"name":"strummer.fun","registrar":"Vercel","expiresAt":"2027-05-09","status":"live","code":"200","title":"Strummer — own your music","renewal":27},{"name":"adamanack.com","registrar":"Vercel","expiresAt":"2027-04-30","status":"live","code":"200","title":"Poor Adam's Almanack","renewal":11.25},{"name":"pangaea.blog","registrar":"Vercel","expiresAt":"2027-04-29","status":"live","code":"200","title":"Pangaea","renewal":25},{"name":"summon.guide","registrar":"Vercel","expiresAt":"2027-04-29","status":"live","code":"200","title":"summon.guide | Personal Mentorship from History's Great","renewal":34},{"name":"adampang.com","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"Adam Pang","renewal":null},{"name":"ness.city","registrar":"Vercel","expiresAt":"2027-04-27","status":"live","code":"200","title":"optimism.fun | Humanity's Quest Log","renewal":25.67},{"name":"interneta.world","registrar":"Vercel","expiresAt":"2027-04-27","status":"live","code":"200","title":"interneta.world | The United States of Interneta","renewal":34},{"name":"pokedex.life","registrar":"Vercel","expiresAt":"2027-04-20","status":"live","code":"200","title":"pokedex.life — the people you surround yourself with","renewal":31},{"name":"deathmoney.fyi","registrar":"Vercel","expiresAt":"2027-04-17","status":"live","code":"200","title":"deathmoney.fyi · How much money do you need to last your lif","renewal":7},{"name":"wonderhall.live","registrar":"Vercel","expiresAt":"2027-04-17","status":"live","code":"200","title":"Wonderhall","renewal":28},{"name":"sprite.email","registrar":"Vercel","expiresAt":"2027-04-17","status":"live","code":"200","title":"Sprite - One inbox for every Gmail.","renewal":25},{"name":"thedojo.fun","registrar":"Vercel","expiresAt":"2027-04-12","status":"dead404","code":"404","title":"","renewal":27},{"name":"sellsniper.com","registrar":"Vercel","expiresAt":"2027-04-11","status":"live","code":"200","title":"SellSniper · Find your targets. With love.","renewal":11.25},{"name":"thegreats.fun","registrar":"Vercel","expiresAt":"2027-04-11","status":"dead404","code":"404","title":"","renewal":27},{"name":"yourlife.guru","registrar":"Vercel","expiresAt":"2027-04-07","status":"dead404","code":"404","title":"","renewal":34},{"name":"redmart.xyz","registrar":"Vercel","expiresAt":"2027-03-28","status":"live","code":"200","title":"RedMart | You need it. Red can get it.","renewal":13},{"name":"legends.guide","registrar":"Vercel","expiresAt":"2027-03-19","status":"dead404","code":"404","title":"","renewal":34},{"name":"technodemocracy.app","registrar":"Vercel","expiresAt":"2027-03-03","status":"live","code":"200","title":"Technodemocracy — magical internet votes","renewal":15},{"name":"optimism.fun","registrar":"Vercel","expiresAt":"2027-02-26","status":"live","code":"200","title":"optimism.fun | Humanity's Quest Log","renewal":275},{"name":"nskpi.com","registrar":"Vercel","expiresAt":"2027-02-21","status":"dead404","code":"404","title":"","renewal":11.25},{"name":"adam.gives","registrar":"Vercel","expiresAt":"2027-02-03","status":"dead404","code":"404","title":"","renewal":29},{"name":"problemindex.fun","registrar":"Vercel","expiresAt":"2027-01-11","status":"dead404","code":"404","title":"","renewal":27},{"name":"problemindex.fund","registrar":"Vercel","expiresAt":"2027-01-11","status":"dead404","code":"404","title":"","renewal":59},{"name":"themain.quest","registrar":"Vercel","expiresAt":"2027-01-10","status":"live","code":"200","title":"the main quest","renewal":16.99},{"name":"worthy.quest","registrar":"Vercel","expiresAt":"2027-01-07","status":"dead404","code":"404","title":"","renewal":16.99},{"name":"sitefast.pro","registrar":"Vercel","expiresAt":"2026-12-24","status":"live","code":"200","title":"sitefast.pro: Get a Professional Website in 24 Hours | New Y","renewal":23},{"name":"nslist.app","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"nslist.app","renewal":null},{"name":"xray.social","registrar":"Third Party","expiresAt":null,"status":"noresponse","code":"000","title":"","renewal":null},{"name":"youchop.app","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"YouChop — AI Chapters & Timestamps for YouTube","renewal":null},{"name":"nsmarket.app","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"nsmarket.app","renewal":null},{"name":"skillmarketcap.com","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"SkillMarketCap - Track & Rank Professional Skills","renewal":null},{"name":"anchormarianas.com","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"Anchor Marianas — Anchor Scan: turn your reviews into a grow","renewal":null},{"name":"maans.love","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"thecavesun — a love letter","renewal":null},{"name":"iscout.tools","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"iscout.tools - I scout the coolest tools on the internet","renewal":null},{"name":"thesolarpunks.art","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"thesolarpunks.art","renewal":null},{"name":"vibecheck.style","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"🎵 vibecheck.style","renewal":null},{"name":"yourchore.com","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"YourChore - Campus Life, Simplified","renewal":null},{"name":"book.movie","registrar":"Third Party","expiresAt":null,"status":"noresponse","code":"000","title":"","renewal":null},{"name":"wayfind.world","registrar":"Third Party","expiresAt":null,"status":"noresponse","code":"000","title":"","renewal":null},{"name":"scorecard.social","registrar":"Third Party","expiresAt":null,"status":"noresponse","code":"000","title":"","renewal":null},{"name":"8020.best","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"8020.best — Do the vital 20% first","renewal":null},{"name":"caldump.com","registrar":"Third Party","expiresAt":null,"status":"noresponse","code":"000","title":"","renewal":null},{"name":"light90.com","registrar":"Third Party","expiresAt":null,"status":"wrongcontent","code":"200","title":"k豆钱包官方网站 - kdpay钱包","renewal":null},{"name":"hower.app","registrar":"Third Party","expiresAt":null,"status":"noresponse","code":"000","title":"","renewal":null},{"name":"skill.supply","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"","renewal":null},{"name":"townhall.town","registrar":"Third Party","expiresAt":null,"status":"live","code":"200","title":"townhall.town · constructive criticism, by design","renewal":null}],"projects":[{"name":"sellsniper.com","category":"live","domain":"sellsniper.com","note":"","updatedDays":0,"hasDeploys":true},{"name":"companyuniversity","category":"scratch","domain":null,"note":"","updatedDays":0,"hasDeploys":true},{"name":"summon.guide","category":"live","domain":"summon.guide","note":"","updatedDays":0,"hasDeploys":true},{"name":"pangaea.blog","category":"live","domain":"pangaea.blog","note":"","updatedDays":1,"hasDeploys":true},{"name":"300words.app","category":"broken","domain":"300words.app","note":"you own 300words.app but it is dead404 and not attached","updatedDays":1,"hasDeploys":true},{"name":"youchop.app","category":"live","domain":"youchop.app","note":"","updatedDays":1,"hasDeploys":true},{"name":"beeper.chat","category":"live","domain":"beeper.chat","note":"","updatedDays":1,"hasDeploys":true},{"name":"pokedex.life","category":"live","domain":"pokedex.life","note":"","updatedDays":1,"hasDeploys":true},{"name":"worldcupelo.com","category":"live","domain":"worldcupelo.com","note":"","updatedDays":1,"hasDeploys":true},{"name":"vitals.run","category":"live","domain":"vitals.run","note":"","updatedDays":2,"hasDeploys":true},{"name":"themain.quest","category":"live","domain":"themain.quest","note":"","updatedDays":2,"hasDeploys":true},{"name":"portal.voyage","category":"live","domain":"portal.voyage","note":"","updatedDays":2,"hasDeploys":true},{"name":"moneymeta.fun","category":"live","domain":"moneymeta.fun","note":"","updatedDays":2,"hasDeploys":true},{"name":"iron.credit","category":"live","domain":"iron.credit","note":"","updatedDays":2,"hasDeploys":true},{"name":"deathmoney","category":"live","domain":"deathmoney.fyi","note":"","updatedDays":2,"hasDeploys":true},{"name":"asap.deals","category":"live","domain":"asap.deals","note":"","updatedDays":2,"hasDeploys":true},{"name":"adampang.com","category":"live","domain":"adampang.com","note":"","updatedDays":2,"hasDeploys":true},{"name":"tabula.asia","category":"live","domain":"tabula.asia","note":"","updatedDays":3,"hasDeploys":true},{"name":"arcarena","category":"live","domain":"arcarena.xyz","note":"","updatedDays":4,"hasDeploys":true},{"name":"dec-20","category":"scratch","domain":null,"note":"","updatedDays":4,"hasDeploys":true},{"name":"anchormarianas.com","category":"live","domain":"anchormarianas.com","note":"","updatedDays":4,"hasDeploys":true},{"name":"quantus-beta-intake","category":"scratch","domain":null,"note":"","updatedDays":4,"hasDeploys":true},{"name":"archimedes.life","category":"live","domain":"archimedes.life","note":"","updatedDays":5,"hasDeploys":true},{"name":"darktalent.tech","category":"live","domain":"darktalent.tech","note":"","updatedDays":6,"hasDeploys":true},{"name":"dec-15","category":"scratch","domain":null,"note":"","updatedDays":6,"hasDeploys":true},{"name":"dec-19","category":"scratch","domain":null,"note":"","updatedDays":9,"hasDeploys":true},{"name":"dec-18","category":"scratch","domain":null,"note":"","updatedDays":9,"hasDeploys":true},{"name":"optimism.fun","category":"live","domain":"optimism.fun","note":"","updatedDays":9,"hasDeploys":true},{"name":"crucible.camp","category":"live","domain":"crucible.camp","note":"","updatedDays":14,"hasDeploys":true},{"name":"archackathon","category":"scratch","domain":null,"note":"","updatedDays":14,"hasDeploys":true},{"name":"ness.city","category":"live","domain":"ness.city","note":"","updatedDays":19,"hasDeploys":true},{"name":"interneta.world","category":"duplicate","domain":"interneta.world","note":"domain served by another project","updatedDays":19,"hasDeploys":true},{"name":"interneta","category":"live","domain":"interneta.world","note":"","updatedDays":19,"hasDeploys":true},{"name":"sprite.email","category":"live","domain":"sprite.email","note":"","updatedDays":19,"hasDeploys":true},{"name":"strummer","category":"live","domain":"strummer.fun","note":"","updatedDays":21,"hasDeploys":true},{"name":"zcash.school","category":"live","domain":"zcash.school","note":"","updatedDays":22,"hasDeploys":true},{"name":"8020.best","category":"live","domain":"8020.best","note":"","updatedDays":23,"hasDeploys":true},{"name":"idi","category":"scratch","domain":null,"note":"","updatedDays":24,"hasDeploys":true},{"name":"notioncollege","category":"scratch","domain":null,"note":"","updatedDays":25,"hasDeploys":true},{"name":"site","category":"scratch","domain":null,"note":"","updatedDays":28,"hasDeploys":true},{"name":"satsave.app","category":"scratch","domain":null,"note":"","updatedDays":29,"hasDeploys":true},{"name":"conjecture.school","category":"live","domain":"conjecture.school","note":"","updatedDays":30,"hasDeploys":true},{"name":"crossbar","category":"scratch","domain":null,"note":"","updatedDays":39,"hasDeploys":true},{"name":"book.movie","category":"broken","domain":"book.movie","note":"domain attached but not resolving","updatedDays":41,"hasDeploys":true},{"name":"idiprocurement","category":"scratch","domain":null,"note":"","updatedDays":42,"hasDeploys":true},{"name":"bidsmart","category":"scratch","domain":null,"note":"","updatedDays":42,"hasDeploys":true},{"name":"plantdoc","category":"scratch","domain":null,"note":"","updatedDays":42,"hasDeploys":true},{"name":"sitefast.pro","category":"live","domain":"sitefast.pro","note":"","updatedDays":42,"hasDeploys":true},{"name":"toddlertalk","category":"scratch","domain":null,"note":"","updatedDays":42,"hasDeploys":true},{"name":"leasepeace","category":"scratch","domain":null,"note":"","updatedDays":42,"hasDeploys":true},{"name":"wonderhall.live","category":"live","domain":"wonderhall.live","note":"","updatedDays":42,"hasDeploys":true},{"name":"guestguide","category":"scratch","domain":null,"note":"","updatedDays":42,"hasDeploys":true},{"name":"vibecheck.style","category":"live","domain":"vibecheck.style","note":"","updatedDays":42,"hasDeploys":true},{"name":"buildalong","category":"scratch","domain":null,"note":"","updatedDays":43,"hasDeploys":true},{"name":"siteupgrade","category":"scratch","domain":null,"note":"","updatedDays":43,"hasDeploys":true},{"name":"returndesk","category":"scratch","domain":null,"note":"","updatedDays":43,"hasDeploys":true},{"name":"closetclear","category":"scratch","domain":null,"note":"","updatedDays":43,"hasDeploys":true},{"name":"skillmarketcap.com","category":"live","domain":"skillmarketcap.com","note":"","updatedDays":43,"hasDeploys":true},{"name":"robloxguard","category":"scratch","domain":null,"note":"","updatedDays":44,"hasDeploys":true},{"name":"shopify-claude-hackathon","category":"scratch","domain":null,"note":"","updatedDays":44,"hasDeploys":true},{"name":"nstutorialgenerator","category":"scratch","domain":null,"note":"","updatedDays":44,"hasDeploys":true},{"name":"adbooker","category":"scratch","domain":null,"note":"","updatedDays":44,"hasDeploys":true},{"name":"nslink","category":"scratch","domain":null,"note":"","updatedDays":45,"hasDeploys":true},{"name":"darienvillage","category":"scratch","domain":null,"note":"","updatedDays":46,"hasDeploys":true},{"name":"nsmarket.app","category":"live","domain":"nsmarket.app","note":"","updatedDays":46,"hasDeploys":true},{"name":"technodemocracy.app","category":"live","domain":"technodemocracy.app","note":"","updatedDays":46,"hasDeploys":true},{"name":"townhall.town","category":"live","domain":"townhall.town","note":"","updatedDays":46,"hasDeploys":true},{"name":"ztripe","category":"scratch","domain":null,"note":"","updatedDays":46,"hasDeploys":true},{"name":"cinemaconnect","category":"scratch","domain":null,"note":"","updatedDays":47,"hasDeploys":true},{"name":"yourchore.com","category":"live","domain":"yourchore.com","note":"","updatedDays":47,"hasDeploys":true},{"name":"estimate","category":"scratch","domain":null,"note":"","updatedDays":47,"hasDeploys":true},{"name":"careercompass","category":"scratch","domain":null,"note":"","updatedDays":48,"hasDeploys":true},{"name":"redmart","category":"live","domain":"redmart.xyz","note":"","updatedDays":48,"hasDeploys":true},{"name":"last20","category":"scratch","domain":null,"note":"","updatedDays":49,"hasDeploys":true},{"name":"coursecompanion","category":"scratch","domain":null,"note":"","updatedDays":49,"hasDeploys":true},{"name":"runthevin","category":"scratch","domain":null,"note":"","updatedDays":49,"hasDeploys":true},{"name":"homeseller","category":"scratch","domain":null,"note":"","updatedDays":50,"hasDeploys":true},{"name":"teambudget","category":"scratch","domain":null,"note":"","updatedDays":50,"hasDeploys":true},{"name":"anchorscan","category":"scratch","domain":null,"note":"","updatedDays":50,"hasDeploys":true},{"name":"skill.supply","category":"live","domain":"skill.supply","note":"","updatedDays":51,"hasDeploys":true},{"name":"slabstatus","category":"scratch","domain":null,"note":"","updatedDays":51,"hasDeploys":true},{"name":"ghostcaddie","category":"scratch","domain":null,"note":"","updatedDays":52,"hasDeploys":true},{"name":"kamia.vercel.app","category":"scratch","domain":null,"note":"","updatedDays":52,"hasDeploys":true},{"name":"petscan","category":"scratch","domain":null,"note":"","updatedDays":52,"hasDeploys":true},{"name":"iscout.tools","category":"live","domain":"iscout.tools","note":"","updatedDays":52,"hasDeploys":true},{"name":"caldump.com","category":"broken","domain":"caldump.com","note":"you own caldump.com but it is noresponse and not attached","updatedDays":52,"hasDeploys":true},{"name":"nailnana","category":"scratch","domain":null,"note":"","updatedDays":52,"hasDeploys":true},{"name":"flexpay","category":"scratch","domain":null,"note":"","updatedDays":53,"hasDeploys":true},{"name":"socialloop","category":"scratch","domain":null,"note":"","updatedDays":53,"hasDeploys":true},{"name":"nsissueestimator","category":"scratch","domain":null,"note":"","updatedDays":53,"hasDeploys":true},{"name":"maans.love","category":"live","domain":"maans.love","note":"","updatedDays":53,"hasDeploys":true},{"name":"nslist","category":"live","domain":"nslist.app","note":"","updatedDays":53,"hasDeploys":true},{"name":"countriesmarketcap","category":"live","domain":"countriesmarketcap.com","note":"","updatedDays":54,"hasDeploys":true},{"name":"adamanack.com","category":"live","domain":"adamanack.com","note":"","updatedDays":62,"hasDeploys":true}]};
+
+const DOM_STATUS = {
+  live:{label:'live',cls:'t-live',dot:'d-live',order:0},
+  dead404:{label:'404 dead',cls:'t-dead',dot:'d-dead',order:2},
+  noresponse:{label:'no response',cls:'t-dead',dot:'d-dead',order:2},
+  httperror:{label:'http error',cls:'t-warn',dot:'d-warn',order:2},
+  wrongcontent:{label:'hijacked',cls:'t-crit',dot:'d-crit',order:1},
+  unknown:{label:'unknown',cls:'t-steel',dot:'d-steel',order:3},
+};
+const PROJ_CAT = {
+  live:{label:'live',cls:'t-live',dot:'d-live',order:0},
+  broken:{label:'broken',cls:'t-dead',dot:'d-dead',order:1},
+  duplicate:{label:'duplicate',cls:'t-warn',dot:'d-warn',order:2},
+  scratch:{label:'scratch',cls:'t-steel',dot:'d-steel',order:3},
+};
+const c = DATA.counts;
+
+// KPIs
+document.getElementById('kpis').innerHTML = [
+  {n:c.projects,l:'Projects',bars:[['t-live','d-live',c.live+' live'],['t-steel','d-steel',c.scratch+' scratch'],['t-dead','d-dead',(c.broken)+' broken']]},
+  {n:c.domains,l:'Domains',bars:[['t-live','d-live',c.domLive+' live'],['t-dead','d-dead',c.domDead+' dead'],['t-crit','d-crit',c.domWrong+' hijacked']]},
+  {n:c.live,l:'Live sites shipping',bars:[['t-accent','','custom domain + 200 OK']]},
+  {n:'$'+Math.round(c.wastedYearly),l:'Wasted per year',bars:[['t-warn','d-warn',c.wastedCount+' dead renewals']]},
+].map(k=>`<div class="kpi"><div class="n">${k.n}</div><div class="l">${k.l}</div><div class="bars">${k.bars.map(b=>`<span class="tag ${b[0]}">${b[1]?'<span class="dot '+b[1]+'"></span>':''}${b[2]}</span>`).join('')}</div></div>`).join('');
+
+// Actions
+const deadRenew = DATA.domains.filter(d=>['dead404','noresponse'].includes(d.status)&&d.renewal).sort((a,b)=>new Date(a.expiresAt)-new Date(b.expiresAt));
+const acts = [
+  {k:'crit',rank:'Critical',h:'light90.com is serving someone else\'s crypto-wallet page',
+   p:'A third-party domain in your account now resolves to a Chinese "kdpay钱包" wallet site — its DNS no longer points at you. Likely lapsed &amp; re-registered. Confirm you still own it or cut it loose.',metric:'⚠'},
+  {k:'high',rank:'Stop paying',h:'12 dead domains are auto-renewing for nothing',
+   p:'All return 404 / no response yet renew on Vercel. Earliest deadlines: '+deadRenew.slice(0,3).map(d=>'<code>'+d.name+'</code> '+d.expiresAt).join(', ')+' … Turn off renewal in Domains → each domain → Settings.',metric:'$'+Math.round(c.wastedYearly)+'/yr'},
+  {k:'win',rank:'Quick win',h:'Reconnect 2 domains that already have a live build',
+   p:'<code>300words.app</code> and <code>caldump.com</code> both have working deployments (on their <code>.vercel.app</code> URL) but the custom domain 404s. Re-add the domain to the project → instantly live.',metric:'2 fixes'},
+  {k:'tidy',rank:'Declutter',h:'46 scratch projects + 1 duplicate shell',
+   p:'Throwaways (<code>dec-15/18/19/20</code>, <code>site</code>, hackathons, one-off tools) sit on <code>.vercel.app</code> with no domain. <code>interneta.world</code> duplicates the live <code>interneta</code> project. Archive/delete to clear the board.',metric:'47 items'},
+];
+document.getElementById('acts').innerHTML = acts.map(a=>`<div class="act ${a.k}"><div class="rank">${a.rank}</div><div><h3>${a.h}</h3><p>${a.p}</p></div><div class="metric">${a.metric}</div></div>`).join('');
+
+// Explorer
+let view='domains', sortKey='status', sortDir=1, active=new Set(), query='';
+const chipsEl=document.getElementById('chips'), theadEl=document.getElementById('thead'), tbodyEl=document.getElementById('tbody'), footEl=document.getElementById('foot');
+
+const COLS = {
+  domains:[['name','Domain'],['status','Status'],['registrar','Registrar'],['renewal','Renews'],['expiresAt','Expires'],['title','Serving']],
+  projects:[['name','Project'],['category','Status'],['domain','Domain'],['updatedDays','Last deploy'],['note','Note']],
+};
+function rows(){ return view==='domains'?DATA.domains:DATA.projects; }
+function statusOf(r){ return view==='domains'?r.status:r.category; }
+function meta(s){ return (view==='domains'?DOM_STATUS:PROJ_CAT)[s]||{label:s,cls:'t-steel',dot:'d-steel',order:9}; }
+
+function renderChips(){
+  const map = view==='domains'?DOM_STATUS:PROJ_CAT;
+  const present=[...new Set(rows().map(statusOf))];
+  const order=Object.keys(map).filter(k=>present.includes(k));
+  chipsEl.innerHTML = order.map(k=>{const m=map[k];const n=rows().filter(r=>statusOf(r)===k).length;
+    return `<button class="chip" data-k="${k}" aria-pressed="${active.has(k)}"><span class="dot ${m.dot}"></span>${m.label} ${n}</button>`;}).join('');
+  chipsEl.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{const k=b.dataset.k;active.has(k)?active.delete(k):active.add(k);render();});
+}
+function renderHead(){
+  theadEl.innerHTML='<tr>'+COLS[view].map(([k,l])=>`<th data-k="${k}" class="${k===sortKey?'sorted':''}">${l}<span class="ar">${sortDir>0?'▲':'▼'}</span></th>`).join('')+'</tr>';
+  theadEl.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(k===sortKey)sortDir*=-1;else{sortKey=k;sortDir=1;}render();});
+}
+function cell(r,k){
+  if(k==='name'){const live=(view==='domains'&&r.status==='live')||(view==='projects'&&r.category==='live')||(view==='projects'&&r.category==='duplicate');
+    const href='https://'+(view==='domains'?r.name:(r.domain||r.name));
+    return `<td class="name">${(view==='domains'||r.domain)?`<a href="${href}" target="_blank" rel="noopener">${r.name}</a>`:r.name}</td>`;}
+  if(k==='status'||k==='category'){const m=meta(statusOf(r));return `<td><span class="pill ${m.cls}"><span class="dot ${m.dot}"></span>${m.label}</span></td>`;}
+  if(k==='registrar')return `<td class="dim">${r.registrar}</td>`;
+  if(k==='renewal')return `<td class="dim">${r.renewal?'$'+r.renewal:'—'}</td>`;
+  if(k==='expiresAt')return `<td class="dim">${r.expiresAt||'—'}</td>`;
+  if(k==='title')return `<td class="serving" title="${(r.title||'').replace(/"/g,'&quot;')}">${r.title||(r.status==='live'?'':'<span style=color:var(--faint)>— nothing —</span>')}</td>`;
+  if(k==='domain')return `<td class="dim">${r.domain||'—'}</td>`;
+  if(k==='updatedDays')return `<td class="dim">${r.updatedDays}d ago</td>`;
+  if(k==='note')return `<td class="serving" style="color:var(--faint)">${r.note||''}</td>`;
+  return '<td></td>';
+}
+function render(){
+  renderChips();renderHead();
+  let data=rows().filter(r=>{
+    if(active.size&&!active.has(statusOf(r)))return false;
+    if(query&&!(r.name.toLowerCase().includes(query)||(r.domain||'').toLowerCase().includes(query)||(r.title||'').toLowerCase().includes(query)))return false;
+    return true;});
+  data=data.slice().sort((a,b)=>{
+    let x,y;
+    if(sortKey==='status'||sortKey==='category'){x=meta(statusOf(a)).order;y=meta(statusOf(b)).order;}
+    else{x=a[sortKey];y=b[sortKey];}
+    if(sortKey==='expiresAt'){x=x?new Date(x).getTime():Infinity;y=y?new Date(y).getTime():Infinity;}
+    if(typeof x==='string'&&typeof y==='string')return x.localeCompare(y)*sortDir;
+    return ((x??-1)>(y??-1)?1:(x??-1)<(y??-1)?-1:0)*sortDir;});
+  tbodyEl.innerHTML = data.length?data.map(r=>'<tr>'+COLS[view].map(([k])=>cell(r,k)).join('')+'</tr>').join('')
+    :'<tr><td class="empty" colspan="6">no matches</td></tr>';
+  footEl.textContent = 'showing '+data.length+' of '+rows().length+' '+view+(active.size?' · filtered':'')+'  ·  click a column to sort, a status chip to filter';
+}
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===t));
+  view=t.dataset.view;active=new Set();query='';document.getElementById('q').value='';
+  sortKey=view==='domains'?'status':'category';sortDir=1;render();});
+document.getElementById('q').addEventListener('input',e=>{query=e.target.value.trim().toLowerCase();render();});
+render();
+</script>

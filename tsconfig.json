@@ -37,7 +37,7 @@
   ],
   "exclude": [
     "node_modules",
-    "anchorscan",
+    "apps/anchorscan",
     "_legacy",
     "_site",
     "out",
