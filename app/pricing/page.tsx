@@ -2,7 +2,7 @@ import Link from "next/link"
 import menu from "@/content/menu.json"
 
 export const metadata = {
-  title: "Pricing — every problem has a price | Anchor Marianas",
+  title: "Pricing - every problem has a price | Anchor Marianas",
   description:
     "The scan finds the problems, this menu prices them. Fixed-price AI fixes for small businesses: audit, websites, AI receptionist, review responder, and more.",
 }

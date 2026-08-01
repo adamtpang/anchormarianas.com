@@ -15,9 +15,13 @@ export function Footer() {
             <p className="text-xs text-muted-foreground/80 mt-3">
               Operated by{" "}
               <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
-                Adam Pang
+                Adam Pangelinan
               </Link>
-              . Working with Hilton.
+              . Retained by{" "}
+              <Link href="/work" className="underline underline-offset-4 hover:text-foreground">
+                International Distributors, Inc.
+              </Link>
+
             </p>
           </div>
 

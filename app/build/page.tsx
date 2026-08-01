@@ -173,6 +173,29 @@ export default function BuildPage() {
                   <p className="text-sm text-muted-foreground mt-1">{error}</p>
                 </div>
               </div>
+
+              {/* Never leave a visitor at a dead end. Adam scopes it by hand. */}
+              <div className="mt-4 rounded-lg border border-border bg-card p-5">
+                <p className="text-sm font-semibold">The tool broke, the offer stands.</p>
+                <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">
+                  Send me what you want built and I will scope it by hand, with the
+                  same honest price range.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <Button size="sm" asChild>
+                    <a
+                      href={`mailto:${siteConfig.email}?subject=${encodeURIComponent("Project scope request")}&body=${encodeURIComponent(`What I want built:\n${description || ""}\n\nBudget: ${budget || "not sure yet"}\nTimeline: ${timeline || "not sure yet"}`)}`}
+                    >
+                      Email me the project
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href={siteConfig.calendly} target="_blank" rel="noopener noreferrer">
+                      Book a 15-min call
+                    </a>
+                  </Button>
+                </div>
+              </div>
             </div>
           </motion.section>
         )}

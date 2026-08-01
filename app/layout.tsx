@@ -27,9 +27,9 @@ const geistMono = Geist_Mono({
   display: "swap",
 })
 
-const title = "Anchor Marianas — Anchor Scan for Guam businesses"
+const title = "Anchor Marianas - the AI layer of your business"
 const description =
-  "We read what your customers are already telling you in your Google reviews, then find where AI can save you time and grow revenue. Working with Hilton."
+  "We read what your customers already tell you, then build the fix. Free review scan, fixed-price builds, from Guam. Retained software engineer for International Distributors, Inc."
 
 export const metadata: Metadata = {
   title,
