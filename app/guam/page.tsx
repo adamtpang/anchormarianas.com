@@ -11,7 +11,7 @@ const offers = servicesData.filter((s) => offerSlugs.includes(s.slug))
 export const metadata = {
   title: "Web design in Guam, live in 5 days | Anchor Marianas",
   description:
-    "Website designer and web developer in Barrigada, Guam. $497 landing page or $1,997 web app, live in 5 days, flat price. Retained software engineer for International Distributors, Inc.",
+    "Website designer and web developer in Barrigada, Guam. $497 landing page or $1,997 web app, live in 5 days or refunded. Retained software engineer for International Distributors, Inc.",
   keywords: [
     "web design Guam",
     "website designer Guam",
@@ -37,11 +37,11 @@ const quietLink =
 const faqs = [
   {
     q: "How much does web design in Guam cost?",
-    a: "At Anchor Marianas, a one-page site is $497 flat and a working web app is $1,997 flat. No quotes, no scoping drag. The price you see is the price you pay.",
+    a: "At Anchor Marianas, a one-page site is $497 flat and a working web app is $1,997 flat. No quotes, no scoping drag. If we miss the 5-day deadline, you get a refund.",
   },
   {
     q: "How long does a website designer in Guam take to build a site?",
-    a: "Five days from payment to live. That covers copy, design, build, and deploy, with your booking or checkout link wired in.",
+    a: "Five days from payment to live. That covers copy, design, build, and deploy, with your booking or checkout link wired in. Late means refunded.",
   },
   {
     q: "Can a Guam web developer build a full web app, not just a landing page?",
@@ -79,7 +79,7 @@ const localBusinessJsonLd = {
   alternateName: "Anchor Marianas",
   url: "https://anchormarianas.com/guam",
   description:
-    "Web design studio in Barrigada, Guam. Landing pages and web apps, live in 5 days, flat price.",
+    "Web design studio in Barrigada, Guam. Landing pages and web apps, live in 5 days or refunded, flat price.",
   email: siteConfig.email,
   telephone: siteConfig.phone,
   founder: {
@@ -147,7 +147,7 @@ export default function GuamPage() {
           </h1>
 
           <p className="t-body-lg mt-7 max-w-lg text-muted-foreground">
-            One flat price, one deadline. We build the site, wire in your
+            One flat price, one deadline, refund if we miss it. We build the site, wire in your
             booking or checkout link, and hand you the keys.
           </p>
 
@@ -213,7 +213,7 @@ export default function GuamPage() {
           </div>
 
           <p className="t-small mt-6 text-muted-foreground">
-            After launch, add the $500/mo care plan: updates, edits, and
+            If the build is late, you get a refund. After launch, add the $500/mo care plan: updates, edits, and
             hosting handled. Prefer to talk first?{" "}
             <a href={bookUrl} className={quietLink}>
               Book a call
