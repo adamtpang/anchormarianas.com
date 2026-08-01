@@ -67,19 +67,66 @@ function extractJson(cliOut) {
   return JSON.parse(s !== -1 && e !== -1 ? cleaned.slice(s, e + 1) : cleaned)
 }
 
+// Load keys from the repo .env if they are not already in the environment, so
+// nothing has to be exported before running this.
+async function loadEnv() {
+  let env = ""
+  try {
+    env = await readFile(path.join(ROOT, ".env"), "utf8")
+  } catch {
+    return
+  }
+  for (const name of ["APIFY_API_TOKEN", "SERPAPI_API_KEY", "OUTSCRAPER_API_KEY", "GOOGLE_PLACES_API_KEY"]) {
+    if (process.env[name]) continue
+    const m = env.match(new RegExp(`^${name}=(.+)$`, "m"))
+    if (m) process.env[name] = m[1].trim().replace(/^["']|["']$/g, "")
+  }
+}
+
+const SOURCE_HELP = `
+Options, cheapest first:
+
+  1. Paste the reviews yourself (always works, no key, no quota):
+       node scripts/anchorscan/publish-read.mjs "Business Name" --source manual --file reviews.txt
+     where reviews.txt holds one review per blank-line-separated block.
+
+  2. SerpAPI free tier, 250 searches a month, no card required:
+       put SERPAPI_API_KEY in .env, then add --source serpapi
+
+  3. Apify, only if the monthly usage cap is not already exceeded:
+       put APIFY_API_TOKEN in .env, then add --source apify
+`
+
 async function main() {
+  await loadEnv()
   const args = process.argv.slice(2)
-  const query = args.filter((a) => !a.startsWith("--")).join(" ").trim()
+  const query = args
+    .filter((a, i) => !a.startsWith("--") && !String(args[i - 1] || "").startsWith("--"))
+    .join(" ")
+    .trim()
   const sourceIdx = args.indexOf("--source")
   const source = sourceIdx !== -1 ? args[sourceIdx + 1] : "apify"
+  const fileIdx = args.indexOf("--file")
+  const file = fileIdx !== -1 ? args[fileIdx + 1] : undefined
   if (!query) {
-    console.error('Usage: node publish-read.mjs "Business Name, Guam" [--source apify|google|serpapi|manual]')
+    console.error('Usage: node publish-read.mjs "Business Name, Guam" [--source apify|google|serpapi|manual] [--file reviews.txt]')
     process.exit(1)
   }
 
   console.log(`Fetching reviews for "${query}" via ${source}...`)
-  const fetched = await fetchReviews({ query, source })
-  if (!fetched.reviews.length) throw new Error(`No reviews found for "${query}".`)
+  let fetched
+  try {
+    fetched = await fetchReviews({ query, source, file })
+  } catch (e) {
+    console.error(`\nReview fetch failed: ${e.message}`)
+    console.error(SOURCE_HELP)
+    process.exit(1)
+  }
+  if (!fetched.reviews.length) {
+    console.error(`\nNo reviews found for "${query}".`)
+    console.error(SOURCE_HELP)
+    process.exit(1)
+  }
   console.log(`  ${fetched.reviews.length} reviews.`)
 
   const method = await readFile(path.join(HERE, "diagnose.md"), "utf8")
@@ -112,10 +159,10 @@ async function main() {
   if (read.reviewCount == null) read.reviewCount = fetched.business.ratingCount ?? fetched.reviews.length
 
   await mkdir(OUT_DIR, { recursive: true })
-  const file = path.join(OUT_DIR, `${read.slug}.json`)
-  await writeFile(file, JSON.stringify(read, null, 2) + "\n", "utf8")
+  const outFile = path.join(OUT_DIR, `${read.slug}.json`)
+  await writeFile(outFile, JSON.stringify(read, null, 2) + "\n", "utf8")
 
-  console.log(`\nWrote ${path.relative(ROOT, file)}`)
+  console.log(`\nWrote ${path.relative(ROOT, outFile)}`)
   console.log(`Publishes at: https://anchormarianas.com/scan/${read.slug}`)
   console.log("Commit and push to make it live. No API credits used.")
 }
