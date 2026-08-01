@@ -58,6 +58,16 @@ export function Footer() {
             </a>
           </div>
         </div>
+
+        <div className="mt-8 border-t border-border/40 pt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+          <span>{siteConfig.legalName}</span>
+          <Link href="/privacy" className="hover:text-foreground transition-colors">
+            Privacy
+          </Link>
+          <Link href="/terms" className="hover:text-foreground transition-colors">
+            Terms
+          </Link>
+        </div>
       </div>
     </footer>
   )
