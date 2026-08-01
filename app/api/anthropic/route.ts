@@ -61,6 +61,19 @@ function getApiKey(): string {
   return key
 }
 
+// This route spends the server's Anthropic key, so it must never be open to the
+// internet. Fail closed: without ANTHROPIC_PROXY_SECRET set, and a matching
+// x-anchor-proxy-secret header on the request, nothing gets through.
+function assertAuthorized(req: NextRequest): void {
+  const secret = process.env.ANTHROPIC_PROXY_SECRET
+  if (!secret) {
+    throw new Error("Proxy is disabled. Set ANTHROPIC_PROXY_SECRET to enable it.")
+  }
+  if (req.headers.get("x-anchor-proxy-secret") !== secret) {
+    throw new Error("Unauthorized.")
+  }
+}
+
 async function handleStreaming(
   req: AnthropicProxyRequest
 ): Promise<Response> {
@@ -139,6 +152,7 @@ async function handleNonStreaming(
 
 export async function POST(req: NextRequest): Promise<Response> {
   try {
+    assertAuthorized(req)
     const body = await req.json()
     const validated = validateBody(body)
 
