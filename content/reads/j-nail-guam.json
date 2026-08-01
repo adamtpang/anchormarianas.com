@@ -1,0 +1,39 @@
+{
+  "slug": "j-nail-guam",
+  "business": "J Nail",
+  "location": "Harmon Industrial Park, Guam",
+  "generatedAt": "2026-07-09",
+  "source": "Google Maps reviews, read on 2026-07-09",
+  "rating": 4.4,
+  "reviewCount": 68,
+  "summary": "A salon where customers are loyal to specific technicians rather than to the shop. The best reviews are glowing and personal. The weaker ones almost all trace back to two fixable operational gaps.",
+  "observations": [
+    {
+      "title": "Customers are loyal to people, not the shop",
+      "detail": "Reviewers name G, Kai, Christine, and Ms. Young directly, and several say they will only book with a particular tech. One reviewer flatly says she has not found anyone as good as her regular on island. That loyalty is an asset, and it is also a scheduling risk.",
+      "evidence": "Multiple reviews name individual technicians and describe following them."
+    },
+    {
+      "title": "Getting matched to the wrong tech is the top complaint",
+      "detail": "The clearest negative pattern is a customer being booked with someone other than their usual technician and being unhappy with the result. One longtime customer described work that did not last and then being charged again to fix it.",
+      "evidence": "A detailed 3-star review describes being booked with a different technician than expected."
+    },
+    {
+      "title": "Walk-in versus appointment is unclear",
+      "detail": "At least one 1-star review is entirely about arriving in the afternoon expecting a basic service and being turned away, with the reviewer noting the site says nothing about appointments being required. That is an expectations problem, not a service problem.",
+      "evidence": "A 1-star review is specifically about walk-in expectations."
+    },
+    {
+      "title": "Not one review has a reply",
+      "detail": "Across the reviews read, none carry a response from the shop. The unanswered 1, 2, and 3 star reviews are the ones doing damage, and each is about something you could explain in two sentences.",
+      "evidence": "No owner responses appear on any review in the sample."
+    }
+  ],
+  "questions": [
+    "How does a customer request a specific tech today, and what happens when that tech is booked?",
+    "Are walk-ins welcome, and where would a customer find that out before driving over?",
+    "Who would own replying to reviews if it took ten minutes a week?",
+    "When work does not last, what is the current policy, and do customers know it?"
+  ],
+  "focus": "The tech-matching complaints and the walk-in confusion are the same problem wearing two hats: expectations set before the customer arrives. What would it take to make both clear at booking time?"
+}
