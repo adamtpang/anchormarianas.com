@@ -66,7 +66,8 @@ export default function HomePage() {
             </div>
           </div>
           <p className="t-small mt-3 text-muted-foreground">
-            Fixed prices, no quotes.{" "}
+            Fixed prices, no quotes, and builds ship in 5 days or you get a
+            refund.{" "}
             <Link href="/pricing" className={quietLink}>
               See the full menu
             </Link>
