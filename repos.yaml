@@ -1,0 +1,23 @@
+# repos.yaml v0 — see github.com/adamtpang/repo-protocol
+repo: anchormarianas.com
+is: Adam's Guam-based AI/digitalization agency, Anchor Marianas LLC, fixed-price audits and builds for island small businesses.
+url: https://anchormarianas.com
+cluster: fraud-defense
+
+provides:
+  - id: services-menu
+    what: the priced offer catalog (AI Opportunity Audit, website builds, AI receptionist, review responder) with live Stripe links
+    at: content/menu.json
+  - id: anchorscan
+    what: a website audit scanner that scrapes a domain, scores it, and generates a fix proposal, the AI Opportunity Audit's engine
+    at: apps/anchorscan/README.md
+
+stack: [next, supabase]
+
+kin:
+  - repo: idiguam.com
+    why: idiguam.com's island-services menu is billed and delivered as Anchor Marianas LLC work, and its client site is the portfolio proof this brand sells from
+  - repo: beware.dog
+    why: beware.dog's Stripe checkout renders under this account's public business name, and it targets the same founder-led SMB buyer
+
+canon: none yet
