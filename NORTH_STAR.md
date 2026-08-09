@@ -15,21 +15,29 @@ Ship one falsifiable proof that a real buyer got value:
 
 ## Buyer
 
-Primary buyer: TBD (fill from live conversations). Secondary: operators who feel the same pain.
+Primary buyer: a small business owner (initially Guam-anchored network, but the free scan works
+for any business with a website and Google reviews) who suspects AI could help their business but
+does not know where to start, and wants a scored, prioritized answer rather than a vague agency
+pitch. Logged 2026-08-09 from `.anchor/menu.md`.
 
 ## Painful problem
 
-See README / product copy for problem language — promote the best one-liner here.
+They are losing money to problems they cannot see or price: missed calls, unanswered reviews, a
+site that quietly turns customers away, no website at all.
 
 ## Cure
 
-What anchormarianas.com does that removes the pain, in one sentence.
+Free AI scan of their reviews and site surfaces where AI would help; a $1,500 paid audit
+quantifies and prioritizes exactly what to fix and what it is worth, fee credits toward the build.
 
 ## Offer & price
 
-- Offer: TBD — problem + cure + proof + guarantee
-- Price: $309.48/year
-- Value equation: outcome value ≫ price, time-to-value is short, risk is reversed
+- Offer: free AnchorScan (the hook) -> $1,500 AI Opportunity Audit -> fixed-price builds
+  ($497 landing page, $1,997 MVP) or recurring services (AI receptionist, review responder, care
+  plan, fractional AI engineer)
+- Price: audit $1,500, live checkout; builds $497/$1,997, live checkout; recurring items are
+  call-to-book, not yet self-serve
+- Value equation: audit fee credits toward the build, so trying the diagnostic is not a sunk cost
 
 ## Binding constraint (one only)
 
