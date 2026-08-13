@@ -5,6 +5,7 @@ import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
+import { StructuredData } from "@/components/structured-data"
 import { PostHogProvider } from "./providers"
 
 const inter = Inter({
