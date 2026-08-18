@@ -61,6 +61,9 @@ export const metadata: Metadata = {
     creator: "@adamtpang",
   },
   robots: { index: true, follow: true },
+  alternates: {
+    canonical: "/",
+  },
 }
 
 export default function RootLayout({
@@ -78,6 +81,7 @@ export default function RootLayout({
         className="font-sans antialiased min-h-screen bg-background text-foreground"
         suppressHydrationWarning
       >
+        <StructuredData />
         <PostHogProvider>
           <ThemeProvider
             attribute="class"
