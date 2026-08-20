@@ -1,4 +1,4 @@
-# Anchor Marianas — company one-pager
+# Anchor Marianas: company one-pager
 
 _Scannable in under two minutes. Product-first. Gets the meeting before the deck._
 

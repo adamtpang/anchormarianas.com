@@ -2,7 +2,7 @@ import Link from "next/link"
 import menu from "@/content/menu.json"
 
 export const metadata = {
-  title: "Pricing — every problem has a price | Anchor Marianas",
+  title: "Pricing - every problem has a price | Anchor Marianas",
   description:
     "The scan finds the problems, this menu prices them. Fixed-price AI fixes for small businesses: audit, websites, AI receptionist, review responder, and more.",
 }
@@ -101,8 +101,8 @@ export default function PricingPage() {
       <section className="border-t border-border/40 bg-muted/20">
         <div className="mx-auto max-w-3xl px-6 py-14 text-center">
           <p className="t-body-lg text-muted-foreground">
-            Prices are fixed, no quotes, no scoping drag. Not sure which problem is
-            yours?
+            Prices are fixed, no quotes, no scoping drag, and builds ship in 5
+            days or you get a refund. Not sure which problem is yours?
           </p>
           <div className="mt-6">
             <Link href="/audit" className={buyBtn}>

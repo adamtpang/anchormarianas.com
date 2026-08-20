@@ -1,0 +1,25 @@
+---
+title: "Is cold email spamming? A scam?"
+type: transcript
+source_channel: "@jimmyfung_"
+source_url: "https://www.youtube.com/watch?v=sx6ydqavpwc"
+video_id: "sx6ydqavpwc"
+published: "2023-02-19"
+duration_min: 3
+views: 178
+rank: 151
+word_count: 625
+tags: [transcript, youchop, jimmyfung]
+---
+
+# Is cold email spamming? A scam?
+
+Source: [Is cold email spamming? A scam?](https://www.youtube.com/watch?v=sx6ydqavpwc) · 2023-02-19 · 3 min · 178 views
+
+[0:00](https://www.youtube.com/watch?v=sx6ydqavpwc&t=0s) hey everyone I wanted to hop on and record this quick video to just really talk about a thing that I really just thought about right now uh I'm headed towards the gym uh and as I was driving I was thinking about what are some of the common I guess misconceptions uh that people have in terms of code Outreach so for those who don't know who I am uh I'm Jimmy I'm the founder of uh appointment setting agency pretty much we help B2B companies uh book qualified sales costs so if you're running a recruitment agency a software development agency a logistics company a SAS any company where pretty much uh you make money by reaching out and selling your services to another business then this is something that could potentially work for you so for us the channels that we leverage in order to help our clients get results is using cold emails and sometimes when I'm talking to people a lot of agency owners company owners I asked them so how do you mainly go about
+
+[1:00](https://www.youtube.com/watch?v=sx6ydqavpwc&t=60s) 5 finding clients and they say oh networking Word of Mouth referrals and then I asked them okay so okay so you do it through networking and Word of Mouth how do you predictably find clients and they look at me and they don't have an answer right so I asked them okay uh so are you open to using Code emails just because that's what that's a service that we offer and almost half of those people always say no we have not used cold emails I think it comes off as a little bit spammy right and for those what I always say right is yes I think we have all you know been hit up a thousand times by you know scammers uh you know some Nigerian prince in in Africa or something like that who who hits us up and say yo you have a million dollars in funds that we're ready to give to you now the reason why we think that is our automatic scam it's just when we get those emails something pops off in our brain almost unconsciously where because it's so irrelevant to us we
+
+[2:00](https://www.youtube.com/watch?v=sx6ydqavpwc&t=120s) automatically Market a scam right but if you're reaching out to someone and your message is relevant that's the key part relevancy then it wouldn't be scammy anyways right so for us for us when I reach out to people we're basically saying if you want to add three to five clients within the next 90 days then what we're doing is something that could potentially help you right but you see how relevant our message is right most of the people if you're if you're watching this video there's a very strong chance back our message was extremely relevant now we reached out to you using emails right and you didn't think it was uh spammy or it was a scam and it was only one reason why it's because it was relevant you had a problem in regards to either booking qualified sales calls having a consistent lead flow or even signing clients and we offer a potential solution that piqued your interest right which is the entire reason why uh you probably even see this video is because we have a solution to a relevant problem
+
+[3:01](https://www.youtube.com/watch?v=sx6ydqavpwc&t=181s) so that's the key right if you want to make Outreach and messages that do not come off a scammy whether you are emailing people cold calling people messaging people on LinkedIn messaging people on Facebook you have to remain relevant and if there's one thing you take away from this video is remember to always be relevant in your messages

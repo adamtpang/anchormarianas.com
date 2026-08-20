@@ -6,9 +6,9 @@
       "client": "International Distributors, Inc.",
       "shortName": "IDI",
       "location": "Barrigada, Guam",
-      "tagline": "Retained software engineering for a 46-year island wholesaler",
-      "summary": "IDI is a family wholesale food distributor serving Guam, Rota, Tinian, Saipan, and Majuro since 1980. Anchor Marianas is IDI's retained software engineer, shipping and maintaining the company's web presence and internal tooling.",
-      "engagement": "Retained software engineering, $2,000/month",
+      "tagline": "A free proof-of-value engagement for a 46-year island wholesaler",
+      "summary": "IDI is a family wholesale food distributor serving Guam, Rota, Tinian, Saipan, and Majuro since 1980. Anchor Marianas is doing free AI-automation work on IDI's internal operations and web presence, unpaid, as a deliberate proof-of-value case study before offering the same capability to other Guam wholesalers.",
+      "engagement": "Free, unpaid proof-of-value engagement",
       "liveUrl": "https://idiguam.vercel.app",
       "deliverables": [
         "Production Next.js 14 / TypeScript site, live at idiguam.vercel.app",
@@ -30,6 +30,5 @@
         { "src": "/work/idi/commit-ledger.png", "alt": "Commit ledger of first-party work", "caption": "The commit ledger" }
       ]
     }
-  ],
-  "pending": []
+  ]
 }

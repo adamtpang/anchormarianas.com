@@ -11,7 +11,7 @@ const offers = servicesData.filter((s) => offerSlugs.includes(s.slug))
 export const metadata = {
   title: "Web design in Guam, live in 5 days | Anchor Marianas",
   description:
-    "Website designer and web developer in Barrigada, Guam. $497 landing page or $1,997 web app, live in 5 days, refund if late. Built IDI Guam's site. Working with Hilton.",
+    "Website designer and web developer in Barrigada, Guam. $497 landing page or $1,997 web app, live in 5 days or refunded. Retained software engineer for International Distributors, Inc.",
   keywords: [
     "web design Guam",
     "website designer Guam",
@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     q: "Why hire a local Guam web designer instead of an overseas agency?",
-    a: "Same timezone, same island. We meet in person, we know what Guam customers search for, and we answer while your business is open. We built IDI Guam's site and work with Hilton.",
+    a: "Same timezone, island roots. We know what Guam customers search for and we answer while your business is open. We built and maintain IDI Guam's site as a free proof-of-value engagement.",
   },
 ]
 
@@ -67,7 +67,7 @@ const whyLocal = [
   {
     n: "03",
     title: "You can find us",
-    body: "Anchor Marianas LLC is based in Barrigada. We sit across the table from you, walk through the build, and hand over the keys in person if you want.",
+    body: "Anchor Marianas LLC is registered in Barrigada and run by a Guam local. Real name, real family on island, and a live client you can look up.",
   },
 ]
 
@@ -79,7 +79,7 @@ const localBusinessJsonLd = {
   alternateName: "Anchor Marianas",
   url: "https://anchormarianas.com/guam",
   description:
-    "Web design studio in Barrigada, Guam. Landing pages and web apps, live in 5 days, flat price, refund if late.",
+    "Web design studio in Barrigada, Guam. Landing pages and web apps, live in 5 days or refunded, flat price.",
   email: siteConfig.email,
   telephone: siteConfig.phone,
   founder: {
@@ -147,8 +147,8 @@ export default function GuamPage() {
           </h1>
 
           <p className="t-body-lg mt-7 max-w-lg text-muted-foreground">
-            One flat price, one deadline, refund if we miss it. We build the
-            site, wire in your booking or checkout link, and hand you the keys.
+            One flat price, one deadline, refund if we miss it. We build the site, wire in your
+            booking or checkout link, and hand you the keys.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
@@ -167,13 +167,15 @@ export default function GuamPage() {
         <div className="mx-auto max-w-3xl px-6 py-20 sm:py-24">
           <p className="t-eyebrow">Who you&rsquo;re hiring</p>
           <h2 className="font-display mt-8 text-3xl leading-tight tracking-tight sm:text-4xl">
-            A website designer based on Guam, not a faceless agency.
+            A website designer from Guam, not a faceless agency.
           </h2>
           <p className="t-body-lg mt-6 max-w-xl text-muted-foreground">
-            Anchor Marianas LLC is a one-person web design studio in Barrigada,
-            operated by Adam Pang. We built IDI Guam&rsquo;s site, and we work
-            with Guam businesses including{" "}
-            <span className="font-display text-foreground">Hilton</span>. One
+            Anchor Marianas LLC is a one-person web design studio registered in
+            Barrigada, operated by Adam Pangelinan. We built{" "}
+            <Link href="/work" className={quietLink}>
+              IDI Guam&rsquo;s site
+            </Link>{" "}
+            and stayed on doing free proof-of-value AI-automation work. One
             build at a time, with full attention.
           </p>
         </div>
@@ -211,9 +213,8 @@ export default function GuamPage() {
           </div>
 
           <p className="t-small mt-6 text-muted-foreground">
-            If the build is late, you get a refund. After launch, add the
-            $500/mo care plan: updates, edits, and hosting handled. Prefer to
-            talk first?{" "}
+            If the build is late, you get a refund. After launch, add the $500/mo care plan: updates, edits, and
+            hosting handled. Prefer to talk first?{" "}
             <a href={bookUrl} className={quietLink}>
               Book a call
             </a>

@@ -1,4 +1,4 @@
-# Anchor Marianas — go-to-market narrative
+# Anchor Marianas: go-to-market narrative
 
 _How the proprietary product reaches the market. Written to read as one repeatable, product-led motion, because the MTEP New track scores capability to execute, not revenue._
 

@@ -15,9 +15,13 @@ export function Footer() {
             <p className="text-xs text-muted-foreground/80 mt-3">
               Operated by{" "}
               <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
-                Adam Pang
+                Adam Pangelinan
               </Link>
-              . Working with Hilton.
+              . Retained by{" "}
+              <Link href="/work" className="underline underline-offset-4 hover:text-foreground">
+                International Distributors, Inc.
+              </Link>
+
             </p>
           </div>
 
@@ -55,33 +59,14 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-4 border-t border-border/40 pt-6 text-xs text-muted-foreground/80 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap items-center gap-4">
-            <Link href="/terms" className="hover:text-foreground transition-colors">
-              Terms of service
-            </Link>
-            <Link href="/privacy" className="hover:text-foreground transition-colors">
-              Privacy policy
-            </Link>
-          </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <a
-              href="https://adam.gives"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
-            >
-              The menu
-            </a>
-            <a
-              href="https://adampang.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-foreground transition-colors"
-            >
-              The board
-            </a>
-          </div>
+        <div className="mt-8 border-t border-border/40 pt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
+          <span>{siteConfig.legalName}</span>
+          <Link href="/privacy" className="hover:text-foreground transition-colors">
+            Privacy
+          </Link>
+          <Link href="/terms" className="hover:text-foreground transition-colors">
+            Terms
+          </Link>
         </div>
       </div>
     </footer>

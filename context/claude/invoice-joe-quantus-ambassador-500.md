@@ -45,3 +45,38 @@ digging into the bug-bounty side, here's what that looks like so far:
 - Log the send (date, amount, invoice ID) in this file
 - Tell the themain.quest session or delete the outbox task directly
   (deletion = done)
+
+## Done, 2026-08-20 — drafted and previewed, NOT sent (Adam clicks send)
+
+Pre-check ran as instructed. Found the prior invoice was real and still
+open in Stripe (`in_1TwOuDFL7C10dNyGLil0xvTU`, #YOTDWYCI-0004, $500,
+"Anchor ambassadorship, July 2026") - not a false alarm. Confirmed with
+Adam: that $500 was paid via ZEC outside Stripe. Marked it paid out of
+band in Stripe (`paid_out_of_band=true`) so the customer record reflects
+reality; Stripe no longer shows it as owed.
+
+New invoice built for August:
+- Invoice: `in_1U6OahFL7C10dNyGUSLaq7qR`, number **#YOTDWYCI-0006**
+- Customer: Quantus, joe@quantus.com (`cus_UTNpgJBnT9OV0j`)
+- One line item: "Anchor ambassadorship, August 2026 (Adam Pangelinan)",
+  $500.00
+- Due August 27, 2026 (net 7, matching the prior invoice's terms)
+- Footer: "Thank you. Questions: adamtpang@gmail.com"
+- Hosted page: verified live, renders correctly at desktop and mobile
+  width, no tax added, amount exactly $500.00
+
+Note for whoever picks this up next: the first attempt at building this
+invoice produced a duplicate line item ($1,000 total) because two
+identical invoice items got created from what should have been one
+request. Caught before it reached Adam, voided
+(`in_1U6OZ5FL7C10dNyGRU9xfUzs`), and rebuilt correctly with an
+idempotency key. Worth using an idempotency key on any invoice-item
+creation call going forward, not just when retrying after a failure.
+
+Also still open on this customer, untouched, not in scope for this
+task: invoice `in_1TUbHNFL7C10dNyGWHTYyNCD` (#YOTDWYCI-0003, $200,
+"Wonderhall.live Quantus.com Sponsorship, April 2026") is still open/
+unpaid. Flagging so it doesn't get lost, not acting on it here.
+
+**Not sent.** Hosted invoice URL and the draft message to Joe are in the
+Claude session's response - Adam reviews and sends himself.

@@ -4,11 +4,13 @@
 //   node fetch-reviews.mjs "Dusit Beach Resort Guam, Tumon" --source google
 //   node fetch-reviews.mjs ChIJ....  --source serpapi
 //   node fetch-reviews.mjs "Some Cafe" --source manual --file reviews.txt
+//   node fetch-reviews.mjs "Quality Plumbing Guam" --source apify
 //
 // Prints { business, reviews } as JSON to stdout. Keys come from env:
 //   GOOGLE_PLACES_API_KEY   (google, default; ~5 reviews, reliable, cannot paginate)
 //   SERPAPI_API_KEY         (serpapi; needs a Place ID; paginated, paid)
 //   OUTSCRAPER_API_KEY      (outscraper; query by name, first 500 records free)
+//   APIFY_API_TOKEN         (apify; query by name, deep review history, pay per run)
 // No key needed for --source manual.
 //
 // This is a read-only data fetcher. It never writes to any system.
@@ -151,10 +153,50 @@ async function fetchManual(input) {
   }
 }
 
+// Apify: compass/google-maps-reviews-scraper via the run-sync API. Query by
+// business name (+ optional location). Deep review history, billed per run.
+async function fetchApify(input) {
+  const token = process.env.APIFY_API_TOKEN
+  if (!token) throw new Error("APIFY_API_TOKEN not set.")
+  const q = input.location ? `${input.query} ${input.location}` : input.query
+  const max = Number(input.maxReviews) || 30
+  const url = `https://api.apify.com/v2/acts/compass~google-maps-reviews-scraper/run-sync-get-dataset-items?token=${encodeURIComponent(token)}`
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ searchStringsArray: [q], maxReviews: max, language: "en", reviewsSort: "newest" }),
+    signal: AbortSignal.timeout(180000),
+  })
+  if (!res.ok) throw new Error(`Apify ${res.status}: ${(await res.text()).slice(0, 300)}`)
+  const items = await res.json()
+  const list = Array.isArray(items) ? items : []
+  const first = list[0] || {}
+  const reviews = list
+    .filter((r) => r.text)
+    .map((r) => ({
+      author: r.name || "Google reviewer",
+      rating: r.stars ?? null,
+      text: String(r.text).trim(),
+      publishedAt: r.publishedAtDate || r.publishAt || null,
+    }))
+  return {
+    business: {
+      name: first.title || input.query,
+      location: first.address || input.location || "",
+      placeId: first.placeId || null,
+      rating: first.totalScore ?? null,
+      ratingCount: first.reviewsCount ?? null,
+      source: "apify",
+    },
+    reviews,
+  }
+}
+
 export async function fetchReviews(input) {
   const source = input.source || "google"
   if (source === "serpapi") return fetchSerpapi(input)
   if (source === "outscraper") return fetchOutscraper(input)
+  if (source === "apify") return fetchApify(input)
   if (source === "manual") return fetchManual(input)
   return fetchGoogle(input)
 }

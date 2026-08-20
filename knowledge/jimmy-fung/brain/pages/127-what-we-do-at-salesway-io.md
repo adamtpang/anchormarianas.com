@@ -1,0 +1,25 @@
+---
+title: "What We Do At Salesway.io"
+type: transcript
+source_channel: "@jimmyfung_"
+source_url: "https://www.youtube.com/watch?v=ULSOyoFStvk"
+video_id: "ULSOyoFStvk"
+published: "2023-09-30"
+duration_min: 4
+views: 776
+rank: 127
+word_count: 561
+tags: [transcript, youchop, jimmyfung]
+---
+
+# What We Do At Salesway.io
+
+Source: [What We Do At Salesway.io](https://www.youtube.com/watch?v=ULSOyoFStvk) · 2023-09-30 · 4 min · 776 views
+
+[0:00](https://www.youtube.com/watch?v=ULSOyoFStvk&t=0s) hey hope you're doing well thanks for watching this video my name is Jimmy fun I'm the founder of sales weight. pretty much we are a consulting company that work with different agencies and B2B companies generating them anywhere from 5 to 20 qualified sales cards every single month now up until now we have worked with roughly 50 or so different clients and a bunch of different B2B Industries ranging from recruitment agencies to marketing agencies to PR firms you're about to discover how to get 5 to 10 qualified meetings with your dream clients every single month without spending a dime on ads or relying on referrals all for a fraction of the price of hiring and SDR now we discovered three reasons why agencies consultants and B2B companies just like yours are struggling to book meetings and sign clients number one
+
+[1:00](https://www.youtube.com/watch?v=ULSOyoFStvk&t=60s) they don't have the time number two they don't know how number three they don't have the resources and if you're watching this video odds are you're struggling with one or more of the following challenges number one being heavily reliant on referrals and Word of Mouth causing unpredictable business growth number two wasting time and money on paid ads number three not knowing where your next client will come from number four struggling to fill your calendar with qualified prospects now imagine how it would feel to have an additional 5 to 10 qualified meetings booked on your calendar on autopilot every single month now I'm Jimmy fun I'm the founder of sales way. and by working together you'll be able to fill your calendar with qualified process prospects without having to lift
+
+[2:02](https://www.youtube.com/watch?v=ULSOyoFStvk&t=122s) a finger you'll be able to get on meetings with people who actually want to buy your services and you be able to generate predictable sales and have more time to grow your business now here's our three-step process that we will take you through step one you will fill an onboarding form so that we can understand the exact type of clients that you want step two we will build your custom crafted Outreach messages number three we will launch your outbound campaign and have qualified meetings booked straight to your calendar now you also have another option you could pretend like you've never watched this video and continue to be reliant on inconsistent referrals for new business while watching months pass by with unmet Revenue goals while wasting hours on the phone with complete Tire kickers while risking tens of
+
+[3:04](https://www.youtube.com/watch?v=ULSOyoFStvk&t=184s) thousands of dollars and countless hours trying to do it yourself now I want you to truly think how much not having a team of experts guide you step by step is costing you every single month but now you know there's another way a way to have 5 to 10 qualified meetings show up on your calendar without having to spend another dime on ads all for a fraction at the price of hiring an SDR now the next step is easy all you have to do is click the button below and set up a strategy session to see how this could work for you worst case scenario you get on the call will give you some free advice that you can pull straight back into your business now click the button below and I'll see you there goodbye

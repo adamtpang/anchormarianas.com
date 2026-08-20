@@ -1,0 +1,8 @@
+{
+  "name": "jimmy-fung-brain",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@huggingface/transformers": "^4.2.0"
+  }
+}

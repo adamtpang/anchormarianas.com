@@ -1,4 +1,4 @@
-# Anchor Marianas — MTEP pitch deck
+# Anchor Marianas: MTEP pitch deck
 
 10 slides, in MDEC's evaluation order. Keep each slide to one idea. Spend the most craft on slides 3 (product/tech) and 8 (Why Malaysia): jargon-heavy tech and generic Why-Malaysia are the two most-cited rejection causes. Placeholders `[...]` are yours to fill.
 

@@ -197,6 +197,29 @@ export default function ScanPage() {
                   <p className="text-sm text-muted-foreground mt-1">{error}</p>
                 </div>
               </div>
+
+              {/* Never leave a visitor at a dead end. Adam runs the read by hand. */}
+              <div className="mt-4 rounded-lg border border-border bg-card p-5">
+                <p className="text-sm font-semibold">The tool broke, the offer stands.</p>
+                <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">
+                  Send me the business and I will run the read by hand and email it
+                  back. Same report, no charge.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <Button size="sm" asChild>
+                    <a
+                      href={`mailto:${siteConfig.email}?subject=${encodeURIComponent("Free scan request")}&body=${encodeURIComponent(`Business or website: ${url || ""}\n\nSend the read to this email.`)}`}
+                    >
+                      Email me the read
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="sm" asChild>
+                    <a href={siteConfig.calendly} target="_blank" rel="noopener noreferrer">
+                      Book a 15-min call
+                    </a>
+                  </Button>
+                </div>
+              </div>
             </div>
           </motion.section>
         )}

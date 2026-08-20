@@ -17,11 +17,11 @@ Apify account (adamtpang@gmail.com) hit its **monthly usage hard limit** mid-scr
 File: `.anchor/daily-outbound-2026-07-09.md` (extended this session). Source of targets/verify notes: `.anchor/call-sheet-2026-07.md`.
 
 Armed from REAL Google reviews (Apify `compass/Google-Maps-Reviews-Scraper`, id Xb8osYTtOjlsgI6k9):
-1. **Quality Plumbing** (671) 632-4663 — armed earlier (reply-to-every-review pattern).
-2. **J Nail (Harmon)** (671) 647-6245 — armed earlier.
-3. **Angela Nail & Lash** (671) 989-5777 — armed this session. 4.3 stars, 65 reviews, near-zero owner replies. wa.me/16719895777. Corrected call sheet: the "no online booking" hook is WRONG (a review describes a deposit-to-book system).
-4. **Luxury Nails Guam** — DM channel (@luxurynailsguam IG/FB or luxurynailsguam@gmail.com; owner also lists WhatsApp 671.472.5899). 3.9 stars, 133 reviews, recurring walk-in-vs-appointment confusion; owner already writes long replies.
-5. **Ace of Fades (Guam)** — BLOCKED on contact. Confirmed real shop: 845 Marine Corps Dr, Upper Tumon, 4.8 stars, 27 reviews, owner is **Ling** (not RJ). Ignore the NYC "Ace of Fades Barber Shop" (128 8th Ave, 409 reviews) and the Malaysia/Barbados listings. Get a Guam phone/DM before sending.
+1. **Quality Plumbing** (671) 632-4663: armed earlier (reply-to-every-review pattern).
+2. **J Nail (Harmon)** (671) 647-6245: armed earlier.
+3. **Angela Nail & Lash** (671) 989-5777: armed this session. 4.3 stars, 65 reviews, near-zero owner replies. wa.me/16719895777. Corrected call sheet: the "no online booking" hook is WRONG (a review describes a deposit-to-book system).
+4. **Luxury Nails Guam**: DM channel (@luxurynailsguam IG/FB or luxurynailsguam@gmail.com; owner also lists WhatsApp 671.472.5899). 3.9 stars, 133 reviews, recurring walk-in-vs-appointment confusion; owner already writes long replies.
+5. **Ace of Fades (Guam)**: BLOCKED on contact. Confirmed real shop: 845 Marine Corps Dr, Upper Tumon, 4.8 stars, 27 reviews, owner is **Ling** (not RJ). Ignore the NYC "Ace of Fades Barber Shop" (128 8th Ave, 409 reviews) and the Malaysia/Barbados listings. Get a Guam phone/DM before sending.
 
 Send order recommendation: Angela first (one-tap wa.me), then Luxury Nails DM. Only Adam can hit send (TCPA + WhatsApp).
 
@@ -62,8 +62,8 @@ Total raw scraped and paid for: **~2,115 records** (~$10-11 spent). All locked u
 Optional for max completeness later: add `allPlacesNoSearchAction: "all_places_no_search_ocr"` map-sweep over Guam to catch businesses no keyword matches.
 
 ### Staged and ready (built this session)
-- **`.anchor/guam-market/build.mjs`** — Node script. Reads `shards/*.json`, dedups by placeId (merges search-term provenance into `foundVia`, prefers records with phone/website, keeps max review count), filters to Guam (countryCode GU / 969xx / known village), writes `guam-businesses.json` + `guam-businesses.csv` + `guam-market-overview.md` (totals, by-village, by-category, and outbound opportunity segments: no-website, sub-4-star with demand, zero-review). Run: `node .anchor/guam-market/build.mjs`.
-- **`.anchor/guam-market/shards/`** — empty dir, waiting for shard files.
+- **`.anchor/guam-market/build.mjs`**: Node script. Reads `shards/*.json`, dedups by placeId (merges search-term provenance into `foundVia`, prefers records with phone/website, keeps max review count), filters to Guam (countryCode GU / 969xx / known village), writes `guam-businesses.json` + `guam-businesses.csv` + `guam-market-overview.md` (totals, by-village, by-category, and outbound opportunity segments: no-website, sub-4-star with demand, zero-review). Run: `node .anchor/guam-market/build.mjs`.
+- **`.anchor/guam-market/shards/`**: empty dir, waiting for shard files.
 - **Ingest workflow** (run wf_ab28f31e-c13). 5 agents, one per dataset, each fetches its dataset with a lean field projection and writes a shard file. Field projection used: `title,categoryName,categories,address,neighborhood,city,postalCode,state,countryCode,phone,phoneUnformatted,website,totalScore,reviewsCount,permanentlyClosed,temporarilyClosed,placeId,url,searchString,location.lat,location.lng`. Re-run it FRESH once unlocked (not from cache: cached agent results are the lock failures). Shard filenames: calibration.json, food.json, trades.json, retail-auto-personal.json, health-professional.json.
 
 ### Resume recipe (once Apify is unlocked)

@@ -2,14 +2,15 @@
   {
     "slug": "landing-page-5-day",
     "name": "Landing page in 5 days",
-    "tagline": "One page that sells one thing. Live in 5 days.",
+    "tagline": "One page that sells one thing. Live in 5 days or refunded.",
     "price": "$497 flat",
     "timeline": "5 days",
     "deliverables": [
       "One-page site: copy, design, build, deploy",
       "Mobile-first, fast, SEO basics done",
       "Your booking or checkout link wired in",
-      "You own the domain and the code"
+      "You own the domain and the code",
+      "Live in 5 days or the build is refunded"
     ],
     "ideal": "A business that needs one page that sells: an offer, a menu, a booking link.",
     "ctaUrl": "https://buy.stripe.com/6oUfZhdjk8gJcME6KtaMU0m",
@@ -18,14 +19,15 @@
   {
     "slug": "mvp-5-day",
     "name": "MVP web app in 5 days",
-    "tagline": "Your app idea, working in the real world. Live in 5 days.",
+    "tagline": "Your app idea, working in the real world. Live in 5 days or refunded.",
     "price": "$1,997 flat",
     "timeline": "5 days",
     "deliverables": [
       "One core workflow, built end to end",
       "Auth, database, and deploy included",
       "Source code handed over with a Loom walkthrough",
-      "One round of revisions in week one"
+      "One round of revisions in week one",
+      "Live in 5 days or the build is refunded"
     ],
     "ideal": "A founder or operator who needs the first working version, not a spec.",
     "ctaUrl": "https://buy.stripe.com/eVqfZhbbc68BdQI1q9aMU0n",

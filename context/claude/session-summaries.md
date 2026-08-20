@@ -2,30 +2,21 @@
 
 Append-only rolling log. One entry per substantive Claude Code or Claude Chat session. Newest at top.
 
-## 2026-07-09 — Guam market scrape (paused on Apify billing cap) + daily outbound packet
-
-- Full detail: `context/claude/session-2026-07-09-guam-market-scrape.md`.
-- Started building a complete Guam Google Maps market database via Apify `compass/crawler-google-places` ($4/1,000, base fields cover outreach). Calibration succeeded (542 places); proved the method: tile the market with many narrow category terms to beat Google's 120-per-search cap, dedup by placeId.
-- Launched 4 sector sweeps; all failed in the same 3-second window because Adam's Apify account hit its **monthly usage hard limit**. ~2,115 records scraped (~$10-11) then LOCKED: cannot scrape or even read paid datasets until the limit is raised. Same cap will break the daily reviews scrape.
-- Staged everything to resume in one step once unlocked: `.anchor/guam-market/build.mjs` (dedup + CSV + overview with no-website / low-star / zero-review opportunity segments), a re-runnable ingest workflow, and the four verbatim category term-lists. Blocker is founder-only: Apify Console → raise monthly usage limit to ~$50.
-- Also extended `.anchor/daily-outbound-2026-07-09.md` with 3 targets from real reviews (Angela Nail & Lash, Luxury Nails, Ace of Fades), correcting two wrong call-sheet hooks and confirming Ace of Fades' real Guam listing (owner Ling, not RJ).
-- Memory: added `anchor-apify-limit`.
-
-## 2026-07-05 — Orchestrator decision + AnchorScan v1 (subscription-fuelled)
+## 2026-07-05: Orchestrator decision + AnchorScan v1 (subscription-fuelled)
 
 - Confirmed (twice, from primary sources) that cofounder.co cannot be fuelled by Adam's Claude subscription: Cofounder refuses BYOK, and Anthropic prohibits third-party products consuming subscription/OAuth credentials (Jan 9 2026 enforcement, Apr 4 2026 terms; a May 13-14 re-sanctioning announcement was PAUSED on Jun 15 2026 and not resumed). Credited Adam for remembering the real May headline.
 - Chose the orchestrator: build Claude-native under his own account (Agent SDK / Claude Code + headless `claude -p`), not a hosted platform. Logged the full stack and the subscription-vs-API-key line in decisions-log.
 - Built AnchorScan v1 as that self-run loop under `scripts/anchorscan/` plus an interactive `/anchorscan` command, shipped via PR (branch claude/anchorscan-v1). Fetcher/renderer/runner all parse clean; schema valid; renderer smoke-tested.
 - Earlier this session: fixed the `/timeline` skill visibility (user-invocable + slash command), vendored and populated the `vitals/` company OS, shipped the landing v2 preview at `public/v2.html` (PR #26), and fixed the CI security gate (protobufjs override, PR #27).
 
-## 2026-06-01 — AnchorScan made diagnostic; deployment + CI questions resolved
+## 2026-06-01: AnchorScan made diagnostic; deployment + CI questions resolved
 
 - Adam answered three open questions. Converted the live `/scan` (AnchorScan) from prescriptive to diagnostic: it no longer returns AI-workflow `opportunities` with invented `annualValue` dollar figures, a "tackle this first" `topRecommendation`, or a `readyForReception` sales flag. It now returns `observations` (evidence-backed operational patterns, each citing what on the site triggered it), `questions` (genuinely diagnostic discovery prompts), and a `focus` framed as a question. The system prompt forbids invented numbers and product prescriptions, in Anchor's voice (no em dashes, no emoji). Files: `app/api/scan/route.ts`, `app/scan/page.tsx`, `app/scan/layout.tsx`.
 - Resolved "deployment of record": the existing Vercel `anchormarianas.com` deploying from GitHub `main` (Adam: "use the existing vercel anchormarianas.com one"). Dropped the cofounder.ai `anchor-bbb827` / `prod` and the cofounder.co migration.
 - Resolved "CI": it already exists on `origin/main` (frontend type-check, Next build, a Biome check, package security, plus Supabase DB workflows). No new workflow needed; confirmed it gates PRs.
 - Verified against current production reality: this and the design-system PR were cut from a fresh worktree off `origin/main`, which Cofounder had rebranded (PR #19). The standalone Anchor Scan reviews tool from a prior session stays wiped; if rebuilt it should follow the same diagnostic shape.
 
-## 2026-06-01 — Design-system skill + standardization, plus a cross-tool collision
+## 2026-06-01: Design-system skill + standardization, plus a cross-tool collision
 
 - Imported the Anchor Marianas design-system kit from Adam's desktop as a project skill at `.claude/skills/anchor-marianas-design/` (56 files: SKILL.md, README, `colors_and_type.css`, assets, content JSON, 28 preview cards, a React UI kit).
 - Standardized it: added a production-token crosswalk and `.font-display-italic` / `.font-mono-anchor` class aliases to the skill CSS, lifted the semantic type scale (`.t-*`) into `app/globals.css` as additive utilities so app and skill share one type vocabulary, purged every em and en dash skill-wide, flipped the skill's contradictory "em dashes everywhere" rule to "no em dashes ever" (matches Adam's standing style rule), fixed stale dead-client partner references (Prospera, Network School, IDI) to Hilton-only, and fixed a `#0b3b5c` color typo.
@@ -33,7 +24,7 @@ Append-only rolling log. One entry per substantive Claude Code or Claude Chat se
 - Collision found at ship time: this working directory is a fresh clone, local `main` was 15 commits behind `origin/main`, and Cofounder had rebranded production in parallel (PR #19 "Anchor Marianas business-first", plus "revnu-style single-action layout" and a "Review-to-Revenue Sprint"). The keyframe pass was built on a homepage that rebrand superseded, and the keyframe work was never committed so the re-clone wiped it.
 - Per Adam's call, shipped only the safe, additive survivors that do not fight the rebrand: the design-system skill and the `globals.css` type scale, via a branch off current `origin/main`. Did not reconstruct the keyframe homepage onto Cofounder's new design.
 
-## 2026-05-18 — Anchor Scan v1 build + Claude lane initialized
+## 2026-05-18: Anchor Scan v1 build + Claude lane initialized
 
 - Built Anchor Scan v1 end to end as a separate module (existing `/scan` website-audit untouched): swappable `ReviewsSource` interface (Google Places v1 default, Apify/SerpAPI/manual), one Haiku 4.5 analysis call, Markdown + branded printable HTML, JSON-on-disk store, `tsx` CLI (`npm run scan`), and a password-gated `/anchor-scan` web form with `app/api/anchor-scan` route. Project type-checks clean (0 errors). The real "Dusit Beach Resort Guam" run is blocked only on a missing local `ANTHROPIC_API_KEY`; rendering was verified against a synthetic sample artifact.
 - Read the Cofounder lane to load shared context. Learned the company wedge is Anchor Scan and that Cofounder refined it to demand-led/diagnostic on 2026-05-18. Flagged a likely mismatch with the shipped prescriptive v1 (still emits "3 AI fixes") in `open-questions.md`.

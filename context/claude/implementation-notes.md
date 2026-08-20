@@ -1,6 +1,6 @@
 # Implementation Notes
 
-Architecture choices, things tried and rejected, gotchas, local conventions. Not a session log — this is the durable "how/why" reference.
+Architecture choices, things tried and rejected, gotchas, local conventions. Not a session log: this is the durable "how/why" reference.
 
 ## Stack
 - Next.js 15.1.9 (app router), React 18.3, TypeScript (strict), Tailwind CSS, Framer Motion, Radix UI primitives.

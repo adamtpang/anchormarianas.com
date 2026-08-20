@@ -1,4 +1,4 @@
-# OFFER — anchormarianas.com
+# OFFER: anchormarianas.com
 
 Generated 2026-07-26. Fill before outbound.
 

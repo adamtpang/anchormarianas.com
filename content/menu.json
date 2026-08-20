@@ -33,7 +33,7 @@
           "cadence": "one-time",
           "href": "https://buy.stripe.com/6oUfZhdjk8gJcME6KtaMU0m",
           "live": true,
-          "note": "One page that sells one thing. Live in 5 days."
+          "note": "One page that sells one thing. Live in 5 days or refunded."
         },
         {
           "problem": "My idea needs to actually work.",
@@ -42,7 +42,7 @@
           "cadence": "one-time",
           "href": "https://buy.stripe.com/eVqfZhbbc68BdQI1q9aMU0n",
           "live": true,
-          "note": "One core workflow, built end to end. Live in 5 days."
+          "note": "One core workflow, built end to end. Live in 5 days or refunded."
         }
       ]
     },

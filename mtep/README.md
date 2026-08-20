@@ -1,4 +1,4 @@
-# Anchor Marianas — MTEP application pack
+# Anchor Marianas: MTEP application pack
 
 Assets for the Malaysia Tech Entrepreneur Programme (MTEP, New Tech Entrepreneur track) application. Built to present Anchor as a company building **proprietary technology** (AnchorScan), not an AI agency, which is the single framing that decides this application.
 
@@ -9,9 +9,9 @@ MTEP's New track disqualifies consulting, reselling, integration, and customizin
 - Nothing says "AI agency" or "paying AI client." Hilton is a **delivered web product and reference**. Anchor is **pre-revenue on the AI-services line**, stated plainly.
 
 ## What is in here
-- `pitch-deck.md` — the 10-section MDEC pitch deck content. The make-or-break artifact. Turn into slides.
-- `one-pager.md` — a 2-minute company brief that gets the meeting before the deck.
-- `gtm-narrative.md` — the go-to-market narrative, funnel math, and a pipeline snapshot template.
+- `pitch-deck.md`: the 10-section MDEC pitch deck content. The make-or-break artifact. Turn into slides.
+- `one-pager.md`: a 2-minute company brief that gets the meeting before the deck.
+- `gtm-narrative.md`: the go-to-market narrative, funnel math, and a pipeline snapshot template.
 - Evaluator page: `public/company.html` -> served at `/company`. Point MDEC to this URL, not the customer homepage.
 
 ## Two hard gates (quality is irrelevant without them). Only you can do these.
