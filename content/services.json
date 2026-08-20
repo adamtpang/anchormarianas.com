@@ -52,6 +52,23 @@
     "ctaLabel": "Book a 20-min call"
   },
   {
+    "slug": "ai-appointment-reminders",
+    "name": "AI Appointment Reminders",
+    "tagline": "Two-way reminders that cut no-shows. Live in 5 days.",
+    "price": "$300 + $200/mo",
+    "timeline": "5 days",
+    "deliverables": [
+      "Multi-channel reminders (SMS + call) at the intervals that actually work",
+      "Wired into your existing booking calendar or scheduling tool",
+      "Two-way confirm and reschedule, not a one-way blast",
+      "Loom walkthrough + admin access",
+      "Live in 5 days or refunded"
+    ],
+    "ideal": "Dentists, clinics, salons, any appointment-based business losing revenue to no-shows.",
+    "ctaUrl": "https://cal.com/adamtpang",
+    "ctaLabel": "Book a 20-min call"
+  },
+  {
     "slug": "ai-workflow-build",
     "name": "AI Workflow Build",
     "tagline": "One end-to-end AI workflow shipped. Fixed price, fixed timeline.",
