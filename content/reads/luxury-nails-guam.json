@@ -1,0 +1,34 @@
+{
+  "slug": "luxury-nails-guam",
+  "business": "Luxury Nails Guam",
+  "location": "119 S Marine Corps Dr, Tamuning, Guam",
+  "generatedAt": "2026-07-09",
+  "source": "Google Maps reviews, read on 2026-07-09",
+  "rating": 3.9,
+  "reviewCount": 133,
+  "summary": "A salon with real fans and an owner who already does the hard part, replying personally to almost every critical review. The same complaint keeps generating those replies, which means the fix is upstream of the reviews.",
+  "observations": [
+    {
+      "title": "You already reply, and that is rare",
+      "detail": "Almost every negative review carries a response from the owner, often long and specific. Most shops never do this. It is worth saying plainly that the effort is visible in the profile.",
+      "evidence": "Detailed owner responses appear on the large majority of critical reviews."
+    },
+    {
+      "title": "One complaint keeps repeating: walk-in versus appointment",
+      "detail": "Across 133 reviews the same story recurs. Someone believes walk-ins are welcome, arrives, is told the salon is fully booked, and then sees availability posted on social media shortly after. Each instance generates another write-up and another long reply.",
+      "evidence": "Multiple reviews describe being turned away as fully booked after expecting a walk-in."
+    },
+    {
+      "title": "The nail work itself is not the problem",
+      "detail": "The positive reviews are specific and warm, including repeat clients and at least one who booked for a major life event. The rating is being held down by logistics, not by craft.",
+      "evidence": "Positive reviews describe repeat visits and event bookings."
+    }
+  ],
+  "questions": [
+    "What does a customer see about walk-ins before they drive over?",
+    "When a slot opens up, where does that get posted first, and who sees it?",
+    "How much time per week goes into writing review responses right now?",
+    "How many of the 133 reviews are about the same booking issue?"
+  ],
+  "focus": "You are answering the same complaint over and over. What would it take to stop it from being generated in the first place, rather than replying to it well?"
+}

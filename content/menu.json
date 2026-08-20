@@ -68,6 +68,15 @@
           "note": "A drafted reply to every Google review. Google rewards it."
         },
         {
+          "problem": "Customers keep no-showing.",
+          "name": "AI Appointment Reminders",
+          "price": "$300 + $200/mo",
+          "cadence": "setup + monthly",
+          "href": "https://cal.com/adamtpang",
+          "live": false,
+          "note": "Two-way text and call reminders wired into your booking calendar. Fewer empty slots."
+        },
+        {
           "problem": "Keep it running and improving.",
           "name": "Care plan",
           "price": "$500/mo",
