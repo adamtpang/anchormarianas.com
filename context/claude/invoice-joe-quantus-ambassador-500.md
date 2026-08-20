@@ -80,3 +80,31 @@ unpaid. Flagging so it doesn't get lost, not acting on it here.
 
 **Not sent.** Hosted invoice URL and the draft message to Joe are in the
 Claude session's response - Adam reviews and sends himself.
+
+## CORRECTION REQUIRED, 2026-08-20 late (from Adam directly, do this before any send)
+
+The paid-out-of-band marking on #YOTDWYCI-0004 was WRONG. Adam clarified:
+the ZEC transfer was ADAM PAYING JOE (Zcash q.day sponsorship, from his
+Zcash Network School work), completely unrelated to the ambassadorship.
+July 2026 ambassadorship is UNPAID, owed from Quantus to Adam. There was
+exactly ONE ambassadorship month: July (75/100 quota, $2k budget, $500
+agreed with Joe).
+
+Execute, in order:
+1. VOID invoice `in_1U6OahFL7C10dNyGUSLaq7qR` (#YOTDWYCI-0006): its
+   "August 2026" line item bills a month that was not the gig.
+2. #YOTDWYCI-0004 (`in_1TwOuDFL7C10dNyGLil0xvTU`) cannot be un-paid in
+   Stripe once marked paid out of band. Leave it, but note in its
+   internal memo/metadata if possible: "paid_out_of_band was set in
+   error (conflated with an unrelated outgoing ZEC payment); superseded
+   by the reissued July invoice."
+3. Create ONE new invoice, idempotency key on the invoice-item call
+   (the duplicate-line lesson from earlier today): customer
+   `cus_UTNpgJBnT9OV0j`, line item "Anchor ambassadorship, July 2026
+   (Adam Pangelinan)", $500.00, net 7, same footer. Verify the hosted
+   page: one line item, exactly $500.00, no tax.
+4. Hand Adam the new hosted URL. He sends it himself with his message.
+
+Context for tone: Adam ran an /introspect tonight on why this send kept
+stalling; the send message is drafted and he is ready. Speed matters
+more than polish now: one correct invoice, one URL, done.
