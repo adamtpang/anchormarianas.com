@@ -1,0 +1,10 @@
+[
+  {
+    "id": "example-1",
+    "tier": "EXAMPLE",
+    "name": "Example Dental",
+    "category": "dentist",
+    "village": "Tamuning",
+    "status": "sample-only"
+  }
+]

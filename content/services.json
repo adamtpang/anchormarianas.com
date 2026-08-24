@@ -34,6 +34,25 @@
     "ctaLabel": "Buy now, $1,997"
   },
   {
+    "slug": "ai-review-responder",
+    "name": "AI Review Responder",
+    "tagline": "A drafted reply to every Google review, every week.",
+    "price": "$150/mo",
+    "introPrice": "Free",
+    "introNote": "Free for the first 10 Guam businesses, because I want the feedback more than the money right now.",
+    "timeline": "Live in 3 days",
+    "deliverables": [
+      "Every new review gets a drafted reply within 24 hours",
+      "Your existing backlog answered too, not just new ones",
+      "Written in your voice, you approve before anything posts",
+      "Works with your existing Google Business Profile, nothing to install",
+      "Cancel any month, no contract"
+    ],
+    "ideal": "Any business with real reviews and no time to answer them. Salons, barbershops, trades, clinics.",
+    "ctaUrl": "https://wa.me/16716862020",
+    "ctaLabel": "Claim a free spot"
+  },
+  {
     "slug": "ai-reception-pilot",
     "name": "AI Reception Pilot",
     "tagline": "24/7 AI receptionist on your existing number. Live in 7 days.",
@@ -107,10 +126,10 @@
     "price": "Free",
     "timeline": "5 minutes",
     "deliverables": [
-      "1-page programmatic diagnostic",
-      "Top 3 AI workflow opportunities for your business",
-      "Annual dollar-impact estimate per workflow",
-      "Direct path to the AI Reception Pilot if it fits"
+      "1-page website diagnostic",
+      "3 to 4 evidence-backed observations",
+      "Questions worth answering before choosing a fix",
+      "One conversation focus, framed as a hypothesis"
     ],
     "ideal": "Operators not yet sure what AI can do for them.",
     "ctaUrl": "https://anchormarianas.com/scan",

@@ -1,6 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk"
 import type { MessageParam } from "@anthropic-ai/sdk/resources/messages.mjs"
-import { NextRequest } from "next/server"
+import type { NextRequest } from "next/server"
 
 export const runtime = "edge"
 

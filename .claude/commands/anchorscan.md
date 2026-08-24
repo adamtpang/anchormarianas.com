@@ -4,16 +4,27 @@ argument-hint: <business name + city, Place ID, or Google Maps URL>
 ---
 Run AnchorScan for: **$ARGUMENTS**
 
-You are running inside interactive Claude Code, so this is fuelled by the user's Claude subscription. Stay read-only: fetch and diagnose reviews, never take an action on any external system.
+Stay read-only: fetch and diagnose reviews, never contact the business or change
+an external system.
 
 Steps:
 
-1. **Fetch the reviews.** Run `node scripts/anchorscan/fetch-reviews.mjs "$ARGUMENTS" --source google` (swap `--source serpapi|outscraper|manual` based on which key is set). If no reviews API key is configured, tell the user and offer the manual path: ask them to paste the reviews into a file, then run `--source manual --file <path>`.
+1. **Choose the source.** Prefer a direct Google Place ID when available. Select
+   `google`, `serpapi`, `outscraper`, `apify`, or a verified manual review file.
 
-2. **Read the method and schema.** Read `scripts/anchorscan/diagnose.md` (the diagnosis rules) and `scripts/anchorscan/report.schema.json` (the output shape).
+2. **Read the method and schema.** Read `scripts/anchorscan/diagnose.md` and
+   `scripts/anchorscan/report.schema.json`.
 
-3. **Diagnose.** Produce a report object that matches the schema exactly: 3 to 4 `observations`, each with a real quote from the fetched reviews as `evidence`; 3 to 5 genuinely diagnostic `questions`; and one `focus` framed as a question. Follow diagnose.md strictly: diagnostic not prescriptive, never invent dollar figures or ROI, Anchor voice, no em dashes, no emoji.
+3. **Run the guarded CLI.** Use
+   `node scripts/anchorscan/scan.mjs "$ARGUMENTS" --source <source>`. For a
+   manual source, add `--file <private-path>`. The runner disables Claude tools,
+   treats review text as untrusted, validates the model output, and writes the
+   private report under `reports/anchorscan/`.
 
-4. **Save and show.** Write the JSON to `reports/anchorscan/<slug>-<date>.json`, then render it with `node scripts/anchorscan/render.mjs <that file>` and show the Markdown to the user.
+4. **Human-check and show.** Verify the business identity, source, and every
+   evidence statement before showing the report. Do not publish or send it.
 
-For unattended batch scans of many businesses, use `node scripts/anchorscan/scan.mjs --batch scripts/anchorscan/leads.example.csv` (headless `claude -p`). For any client-facing or resold use, switch to an Anthropic API key. Your subscription fuels your own diagnosis and prospecting only.
+For quota-safe batch fetching, use `batch-scan.mjs` with a private JSON lead
+file, then pass each saved raw file to `publish-read.mjs --raw`. Follow the
+current Anthropic terms for the account and surface you use. Hosted customer
+traffic must use `ANTHROPIC_API_KEY`, never an interactive account credential.

@@ -1,5 +1,9 @@
 # Anchor Marianas: Website UI kit
 
+Historical snapshot. Reuse its visual language, but verify all production copy,
+links, prices, and proof against the current application and root operating
+documents.
+
 High-fidelity recreation of [anchormarianas.com](https://anchormarianas.com), built as a click-thru React + Babel prototype that loads from a single `index.html`. Drop-in components for assembling new pages in the same visual language.
 
 ## What's here

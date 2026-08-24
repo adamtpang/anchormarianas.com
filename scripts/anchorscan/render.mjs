@@ -38,7 +38,9 @@ export function renderMarkdown(r, date = new Date().toISOString().slice(0, 10)) 
   })
   L.push("## Questions worth answering")
   L.push("")
-  ;(r.questions || []).forEach((q) => L.push(`- ${q}`))
+  ;(r.questions || []).forEach((q) => {
+    L.push(`- ${q}`)
+  })
   L.push("")
   if (r.focus) {
     L.push("## Where we would start")
@@ -64,5 +66,5 @@ if (isMain) {
     process.exit(1)
   }
   const r = JSON.parse(await readFile(file, "utf8"))
-  process.stdout.write(renderMarkdown(r) + "\n")
+  process.stdout.write(`${renderMarkdown(r)}\n`)
 }

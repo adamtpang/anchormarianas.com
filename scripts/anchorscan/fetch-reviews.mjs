@@ -2,13 +2,14 @@
 // AnchorScan reviews fetcher. Swappable Google Maps reviews source.
 //
 //   node fetch-reviews.mjs "Dusit Beach Resort Guam, Tumon" --source google
-//   node fetch-reviews.mjs ChIJ....  --source serpapi
+//   node fetch-reviews.mjs "Dusit Beach Resort Guam" --source serpapi
+//   node fetch-reviews.mjs ChIJ.... --source serpapi
 //   node fetch-reviews.mjs "Some Cafe" --source manual --file reviews.txt
 //   node fetch-reviews.mjs "Quality Plumbing Guam" --source apify
 //
 // Prints { business, reviews } as JSON to stdout. Keys come from env:
 //   GOOGLE_PLACES_API_KEY   (google, default; ~5 reviews, reliable, cannot paginate)
-//   SERPAPI_API_KEY         (serpapi; needs a Place ID; paginated, paid)
+//   SERPAPI_API_KEY         (serpapi; name lookup costs one extra search; direct Place ID also works)
 //   OUTSCRAPER_API_KEY      (outscraper; query by name, first 500 records free)
 //   APIFY_API_TOKEN         (apify; query by name, deep review history, pay per run)
 // No key needed for --source manual.
@@ -18,6 +19,60 @@
 import { readFile } from "node:fs/promises"
 
 const PLACES = "https://places.googleapis.com/v1"
+const REVIEW_SOURCES = new Set(["google", "serpapi", "outscraper", "apify", "manual"])
+const IDENTITY_STOP_WORDS = new Set(["guam", "llc", "inc", "corp", "corporation", "pc", "ltd"])
+
+function identityTokens(value) {
+  return String(value || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\bp[\s._-]*c\b/gi, " pc ")
+    .toLowerCase()
+    .match(/[a-z0-9]+/g)
+    ?.filter((token) => !IDENTITY_STOP_WORDS.has(token)) ?? []
+}
+
+export function businessNameMatchScore(expected, actual) {
+  const left = [...new Set(identityTokens(expected))]
+  const right = [...new Set(identityTokens(actual))]
+  if (!left.length || !right.length) return 0
+  const intersection = left.filter((token) => right.includes(token)).length
+  return intersection / Math.max(left.length, right.length)
+}
+
+function locationMatchScore(expected, actual) {
+  if (!expected) return 1
+  const left = identityTokens(expected)
+  const right = identityTokens(actual)
+  if (!left.length) return /\bguam\b/i.test(actual || "") ? 1 : 0.5
+  return left.some((token) => right.includes(token)) ? 1 : 0
+}
+
+export function selectSerpapiCandidate(candidates, expected) {
+  const ranked = candidates
+    .filter((candidate) => candidate?.place_id && candidate?.title)
+    .map((candidate) => {
+      const nameScore = businessNameMatchScore(expected.name, candidate.title)
+      const locationScore = locationMatchScore(expected.location, candidate.address)
+      return {
+        candidate,
+        nameScore,
+        score: nameScore * 0.9 + locationScore * 0.1,
+      }
+    })
+    .filter((entry) => entry.nameScore >= 0.8 && entry.score >= 0.8)
+    .sort((a, b) => b.score - a.score)
+
+  if (!ranked.length) return null
+  if (
+    ranked[1] &&
+    ranked[1].candidate.place_id !== ranked[0].candidate.place_id &&
+    ranked[0].score - ranked[1].score < 0.1
+  ) {
+    throw new Error(`SerpAPI returned ambiguous matches for "${expected.name}". Use a direct Google Place ID.`)
+  }
+  return { ...ranked[0].candidate, matchScore: ranked[0].score }
+}
 
 function classify(q) {
   const s = String(q || "").trim()
@@ -39,7 +94,7 @@ async function googleTextSearch(key, textQuery) {
   })
   if (!res.ok) throw new Error(`Places text search ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()
-  return data.places && data.places[0] ? data.places[0].id : null
+  return data.places?.[0] ? data.places[0].id : null
 }
 
 async function googleDetails(key, placeId) {
@@ -86,26 +141,73 @@ async function fetchGoogle(input) {
   return googleDetails(key, placeId)
 }
 
+// Resolve a business name to a Google place_id using SerpAPI's own maps
+// search, so SerpAPI works standalone without a Google Places key. Costs one
+// extra search against the SerpAPI quota (free tier is 250/month), so a full
+// name-to-reviews run is 2 searches per business.
+export async function serpapiFindPlace(
+  key,
+  query,
+  expected = { name: query, location: "" }
+) {
+  const url = `https://serpapi.com/search.json?engine=google_maps&type=search&q=${encodeURIComponent(query)}&api_key=${encodeURIComponent(key)}`
+  const res = await fetch(url, { signal: AbortSignal.timeout(30000) })
+  if (!res.ok) throw new Error(`SerpAPI maps search ${res.status}: ${(await res.text()).slice(0, 200)}`)
+  const data = await res.json()
+  const candidates = [
+    ...(data.place_results ? [data.place_results] : []),
+    ...(Array.isArray(data.local_results) ? data.local_results : []),
+  ]
+  const hit = selectSerpapiCandidate(candidates, expected)
+  if (!hit?.place_id) return null
+  return {
+    placeId: hit.place_id,
+    name: hit.title || query,
+    address: hit.address || "",
+    rating: hit.rating ?? null,
+    ratingCount: hit.reviews ?? null,
+    matchScore: hit.matchScore,
+  }
+}
+
 async function fetchSerpapi(input) {
   const key = process.env.SERPAPI_API_KEY
   if (!key) throw new Error("SERPAPI_API_KEY not set.")
   const c = classify(input.query)
-  if (c.kind !== "placeId") throw new Error("SerpAPI reviews need a Place ID. Resolve it first (e.g. run --source google) or pass the Place ID.")
-  const url = `https://serpapi.com/search.json?engine=google_maps_reviews&place_id=${encodeURIComponent(c.value)}&api_key=${encodeURIComponent(key)}`
+  let placeId = c.kind === "placeId" ? c.value : null
+  let found = null
+  if (!placeId) {
+    const q = input.location ? `${input.query} ${input.location}` : input.query
+    found = await serpapiFindPlace(key, q, {
+      name: input.query,
+      location: input.location || "",
+    })
+    if (!found) throw new Error(`SerpAPI could not find "${input.query}" on Google Maps.`)
+    placeId = found.placeId
+  }
+  const url = `https://serpapi.com/search.json?engine=google_maps_reviews&place_id=${encodeURIComponent(placeId)}&api_key=${encodeURIComponent(key)}`
   const res = await fetch(url, { signal: AbortSignal.timeout(30000) })
   if (!res.ok) throw new Error(`SerpAPI ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()
+  if (
+    found &&
+    data.place_info?.title &&
+    businessNameMatchScore(found.name, data.place_info.title) < 0.8
+  ) {
+    throw new Error("SerpAPI review results did not match the selected business.")
+  }
   const reviews = (data.reviews || [])
     .filter((r) => r.snippet)
     .map((r) => ({ author: r.user?.name || "Google reviewer", rating: r.rating ?? null, text: String(r.snippet).trim(), publishedAt: r.date || null }))
   return {
     business: {
-      name: data.place_info?.title || input.query,
-      location: data.place_info?.address || input.location || "",
-      placeId: c.value,
-      rating: data.place_info?.rating ?? null,
-      ratingCount: data.place_info?.reviews ?? null,
+      name: data.place_info?.title || found?.name || input.query,
+      location: data.place_info?.address || found?.address || input.location || "",
+      placeId,
+      rating: data.place_info?.rating ?? found?.rating ?? null,
+      ratingCount: data.place_info?.reviews ?? found?.ratingCount ?? null,
       source: "serpapi",
+      matchScore: found?.matchScore ?? null,
     },
     reviews,
   }
@@ -119,7 +221,7 @@ async function fetchOutscraper(input) {
   const res = await fetch(url, { headers: { "X-API-KEY": key }, signal: AbortSignal.timeout(120000) })
   if (!res.ok) throw new Error(`Outscraper ${res.status}: ${(await res.text()).slice(0, 300)}`)
   const data = await res.json()
-  const place = (data.data && data.data[0]) || {}
+  const place = data.data?.[0] || {}
   const reviews = (place.reviews_data || [])
     .filter((r) => r.review_text)
     .map((r) => ({ author: r.author_title || "Google reviewer", rating: r.review_rating ?? null, text: String(r.review_text).trim(), publishedAt: r.review_datetime_utc || null }))
@@ -194,11 +296,23 @@ async function fetchApify(input) {
 
 export async function fetchReviews(input) {
   const source = input.source || "google"
-  if (source === "serpapi") return fetchSerpapi(input)
-  if (source === "outscraper") return fetchOutscraper(input)
-  if (source === "apify") return fetchApify(input)
-  if (source === "manual") return fetchManual(input)
-  return fetchGoogle(input)
+  if (!REVIEW_SOURCES.has(source)) {
+    throw new Error(`Unknown review source: ${source}`)
+  }
+  let result
+  if (source === "serpapi") result = await fetchSerpapi(input)
+  else if (source === "outscraper") result = await fetchOutscraper(input)
+  else if (source === "apify") result = await fetchApify(input)
+  else if (source === "manual") result = await fetchManual(input)
+  else result = await fetchGoogle(input)
+  return {
+    ...result,
+    requested: {
+      name: input.query,
+      location: input.location || "",
+      source,
+    },
+  }
 }
 
 // ---- CLI ----
@@ -225,7 +339,7 @@ if (isMain) {
   }
   try {
     const result = await fetchReviews(args)
-    process.stdout.write(JSON.stringify(result, null, 2) + "\n")
+    process.stdout.write(`${JSON.stringify(result, null, 2)}\n`)
   } catch (e) {
     console.error("fetch-reviews failed:", e.message)
     process.exit(1)

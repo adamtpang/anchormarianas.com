@@ -263,7 +263,7 @@ export default function ScanPage() {
 
                 {result.observations.map((obs, i) => (
                   <motion.div
-                    key={i}
+                    key={`${obs.title}-${obs.evidence}`}
                     variants={fadeUp}
                     className="bg-card rounded-xl border border-border p-6 flex flex-col gap-3"
                   >
@@ -311,8 +311,8 @@ export default function ScanPage() {
                   </motion.div>
 
                   <motion.ul variants={fadeUp} className="space-y-4">
-                    {result.questions.map((q, i) => (
-                      <li key={i} className="flex items-start gap-3">
+                    {result.questions.map((q) => (
+                      <li key={q} className="flex items-start gap-3">
                         <HelpCircle className="w-5 h-5 mt-0.5 shrink-0 text-accent" />
                         <span className="text-base leading-relaxed">{q}</span>
                       </li>
@@ -376,6 +376,7 @@ export default function ScanPage() {
 
                 {/* Scan another */}
                 <button
+                  type="button"
                   onClick={() => {
                     setResult(null)
                     setUrl("")

@@ -40,7 +40,7 @@ export default function AboutPage() {
               {
                 n: "01",
                 t: "Diagnose",
-                d: "A free scan reads your Google reviews and your site, then shows what is quietly costing you customers. No pitch, no invented numbers.",
+                d: "A free scan reads your website and shows what is quietly costing you customers. For businesses with real Google reviews, we read those by hand, which goes deeper. No pitch, no invented numbers.",
               },
               {
                 n: "02",
@@ -75,7 +75,8 @@ export default function AboutPage() {
           <p className="t-body mt-4 max-w-2xl text-muted-foreground">
             Anchor is operated by one person who builds. Not a slide deck and a
             subcontractor: the work happens under Anchor, one business at a time,
-            with full attention. Currently the retained software engineer for{" "}
+            with full attention. Currently doing free proof-of-value
+            AI-automation work for{" "}
             <Link href="/work" className={quietLink}>
               International Distributors, Inc.
             </Link>

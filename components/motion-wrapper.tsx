@@ -1,7 +1,7 @@
 "use client"
 
-import { motion, Variants } from "framer-motion"
-import { ReactNode } from "react"
+import { motion, type Variants } from "framer-motion"
+import type { ReactNode } from "react"
 
 // Common animation variants
 export const fadeIn: Variants = {

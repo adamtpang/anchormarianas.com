@@ -8,7 +8,7 @@ It is built for operators losing money to missed calls and manual work: hotels, 
 
 ## Key links
 - [Home](https://anchormarianas.com/): the studio, its offers, pricing, and how to book a call.
-- [AnchorScan](https://anchormarianas.com/scan): free 5-minute AI diagnostic that returns the top 3 AI workflow opportunities for a business URL.
+- [AnchorScan](https://anchormarianas.com/scan): free website diagnostic that returns evidence-backed observations, questions, and a conversation focus for a business URL.
 - [Careers](https://anchormarianas.com/careers): how to come aboard or reach the studio.
 
 ## About
