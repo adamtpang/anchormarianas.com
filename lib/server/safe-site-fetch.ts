@@ -25,6 +25,12 @@ type SafeSiteFetchOptions = {
 }
 
 const blockedAddresses = new BlockList()
+const globalIpv6Addresses = new BlockList()
+
+// Public website IPv6 addresses are globally routable unicast addresses.
+// Reject transition, compatibility, local, documentation, and reserved spaces
+// instead of trying to enumerate only the private ranges.
+globalIpv6Addresses.addSubnet("2000::", 3, "ipv6")
 
 for (const [network, prefix] of [
   ["0.0.0.0", 8],
@@ -35,7 +41,11 @@ for (const [network, prefix] of [
   ["172.16.0.0", 12],
   ["192.0.0.0", 24],
   ["192.0.2.0", 24],
+  ["192.31.196.0", 24],
+  ["192.52.193.0", 24],
+  ["192.88.99.0", 24],
   ["192.168.0.0", 16],
+  ["192.175.48.0", 24],
   ["198.18.0.0", 15],
   ["198.51.100.0", 24],
   ["203.0.113.0", 24],
@@ -48,11 +58,16 @@ for (const [network, prefix] of [
 for (const [network, prefix] of [
   ["::", 128],
   ["::1", 128],
+  ["2001::", 23],
   ["64:ff9b::", 96],
+  ["64:ff9b:1::", 48],
   ["100::", 64],
   ["2001:db8::", 32],
   ["2001:10::", 28],
+  ["2002::", 16],
+  ["3fff::", 20],
   ["fc00::", 7],
+  ["fec0::", 10],
   ["fe80::", 10],
   ["ff00::", 8],
 ] as const) {
@@ -62,7 +77,12 @@ for (const [network, prefix] of [
 export function isPublicAddress(address: string) {
   const family = isIP(address)
   if (family === 4) return !blockedAddresses.check(address, "ipv4")
-  if (family === 6) return !blockedAddresses.check(address, "ipv6")
+  if (family === 6) {
+    return (
+      globalIpv6Addresses.check(address, "ipv6") &&
+      !blockedAddresses.check(address, "ipv6")
+    )
+  }
   return false
 }
 

@@ -8,7 +8,7 @@ import {
   stableRequestKey,
 } from "./ai-endpoint"
 
-test("fails closed in every hosted environment unless explicitly enabled", () => {
+test("fails closed in every environment unless explicitly enabled", () => {
   const environment = process.env as Record<string, string | undefined>
   const originalVercelEnv = process.env.VERCEL_ENV
   const originalNodeEnv = process.env.NODE_ENV
@@ -18,7 +18,10 @@ test("fails closed in every hosted environment unless explicitly enabled", () =>
     delete environment.AI_PUBLIC_ENDPOINTS_ENABLED
     environment.NODE_ENV = "development"
     delete environment.VERCEL_ENV
-    assert.doesNotThrow(() => assertPublicAiEnabled())
+    assert.throws(
+      () => assertPublicAiEnabled(),
+      (error) => error instanceof AiEndpointError && error.status === 503
+    )
 
     environment.VERCEL_ENV = "preview"
     assert.throws(

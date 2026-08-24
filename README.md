@@ -60,10 +60,10 @@ publish workflow.
 ## Hosted AI security
 
 The public `/api/scan`, `/api/audit`, and `/api/build` routes fail closed in
-hosted environments unless `AI_PUBLIC_ENDPOINTS_ENABLED=true`. Enable them only
-after a durable WAF rate limit is active. These routes also use bounded request
-bodies and caches, per-instance quotas, concurrency limits, and SSRF-safe site
-fetching.
+every environment unless `AI_PUBLIC_ENDPOINTS_ENABLED=true`. In hosted
+environments, enable them only after a durable WAF rate limit is active. These
+routes also use bounded request bodies and caches, per-instance quotas,
+concurrency limits, and SSRF-safe site fetching.
 
 The separate `/api/anthropic` proxy is private. It requires both
 `ANTHROPIC_API_KEY` and `ANTHROPIC_PROXY_SECRET`, plus a matching

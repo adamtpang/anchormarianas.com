@@ -17,8 +17,8 @@ artifacts or a dated private receipt.
 | Date | Change | Before | After | Evidence |
 | --- | --- | --- | --- | --- |
 | 2026-08-24 | Production health checked before release | Unknown current health | Five public routes returned HTTP 200 | `RUNTIME.md` verification list |
-| 2026-08-24 | Local release verification | No test command, lint blocked, 17 dependency advisories | 41 tests pass with 86.08% measured line coverage; lint, type, build, entrypoint, dry-run, and dependency-audit checks pass | `package.json`, `npm run test:coverage`, `npm audit --omit=dev` |
-| 2026-08-24 | Public AI route protection | Result cache only | SSRF-safe bounded fetches, bounded caches and bodies, local quotas, explicit hosted-environment enable flag, and Vercel WAF at 3 requests per IP per hour | `lib/server/`, Vercel rule `Protect public AI endpoints` |
+| 2026-08-24 | Local release verification | No test command, lint blocked, 17 dependency advisories | 46 tests pass with 86.67% measured line coverage; lint, type, build, entrypoint, dry-run, and dependency-audit checks pass | `package.json`, `npm run test:coverage`, `npm audit --omit=dev` |
+| 2026-08-24 | Public AI route protection | Result cache only | SSRF-safe bounded fetches, bounded caches and bodies, local quotas, explicit all-environment enable flag, and Vercel WAF at 3 requests per IP per hour | `lib/server/`, Vercel rule `Protect public AI endpoints` |
 
 ## Evidence rules
 

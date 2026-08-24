@@ -40,12 +40,16 @@ export function businessNameMatchScore(expected, actual) {
   return intersection / Math.max(left.length, right.length)
 }
 
-function locationMatchScore(expected, actual) {
+export function locationMatchScore(expected, actual) {
   if (!expected) return 1
   const left = identityTokens(expected)
   const right = identityTokens(actual)
-  if (!left.length) return /\bguam\b/i.test(actual || "") ? 1 : 0.5
+  if (!left.length) return /\bguam\b/i.test(actual || "") ? 1 : 0
   return left.some((token) => right.includes(token)) ? 1 : 0
+}
+
+export function businessLocationMatches(expected, actual) {
+  return locationMatchScore(expected, actual) > 0
 }
 
 export function selectSerpapiCandidate(candidates, expected) {
@@ -57,10 +61,16 @@ export function selectSerpapiCandidate(candidates, expected) {
       return {
         candidate,
         nameScore,
+        locationScore,
         score: nameScore * 0.9 + locationScore * 0.1,
       }
     })
-    .filter((entry) => entry.nameScore >= 0.8 && entry.score >= 0.8)
+    .filter(
+      (entry) =>
+        entry.nameScore >= 0.8 &&
+        entry.locationScore > 0 &&
+        entry.score >= 0.8
+    )
     .sort((a, b) => b.score - a.score)
 
   if (!ranked.length) return null

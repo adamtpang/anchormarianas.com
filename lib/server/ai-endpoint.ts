@@ -67,12 +67,7 @@ function clientIdentifier(request: Request) {
 }
 
 export function assertPublicAiEnabled() {
-  const isHostedEnvironment =
-    Boolean(process.env.VERCEL_ENV) || process.env.NODE_ENV === "production"
-  if (
-    isHostedEnvironment &&
-    process.env.AI_PUBLIC_ENDPOINTS_ENABLED !== "true"
-  ) {
+  if (process.env.AI_PUBLIC_ENDPOINTS_ENABLED !== "true") {
     throw new AiEndpointError(
       "This AI service is temporarily unavailable.",
       503,

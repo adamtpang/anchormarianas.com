@@ -66,6 +66,19 @@ test("rejects weak or ambiguous SerpAPI identity matches", () => {
       ),
     /ambiguous/
   )
+  assert.equal(
+    selectSerpapiCandidate(
+      [
+        {
+          place_id: "off-island",
+          title: "Resolved Clinic",
+          address: "Honolulu, Hawaii",
+        },
+      ],
+      { name: "Resolved Clinic", location: "Guam" }
+    ),
+    null
+  )
 })
 
 test("requires the SerpAPI key before any request", async () => {

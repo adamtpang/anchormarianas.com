@@ -11,7 +11,8 @@ import { access, link, mkdir, readFile, rename, rm, writeFile } from "node:fs/pr
 import { spawn } from "node:child_process"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
-import { businessNameMatchScore, fetchReviews } from "./fetch-reviews.mjs"
+import { fetchReviews } from "./fetch-reviews.mjs"
+import { rawEvidence } from "./raw-evidence.mjs"
 import {
   buildTrustedPublishedRead,
   safePublishedReadPath,
@@ -113,28 +114,6 @@ function parseArgs(argv) {
     else out.query.push(value)
   }
   return { ...out, query: out.query.join(" ").trim() }
-}
-
-async function rawEvidence(file) {
-  const value = JSON.parse(await readFile(path.resolve(file), "utf8"))
-  if (
-    value?.status !== "complete" ||
-    !value.business ||
-    !Array.isArray(value.reviews) ||
-    !value.reviews.length
-  ) {
-    throw new Error("Raw evidence is incomplete or uses an unsupported schema.")
-  }
-  if (
-    value.lead?.name &&
-    businessNameMatchScore(value.lead.name, value.business.name) < 0.8
-  ) {
-    throw new Error("Raw evidence business identity does not match its lead.")
-  }
-  return {
-    fetched: { business: value.business, reviews: value.reviews },
-    slug: value.lead?.slug,
-  }
 }
 
 async function atomicWrite(file, contents, overwrite) {
@@ -248,7 +227,10 @@ async function main() {
   console.log("Commit and push to make it live. No API credits used.")
 }
 
-main().catch((e) => {
-  console.error("publish-read failed:", e.message)
-  process.exit(1)
-})
+const isMain = process.argv[1]?.endsWith("publish-read.mjs")
+if (isMain) {
+  main().catch((e) => {
+    console.error("publish-read failed:", e.message)
+    process.exit(1)
+  })
+}

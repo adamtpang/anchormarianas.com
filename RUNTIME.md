@@ -25,10 +25,11 @@ npm run build
 ## AnchorScan surfaces
 
 The public `/scan` route reads a website through the hosted Anthropic API and
-returns a diagnostic. It needs `ANTHROPIC_API_KEY` in Vercel. Every hosted
-environment also needs `AI_PUBLIC_ENDPOINTS_ENABLED=true`, but only after
-durable Vercel WAF rate limits are active for `/api/scan`, `/api/audit`, and
-`/api/build`. Without that opt-in, the paid AI routes fail closed with HTTP 503.
+returns a diagnostic. It needs `ANTHROPIC_API_KEY`. Every environment also
+needs `AI_PUBLIC_ENDPOINTS_ENABLED=true`. In hosted environments, enable that
+flag only after durable Vercel WAF rate limits are active for `/api/scan`,
+`/api/audit`, and `/api/build`. Without the opt-in, the paid AI routes fail
+closed with HTTP 503.
 
 The route rejects private and reserved network targets, validates every
 redirect, pins the checked public address for the request, accepts text pages

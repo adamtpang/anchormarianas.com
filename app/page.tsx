@@ -229,8 +229,8 @@ export default function HomePage() {
           <div className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
             <p className="t-eyebrow">After the scan</p>
             <h2 className="t-h2 mt-4 max-w-xl">
-              Of the first five Guam businesses we scanned, three had never
-              replied to a single review.
+              Unanswered reviews kept showing up in the first five Guam
+              businesses we scanned.
             </h2>
             <p className="t-body-lg mt-5 max-w-lg text-muted-foreground">
               An unanswered review is a missed chance to show future customers

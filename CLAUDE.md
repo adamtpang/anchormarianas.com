@@ -38,9 +38,9 @@ separate eldercare acquisition thesis is also paused for this workstream.
   ceiling, and exits nonzero when every provider request fails.
 - Saved evidence can flow directly into `publish-read.mjs --raw` without a
   second provider call. Wrong-business and stale evidence stops the pipeline.
-- The local suite has 41 provider-free tests. Measured line coverage for the
-  tested modules is 86.08% as of 2026-08-24.
-- Public paid-AI routes fail closed in any hosted environment until
+- The local suite has 46 provider-free tests. Measured line coverage for the
+  tested modules is 86.67% as of 2026-08-24.
+- Public paid-AI routes fail closed in every environment until
   `AI_PUBLIC_ENDPOINTS_ENABLED=true`. Production and Preview must also keep the
   Vercel WAF rate-limit rule enabled.
 - Private lead files, prospect dossiers, outbound drafts, and runway notes do

@@ -37,7 +37,7 @@ test("uses safe defaults and accepts explicit filters", () => {
       "--category",
       "dentist",
       "--min-reviews",
-      "0",
+      "1",
       "--leads",
       "private.json",
       "--dry-run",
@@ -48,7 +48,7 @@ test("uses safe defaults and accepts explicit filters", () => {
       tier: "HOT",
       category: "dentist",
       dryRun: true,
-      minReviews: 0,
+      minReviews: 1,
       leads: "private.json",
     }
   )
@@ -62,6 +62,7 @@ test("rejects quota-dangerous numeric arguments and unknown options", () => {
     ["--limit", "nope"],
     ["--limit"],
     ["--min-reviews", "-1"],
+    ["--min-reviews", "0"],
     ["--source"],
     ["--leads"],
     ["--unknown"],
@@ -121,11 +122,15 @@ test("writes successful raw evidence and reports mixed thin or failed leads", as
   ])
   const result = await main(["--limit", "3", "--source", "google"], {
     ...files,
-    fetchReviewsFn: async ({ query }) => {
+    fetchReviewsFn: async ({ query, location }) => {
       if (query === "Broken Dental") throw new Error("provider down")
       const count = query === "Thin Dental" ? 2 : 6
       return {
-        business: { name: query, rating: query === "Strong Dental" ? 4.1 : 5 },
+        business: {
+          name: query,
+          location,
+          rating: query === "Strong Dental" ? 4.1 : 5,
+        },
         reviews: Array.from({ length: count }, (_, index) => ({ text: `Review ${index}` })),
       }
     },
@@ -163,6 +168,28 @@ test("fails when every provider request errors", async (t) => {
         fetchReviewsFn: async () => {
           throw new Error("provider down")
         },
+      }),
+    /No publishable raw reports/
+  )
+})
+
+test("rejects a same-name provider result from the wrong location", async (t) => {
+  const files = await fixture(t, [
+    {
+      name: "Shared Name Dental",
+      village: "Tamuning",
+      category: "dentist",
+    },
+  ])
+
+  await assert.rejects(
+    () =>
+      main([], {
+        ...files,
+        fetchReviewsFn: async ({ query }) => ({
+          business: { name: query, location: "Honolulu, Hawaii" },
+          reviews: Array.from({ length: 5 }, () => ({ text: "Review" })),
+        }),
       }),
     /No publishable raw reports/
   )
@@ -212,6 +239,75 @@ test("does not reburn quota for valid raw or published records", async (t) => {
   assert.equal(result.batch.length, 1)
   assert.equal(result.batch[0].name, "Invalid Dental")
   assert.equal(calls, 0)
+})
+
+test("promotes a fresh thin checkpoint when a lower threshold now accepts it", async (t) => {
+  const files = await fixture(t, [
+    { id: "thin", name: "Thin Dental", category: "dentist" },
+  ])
+  await fs.mkdir(files.rawDir)
+  const rawFile = path.join(files.rawDir, "thin-dental-guam.json")
+  await fs.writeFile(
+    rawFile,
+    JSON.stringify({
+      schemaVersion: 1,
+      status: "thin",
+      fetchedAt: new Date().toISOString(),
+      minimumRequired: 5,
+      lead: { id: "thin", name: "Thin Dental" },
+      requested: { name: "Thin Dental", location: "Guam" },
+      business: { name: "Thin Dental", location: "Guam" },
+      reviews: [{ text: "One" }, { text: "Two" }],
+    })
+  )
+  let calls = 0
+
+  await main(["--min-reviews", "2", "--source", "google"], {
+    ...files,
+    fetchReviewsFn: async () => {
+      calls += 1
+    },
+  })
+
+  const promoted = JSON.parse(await fs.readFile(rawFile, "utf8"))
+  assert.equal(calls, 0)
+  assert.equal(promoted.status, "complete")
+  assert.equal(promoted.minimumRequired, 2)
+})
+
+test("refreshes and replaces stale raw evidence", async (t) => {
+  const files = await fixture(t, [
+    { id: "stale", name: "Stale Dental", category: "dentist" },
+  ])
+  await fs.mkdir(files.rawDir)
+  const rawFile = path.join(files.rawDir, "stale-dental-guam.json")
+  await fs.writeFile(
+    rawFile,
+    JSON.stringify({
+      schemaVersion: 1,
+      status: "complete",
+      fetchedAt: "2020-01-01T00:00:00.000Z",
+      minimumRequired: 5,
+      lead: { id: "stale", name: "Stale Dental" },
+      requested: { name: "Stale Dental", location: "Guam" },
+      business: { name: "Stale Dental", location: "Guam" },
+      reviews: Array.from({ length: 5 }, () => ({ text: "Old" })),
+    })
+  )
+
+  const result = await main(["--source", "google"], {
+    ...files,
+    fetchReviewsFn: async ({ query, location }) => ({
+      requested: { name: query, location, source: "google" },
+      business: { name: query, location },
+      reviews: Array.from({ length: 5 }, () => ({ text: "Fresh" })),
+    }),
+  })
+
+  const refreshed = JSON.parse(await fs.readFile(rawFile, "utf8"))
+  assert.equal(result.done.length, 1)
+  assert.equal(refreshed.reviews[0].text, "Fresh")
+  assert.ok(Date.parse(refreshed.fetchedAt) > Date.parse("2020-01-01"))
 })
 
 test("fails fast on duplicate slugs unless the private lead file disambiguates them", async (t) => {

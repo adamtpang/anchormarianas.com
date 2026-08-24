@@ -55,6 +55,7 @@ refuses to replace an existing published read without `--overwrite`.
 | `diagnose.md` | Read-only diagnostic method. |
 | `report.schema.json` | Diagnostic output shape. |
 | `report-validation.mjs` | Rejects unsafe model output and builds trusted records. |
+| `raw-evidence.mjs` | Enforces the raw checkpoint schema, identity, location, and freshness contract. |
 | `scan.mjs` | Single-business or CSV operator runner. |
 | `batch-scan.mjs` | Quota-capped raw-evidence fetcher for a private JSON lead file. |
 | `publish-read.mjs` | Creates a checked public read from fresh or saved evidence. |

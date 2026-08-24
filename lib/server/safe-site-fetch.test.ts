@@ -16,13 +16,21 @@ test("rejects loopback, private, metadata, reserved, credentials, and custom por
     "169.254.169.254",
     "100.64.0.1",
     "192.0.2.1",
+    "192.88.99.1",
     "::1",
+    "::10.0.0.1",
+    "::169.254.169.254",
     "fc00::1",
+    "fec0::1",
     "fe80::1",
+    "2001:2::1",
+    "2002:a00:1::",
+    "3fff::1",
   ]) {
     assert.equal(isPublicAddress(address), false, address)
   }
   assert.equal(isPublicAddress("8.8.8.8"), true)
+  assert.equal(isPublicAddress("2606:4700:4700::1111"), true)
   assert.throws(() => validatePublicUrl("http://user:pass@example.com"), /credentials/)
   assert.throws(() => validatePublicUrl("https://example.com:8443"), /ports/)
   assert.throws(() => validatePublicUrl("http://localhost"), /Local/)

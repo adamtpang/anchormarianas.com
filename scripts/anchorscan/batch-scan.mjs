@@ -18,7 +18,15 @@
 import { access, mkdir, open, readFile, rename, rm, writeFile } from "node:fs/promises"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
-import { businessNameMatchScore, fetchReviews } from "./fetch-reviews.mjs"
+import {
+  businessLocationMatches,
+  businessNameMatchScore,
+  fetchReviews,
+} from "./fetch-reviews.mjs"
+import {
+  RAW_FRESHNESS_MS,
+  RAW_SCHEMA_VERSION,
+} from "./raw-evidence.mjs"
 import { publishedReadSlug } from "./slugify.mjs"
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
@@ -27,8 +35,6 @@ const LEADS = path.join(ROOT, ".anchor", "guam-leads", "guam-leads.json")
 const READS = path.join(ROOT, "content", "reads")
 const RAW = path.join(ROOT, ".anchor", "scan-raw")
 const MAX_BATCH_SIZE = 125
-const RAW_SCHEMA_VERSION = 1
-const RAW_FRESHNESS_MS = 1000 * 60 * 60 * 24 * 30
 const BATCH_SOURCES = new Set(["google", "serpapi", "outscraper", "apify"])
 
 async function exists(p) {
@@ -40,23 +46,49 @@ async function exists(p) {
   }
 }
 
-async function hasCurrentReviewFile(file, lead, now = Date.now()) {
+async function currentReviewFileState(
+  file,
+  lead,
+  minimumRequired,
+  now = Date.now()
+) {
   try {
     const value = JSON.parse(await readFile(file, "utf8"))
     const fetchedAt = Date.parse(value?.fetchedAt)
-    return Boolean(
+    const reviews = Array.isArray(value?.reviews) ? value.reviews : []
+    const satisfiesCurrentMinimum =
+      reviews.length >= Math.max(1, minimumRequired)
+    const sameThinCheckpoint =
+      value?.status === "thin" &&
+      value?.minimumRequired === minimumRequired &&
+      !satisfiesCurrentMinimum
+    const isCurrent = Boolean(
       value?.schemaVersion === RAW_SCHEMA_VERSION &&
         ["complete", "thin"].includes(value?.status) &&
         value?.lead?.id === lead.id &&
         value?.requested?.name === lead.name &&
         value?.business?.name &&
         businessNameMatchScore(lead.name, value.business.name) >= 0.8 &&
-        Array.isArray(value.reviews) &&
+        reviews.length > 0 &&
         Number.isFinite(fetchedAt) &&
-        now - fetchedAt <= RAW_FRESHNESS_MS
+        now - fetchedAt >= 0 &&
+        now - fetchedAt <= RAW_FRESHNESS_MS &&
+        (satisfiesCurrentMinimum || sameThinCheckpoint)
     )
+    if (!isCurrent) return null
+    if (value.status === "thin" && satisfiesCurrentMinimum) {
+      return {
+        kind: "promotable",
+        value: {
+          ...value,
+          status: "complete",
+          minimumRequired,
+        },
+      }
+    }
+    return { kind: "current", value }
   } catch {
-    return false
+    return null
   }
 }
 
@@ -105,6 +137,16 @@ async function atomicWrite(file, contents) {
   }
 }
 
+async function atomicReplace(file, contents) {
+  const temp = `${file}.${process.pid}.${Date.now()}.tmp`
+  await writeFile(temp, contents, { encoding: "utf8", flag: "wx" })
+  try {
+    await rename(temp, file)
+  } finally {
+    await rm(temp, { force: true })
+  }
+}
+
 function boundedInteger(value, flag, min, max) {
   const parsed = Number(value)
   if (!Number.isInteger(parsed) || parsed < min || parsed > max) {
@@ -129,7 +171,7 @@ export function parseArgs(argv) {
     else if (a === "--source") out.source = optionValue(argv, ++i, "--source")
     else if (a === "--tier") out.tier = optionValue(argv, ++i, "--tier")
     else if (a === "--category") out.category = optionValue(argv, ++i, "--category")
-    else if (a === "--min-reviews") out.minReviews = boundedInteger(argv[++i], "--min-reviews", 0, 10000)
+    else if (a === "--min-reviews") out.minReviews = boundedInteger(argv[++i], "--min-reviews", 1, 10000)
     else if (a === "--leads") out.leads = optionValue(argv, ++i, "--leads")
     else if (a === "--dry-run") out.dryRun = true
     else throw new Error(`Unknown option: ${a}`)
@@ -191,7 +233,18 @@ export async function main(
     const publishedFile = path.join(readsDir, `${slug}.json`)
     const rawFile = path.join(rawDir, `${slug}.json`)
     if ((await exists(publishedFile)) && (await hasValidPublishedRead(publishedFile, slug))) continue
-    if (await hasCurrentReviewFile(rawFile, l)) continue
+    const checkpoint = await currentReviewFileState(
+      rawFile,
+      l,
+      args.minReviews
+    )
+    if (checkpoint?.kind === "promotable" && !args.dryRun) {
+      await atomicReplace(
+        rawFile,
+        `${JSON.stringify(checkpoint.value, null, 2)}\n`
+      )
+    }
+    if (checkpoint) continue
     fresh.push({ ...l, slug })
   }
 
@@ -230,8 +283,20 @@ export async function main(
           `Provider returned "${result.business?.name || "unknown"}", which does not match the requested business.`
         )
       }
+      const requestedLocation = b.village ? `${b.village}, Guam` : "Guam"
+      if (
+        !businessLocationMatches(
+          requestedLocation,
+          result.business?.location
+        )
+      ) {
+        throw new Error(
+          `Provider returned "${result.business?.location || "unknown location"}", which does not match ${requestedLocation}.`
+        )
+      }
       const count = result.reviews?.length ?? 0
-      const status = count < args.minReviews ? "thin" : "complete"
+      const status =
+        count === 0 || count < args.minReviews ? "thin" : "complete"
       await atomicWrite(
         path.join(rawDir, `${b.slug}.json`),
         `${JSON.stringify(
