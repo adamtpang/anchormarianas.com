@@ -165,7 +165,8 @@ export function reviewRecord({ dataset, item, businessId, itemIndex }) {
     ownerResponseText: cleanText(item.responseFromOwnerText) || null,
     collectedAt: dataset.collectedAt,
     source: {
-      provider: "apify",
+      reviewPlatform: "google-maps",
+      retrievalProvider: "apify",
       datasetId: dataset.datasetId,
       actor: "compass/google-maps-reviews-scraper",
       recoveredFrom: "claude-transcript",

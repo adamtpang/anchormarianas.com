@@ -16,9 +16,11 @@
     "collectedAt": { "type": ["string", "null"] },
     "source": {
       "type": "object",
-      "required": ["provider", "datasetId", "recoveredFrom", "transcriptLine"],
+      "required": ["reviewPlatform", "retrievalProvider", "actor", "datasetId", "recoveredFrom", "transcriptLine"],
       "properties": {
-        "provider": { "const": "apify" },
+        "reviewPlatform": { "const": "google-maps" },
+        "retrievalProvider": { "const": "apify" },
+        "actor": { "const": "compass/google-maps-reviews-scraper" },
         "datasetId": { "type": "string", "minLength": 1 },
         "transcriptLine": { "type": "integer", "minimum": 1 }
       }

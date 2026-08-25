@@ -15,6 +15,8 @@ outputs must live outside the public repository.
 Facts, heuristics, customer evidence, derived summaries, and market research
 remain separate. A HOT lead is not proof of urgency. A derived observation is
 not a raw review. A proposed service is not owner-confirmed demand.
+Each review separately names its originating platform and the retrieval
+provider. For the recovered corpus, those are Google Maps and Apify.
 
 ## Run
 

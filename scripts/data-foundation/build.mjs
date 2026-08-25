@@ -333,7 +333,7 @@ function qualityMarkdown({ businesses, reviews, diagnostics, verticals, duplicat
     "",
     "1. Recover or re-fetch Google Place IDs and current listing metadata for every canonical business.",
     "2. Fetch review text in priority waves, beginning with the verticals that combine reachable businesses, review volume, and plausible implementation value.",
-    "3. Store every raw review with provider, dataset, collection time, business ID, and content hash.",
+    "3. Store every raw review with review platform, retrieval provider, dataset, collection time, business ID, and content hash.",
     "4. Require each problem pattern to cite review IDs and report both review count and distinct-business count.",
     "5. Keep market-rate evidence in a separate service-rate table with dated source URLs. Never infer a market rate from review sentiment.",
     "",

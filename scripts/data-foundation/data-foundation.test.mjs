@@ -123,6 +123,8 @@ test("builds separate canonical business, review, and diagnostic grains", async 
   assert.equal(result.reviews.length, 1)
   assert.equal(result.diagnostics.length, 1)
   assert.equal(result.reviews[0].evidenceClass, "customer_review")
+  assert.equal(result.reviews[0].source.reviewPlatform, "google-maps")
+  assert.equal(result.reviews[0].source.retrievalProvider, "apify")
   assert.equal(result.diagnostics[0].evidenceClass, "derived_diagnostic")
   assert.equal(result.businesses[0].legacySignals.evidenceClass, "heuristic")
   assert.equal(result.businesses[0].listing.rating, 4.8)
