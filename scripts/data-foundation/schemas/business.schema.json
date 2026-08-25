@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anchormarianas.com/schemas/business.schema.json",
+  "title": "Anchor canonical business",
+  "type": "object",
+  "required": ["schemaVersion", "businessId", "identity", "classification", "location", "contact", "externalIds", "listing", "provenance", "legacySignals"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "businessId": { "type": "string", "pattern": "^guam:" },
+    "identity": {
+      "type": "object",
+      "required": ["name", "normalizedName", "aliases"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "normalizedName": { "type": "string", "minLength": 1 },
+        "aliases": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "required": ["category", "vertical", "basis"],
+      "properties": {
+        "category": { "type": "string" },
+        "vertical": { "type": "string" },
+        "basis": { "enum": ["source-category", "business-name"] }
+      }
+    },
+    "location": { "type": "object" },
+    "contact": { "type": "object" },
+    "externalIds": { "type": "object" },
+    "listing": { "type": "object" },
+    "provenance": { "type": "array" },
+    "legacySignals": {
+      "type": "object",
+      "required": ["evidenceClass", "warning"],
+      "properties": { "evidenceClass": { "const": "heuristic" } }
+    }
+  }
+}

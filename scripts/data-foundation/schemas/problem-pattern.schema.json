@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anchormarianas.com/schemas/problem-pattern.schema.json",
+  "title": "Evidence-backed business problem and service candidate",
+  "type": "object",
+  "required": ["schemaVersion", "patternId", "vertical", "problem", "evidence", "status", "serviceCandidate", "marketRate"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "patternId": { "type": "string" },
+    "vertical": { "type": "string" },
+    "problem": { "type": "string", "minLength": 1 },
+    "evidence": {
+      "type": "object",
+      "required": ["reviewIds", "businessIds"],
+      "properties": {
+        "reviewIds": { "type": "array", "items": { "type": "string", "pattern": "^review:" }, "minItems": 3, "uniqueItems": true },
+        "businessIds": { "type": "array", "items": { "type": "string", "pattern": "^guam:" }, "minItems": 1, "uniqueItems": true }
+      }
+    },
+    "status": { "enum": ["hypothesis", "owner-confirmed", "paid-demand-validated"] },
+    "serviceCandidate": {
+      "type": "object",
+      "required": ["name", "outcome", "deliveryScope"],
+      "properties": {
+        "name": { "type": "string" },
+        "outcome": { "enum": ["save-time", "save-money", "grow-revenue", "reduce-risk"] },
+        "deliveryScope": { "type": "string" }
+      }
+    },
+    "marketRate": {
+      "type": "object",
+      "required": ["currency", "status", "sources"],
+      "properties": {
+        "currency": { "const": "USD" },
+        "status": { "enum": ["research-required", "researched"] },
+        "low": { "type": ["number", "null"] },
+        "high": { "type": ["number", "null"] },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["url", "observedAt"],
+            "properties": {
+              "url": { "type": "string", "format": "uri" },
+              "observedAt": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anchormarianas.com/schemas/review.schema.json",
+  "title": "Anchor canonical customer review",
+  "type": "object",
+  "required": ["schemaVersion", "reviewId", "businessId", "evidenceClass", "rating", "text", "publishedAt", "collectedAt", "source"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "reviewId": { "type": "string", "pattern": "^review:" },
+    "businessId": { "type": "string", "pattern": "^guam:" },
+    "evidenceClass": { "const": "customer_review" },
+    "rating": { "type": ["number", "null"], "minimum": 1, "maximum": 5 },
+    "text": { "type": ["string", "null"] },
+    "publishedAt": { "type": ["string", "null"] },
+    "ownerResponseText": { "type": ["string", "null"] },
+    "collectedAt": { "type": ["string", "null"] },
+    "source": {
+      "type": "object",
+      "required": ["provider", "datasetId", "recoveredFrom", "transcriptLine"],
+      "properties": {
+        "provider": { "const": "apify" },
+        "datasetId": { "type": "string", "minLength": 1 },
+        "transcriptLine": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}
