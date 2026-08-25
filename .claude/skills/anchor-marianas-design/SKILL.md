@@ -1,10 +1,15 @@
 ---
 name: anchor-marianas-design
-description: Use this skill to generate well-branded interfaces and assets for Anchor Marianas, the one-person AI build studio operated by Adam Tomas Pangelinan from Guam, for production or for throwaway prototypes, mocks, decks, and marketing surfaces. Contains the brand's tone-of-voice rules, color system (dual light/dark themes: warm cream + navy ink, abyssal + bioluminescent teal), Inter / Instrument Serif / Geist Mono type stack, logo and founder assets, verbatim site copy, and a high-fidelity React UI kit of the marketing site for assembling new pages.
+description: Use this skill to generate well-branded interfaces and assets for Anchor Marianas, Adam Pangelinan's Guam-based AI implementation company. Contains the visual system, Inter / Instrument Serif / Geist Mono type stack, logo and founder assets, and a historical React UI kit. Reconcile all production copy and claims with the current root operating documents.
 user-invocable: true
 ---
 
 Read the `README.md` file within this skill, and explore the other available files.
+
+Treat the bundled copy and UI kit as a historical visual snapshot. Before using
+any offer, price, proof claim, link, or contact detail in production, reconcile
+it with the repository-root `CLAUDE.md`, `OFFER.md`, `content/services.json`,
+and current page source.
 
 If creating visual artifacts (slides, mocks, throwaway prototypes, etc), copy assets out and create static HTML files for the user to view. Pull copy from `content/site.json` and `content/services.json`. They are the source of truth. Lift exact phrasing from the quoted "Content fundamentals" examples in the README rather than rewriting them.
 

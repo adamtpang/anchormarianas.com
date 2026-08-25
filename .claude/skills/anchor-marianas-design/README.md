@@ -1,5 +1,10 @@
 # Anchor Marianas Design System
 
+> Historical visual reference. The palette, typography, and layout guidance are
+> reusable, but the quoted offers, prices, proof claims, links, and page mapping
+> may be stale. For production copy, use the repository-root `CLAUDE.md`,
+> `OFFER.md`, `content/services.json`, and current page source.
+
 > *We sit with you for 30 minutes, find the knot, then ship the AI piece that unties it in 5 days.*
 
 Anchor Marianas is a one-person AI build studio operated by **Adam Tomas Pangelinan** from **Guam (11°22′N 142°35′E)**, closer to Challenger Deep, the deepest place on Earth, than to any continent. The brand identity is built around that fact: depth, dark water, sonar, the moment a single anchor finds the bottom of an otherwise bottomless thing.
@@ -212,7 +217,9 @@ All three fonts are **Google Fonts**, loaded via Next.js's `next/font/google` in
 
 When asked to produce a deliverable on Anchor Marianas brand:
 
-1. **Read `content/site.json`**: it's the source of truth for studio name, tagline, contact info, social URLs, the founder name.
+1. **Read the repository-root operating docs and current content files.** The
+   copies bundled in this skill are a visual snapshot, not the source of truth
+   for offers, proof, prices, or contact details.
 2. **Import `colors_and_type.css`**: gives you every variable. Default to dark theme; offer light as a toggle.
 3. **Use only sentence-case prose.** Lift phrasing from `content/services.json` and the verbatim quotes in this README's *Content fundamentals* section.
 4. **Default to a single centered column, `max-w-3xl`, hairline section dividers.** Resist building multi-column dashboards unless explicitly asked.

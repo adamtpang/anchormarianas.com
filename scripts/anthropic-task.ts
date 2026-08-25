@@ -10,6 +10,8 @@
  *   npx tsx scripts/anthropic-task.ts "Write a React component that..."
  *   npx tsx scripts/anthropic-task.ts --file task.json
  *   npx tsx scripts/anthropic-task.ts --file task.json --base-url https://anchormarianas.com/api/anthropic
+ *
+ * Set ANTHROPIC_PROXY_SECRET to the same value configured by the target route.
  */
 
 import fs from "node:fs"
@@ -34,6 +36,7 @@ interface ProxyResponse {
 
 const BASE_URL =
   process.env.ANTHROPIC_PROXY_BASE_URL || "http://localhost:3000/api/anthropic"
+const PROXY_SECRET = process.env.ANTHROPIC_PROXY_SECRET
 
 function parseArgs(): { prompt?: string; file?: string; baseUrl: string } {
   const args = process.argv.slice(2)
@@ -56,7 +59,8 @@ function parseArgs(): { prompt?: string; file?: string; baseUrl: string } {
     console.error(
       "Usage: npx tsx scripts/anthropic-task.ts <prompt> [--base-url <url>]\n" +
         "       npx tsx scripts/anthropic-task.ts --file <path.json> [--base-url <url>]\n\n" +
-        "Environment: ANTHROPIC_PROXY_BASE_URL overrides the default localhost URL."
+        "Environment: ANTHROPIC_PROXY_BASE_URL overrides the default localhost URL.\n" +
+        "             ANTHROPIC_PROXY_SECRET authorizes the private proxy."
     )
     process.exit(1)
   }
@@ -91,7 +95,14 @@ function loadPayload(filePath: string): TaskPayload {
 async function main() {
   const { prompt, file, baseUrl } = parseArgs()
 
-  const payload = file ? loadPayload(file) : buildPayload(prompt!)
+  let payload: TaskPayload
+  if (file) {
+    payload = loadPayload(file)
+  } else if (prompt) {
+    payload = buildPayload(prompt)
+  } else {
+    throw new Error("Provide a prompt or a JSON payload file.")
+  }
 
   console.error(`→ POST ${baseUrl}`)
   console.error(`  model: ${payload.model ?? "default"}`)
@@ -100,7 +111,10 @@ async function main() {
 
   const res = await fetch(baseUrl, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      ...(PROXY_SECRET ? { "x-anchor-proxy-secret": PROXY_SECRET } : {}),
+    },
     body: JSON.stringify(payload),
   })
 

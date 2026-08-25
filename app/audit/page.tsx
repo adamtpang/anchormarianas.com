@@ -68,6 +68,7 @@ function ScoreRing({ score }: { score: number }) {
   const filled = c * (Math.max(0, Math.min(100, score)) / 100)
   return (
     <svg width="152" height="152" viewBox="0 0 152 152" className="shrink-0">
+      <title>{`Opportunity score: ${score} out of 100`}</title>
       <circle
         cx="76"
         cy="76"
@@ -334,7 +335,7 @@ export default function AuditPage() {
                   const LeverIcon = meta.Icon
                   return (
                     <motion.div
-                      key={i}
+                      key={`${o.title}-${o.evidence}`}
                       variants={fadeUp}
                       className="bg-card rounded-xl border border-border p-6 flex flex-col gap-4"
                     >
@@ -455,6 +456,7 @@ export default function AuditPage() {
                 </p>
 
                 <button
+                  type="button"
                   onClick={() => {
                     setResult(null)
                     setInput("")

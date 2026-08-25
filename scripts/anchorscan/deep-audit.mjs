@@ -66,7 +66,7 @@ export function analyze(place) {
   }
   if (signals.reviewCount >= 5 && responseRate < 0.3) {
     problems.push({
-      problem: `Most of your reviews have no reply (about ${Math.round(responseRate * 100)}% answered). Google quietly rewards replying to each one.`,
+      problem: `Most of your reviews have no reply (about ${Math.round(responseRate * 100)}% answered). Consistent replies show future customers that the business listens.`,
       item: MENU.responder,
     })
   }
@@ -148,7 +148,7 @@ if (isMain) {
   try {
     const place = await fetchPlace(query, token)
     if (!place) throw new Error(`No place found for "${query}".`)
-    process.stdout.write(toMarkdown(analyze(place), query) + "\n")
+    process.stdout.write(`${toMarkdown(analyze(place), query)}\n`)
   } catch (e) {
     console.error("deep-audit failed:", e.message)
     process.exit(1)

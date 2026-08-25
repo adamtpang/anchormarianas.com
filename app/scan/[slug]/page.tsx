@@ -13,6 +13,8 @@ type Read = {
   source?: string
   rating?: number
   reviewCount?: number
+  reviewsRead?: number
+  totalReviewCount?: number
   summary: string
   observations: Observation[]
   questions?: string[]
@@ -64,6 +66,7 @@ export default async function ReadPage({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const read = getRead(slug)
   if (!read) notFound()
+  const listedReviewCount = read.totalReviewCount ?? read.reviewCount
 
   return (
     <div>
@@ -76,7 +79,7 @@ export default async function ReadPage({ params }: { params: Promise<{ slug: str
           <h1 className="t-hero-serif mt-8">{read.business}</h1>
           <p className="t-body-lg mt-6 max-w-2xl text-muted-foreground">{read.summary}</p>
 
-          {(read.rating || read.reviewCount) && (
+          {(read.rating || read.reviewsRead || listedReviewCount) && (
             <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
               {read.rating != null && (
                 <div>
@@ -84,10 +87,16 @@ export default async function ReadPage({ params }: { params: Promise<{ slug: str
                   <p className="t-small text-muted-foreground">Google rating</p>
                 </div>
               )}
-              {read.reviewCount != null && (
+              {read.reviewsRead != null && (
                 <div>
-                  <p className="font-display text-2xl tracking-tight">{read.reviewCount}</p>
+                  <p className="font-display text-2xl tracking-tight">{read.reviewsRead}</p>
                   <p className="t-small text-muted-foreground">Reviews read</p>
+                </div>
+              )}
+              {listedReviewCount != null && listedReviewCount !== read.reviewsRead && (
+                <div>
+                  <p className="font-display text-2xl tracking-tight">{listedReviewCount}</p>
+                  <p className="t-small text-muted-foreground">Google reviews</p>
                 </div>
               )}
             </div>

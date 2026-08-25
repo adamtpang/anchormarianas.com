@@ -12,3 +12,18 @@ tsconfig.tsbuildinfo
 
 # AnchorScan generated reports (may contain client data)
 /reports/anchorscan/
+/.anchor/scan-raw/
+
+# Private operating data. Keep these outside the public repository.
+/.anchor/call-sheet*.md
+/.anchor/eod-*.md
+/.anchor/guam-leads/
+/.anchor/kpis/
+/.anchor/log/
+/.anchor/standup.md
+/context/prospects/
+/context/claude/
+/context/cofounder/
+/mtep/
+/CODEX_CONTINUE_*.md
+/HANDOFF_FROM_*.md

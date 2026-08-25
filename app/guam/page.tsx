@@ -11,7 +11,7 @@ const offers = servicesData.filter((s) => offerSlugs.includes(s.slug))
 export const metadata = {
   title: "Web design in Guam, live in 5 days | Anchor Marianas",
   description:
-    "Website designer and web developer in Barrigada, Guam. $497 landing page or $1,997 web app, live in 5 days or refunded. Retained software engineer for International Distributors, Inc.",
+    "Website designer and web developer in Barrigada, Guam. $497 landing page or $1,997 web app, live in 5 days or refunded. Free proof-of-value AI-automation work for International Distributors, Inc.",
   keywords: [
     "web design Guam",
     "website designer Guam",
@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     q: "Why hire a local Guam web designer instead of an overseas agency?",
-    a: "Same timezone, island roots. We know what Guam customers search for and we answer while your business is open. We built and maintain IDI Guam's site as their retained software engineer.",
+    a: "Same timezone, island roots. We know what Guam customers search for and we answer while your business is open. We built IDI Guam's site and are now doing free proof-of-value AI-automation work with them.",
   },
 ]
 
@@ -175,8 +175,8 @@ export default function GuamPage() {
             <Link href="/work" className={quietLink}>
               IDI Guam&rsquo;s site
             </Link>{" "}
-            and stayed on as their retained software engineer. One build at a
-            time, with full attention.
+            and are now doing free proof-of-value AI-automation work with them.
+            One build at a time, with full attention.
           </p>
         </div>
       </section>
@@ -246,8 +246,8 @@ export default function GuamPage() {
             Not sure what your current site is costing you?
           </h2>
           <p className="t-body-lg mt-4 max-w-md text-muted-foreground">
-            The free scan reads your Google reviews and your site, then shows
-            what is quietly costing you customers. One minute, no signup.
+            The free scan reads your website and shows what is quietly costing
+            you customers. One minute, no signup.
           </p>
           <Link
             href="/scan"

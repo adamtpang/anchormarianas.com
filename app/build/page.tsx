@@ -239,8 +239,8 @@ export default function BuildPage() {
                 <motion.h2 variants={fadeUp} className="font-display text-2xl md:text-3xl tracking-tight">
                   What you get
                 </motion.h2>
-                {result.deliverables.map((d, i) => (
-                  <motion.div key={i} variants={fadeUp} className="bg-card rounded-xl border border-border p-5 flex items-start gap-3">
+                {result.deliverables.map((d) => (
+                  <motion.div key={`${d.title}-${d.detail}`} variants={fadeUp} className="bg-card rounded-xl border border-border p-5 flex items-start gap-3">
                     <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
                     <div>
                       <h3 className="font-semibold leading-tight">{d.title}</h3>
@@ -258,7 +258,7 @@ export default function BuildPage() {
                   <motion.h2 variants={fadeUp} className="font-display text-2xl md:text-3xl tracking-tight">The plan</motion.h2>
                   <div className="space-y-5">
                     {result.phases.map((p, i) => (
-                      <motion.div key={i} variants={fadeUp} className="flex gap-4">
+                      <motion.div key={`${p.name}-${p.focus}`} variants={fadeUp} className="flex gap-4">
                         <div className="shrink-0 w-8 h-8 rounded-full bg-foreground text-background flex items-center justify-center text-xs font-bold font-mono-anchor">{i + 1}</div>
                         <div>
                           <div className="font-semibold">{p.name}</div>
@@ -278,8 +278,8 @@ export default function BuildPage() {
                   <motion.div variants={fadeUp}>
                     <h3 className="font-mono-anchor uppercase tracking-wider text-[10px] text-accent mb-3">What the price assumes</h3>
                     <ul className="space-y-2.5">
-                      {result.assumptions.map((a, i) => (
-                        <li key={i} className="text-sm text-muted-foreground leading-relaxed">{a}</li>
+                      {result.assumptions.map((a) => (
+                        <li key={a} className="text-sm text-muted-foreground leading-relaxed">{a}</li>
                       ))}
                     </ul>
                   </motion.div>
@@ -288,8 +288,8 @@ export default function BuildPage() {
                   <motion.div variants={fadeUp}>
                     <h3 className="font-mono-anchor uppercase tracking-wider text-[10px] text-accent mb-3">We'll settle these on the call</h3>
                     <ul className="space-y-2.5">
-                      {result.openQuestions.map((q, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed">
+                      {result.openQuestions.map((q) => (
+                        <li key={q} className="flex items-start gap-2 text-sm text-muted-foreground leading-relaxed">
                           <HelpCircle className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                           <span>{q}</span>
                         </li>
@@ -321,6 +321,7 @@ export default function BuildPage() {
                   </Button>
                 </div>
                 <button
+                  type="button"
                   onClick={() => {
                     setResult(null)
                     setDescription("")
