@@ -4,10 +4,13 @@ import Link from "next/link"
 import siteConfig from "@/content/site.json"
 import { MobileNav } from "@/components/mobile-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Button } from "@/components/ui/button"
 
 const bookUrl = siteConfig.discoveryCal
 
 const nav = [
+  { href: "/scan", label: "Scan" },
+  { href: "/pricing", label: "Services" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
 ]
@@ -28,18 +31,15 @@ export function Header() {
               <Link
                 key={n.href}
                 href={n.href}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="inline-flex min-h-8 items-center text-muted-foreground transition-colors hover:text-foreground"
               >
                 {n.label}
               </Link>
             ))}
             <ThemeToggle />
-            <a
-              href={bookUrl}
-              className="font-semibold bg-foreground text-background px-4 py-2 rounded-lg hover:bg-foreground/90 transition-colors"
-            >
-Book a call
-            </a>
+            <Button asChild size="sm" className="rounded-full px-4">
+              <a href={bookUrl}>Untangling call &rarr;</a>
+            </Button>
           </nav>
 
           <div className="flex items-center gap-1 md:hidden">

@@ -10,14 +10,14 @@ export function Footer() {
           <div>
             <div className="font-display text-xl">Anchor Marianas</div>
             <p className="text-sm text-muted-foreground mt-1 max-w-sm">
-              We turn your customer reviews into a growth plan. Built for Guam businesses.
+              We find the knot, then ship the smallest AI piece that unties it.
             </p>
             <p className="text-xs text-muted-foreground/80 mt-3">
               Operated by{" "}
               <Link href="/about" className="underline underline-offset-4 hover:text-foreground">
                 Adam Pangelinan
               </Link>
-              . Retained by{" "}
+              . Proof-of-value work with{" "}
               <Link href="/work" className="underline underline-offset-4 hover:text-foreground">
                 International Distributors, Inc.
               </Link>
@@ -26,17 +26,23 @@ export function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center gap-5 text-sm">
-            <Link href="/work" className="text-foreground/90 hover:text-accent transition-colors">
+            <Link
+              href="/work"
+              className="inline-flex min-h-6 items-center text-foreground/90 transition-colors hover:text-accent"
+            >
               Work
             </Link>
-            <Link href="/about" className="text-foreground/90 hover:text-accent transition-colors">
+            <Link
+              href="/about"
+              className="inline-flex min-h-6 items-center text-foreground/90 transition-colors hover:text-accent"
+            >
               About
             </Link>
             <a
               href={siteConfig.socials.x}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-foreground/90 hover:text-accent transition-colors"
+              className="flex min-h-6 items-center gap-2 text-foreground/90 transition-colors hover:text-accent"
               aria-label="X"
             >
               <Twitter className="w-4 h-4" /> X
@@ -45,14 +51,14 @@ export function Footer() {
               href={siteConfig.socials.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-foreground/90 hover:text-accent transition-colors"
+              className="flex min-h-6 items-center gap-2 text-foreground/90 transition-colors hover:text-accent"
               aria-label="GitHub"
             >
               <Github className="w-4 h-4" /> GitHub
             </a>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="flex items-center gap-2 text-foreground/90 hover:text-accent transition-colors"
+              className="flex min-h-6 items-center gap-2 text-foreground/90 transition-colors hover:text-accent"
             >
               <Mail className="w-4 h-4" /> {siteConfig.email}
             </a>
@@ -61,10 +67,16 @@ export function Footer() {
 
         <div className="mt-8 border-t border-border/40 pt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-muted-foreground">
           <span>{siteConfig.legalName}</span>
-          <Link href="/privacy" className="hover:text-foreground transition-colors">
+          <Link
+            href="/privacy"
+            className="inline-flex min-h-6 items-center transition-colors hover:text-foreground"
+          >
             Privacy
           </Link>
-          <Link href="/terms" className="hover:text-foreground transition-colors">
+          <Link
+            href="/terms"
+            className="inline-flex min-h-6 items-center transition-colors hover:text-foreground"
+          >
             Terms
           </Link>
         </div>

@@ -10,6 +10,8 @@ import siteConfig from "@/content/site.json"
 const bookUrl = siteConfig.discoveryCal
 
 const nav = [
+  { href: "/scan", label: "Scan" },
+  { href: "/pricing", label: "Services" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
 ]
@@ -51,15 +53,15 @@ export function MobileNav() {
           </nav>
 
           <div className="mt-auto pt-8 space-y-3">
-            <Button className="w-full" asChild>
+            <Button className="w-full rounded-full" asChild>
               <a href={bookUrl} onClick={() => setOpen(false)}>
-Book a free discovery call
+                Book an untangling call &rarr;
               </a>
             </Button>
             <div className="text-sm text-muted-foreground space-y-2 pt-2">
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="block hover:text-foreground"
+                className="inline-flex min-h-6 items-center hover:text-foreground"
               >
                 {siteConfig.email}
               </a>

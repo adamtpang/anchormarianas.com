@@ -38,7 +38,7 @@ separate eldercare acquisition thesis is also paused for this workstream.
   ceiling, and exits nonzero when every provider request fails.
 - Saved evidence can flow directly into `publish-read.mjs --raw` without a
   second provider call. Wrong-business and stale evidence stops the pipeline.
-- The local suite has 46 provider-free tests. Measured line coverage for the
+- The local suite has 49 provider-free tests. Measured line coverage for the
   tested modules is 86.67% as of 2026-08-24.
 - Public paid-AI routes fail closed in every environment until
   `AI_PUBLIC_ENDPOINTS_ENABLED=true`. Production and Preview must also keep the
@@ -55,6 +55,10 @@ separate eldercare acquisition thesis is also paused for this workstream.
 - The current Apify account is blocked at $5.52 of a $5 free limit until
   2026-09-07. Starter is the only justified paid tier for the planned data run;
   Scale is not economical at this volume. No subscription change has been made.
+- A Direction A landing-page redesign is implemented on
+  `codex/beautify-direction-a`. It uses an outcome-first hero, immediate proof,
+  one connected Read/Find/Ship model, and the existing verified offer data.
+  It has not been pushed or deployed.
 
 ## Binding constraint
 
