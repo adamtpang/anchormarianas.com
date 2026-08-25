@@ -1,6 +1,6 @@
 # RUNTIME: Anchor Marianas
 
-Updated 2026-08-24.
+Updated 2026-08-25.
 
 ## Workspace
 
@@ -71,6 +71,35 @@ SerpAPI requires its key in the request query string. Keep the key scoped and
 rotatable, do not log request URLs, and set provider-side usage limits.
 Name lookup validates the returned business name and location. Ambiguous or
 weak matches stop and require a direct Google Place ID.
+
+## Private data foundation
+
+The reproducible data-foundation pipeline is `scripts/data-foundation/build.mjs`.
+It separates business entities, raw customer reviews, derived diagnostics,
+legacy sales heuristics, and future evidence-backed problem patterns. It also
+flags same-name records instead of merging possible branches without Place IDs.
+
+Private output must be outside this public repository. The command refuses an
+in-repository output path:
+
+```powershell
+node scripts/data-foundation/build.mjs `
+  --leads C:\private\guam-leads.json `
+  --transcript C:\private\claude-session.jsonl `
+  --reads content\reads `
+  --output C:\private\anchormarianas-data
+```
+
+Run its provider-free tests with:
+
+```bash
+node --test scripts/data-foundation/data-foundation.test.mjs
+```
+
+The 2026-08-25 private build contains 1,070 provisional business entities: the
+exact 1,067 source leads plus three review-backed businesses missing from that
+source. It recovered 22 historical Apify review rows across two businesses.
+This is schema-validation evidence, not adequate current market coverage.
 
 ## Deployment
 

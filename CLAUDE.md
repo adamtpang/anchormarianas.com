@@ -1,6 +1,6 @@
 # CLAUDE.md: Anchor Marianas live handoff
 
-Updated 2026-08-24. This file is the source of truth for Claude, Codex, and
+Updated 2026-08-25. This file is the source of truth for Claude, Codex, and
 humans working in this repository.
 
 ## What Anchor is
@@ -45,6 +45,16 @@ separate eldercare acquisition thesis is also paused for this workstream.
   Vercel WAF rate-limit rule enabled.
 - Private lead files, prospect dossiers, outbound drafts, and runway notes do
   not belong in this public repository. The relevant paths are ignored.
+- A reproducible private data foundation now separates business entities, raw
+  reviews, derived diagnostics, legacy heuristics, and future problem patterns.
+  The 2026-08-25 build reconciles the exact 1,067 source leads to 1,070
+  provisional entities because three review-backed businesses were absent.
+- Historical local session evidence recovered 22 Apify review rows across two
+  businesses. There are no fresh review rows, no Place IDs, and 44 same-name
+  identity groups still require Place ID or human resolution.
+- The current Apify account is blocked at $5.52 of a $5 free limit until
+  2026-09-07. Starter is the only justified paid tier for the planned data run;
+  Scale is not economical at this volume. No subscription change has been made.
 
 ## Binding constraint
 
