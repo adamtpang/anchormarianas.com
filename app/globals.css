@@ -246,3 +246,47 @@ a,
 [class*="border-"] {
   transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
+
+/* ─── Reduced motion ───
+   When someone asks their OS for reduced motion, honour it globally.
+   Durations go to zero rather than a near-zero placeholder so the
+   computed value is genuinely 0s. Colour and state feedback still
+   apply, they just apply instantly. The sonar pulse is ornamental,
+   so it stops entirely and rests in its visible state. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+    scroll-behavior: auto !important;
+  }
+
+  .sonar::before,
+  .sonar::after {
+    animation: none !important;
+    opacity: 0;
+  }
+}
+
+/* ─── Comfortable touch targets on mobile ───
+   Standalone controls get a full 44px target so they can be hit
+   one-handed. Links sitting inside a sentence are deliberately not
+   included: they inherit their line height by design, and inflating
+   them would break the paragraph they live in. */
+@media (max-width: 767px) {
+  header a.flex,
+  header button,
+  footer a.underline,
+  a.min-h-6,
+  a.flex.min-h-6,
+  a.inline-flex,
+  button.inline-flex {
+    min-height: 44px;
+    min-width: 44px;
+    justify-content: center;
+  }
+}

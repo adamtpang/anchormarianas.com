@@ -172,7 +172,7 @@ export default function HomePage() {
                 The person who scopes it builds it.
               </h2>
               <p className="t-body-lg mt-5 max-w-xl text-muted-foreground">
-                Anchor is Adam Pang, based on Guam. No associates, no junior
+                Anchor is Adam Pangelinan, based on Guam. No associates, no junior
                 delivery team, no account manager between the problem and the code.
               </p>
             </div>
