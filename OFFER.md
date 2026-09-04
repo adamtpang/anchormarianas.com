@@ -50,5 +50,13 @@ market sources before raising or defending a price.
 ## Proof state
 
 The funnel and delivery tools exist, but no independently verified paid Anchor
-implementation is recorded yet. The next proof is one complete,
+**AI implementation** is recorded yet. The next proof is one complete,
 source-checked report, then ten delivered reports after Adam opens outbound.
+
+This is not the same as having no clients. Paid client work exists and is
+recorded in `EVIDENCE.md` under client engagements: Hilton Guam paid for a
+website and a gym app, and Adam has authorized naming them. That work is real
+and may be claimed publicly. It was web and app development, not an AI
+implementation, which is why the AI-implementation figure above stays at zero.
+Keep the two separate. Do not delete the Hilton claim as unsourced, and do not
+count it toward AI-services revenue.
