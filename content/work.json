@@ -6,9 +6,9 @@
       "client": "International Distributors, Inc.",
       "shortName": "IDI",
       "location": "Barrigada, Guam",
-      "tagline": "Website and proof-of-value AI automation for a 46-year island wholesaler",
-      "summary": "IDI is a family wholesale food distributor serving Guam, Rota, Tinian, Saipan, and Majuro since 1980. Anchor Marianas built IDI's web presence and is now doing free proof-of-value AI-automation work with the company.",
-      "engagement": "Free proof-of-value AI-automation work",
+      "tagline": "A production website for a 46-year island wholesaler",
+      "summary": "IDI is a family wholesale food distributor serving Guam, Rota, Tinian, Saipan, and Majuro since 1980. Anchor Marianas built and maintains IDI's web presence. No AI automation has been deployed for IDI.",
+      "engagement": "Website build and maintenance, unpaid",
       "liveUrl": "https://idiguam.vercel.app",
       "deliverables": [
         "Production Next.js 14 / TypeScript site, live at idiguam.vercel.app",
