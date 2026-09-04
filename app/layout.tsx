@@ -30,7 +30,7 @@ const geistMono = Geist_Mono({
 
 const title = "Anchor Marianas - the AI layer of your business"
 const description =
-  "We read what your customers already tell you, then build the fix. Free website scan, fixed-price builds, from Guam. Free proof-of-value AI-automation work for International Distributors, Inc."
+  "We read what your customers already tell you, then build the fix. Free website scan, fixed-price builds, from Guam. We built and maintain the website for International Distributors, Inc."
 
 export const metadata: Metadata = {
   title,

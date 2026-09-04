@@ -11,7 +11,7 @@ const offers = servicesData.filter((s) => offerSlugs.includes(s.slug))
 export const metadata = {
   title: "Web design in Guam, live in 5 days | Anchor Marianas",
   description:
-    "Website designer and web developer in Barrigada, Guam. $497 landing page or $1,997 web app, live in 5 days or refunded. Free proof-of-value AI-automation work for International Distributors, Inc.",
+    "Website designer and web developer in Barrigada, Guam. $497 landing page or $1,997 web app, live in 5 days or refunded. We built and maintain the website for International Distributors, Inc.",
   keywords: [
     "web design Guam",
     "website designer Guam",
@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     q: "Why hire a local Guam web designer instead of an overseas agency?",
-    a: "Same timezone, island roots. We know what Guam customers search for and we answer while your business is open. We built IDI Guam's site and are now doing free proof-of-value AI-automation work with them.",
+    a: "Same timezone, island roots. We know what Guam customers search for and we answer while your business is open. We built IDI Guam's site and still maintain it.",
   },
 ]
 
@@ -175,7 +175,7 @@ export default function GuamPage() {
             <Link href="/work" className={quietLink}>
               IDI Guam&rsquo;s site
             </Link>{" "}
-            and are now doing free proof-of-value AI-automation work with them.
+            and still maintain it.
             One build at a time, with full attention.
           </p>
         </div>

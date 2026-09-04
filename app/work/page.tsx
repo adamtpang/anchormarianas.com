@@ -8,7 +8,7 @@ const bookUrl = siteConfig.discoveryCal
 export const metadata = {
   title: "Work - Anchor Marianas",
   description:
-    "Real client work from Anchor Marianas: websites and proof-of-value AI automation for island businesses. Verified facts, live links, no invented numbers.",
+    "Real client work from Anchor Marianas: websites and web applications for island businesses. Verified facts, live links, no invented numbers.",
 }
 
 const quietLink =

@@ -75,8 +75,8 @@ export default function AboutPage() {
           <p className="t-body mt-4 max-w-2xl text-muted-foreground">
             Anchor is operated by one person who builds. Not a slide deck and a
             subcontractor: the work happens under Anchor, one business at a time,
-            with full attention. Currently doing free proof-of-value
-            AI-automation work for{" "}
+            with full attention. Currently building and maintaining the
+            web presence for{" "}
             <Link href="/work" className={quietLink}>
               International Distributors, Inc.
             </Link>
