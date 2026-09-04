@@ -83,9 +83,9 @@ export default function HomePage() {
       note: "Diagnostic examples, not projected outcomes",
     },
     {
-      value: idi.footprint[0]?.value ?? "13",
-      label: "commits shipped for IDI",
-      note: "Production site and operating tools",
+      value: "Live",
+      label: "client site in production",
+      note: "idiguam.vercel.app, built and maintained by Anchor",
     },
     {
       value: "1",
