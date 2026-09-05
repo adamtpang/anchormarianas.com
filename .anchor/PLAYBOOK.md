@@ -15,12 +15,20 @@ No step may be reordered to make a service easier to sell.
 
 ## Phase 1: build the reference report
 
-- [ ] Select one real Guam business with fresh, accessible source data.
-- [ ] Run the website diagnostic.
-- [ ] Fetch real listing and review data through SerpAPI, Google Places,
-      Outscraper, Apify, or a manual verified file.
-- [ ] Save the raw source and retrieval date.
-- [ ] List observed problems. Each problem must cite its source.
+- [x] Select one real Guam business with fresh, accessible source data.
+      Quality Plumbing Service Guam, 2026-09-05.
+- [x] Run the website diagnostic. Manual read of qualityplumbingguam.com on
+      2026-09-05 (found the empty Reviews section); the `/scan` route itself
+      was not run against the site.
+- [x] Fetch real listing and review data through SerpAPI, Google Places,
+      Outscraper, Apify, or a manual verified file. Manual verified file:
+      10 Google reviews verbatim from the site's Trustindex widget.
+- [x] Save the raw source and retrieval date.
+      `C:\private\anchormarianas\quality-plumbing-guam.raw.json`, retrieved
+      2026-09-05T05:04Z, caveats recorded inside.
+- [x] List observed problems. Each problem must cite its source.
+      Four observations, each quoting a supplied review, in
+      `reports/anchorscan/quality-plumbing-service-guam-2026-09-05.json`.
 - [ ] Record questions that need the operator's answer.
 - [ ] Match only deliverable solutions from `content/services.json`.
 - [ ] Research a current market-rate range for every matched solution.
