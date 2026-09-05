@@ -71,7 +71,10 @@ function runClaude(prompt, model) {
       "dontAsk",
     ]
     if (model) args.push("--model", model)
-    const cmd = process.platform === "win32" ? "claude.cmd" : "claude"
+    // "claude.cmd" only exists for the npm-installed CLI. The native installer
+    // ships claude.exe, which cmd.exe resolves from plain "claude" (shell: true
+    // below). CLAUDE_BIN overrides both when the binary is off PATH.
+    const cmd = process.env.CLAUDE_BIN || "claude"
     const child = spawn(cmd, args, { stdio: ["pipe", "pipe", "pipe"], shell: process.platform === "win32" })
     let out = ""
     let err = ""
