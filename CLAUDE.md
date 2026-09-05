@@ -60,6 +60,14 @@ separate eldercare acquisition thesis is also paused for this workstream.
   one connected Read/Find/Ship model, and the existing verified offer data.
   It has not been pushed or deployed.
 
+## Doctrine, local only
+
+If `HANDOFF_FROM_MONEYMETA_DOCTRINE.md` exists in this checkout (it is
+gitignored, so it may not), read it once. It is Naval's *How to Get Rich* and
+*The Book of Elon* quoted verbatim, distilled to the rules both agree on, and
+mapped row by row onto this repo. It does not change the operating decision
+above; it explains what the pause is waiting on.
+
 ## Binding constraint
 
 There is not yet one verified end-to-end report that starts with fresh business
