@@ -18,8 +18,12 @@ No step may be reordered to make a service easier to sell.
 - [x] Select one real Guam business with fresh, accessible source data.
       Quality Plumbing Service Guam, 2026-09-05.
 - [x] Run the website diagnostic. Manual read of qualityplumbingguam.com on
-      2026-09-05 (found the empty Reviews section); the `/scan` route itself
-      was not run against the site.
+      2026-09-05 (found the empty Reviews section). The `/scan` route was run
+      against the site on production the same day and returned 500; the
+      Vercel runtime log shows the Anthropic API rejecting production's
+      `ANTHROPIC_API_KEY` with 401 "API key is invalid". The route is fine;
+      the key in Vercel's Production environment is not. Re-run after the key
+      is rotated.
 - [x] Fetch real listing and review data through SerpAPI, Google Places,
       Outscraper, Apify, or a manual verified file. Manual verified file:
       10 Google reviews verbatim from the site's Trustindex widget.
