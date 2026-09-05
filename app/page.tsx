@@ -27,12 +27,12 @@ const operatingModel = [
   {
     label: "Find",
     title: "Name the recurring knot",
-    body: "We separate observations from questions, then choose the smallest problem worth solving. Sometimes the answer is not AI. We say that plainly.",
+    body: "Anchor separates public observations from questions only the operator can answer. Together we identify the recurring problem, check the existing tools, and decide whether any implementation is needed.",
   },
   {
     label: "Ship",
     title: "Build the cure, if there is one",
-    body: "The person who scopes the work builds the system and stays on it after launch. Fixed scope, visible price, no handoff between a sales team and a delivery team.",
+    body: "Anchor agrees the implementation scope, price, acceptance checks, and support responsibilities before work begins. Adam handles the build directly, so the business can discuss a decision with the person implementing it.",
   },
 ]
 
@@ -99,9 +99,9 @@ export default function HomePage() {
       <section className="depth-veil">
         <div className="mx-auto max-w-5xl px-6 pb-20 pt-24 sm:pb-28 sm:pt-36">
           <div className="max-w-3xl">
-            <p className="t-coord">
+            <div className="t-coord">
               Anchor Marianas &middot; Guam &middot; 11&deg;22&prime;N 142&deg;35&prime;E
-            </p>
+            </div>
 
             <h1 className="t-hero-serif mt-8 max-w-3xl">
               Find the knot.
@@ -111,8 +111,7 @@ export default function HomePage() {
             </h1>
 
             <p className="t-body-lg mt-8 max-w-2xl text-muted-foreground sm:text-xl">
-              We read what your customers and systems already tell you, find the
-              recurring loop, then ship the smallest AI piece that unties it.
+              Anchor helps Guam businesses understand recurring work before buying another tool. Start with the evidence from your website, add what you know about operations, and agree the smallest useful next step.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -153,11 +152,11 @@ export default function HomePage() {
               key={metric.label}
               className="metric py-7 sm:px-7 sm:first:pl-0 sm:last:pr-0"
             >
-              <p className="value font-mono-anchor text-3xl tabular-nums text-foreground">
+              <div className="value font-mono-anchor text-3xl tabular-nums text-foreground">
                 {metric.value}
-              </p>
-              <p className="label t-small mt-2 font-semibold text-foreground">{metric.label}</p>
-              <p className="t-small mt-1 text-muted-foreground">{metric.note}</p>
+              </div>
+              <div className="label t-small mt-2 font-semibold text-foreground">{metric.label}</div>
+              <div className="t-small mt-1 text-muted-foreground">{metric.note}</div>
             </div>
           ))}
         </div>
@@ -167,19 +166,18 @@ export default function HomePage() {
         <div className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
           <div className="grid gap-10 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] md:items-end">
             <div>
-              <p className="t-eyebrow">One operator</p>
+              <div className="t-eyebrow">One operator</div>
               <h2 className="t-h2 mt-4 max-w-xl">
                 The person who scopes it builds it.
               </h2>
               <p className="t-body-lg mt-5 max-w-xl text-muted-foreground">
-                Anchor is Adam Pangelinan, based on Guam. No associates, no junior
-                delivery team, no account manager between the problem and the code.
+                Anchor is led by Adam Pangelinan, an engineer from Guam. Adam scopes and builds the work directly, with clear responsibilities and a written handoff so the business knows how to operate what is delivered.
               </p>
             </div>
             <div className="border-l border-accent/40 pl-5">
-              <p className="t-eyebrow">In production</p>
-              <p className="t-body mt-3 text-foreground">{idi.client}</p>
-              <p className="t-small mt-2 text-muted-foreground">{idi.engagement}</p>
+              <div className="t-eyebrow">In production</div>
+              <div className="t-body mt-3 text-foreground">{idi.client}</div>
+              <div className="t-small mt-2 text-muted-foreground">{idi.engagement}</div>
               <Link
                 href="/work"
                 className="t-small mt-4 inline-flex min-h-6 items-center font-semibold text-accent"
@@ -193,7 +191,7 @@ export default function HomePage() {
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
-          <p className="t-eyebrow">From problem to production</p>
+          <div className="t-eyebrow">From problem to production</div>
           <h2 className="t-h2 mt-4 max-w-xl">
             One connected way of working.
           </h2>
@@ -222,13 +220,12 @@ export default function HomePage() {
         <section className="border-b border-border bg-muted/20">
           <div className="mx-auto max-w-5xl px-6 py-20 sm:py-24">
             <div className="max-w-2xl">
-              <p className="t-eyebrow">The evidence ledger</p>
+              <div className="t-eyebrow">The evidence ledger</div>
               <h2 className="t-h2 mt-4">
                 {reads.length} businesses. {reads.length} written reads.
               </h2>
               <p className="t-body-lg mt-5 text-muted-foreground">
-                Each read records what was visible at the time and the questions
-                worth asking next. It is a diagnostic, not a promise of revenue.
+                Anchor publishes dated business reads to show how observations become useful questions. Each example records the evidence available at the time, with no claim that the business bought a service or achieved a financial result.
               </p>
             </div>
 
@@ -240,14 +237,12 @@ export default function HomePage() {
                   className="group grid gap-3 border-b border-border py-6 last:border-b-0 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent sm:grid-cols-[12rem_minmax(0,1fr)_auto] sm:items-center sm:gap-6"
                 >
                   <div>
-                    <p className="t-small font-semibold text-foreground">
-                      {read.business}
-                    </p>
+                    <div className="t-small font-semibold text-foreground">{read.business}</div>
                     {read.rating != null && (
-                      <p className="font-mono-anchor mt-1 text-xs tabular-nums text-muted-foreground">
+                      <div className="font-mono-anchor mt-1 text-xs tabular-nums text-muted-foreground">
                         {read.rating.toFixed(1)} stars
                         {read.reviewCount != null ? ` · ${read.reviewCount} reviews` : ""}
-                      </p>
+                      </div>
                     )}
                   </div>
                   <p className="t-body text-muted-foreground group-hover:text-foreground">
@@ -266,13 +261,12 @@ export default function HomePage() {
           <div className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
             <div className="grid gap-10 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:items-start">
               <div>
-                <p className="t-eyebrow">A small first cure</p>
+                <div className="t-eyebrow">A small first cure</div>
                 <h2 className="t-h2 mt-4">
                   A drafted reply to every review.
                 </h2>
                 <p className="t-body mt-5 text-muted-foreground">
-                  Start with one visible, recurring job. You approve every reply
-                  before anything posts.
+                  Review response is one possible implementation when a business confirms that unanswered reviews are a recurring problem. The business reviews every draft, corrects the details, and controls whether a reply is published.
                 </p>
               </div>
 
@@ -286,10 +280,8 @@ export default function HomePage() {
                       <CardTitle className="t-h3 mt-4">{flagship.name}</CardTitle>
                     </div>
                     <div className="text-right">
-                      <p className="font-display text-3xl leading-none text-accent">
-                        {flagship.price}
-                      </p>
-                      <p className="t-small mt-1 text-muted-foreground">after the pilot</p>
+                      <div className="font-display text-3xl leading-none text-accent">{flagship.price}</div>
+                      <div className="t-small mt-1 text-muted-foreground">after the pilot</div>
                     </div>
                   </div>
                   <CardDescription className="card-desc t-body text-muted-foreground">
@@ -327,7 +319,7 @@ export default function HomePage() {
 
       <section className="border-b border-border bg-muted/20">
         <div className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
-          <p className="t-eyebrow">Bring the recurring problem</p>
+          <div className="t-eyebrow">Bring the recurring problem</div>
           <h2 className="t-h2 mt-4 max-w-xl">
             Start with the sentence you keep repeating.
           </h2>
@@ -343,7 +335,7 @@ export default function HomePage() {
                   index >= whenToCall.length - 2 ? "sm:border-b-0" : ""
                 }`}
               >
-                <p className="t-body text-foreground">&ldquo;{item.pain}&rdquo;</p>
+                <div className="t-body text-foreground">&ldquo;{item.pain}&rdquo;</div>
                 <div className="flex items-end justify-between gap-4">
                   <span className="t-small font-semibold text-muted-foreground group-hover:text-foreground">
                     {item.service.name}
@@ -362,7 +354,7 @@ export default function HomePage() {
 
       <section className="border-b border-border">
         <div className="mx-auto max-w-4xl px-6 py-20 sm:py-24">
-          <p className="t-eyebrow">Two fixed-price builds</p>
+          <div className="t-eyebrow">Two fixed-price builds</div>
           <h2 className="t-h2 mt-4 max-w-xl">
             When the problem is clear, the price is too.
           </h2>
@@ -372,9 +364,7 @@ export default function HomePage() {
               <Card key={offer.slug} className="flex flex-col rounded-xl shadow-none">
                 <CardHeader className="p-7">
                   <CardTitle className="t-h3">{offer.name}</CardTitle>
-                  <p className="font-display mt-4 text-5xl leading-none tracking-tight">
-                    {offer.price}
-                  </p>
+                  <div className="font-display mt-4 text-5xl leading-none tracking-tight">{offer.price}</div>
                   <CardDescription className="t-small mt-2 text-muted-foreground">
                     {offer.tagline}
                   </CardDescription>
@@ -404,13 +394,12 @@ export default function HomePage() {
 
       <section className="bg-muted/20">
         <div className="mx-auto max-w-4xl px-6 py-24 sm:py-28">
-          <p className="t-eyebrow">Start with evidence</p>
+          <div className="t-eyebrow">Start with evidence</div>
           <h2 className="t-hero-serif mt-4 max-w-2xl">
             Bring us the problem that keeps coming back.
           </h2>
           <p className="t-body-lg mt-6 max-w-xl text-muted-foreground">
-            AnchorScan reads your website and gives you the questions worth
-            answering before you choose a fix. About one minute. No signup.
+            AnchorScan reads the public website and returns observations and questions before a business chooses a fix. The free scan requires no signup and does not estimate revenue, savings, or future results.
           </p>
           <Button
             asChild

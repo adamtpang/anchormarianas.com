@@ -3,6 +3,14 @@
 Updated 2026-08-25. This file is the source of truth for Claude, Codex, and
 humans working in this repository.
 
+## Current local task, 2026-09-05
+
+Adam requested 100/100 audit scores first, then customer-journey and design-system
+improvements. The score fixes are prepared in this isolated worktree and verified
+locally. See EVIDENCE.md for the prediction versus live-score boundary. Deployment
+and a public rescan remain pending before the redesign. Do not mistake this work
+for approval of either paid offer or permission to send messages.
+
 ## What Anchor is
 
 Anchor Marianas is Adam Pangelinan's Guam-based AI implementation company. The
