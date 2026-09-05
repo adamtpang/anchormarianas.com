@@ -69,6 +69,16 @@ A report passes only if all are true:
 | Date | Fresh scans | Reports passed QA | Reports sent | Replies |
 | --- | ---: | ---: | ---: | ---: |
 | 2026-08-24 | 0 | 0 | 0 | 0 |
+| 2026-09-05 | 1 | 0 | 0 | 0 |
+
+2026-09-05 scan: Quality Plumbing Service Guam, manual source, 10 real Google
+reviews taken verbatim from the Trustindex widget embedded in the business's
+own homepage. Raw source and retrieval stamp in
+`C:\private\anchormarianas\quality-plumbing-guam.raw.json`; report in the
+ignored `reports/anchorscan/quality-plumbing-service-guam-2026-09-05.{json,md}`.
+Retrieval is fresh; the reviews are not (owner-curated export, all five stars,
+newest dated 2025-03-25 against a live listing near 95 reviews). Not yet
+human-checked, so it does not count toward "passed QA".
 
 ## Kill and change rules
 
