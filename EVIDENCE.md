@@ -16,6 +16,24 @@ artifacts or a dated private receipt.
 
 ## Verified results log
 
+### 2026-09-05: score remediation prepared locally
+
+The public homepage baseline was Lightmark 95/100 (Security 72, Content 60)
+and Shapeable surface 100/100. Local changes add CSP and nosniff headers,
+clarify explanatory copy, and use non-paragraph elements for standalone labels.
+The local document passes the failed content rule at 42% qualifying passages.
+A Lightmark comparison predicts 100 in all eleven scorecards, retaining the
+dated production transport and discovery observations. This is not a public rescan.
+
+Shapeable collector 0.5.0 reports 100/100, coverage 100%, confidence 89%, across
+42 local checks using mobile/desktop and light/dark OS preferences. Anchor's
+default theme remains dark; a separate Helium interaction check verifies the
+actual light-theme toggle, mobile menu, and survey hydration with no page errors.
+The 69 tests, typecheck, lint error checks, production build, and Next.js entrypoint
+check pass. Seven existing lint warnings remain. The installed dependency audit
+also reports three pre-existing advisories; these scores are not security certification.
+No deployment occurred. Live score verification precedes the requested journey redesign.
+
 | Date | Change | Before | After | Evidence |
 | --- | --- | --- | --- | --- |
 | 2026-08-24 | Production health checked before release | Unknown current health | Five public routes returned HTTP 200 | `RUNTIME.md` verification list |

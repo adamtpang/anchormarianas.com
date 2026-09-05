@@ -306,10 +306,6 @@ export function buildRoiReport(a: Answers): RoiReport {
   const outOfBudget = applicable.filter((f) => f.withinBudget === false)
   const notApplicable = findings.filter((f) => f.notApplicable)
 
-  const allIds = new Set<string>()
-  findings.forEach((f) =>
-    f.costOfProblem.forEach((c) => c.derivedFrom.forEach((d) => allIds.add(d)))
-  )
   const missingInputs = [
     "hourlyValue",
     "reviewsPerMonth",
