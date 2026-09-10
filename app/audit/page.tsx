@@ -161,22 +161,20 @@ export default function AuditPage() {
             variants={fadeUp}
             className="font-display text-4xl md:text-6xl leading-[1.05] tracking-tight mb-4 text-balance"
           >
-            You know you should use AI.{" "}
-            <span className="font-display-italic">This shows you where.</span>
+            Where could AI help?
           </motion.h1>
           <motion.p
             variants={fadeUp}
             className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl"
           >
-            Enter your website or a one-line description. We score where AI can
-            save you time and money, ranked, in about 45 seconds. Free, no
-            account.
+            Enter your website or describe your business to explore potential uses.
           </motion.p>
 
           <motion.form variants={fadeUp} onSubmit={handleAudit} className="space-y-3">
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="text"
+                aria-label="Website or business description"
                 required
                 placeholder="yourbusiness.com  ·  or describe what you do"
                 value={input}
@@ -204,8 +202,7 @@ export default function AuditPage() {
               </Button>
             </div>
             <p className="text-xs text-muted-foreground/60">
-              Free. No signup. The paid audit is where the exact numbers and the
-              build plan come next.
+              Free. No account needed. Findings need verification.
             </p>
           </motion.form>
         </motion.div>

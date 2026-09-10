@@ -7,7 +7,7 @@ export const metadata = {
     "How Anchor Marianas LLC collects, uses, and protects your information when you use anchormarianas.com.",
 }
 
-const EFFECTIVE_DATE = "13 July 2026"
+const EFFECTIVE_DATE = "5 September 2026"
 
 export default function PrivacyPage() {
   return (
@@ -44,6 +44,15 @@ export default function PrivacyPage() {
             web address or details you submit. We also collect limited technical
             and usage information automatically, such as your device type,
             browser, pages viewed, and general location, through analytics.
+          </p>
+          <p className="mt-4">
+            The business brief at /survey keeps your answers in the open page.
+            Choosing Save on this device stores a copy in this browser until you
+            delete it or clear site data. The form does not submit your answers
+            to Anchor, and form autocapture and session recording are disabled.
+            Copying or downloading creates a copy you control. Opening an email
+            draft passes the summary to your email app; sending it shares it
+            with the recipient. Avoid saving on shared devices.
           </p>
         </div>
 

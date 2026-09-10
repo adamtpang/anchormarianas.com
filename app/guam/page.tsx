@@ -37,11 +37,11 @@ const quietLink =
 const faqs = [
   {
     q: "How much does web design in Guam cost?",
-    a: "At Anchor Marianas, a one-page site is $497 flat and a working web app is $1,997 flat. No quotes, no scoping drag. If we miss the 5-day deadline, you get a refund.",
+    a: "At Anchor Marianas, a one-page site is $497 flat and a working web app is $1,997 flat. We confirm the package scope before work starts. Delivery and refunds follow our terms.",
   },
   {
     q: "How long does a website designer in Guam take to build a site?",
-    a: "Five days from payment to live. That covers copy, design, build, and deploy, with your booking or checkout link wired in. Late means refunded.",
+    a: "The landing-page package offers five-day delivery for the agreed scope. It covers copy, design, build and deployment, with your existing booking or checkout link. See our terms for timing and refunds.",
   },
   {
     q: "Can a Guam web developer build a full web app, not just a landing page?",

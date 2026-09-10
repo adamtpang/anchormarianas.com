@@ -1,0 +1,129 @@
+/* Anchor design system. Shared by every route, including diagnostic states. */
+:root, .light {
+  --background: 0 0% 100%;
+  --foreground: 225 50% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 225 50% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 225 50% 10%;
+  --primary: 225 50% 10%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 228 60% 96%;
+  --secondary-foreground: 225 50% 10%;
+  --muted: 228 35% 96%;
+  --muted-foreground: 222 18% 35%;
+  --accent: 232 55% 38%;
+  --accent-foreground: 0 0% 100%;
+  --border: 225 20% 85%;
+  --input: 225 20% 75%;
+  --ring: 232 55% 38%;
+  --surface-tint: 225 100% 97%;
+  --surface-highlight: 234 100% 94%;
+  --radius-control: 10px;
+  --radius-card: 16px;
+  --radius: .625rem;
+  --content-width: 1120px;
+  --page-gutter: 24px;
+  --section-space: 80px;
+  --heading-1: clamp(2rem, 4vw, 3.3rem);
+  --heading-2: clamp(1.75rem, 3vw, 2.65rem);
+  --heading-3: 1.35rem;
+}
+.dark {
+  --background: 225 40% 7%;
+  --foreground: 225 25% 96%;
+  --card: 225 30% 10%;
+  --card-foreground: 225 25% 96%;
+  --popover: 225 30% 10%;
+  --popover-foreground: 225 25% 96%;
+  --primary: 225 25% 96%;
+  --primary-foreground: 225 40% 7%;
+  --secondary: 225 30% 16%;
+  --secondary-foreground: 225 25% 96%;
+  --muted: 225 30% 16%;
+  --muted-foreground: 225 18% 74%;
+  --accent: 230 95% 82%;
+  --accent-foreground: 225 40% 7%;
+  --border: 225 22% 27%;
+  --input: 225 22% 45%;
+  --ring: 230 95% 82%;
+  --surface-tint: 225 32% 12%;
+  --surface-highlight: 232 36% 23%;
+}
+body { font-family: var(--font-inter), system-ui, sans-serif; }
+:is(h1,h2,h3,h4,h5,h6), .font-display, .font-display-italic,
+.t-hero-serif, .home-title, .journey-title, .journey-heading {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-weight: 650;
+  font-style: normal;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+main h1, .agency-page h1 { font-size: var(--heading-1); line-height: 1.2; }
+main h2, .agency-page h2 { font-size: var(--heading-2); line-height: 1.25; }
+main h3, .agency-page h3 { font-size: var(--heading-3); line-height: 1.4; }
+.agency-page { --agency-tint: hsl(var(--surface-tint)); --agency-highlight: hsl(var(--surface-highlight)); }
+.dark .agency-page { --agency-tint: hsl(var(--surface-tint)); --agency-highlight: hsl(var(--surface-highlight)); }
+.agency-shell, .journey-wrap { width: min(var(--content-width), calc(100% - var(--page-gutter) * 2)); margin-inline: auto; }
+.agency-section, .journey-section { padding-block: var(--section-space); }
+.agency-section-short { padding-top: 12px; }
+.agency-card, .brief-panel { border-radius: var(--radius-card); }
+.agency-button, button:not([role="checkbox"]):not([role="radio"]):not([role="switch"]),
+a.rounded-full, .brief-select, input:not([type="radio"]):not([type="checkbox"]), textarea {
+  border-radius: var(--radius-control);
+}
+button:not([role="checkbox"]):not([role="radio"]):not([role="switch"]),
+input:not([type="checkbox"]):not([type="radio"]), select { min-height: 44px; }
+input:not([type="checkbox"]):not([type="radio"]), textarea, select { font-size: 1rem; }
+:is(a,button,input,textarea,select,summary):focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 4px; }
+button:disabled { cursor: not-allowed; }
+.brief-panel h2 { font-size: 1.6rem; }
+.brief-aside h2 { font-size: 1.35rem; }
+.brief-layout { gap: 32px; }
+.brief-steps { gap: 12px; }
+.brief-step-number { min-width: 30px; }
+.brief-help, .journey-intro { color: hsl(var(--muted-foreground)); }
+.brief-caption { font-family: var(--font-inter), sans-serif; font-size: .75rem; letter-spacing: .1em; }
+.brief-choice.is-selected { background: hsl(var(--surface-highlight)); border-color: hsl(var(--accent)); }
+.depth-veil::before, .depth-veil::after { display: none; }
+@media (max-width: 640px) {
+  :root { --page-gutter: 20px; --section-space: 48px; }
+  .agency-home-hero h1 { font-size: 1.9rem; }
+  .brief-panel { padding: 20px; }
+  .brief-steps li { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .brief-actions { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+:root, .light {
+  --destructive: 0 70% 42%;
+  --destructive-foreground: 0 0% 100%;
+  --depth-glow: 232 55% 38%;
+  --on-surface-overlay: 225 50% 10% / .04;
+}
+.dark {
+  --destructive: 0 70% 65%;
+  --destructive-foreground: 225 40% 7%;
+  --depth-glow: 230 95% 82%;
+  --on-surface-overlay: 230 95% 82% / .06;
+}
+
+/* Minimal journey: one reading column, one primary action, details on demand. */
+.brief-page .journey-wrap { max-width: 720px; }
+.brief-page > section:first-child { padding-top: 48px; padding-bottom: 28px; }
+.brief-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; padding-bottom: 0; }
+.brief-aside { position: static; padding-top: 0; max-width: none; }
+.brief-estimate { margin-top: 0; }
+.brief-panel-heading { margin-bottom: 24px; }
+.agency-contact { max-width: 640px; text-align: center; }
+.agency-contact-options { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 32px; margin: 24px 0; }
+footer a { display: inline-flex; align-items: center; min-height: 44px; }
+
+.brief-page .journey-wrap { max-width: 600px; }
+.brief-page > section:first-child { padding-top: 28px; padding-bottom: 20px; }
+.brief-page h1 { font-size: 2rem; }
+.brief-page .brief-panel { padding: 0; border: 0; background: transparent; box-shadow: none; }
+.brief-page .brief-fields { gap: 20px; }
+.brief-optional > summary, .brief-draft > summary { cursor: pointer; min-height: 44px; display: list-item; align-content: center; font-size: .875rem; color: hsl(var(--muted-foreground)); }
+.brief-draft { margin-top: 16px; }

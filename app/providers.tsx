@@ -15,6 +15,8 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       person_profiles: 'identified_only',
       capture_pageview: 'history_change',
       capture_pageleave: true,
+      autocapture: false,
+      disable_session_recording: true,
       loaded: (ph) => {
         // Register `site` super-property so every event tags the source domain
         ph.register({ site: window.location.hostname })

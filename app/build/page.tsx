@@ -86,20 +86,18 @@ export default function BuildPage() {
             Anchor · build with me
           </motion.div>
           <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-6xl leading-[1.05] tracking-tight mb-4 text-balance">
-            Tell me what you want{" "}
-            <span className="font-display-italic">built.</span>
+            Plan your project.
           </motion.h1>
           <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl">
-            Describe your project in plain words. You get a scoped plan, an honest
-            price range, and a timeline in about a minute. Then we confirm it on a
-            15-minute call and start.
+            Describe your idea for a draft scope, price range and timeline.
           </motion.p>
 
           <motion.form variants={fadeUp} onSubmit={handleBuild} className="space-y-3">
             <textarea
+              aria-label="Project description"
               required
               rows={4}
-              placeholder="e.g. A booking site for my dive shop where customers pick a tour, pay a deposit, and get a confirmation text."
+              placeholder="e.g. A booking site for my dive shop."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               disabled={loading}
@@ -108,6 +106,7 @@ export default function BuildPage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="text"
+                aria-label="Budget (optional)"
                 placeholder="Budget (optional)"
                 value={budget}
                 onChange={(e) => setBudget(e.target.value)}
@@ -116,6 +115,7 @@ export default function BuildPage() {
               />
               <input
                 type="text"
+                aria-label="Timeline (optional)"
                 placeholder="Timeline (optional)"
                 value={timeline}
                 onChange={(e) => setTimeline(e.target.value)}
@@ -131,14 +131,13 @@ export default function BuildPage() {
                 </>
               ) : (
                 <>
-                  Get my plan and price
+                  Create plan
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </>
               )}
             </Button>
             <p className="text-xs text-muted-foreground/60">
-              An honest estimate, not a bill. Final scope and price are confirmed
-              with Adam on a call.
+              Estimate only. Agree the final scope and price with Adam.
             </p>
           </motion.form>
         </motion.div>

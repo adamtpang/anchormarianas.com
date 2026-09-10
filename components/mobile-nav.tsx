@@ -3,17 +3,16 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import siteConfig from "@/content/site.json"
 
-const bookUrl = siteConfig.discoveryCal
-
 const nav = [
-  { href: "/scan", label: "Scan" },
-  { href: "/pricing", label: "Services" },
+  { href: "/services", label: "Services" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
+  { href: "/scan", label: "AnchorScan" },
 ]
 
 export function MobileNav() {
@@ -27,7 +26,8 @@ export function MobileNav() {
           <span className="sr-only">Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-72">
+      <SheetContent side="right" className="w-72" aria-describedby={undefined}>
+        <SheetTitle className="sr-only">Navigation</SheetTitle>
         <div className="flex flex-col h-full">
           <div className="py-4">
             <Link
@@ -39,7 +39,7 @@ export function MobileNav() {
             </Link>
           </div>
 
-          <nav className="flex flex-col gap-1 mt-6">
+          <nav aria-label="Mobile navigation" className="flex flex-col gap-1 mt-6">
             {nav.map((n) => (
               <Link
                 key={n.href}
@@ -53,10 +53,10 @@ export function MobileNav() {
           </nav>
 
           <div className="mt-auto pt-8 space-y-3">
-            <Button className="w-full rounded-full" asChild>
-              <a href={bookUrl} onClick={() => setOpen(false)}>
-                Book an untangling call &rarr;
-              </a>
+            <Button className="w-full rounded-md" asChild>
+              <Link href="/contact" onClick={() => setOpen(false)}>
+                Start a project &rarr;
+              </Link>
             </Button>
             <div className="text-sm text-muted-foreground space-y-2 pt-2">
               <a
