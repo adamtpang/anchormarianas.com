@@ -1,7 +1,9 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Instrument_Serif, Geist_Mono } from "next/font/google"
+import { Inter, Geist_Mono } from "next/font/google"
 import "./globals.css"
+import "./design-system.css"
+import { MotionPreferences } from "@/components/motion-preferences"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -14,13 +16,6 @@ const inter = Inter({
   display: "swap",
 })
 
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
-  display: "swap",
-})
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
@@ -28,9 +23,9 @@ const geistMono = Geist_Mono({
   display: "swap",
 })
 
-const title = "Anchor Marianas - the AI layer of your business"
+const title = "Anchor Marianas | Websites & Webapps for Businesses"
 const description =
-  "We read what your customers already tell you, then build the fix. Free website scan, fixed-price builds, from Guam. We built and maintain the website for International Distributors, Inc."
+  "Websites and webapps for businesses. Clear scope, fixed-price packages and direct support from Anchor Marianas. Based in Guam, working remotely."
 
 export const metadata: Metadata = {
   title,
@@ -74,7 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${instrumentSerif.variable} ${geistMono.variable}`}
+      className={`${inter.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <body
@@ -85,16 +80,17 @@ export default function RootLayout({
         <PostHogProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >
-            <div className="relative flex min-h-screen flex-col">
+            <MotionPreferences><div className="relative flex min-h-screen flex-col">
+              <a href="#main-content" className="fixed top-0 left-2 z-[60] -translate-y-full bg-background p-4 focus:translate-y-0">Skip to content</a>
               <Header />
-              <main className="flex-1">{children}</main>
+              <main id="main-content" tabIndex={-1} className="flex-1">{children}</main>
               <Footer />
             </div>
-          </ThemeProvider>
+          </MotionPreferences></ThemeProvider>
         </PostHogProvider>
       </body>
     </html>

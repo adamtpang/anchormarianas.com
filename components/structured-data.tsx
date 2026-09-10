@@ -16,7 +16,7 @@ const structuredData = {
       description: siteConfig.elevator,
       email: siteConfig.email,
       telephone: siteConfig.phone,
-      areaServed: { "@type": "Place", name: "Guam" },
+      areaServed: [{ "@type": "Place", name: "Guam" }, { "@type": "Country", name: "United States" }],
       priceRange: "$",
       founder: { "@id": `${SITE_URL}/#founder` },
       sameAs: [

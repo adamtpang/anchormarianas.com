@@ -1,8 +1,9 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, Loader2, AlertCircle, Calendar, Search, HelpCircle } from "lucide-react"
+import { ArrowRight, Loader2, AlertCircle, Search, HelpCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import siteConfig from "@/content/site.json"
 
@@ -92,17 +93,14 @@ export default function ScanPage() {
             variants={fadeUp}
             className="font-display text-4xl md:text-6xl leading-[1.05] tracking-tight mb-4 text-balance"
           >
-            What would we notice about{" "}
-            <span className="font-display-italic">your business?</span>
+            Check your website.
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
             className="text-lg text-muted-foreground leading-relaxed mb-10 max-w-xl"
           >
-            Paste your URL. We read your site and surface the operational
-            patterns worth a conversation, plus the questions we would ask. No
-            pitch, no invented numbers. The call is the work.
+            Find potential improvements from your public website.
           </motion.p>
 
           {/* ── Scan form ── */}
@@ -110,6 +108,7 @@ export default function ScanPage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="url"
+                aria-label="Website URL"
                 required
                 placeholder="https://yourbusiness.com"
                 value={url}
@@ -139,7 +138,8 @@ export default function ScanPage() {
 
             <input
               type="text"
-              placeholder="Optional: describe your business in one sentence"
+              aria-label="Business context (optional)"
+              placeholder="Business context (optional)"
               value={businessContext}
               onChange={(e) => setBusinessContext(e.target.value)}
               disabled={loading}
@@ -147,7 +147,7 @@ export default function ScanPage() {
             />
 
             <p className="text-xs text-muted-foreground/60">
-              Free. No account required. Results in about 45 seconds.
+              Free. No account needed.
             </p>
           </motion.form>
         </motion.div>
@@ -200,10 +200,10 @@ export default function ScanPage() {
 
               {/* Never leave a visitor at a dead end. Adam runs the read by hand. */}
               <div className="mt-4 rounded-lg border border-border bg-card p-5">
-                <p className="text-sm font-semibold">The tool broke, the offer stands.</p>
+                <p className="text-sm font-semibold">You can still prepare your business brief.</p>
                 <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">
-                  Send me the business and I will run the read by hand and email it
-                  back. Same report, no charge.
+                  Describe the problem and the context you know. Share your brief
+                  with Adam for a review without waiting for the website scan.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-3">
                   <Button size="sm" asChild>
@@ -214,9 +214,7 @@ export default function ScanPage() {
                     </a>
                   </Button>
                   <Button variant="outline" size="sm" asChild>
-                    <a href={siteConfig.calendly} target="_blank" rel="noopener noreferrer">
-                      Book a 15-min call
-                    </a>
+                    <Link href="/survey">Prepare your business brief</Link>
                   </Button>
                 </div>
               </div>
@@ -345,23 +343,18 @@ export default function ScanPage() {
                 className="max-w-2xl mx-auto space-y-5"
               >
                 <h2 className="font-display text-2xl md:text-3xl tracking-tight">
-                  Want to talk it through?
+                  Add the context a website cannot show.
                 </h2>
                 <p className="text-muted-foreground">
-                  Book a free 15-minute call. We go through what we noticed
-                  together, you fill in the parts a website cannot show, and if
-                  there is a fit we say so. If there is not, we say that too.
+                  Use these observations to prepare your business brief. Describe
+                  what actually happens, add the numbers you know, and share it
+                  before deciding whether a discovery call would help.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   <Button size="lg" className="text-base px-6 py-5" asChild>
-                    <a
-                      href={siteConfig.calendly}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Book a 15-min call
-                      <Calendar className="w-4 h-4 ml-2" />
-                    </a>
+                    <Link href="/survey">Prepare your business brief
+                      <ArrowRight className="w-4 h-4 ml-2" aria-hidden />
+                    </Link>
                   </Button>
                   <Button variant="outline" size="lg" asChild>
                     <a
