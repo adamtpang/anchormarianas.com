@@ -2,7 +2,6 @@
 
 import type React from "react"
 import posthog from "posthog-js"
-import posthog from "posthog-js";
 
 export function CheckoutButton({
   href,
