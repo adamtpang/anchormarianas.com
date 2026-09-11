@@ -2,7 +2,7 @@
 
 import type React from "react"
 import posthog from "posthog-js"
-import { track } from "@vercel/analytics"
+import posthog from "posthog-js";
 
 export function CheckoutButton({
   href,
@@ -22,7 +22,7 @@ export function CheckoutButton({
     if (price) props.price = price
     // Fire the same conversion event to both PostHog and Vercel Analytics.
     posthog?.capture("checkout_click", props)
-    track("checkout_click", props)
+    posthog.capture("checkout_click", props)
   }
 
   return (
