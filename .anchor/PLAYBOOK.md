@@ -33,9 +33,16 @@ No step may be reordered to make a service easier to sell.
 - [x] List observed problems. Each problem must cite its source.
       Four observations, each quoting a supplied review, in
       `reports/anchorscan/quality-plumbing-service-guam-2026-09-05.json`.
-- [ ] Record questions that need the operator's answer.
-- [ ] Match only deliverable solutions from `content/services.json`.
-- [ ] Research a current market-rate range for every matched solution.
+- [x] Record questions that need the operator's answer. Five from the scan plus
+      two added for the matches (review replies, missed-call volume), in the
+      ignored `reports/anchorscan/quality-plumbing-service-guam-2026-09-05.reference-draft.md`.
+- [x] Match only deliverable solutions from `content/services.json`. 2026-09-14:
+      AI Review Responder strong; AI Reception Pilot and AI Workflow Build
+      conditional on owner answers; two findings have no deliverable service.
+- [x] Research a current market-rate range for every matched solution.
+      Dated links for all three, 2026-09-14. Flag for the next box: AI
+      receptionist market is mostly $29-$299/mo with $0-$299 setup, far under
+      Anchor's listed $5,000 + $500/mo.
 - [ ] State Anchor's price or `research required`.
 - [ ] Human-check every claim, link, price, and business detail.
 - [ ] Approve one reference report format.
