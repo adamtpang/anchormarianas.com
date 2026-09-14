@@ -98,6 +98,10 @@ gitignored, so it may not), read it once. It is Naval's *How to Get Rich* and
 mapped row by row onto this repo. It does not change the operating decision
 above; it explains what the pause is waiting on.
 
+`HANDOFF_FROM_MONEYMETA_FORBES_ORIGINS.md`, also local only: all 3,000 Forbes
+billionaires' origins (2026-09-14 pull), with the services fortunes that
+productized (HCL, Paychex, Allegis, Infosys) as the pattern for this menu.
+
 ## Binding constraint
 
 There is not yet one verified end-to-end report that starts with fresh business
