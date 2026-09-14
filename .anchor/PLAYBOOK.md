@@ -43,7 +43,11 @@ No step may be reordered to make a service easier to sell.
       Dated links for all three, 2026-09-14. Flag for the next box: AI
       receptionist market is mostly $29-$299/mo with $0-$299 setup, far under
       Anchor's listed $5,000 + $500/mo.
-- [ ] State Anchor's price or `research required`.
+- [x] State Anchor's price or `research required`. 2026-09-14, verbatim from
+      `content/services.json`, labeled apart from market ranges: Review Responder
+      $150/mo (intro free) is the lead offer; Reception Pilot $5,000 + $500/mo is
+      price under review against a $29-$299/mo market, owner to decide; Workflow
+      Build $7,500 not offered first. No listed price was changed.
 - [ ] Human-check every claim, link, price, and business detail.
 - [ ] Approve one reference report format.
 
