@@ -35,6 +35,15 @@ message himself or gives a per-message go; open outbound is not standing
 permission for an agent to send. The separate eldercare acquisition thesis is
 still paused for this workstream.
 
+Dentist offer, approved by Adam on 2026-09-14: the lead is phone coverage
+(missed-call text-back plus after-hours AI answering), priced at $500 setup plus
+$300 a month for a single-location practice, with a free 30-day pilot for the
+first three. The Review Responder is an add-on only for dentists, because public
+review replies are a HIPAA risk. Do not add this price to `content/services.json`
+or sell it live until Anchor has a business associate agreement template and
+BAA-covered SMS and model vendors. Brief and drafts:
+`context/prospects/dentists-2026-09-14.md` (gitignored).
+
 ## Current state
 
 - Production host: `https://anchormarianas.com`, Vercel project
