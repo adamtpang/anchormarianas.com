@@ -28,8 +28,12 @@ Adam set the order on 2026-08-24:
 5. Produce and quality-check the reports.
 6. Send the reports and contact real businesses as soon as Adam opens outbound.
 
-Outbound is paused for now. Do not send the prepared dentist messages yet. The
-separate eldercare acquisition thesis is also paused for this workstream.
+Outbound is open, per Adam on 2026-09-14. Dentists are the first buyer, ahead
+of the salon, barber and plumbing prospects. Six Guam dental practices had
+reviews pulled on 2026-09-14 into `.anchor/scan-raw/`. Adam still sends each
+message himself or gives a per-message go; open outbound is not standing
+permission for an agent to send. The separate eldercare acquisition thesis is
+still paused for this workstream.
 
 ## Current state
 
