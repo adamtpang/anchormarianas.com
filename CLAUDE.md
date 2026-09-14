@@ -28,7 +28,13 @@ Adam set the order on 2026-08-24:
 5. Produce and quality-check the reports.
 6. Send the reports and contact real businesses as soon as Adam opens outbound.
 
-Outbound is open, per Adam on 2026-09-14. Dentists are the first buyer, ahead
+**Dentists PAUSED by Adam on 2026-09-14, later the same day.** Do not send, draft
+further, or deploy anything for dentists until Adam restarts it. Reason given:
+he is not passionate about the space, and is using optimism.fun to choose what
+to work on next. All dentist work is preserved as-is (brief and drafts in
+`context/prospects/`, BAA template, HIPAA docs, `scripts/retell/`).
+
+The notes below describe the paused plan. Outbound was opened, per Adam on 2026-09-14. Dentists are the first buyer, ahead
 of the salon, barber and plumbing prospects. Six Guam dental practices had
 reviews pulled on 2026-09-14 into `.anchor/scan-raw/`. Adam still sends each
 message himself or gives a per-message go; open outbound is not standing
