@@ -42,7 +42,10 @@ first three. The Review Responder is an add-on only for dentists, because public
 review replies are a HIPAA risk. Do not add this price to `content/services.json`
 or sell it live until Anchor has a business associate agreement template and
 BAA-covered SMS and model vendors. Brief and drafts:
-`context/prospects/dentists-2026-09-14.md` (gitignored).
+`context/prospects/dentists-2026-09-14.md` (gitignored). BAA template:
+`legal/BAA-TEMPLATE.md`, pending lawyer review. Vendor stack and setup
+checklist: `context/claude/HIPAA-VENDOR-SETUP.md` (gitignored). The chosen
+stack routes all patient data through one vendor, Retell AI.
 
 ## Current state
 
