@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ron's Diner, Mangilao</title>
+<meta name="description" content="Chamorro comfort food in Mangilao, Guam. Family owned. Lunch Monday to Friday, dinner Monday to Thursday, Sunday brunch.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0a09;--ink:#f3eee6;--mute:#9d968b;--line:#211e1a;--accent:#e2643a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(680px,calc(100% - 40px));margin-inline:auto}
+  header{padding:28px 0 8px;display:flex;justify-content:space-between;align-items:baseline}
+  header .name{font-family:Fraunces,serif;font-weight:500;font-size:1.05rem;letter-spacing:.01em}
+  header .stars{color:var(--mute);font-size:.85rem}
+  header .stars b{color:var(--ink);font-weight:500}
+  .hero{padding:40px 0 24px}
+  .hero h1{font-family:Fraunces,serif;font-weight:300;font-size:clamp(2.4rem,7vw,3.8rem);line-height:1.05;letter-spacing:-.01em}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero p{color:var(--mute);margin-top:14px;font-size:1.05rem}
+  .photo{margin:28px 0 8px;border-radius:18px;overflow:hidden;aspect-ratio:4/3;background:#17140f;box-shadow:0 0 120px -30px rgba(226,100,58,.35)}
+  .photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;padding:20px 0 8px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:999px;font-weight:500;font-size:1rem;background:var(--accent);color:#120804;flex:1 1 200px}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  section{padding:40px 0;border-top:1px solid var(--line)}
+  h2{font-family:Fraunces,serif;font-weight:500;font-size:1.35rem;margin-bottom:18px}
+  .hours{display:grid;grid-template-columns:1fr auto;row-gap:10px;column-gap:24px;font-size:1rem}
+  .hours span:nth-child(even){text-align:right;color:var(--mute)}
+  .hours .today{color:var(--accent)}
+  .hours .today + span{color:var(--ink)}
+  ul.dishes{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;font-size:1.02rem}
+  ul.dishes li{padding:12px 0;border-bottom:1px solid var(--line)}
+  ul.dishes li small{display:block;color:var(--mute);font-size:.82rem;margin-top:2px}
+  blockquote{font-family:Fraunces,serif;font-weight:300;font-size:1.35rem;line-height:1.35;margin:0 0 22px}
+  blockquote cite{display:block;font-family:Inter,sans-serif;font-style:normal;font-size:.8rem;color:var(--mute);margin-top:8px}
+  .find p{color:var(--mute);margin-bottom:6px}
+  .find a{color:var(--ink);border-bottom:1px solid var(--line)}
+  footer{padding:36px 0 48px;color:var(--mute);font-size:.8rem;border-top:1px solid var(--line)}
+  footer a{color:var(--mute)}
+  @media (max-width:520px){ul.dishes{grid-template-columns:1fr}.hero{padding-top:28px}}
+  @media (prefers-reduced-motion:no-preference){.photo img{transition:transform .8s ease}.photo:hover img{transform:scale(1.02)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="name">Ron's Diner</span>
+    <span class="stars"><b>4.6</b> on Google, 226 reviews</span>
+  </header>
+
+  <div class="hero">
+    <h1>Chamorro comfort food,<br><em>like home</em>.</h1>
+    <p>Family owned, in Mangilao by UOG. Lunch on weekdays, dinner Monday to Thursday, brunch on Sunday.</p>
+  </div>
+
+  <div class="photo">
+    <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnJy4qdDGtAKkbQ30MmVAGDgg3nUjiLh4A17gQWRSCqBL1_H-00nLtIvPEDJaCI7xITOGZRQ5UCoS6avYWSe_3ubpKrQte4mwi0zfWj5fQWQ-Zv8cg--EMm8J9gvYQpOkGq3TToPg=w1200-h900-k-no" alt="A plate at Ron's Diner" width="1200" height="900" loading="eager">
+  </div>
+
+  <div class="cta">
+    <a class="btn" href="tel:+16717347667">Call to order</a>
+    <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Ron's%20Diner&query_place_id=ChIJXQUYTpydH2cR9XchIchJgaM">Directions</a>
+  </div>
+
+  <section>
+    <h2>Hours</h2>
+    <div class="hours" id="hours">
+      <span>Monday</span><span>10 AM to 2 PM, 5 to 7:45 PM</span>
+      <span>Tuesday</span><span>10 AM to 2 PM, 5 to 7:45 PM</span>
+      <span>Wednesday</span><span>10 AM to 2 PM, 5 to 7:45 PM</span>
+      <span>Thursday</span><span>10 AM to 2 PM, 5 to 7:45 PM</span>
+      <span>Friday</span><span>10 AM to 2 PM</span>
+      <span>Saturday</span><span>Closed</span>
+      <span>Sunday</span><span>8 AM to 2 PM, brunch</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>What people order</h2>
+    <ul class="dishes">
+      <li>Sunday brunch<small>the one people bring groups to</small></li>
+      <li>Beef tinaktak<small>enough for two</small></li>
+      <li>Fried parrot fish<small>with escabeche</small></li>
+      <li>Garlic shrimp</li>
+      <li>Burgers and onion rings</li>
+      <li>Corn soup and pot roast</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>From the reviews</h2>
+    <blockquote>"It's like being welcomed into someone's home."<cite>Google review, December 2025</cite></blockquote>
+    <blockquote>"The service is probably the best I have had on the island."<cite>Google review, January 2026</cite></blockquote>
+    <blockquote>"Local food that doesn't hurt your wallet."<cite>Google review, July 2026</cite></blockquote>
+  </section>
+
+  <section class="find">
+    <h2>Find us</h2>
+    <p>F&amp;J Building, University Drive, Mangilao, Guam 96913</p>
+    <p><a href="tel:+16717347667">(671) 734-7667</a></p>
+    <p><a href="https://www.instagram.com/ronsdiner/">Instagram</a> &nbsp;·&nbsp; <a href="https://www.facebook.com/p/Rons-Diner-100067501301836/">Facebook</a></p>
+    <p>Dine in, take out, delivery. Wheelchair accessible.</p>
+  </section>
+
+  <footer>
+    Ron's Diner, Mangilao, Guam. Site by <a href="https://anchormarianas.com">Anchor Marianas</a>.
+  </footer>
+</div>
+<script>
+  (function(){var d=new Date().getDay();var i=d===0?6:d-1;var s=document.querySelectorAll('#hours span');if(s[i*2]){s[i*2].classList.add('today')}})();
+</script>
+</body>
+</html>
