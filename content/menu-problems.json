@@ -1,0 +1,35 @@
+{
+  "intro": "Every item below answers a problem that showed up in real Guam Google reviews. Scanned 2026-07 to 2026-09, five businesses, 388 reviews.",
+  "groups": [
+    {
+      "problem": "Nobody replies to your reviews.",
+      "evidence": "4 of 5 scanned Guam businesses. Happy and unhappy reviews alike sit unanswered, so the unhappy ones are the last word.",
+      "items": ["AI Review Responder"]
+    },
+    {
+      "problem": "Customers show up with the wrong expectations.",
+      "evidence": "3 of 5. Walk-ins turned away, a deposit rule nobody explained, booked with a different tech than expected.",
+      "items": ["AI Appointment Reminders"]
+    },
+    {
+      "problem": "People can't find you online.",
+      "evidence": "No website beyond directory listings, or an unclaimed Google profile.",
+      "items": ["5-day landing page", "Care plan"]
+    },
+    {
+      "problem": "Calls go unanswered.",
+      "evidence": "Not yet seen in salon or trade reviews. Seen once at a Guam clinic. Only you know your real number.",
+      "items": ["AI Receptionist"]
+    },
+    {
+      "problem": "Not sure where AI would even help.",
+      "evidence": "Start here. The scan reads your reviews and site and says what it sees, nothing more.",
+      "items": ["AI Opportunity Audit"]
+    },
+    {
+      "problem": "Something bigger to build.",
+      "evidence": "An app, a workflow, or steady AI work every week.",
+      "items": ["5-day MVP web app", "Fractional AI Engineer"]
+    }
+  ]
+}
