@@ -193,3 +193,15 @@ test("smell needs a bad-smell phrase, and health code complaints count as cleanl
   )
   assert.equal(report.themes.find((t) => t.key === "clean")?.count, 3)
 })
+
+test("a dirty martini is not a cleanliness complaint", () => {
+  const report = analyzeReviews(place, [r(3, "2026-06-01T00:00:00Z", "Slow night, but they made a wonderful dirty martini.")], now)
+  assert.equal(report.themes.find((t) => t.key === "clean"), undefined)
+})
+
+test("no ownership mention says so instead of implying there was no change", () => {
+  const quiet = analyzeReviews(place, [r(5, "2026-06-01T00:00:00Z", "Great shop")], now)
+  assert.ok(quiet.limits.some((l) => l.includes("ask the seller how long they have owned it")))
+  const told = analyzeReviews(place, [r(4, "2026-06-01T00:00:00Z", "Under new management, still good")], now)
+  assert.ok(!told.limits.some((l) => l.includes("ask the seller how long")))
+})
