@@ -179,3 +179,17 @@ test("a staff no-show is a booking problem, not a wrong order", () => {
   assert.ok(keys.includes("booking"))
   assert.ok(!keys.includes("orders"))
 })
+
+test("smell needs a bad-smell phrase, and health code complaints count as cleanliness", () => {
+  const report = analyzeReviews(
+    place,
+    [
+      r(1, "2026-04-01T00:00:00Z", "The flower is expensive and tastes nothing like it smelled."),
+      r(1, "2026-06-01T00:00:00Z", "In violation of about 12 health codes."),
+      r(1, "2026-02-01T00:00:00Z", "When I walked in it smelled terrible, like spoiled meat."),
+      r(2, "2025-08-01T00:00:00Z", "Smells like straight sewage inside"),
+    ],
+    now,
+  )
+  assert.equal(report.themes.find((t) => t.key === "clean")?.count, 3)
+})

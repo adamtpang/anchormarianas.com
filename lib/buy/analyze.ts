@@ -87,7 +87,7 @@ const THEMES: { key: string; label: string; pattern: RegExp; question: string }[
 	{
 		key: "clean",
 		label: "Cleanliness or smell",
-		pattern: /\b(dirty|filthy|smell|smelled|stink|roach|cockroach|bug|hair in|mold|unsanitary|gross bathroom|cleanliness|unclean|not clean|wasn'?t cleaned)\b/i,
+		pattern: /\b(dirty|filthy|smell(s|ed)? (so )?(bad|terrible|awful|horrible|gross|funny|off|rank)|smell(s|ed)?\W+(like )?(\w+ ){0,3}(urine|sewage|pee|garbage|trash|mold|spoiled|chemical\w*)|smells like that|(bad|foul|strange) (smell|odor)|stink\w*|health codes?|code violations?|condemned|roach|cockroach|bug|hair in|mold|unsanitary|gross bathroom|cleanliness|unclean|not clean|wasn'?t cleaned)\b/i,
 		question: "Can you see the last three years of health inspection reports?",
 	},
 	{
