@@ -33,6 +33,7 @@ export type YearRow = { year: string; reviews: number; avgStars: number; lowShar
 
 export type BuyReport = {
 	place: Place
+	branchNote: string | null
 	analyzed: number
 	generatedAt: string
 	years: YearRow[]
@@ -50,8 +51,20 @@ const THEMES: { key: string; label: string; pattern: RegExp; question: string }[
 	{
 		key: "quality",
 		label: "Quality of the product or work",
-		pattern: /\b(cold|stale|bland|dry|burnt|overcooked|undercooked|raw|salty|tasteless|soggy|greasy|nasty|gross|disgusting|terrible food|bad food|worse|poor quality|went downhill|gone downhill|not the same|isn'?t the same|used to be|(been|tastes?|are|is) different|egg ?shells?)\b/i,
+		pattern: /\b(cold|stale|bland|dry|burnt|overcooked|undercooked|raw|salty|tasteless|soggy|greasy|nasty|gross|disgusting|terrible food|bad food|worse|poor quality|went downhill|gone downhill|not the same|isn'?t the same|used to be|(been|tastes?|are|is) different|egg ?shells?|(did not|didn'?t) meet|not as (good|thorough)|sloppy|missed spots|hair left)\b/i,
 		question: "Has anything changed in recipes, suppliers, or who does the core work in the last two years?",
+	},
+	{
+		key: "staff",
+		label: "Staff leaving or turnover",
+		pattern: /\b(no longer (there|works?|with|employed)|now that (she|he|they)(['’]s| is| are) gone|(she|he|they) (left|quit)|turnover|keeps? changing staff|short[- ]?staffed|understaffed|new staff every)\b/i,
+		question: "Which staff do customers ask for by name, and are they staying after the sale?",
+	},
+	{
+		key: "booking",
+		label: "Bookings moved, cancelled, or lost",
+		pattern: /\b(reschedul\w*|cancell?ed (my|our) (appointment|booking|reservation)|push(ed)? (back )?my appointment|no[- ]show|double[- ]booked|gave (away )?my (appointment|spot|slot))\b/i,
+		question: "How are appointments booked and confirmed, and how often are they moved or missed?",
 	},
 	{
 		key: "service",
@@ -74,25 +87,25 @@ const THEMES: { key: string; label: string; pattern: RegExp; question: string }[
 	{
 		key: "clean",
 		label: "Cleanliness or smell",
-		pattern: /\b(dirty|filthy|smell|smelled|stink|roach|cockroach|bug|hair in|mold|unsanitary|gross bathroom)\b/i,
+		pattern: /\b(dirty|filthy|smell|smelled|stink|roach|cockroach|bug|hair in|mold|unsanitary|gross bathroom|cleanliness|unclean|not clean|wasn'?t cleaned)\b/i,
 		question: "Can you see the last three years of health inspection reports?",
 	},
 	{
 		key: "orders",
 		label: "Wrong or missing orders",
-		pattern: /\b(wrong order|got (it|my order) wrong|missing|forgot|never (came|arrived|showed)|messed up|incorrect order)\b/i,
+		pattern: /\b(wrong order|got (it|my order) wrong|missing (items?|from my order|my)|forgot (my|our|the|to (add|include|give))|never (came|arrived|showed)|messed up|incorrect order)\b/i,
 		question: "How are orders taken and tracked, and what share are online or delivery?",
 	},
 	{
 		key: "contact",
 		label: "Phone, hours, or info problems",
-		pattern: /\b(no one answer|nobody answer|didn'?t answer|don'?t answer|never answer|hung up|closed early|closed when|hours (are )?wrong|said (they were )?open|told (me |us )?(they|we|it) (were|was) closed|voicemail)\b/i,
+		pattern: /\b(no one answer|nobody answer|didn'?t answer|don'?t answer|never answer|hung up|(no one|nobody|didn'?t|never) pick(ed|s)? up|never called (me )?back|closed early|closed when|hours (are )?wrong|said (they were )?open|told (me |us )?(they|we|it) (were|was) closed|voicemail)\b/i,
 		question: "Are the posted hours accurate, and who answers the phone and messages today?",
 	},
 	{
 		key: "billing",
 		label: "Billing or refund disputes",
-		pattern: /\b(overcharg|charged (me )?twice|double charg|refund|hidden fee|extra charge|scam)\b/i,
+		pattern: /\b(overcharg\w*|charged (me )?twice|double[- ]charg\w*|refund|hidden fee|extra charge|scam)\b/i,
 		question: "How many refunds or chargebacks were there in the last year?",
 	},
 ]
@@ -112,6 +125,7 @@ export function excerpt(text: string, max = 180): string {
 }
 
 const RECENTLY = /\b(recently|just)\b/i
+const BRANCH = /\s[-–|·]\s|\sat\s|\(.+\)/i
 
 /** An excerpt that keeps the matched phrase in view, trimmed to whole words. */
 export function excerptAround(text: string, pattern: RegExp, max = 200): string {
@@ -153,8 +167,9 @@ export function analyzeReviews(
 			lowShare: pct(rs.filter((r) => (r.stars as number) <= 3).length, rs.length),
 		}))
 
+	// Under five reviews a period average swings on one person, so it is not shown.
 	const avg = (rs: Review[]) =>
-		rs.length ? round1(rs.reduce((s, r) => s + (r.stars as number), 0) / rs.length) : null
+		rs.length >= 5 ? round1(rs.reduce((s, r) => s + (r.stars as number), 0) / rs.length) : null
 	const recent = rated.filter(isRecent)
 	const earlier = rated.filter((r) => !isRecent(r))
 
@@ -172,7 +187,7 @@ export function analyzeReviews(
 			examples: ordered.slice(0, 2).map((r) => ({
 				stars: r.stars as number,
 				date: dateOf(r).slice(0, 7),
-				excerpt: excerpt(r.text),
+				excerpt: excerptAround(r.text, t.pattern, 180),
 			})),
 		}
 	})
@@ -219,8 +234,14 @@ export function analyzeReviews(
 	]
 	if ((place.reviewCount ?? 0) < 30) limits.push("Under 30 reviews: too few to read a reliable pattern.")
 
+	// Chains share a name, so the first match can be the wrong branch.
+	const branchNote = BRANCH.test(place.name)
+		? `Google lists this as "${place.name}", one location of a business with more than one. Check that ${place.address} is the location for sale. If not, add the street or neighborhood to the name and run it again.`
+		: null
+
 	return {
 		place,
+		branchNote,
 		analyzed: reviews.length,
 		generatedAt: now.toISOString(),
 		years,

@@ -124,6 +124,11 @@ function ReportView({ report }: { report: BuyReport }) {
             Open the Google listing
           </a>
         )}
+        {report.branchNote && (
+          <p role="note" className="agency-card agency-package">
+            {report.branchNote}
+          </p>
+        )}
       </header>
 
       <div className="agency-grid">

@@ -33,8 +33,8 @@ test("counts low stars, reply rate, and the recent versus earlier trend", () => 
   assert.equal(report.analyzed, 4)
   assert.deepEqual(report.lowStar, { count: 2, share: 50 })
   assert.equal(report.replyRate, 25)
-  assert.equal(report.trend.earlierAvg, 5)
-  assert.equal(report.trend.recentAvg, 1.5)
+  assert.equal(report.trend.earlierAvg, null, "two reviews is too few to average")
+  assert.equal(report.trend.recentAvg, null)
   assert.deepEqual(
     report.years.map((y) => [y.year, y.reviews, y.avgStars, y.lowShare]),
     [
@@ -128,4 +128,43 @@ test("excerptAround keeps the matched phrase in view", () => {
   const cut = excerptAround(text, /took over/)
   assert.ok(cut.includes("took over"))
   assert.ok(cut.startsWith("..."))
+})
+
+test("staff departures and moved bookings are their own themes", () => {
+  const report = analyzeReviews(
+    place,
+    [
+      r(2, "2026-10-01T00:00:00Z", "Kayla was the best and now that she is gone I won't come back. I forgot to cancel my membership."),
+      r(1, "2026-09-01T00:00:00Z", "They wanted to push my appointment 30 minutes while I sat in the lobby."),
+      r(1, "2026-05-01T00:00:00Z", "Tried to call, no one picked up."),
+      r(1, "2025-03-01T00:00:00Z", "I was overcharged and asked for a refund."),
+    ],
+    now,
+  )
+  const keys = report.themes.map((t) => t.key)
+  assert.ok(keys.includes("staff"))
+  assert.ok(keys.includes("booking"))
+  assert.ok(keys.includes("contact"))
+  assert.ok(keys.includes("billing"))
+  assert.ok(!keys.includes("orders"), "forgetting to cancel a membership is not a wrong order")
+})
+
+test("averages under five reviews are not shown", () => {
+  const report = analyzeReviews(place, [r(5, "2026-09-01T00:00:00Z"), r(1, "2018-01-01T00:00:00Z")], now)
+  assert.equal(report.trend.recentAvg, null)
+  assert.equal(report.trend.earlierAvg, null)
+})
+
+test("a branch name produces a check-the-address note", () => {
+  const chain = analyzeReviews({ ...place, name: "Sugaring NYC Organic Waxing - Cedar Park" }, [], now)
+  assert.match(chain.branchNote ?? "", /one location of a business with more than one/)
+  assert.equal(analyzeReviews(place, [], now).branchNote, null)
+})
+
+test("trend compares the last 18 months with earlier once each has five reviews", () => {
+  const earlier = [1, 2, 3, 4, 5].map((d) => r(5, `2023-0${d}-01T00:00:00Z`))
+  const recent = [1, 2, 3, 4, 5].map((d) => r(d % 2 ? 4 : 3, `2026-0${d}-01T00:00:00Z`))
+  const report = analyzeReviews(place, [...earlier, ...recent], now)
+  assert.equal(report.trend.earlierAvg, 5)
+  assert.equal(report.trend.recentAvg, 3.6)
 })
