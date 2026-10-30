@@ -45,7 +45,7 @@ export function toPlaceAndReviews(item: ApifyPlace): { place: Place; reviews: Re
 			stars: typeof r.stars === "number" ? r.stars : null,
 			text: r.text || "",
 			publishedAt: r.publishedAtDate || null,
-			ownerReply: Boolean(r.responseFromOwnerText),
+			ownerReply: r.responseFromOwnerText || "",
 		})),
 	}
 }

@@ -36,7 +36,7 @@ test("fetchPlace sends one capped search and maps the listing", async () => {
   })
   assert.equal(place.name, "Donut Spot")
   assert.equal(reviews.length, 2)
-  assert.equal(reviews[0].ownerReply, true)
+  assert.equal(reviews[0].ownerReply, "Sorry")
   assert.equal(reviews[1].text, "")
   assert.match(calls[0].url, /maxTotalChargeUsd=0\.5/)
   const input = JSON.parse(String(calls[0].init?.body))

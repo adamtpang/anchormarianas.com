@@ -8,7 +8,8 @@ export type Review = {
 	stars: number | null
 	text: string
 	publishedAt: string | null
-	ownerReply: boolean
+	/** The owner's reply text, or "" when there is none. */
+	ownerReply: string
 }
 
 export type Place = {
@@ -38,7 +39,8 @@ export type BuyReport = {
 	trend: { recentAvg: number | null; earlierAvg: number | null; recentLabel: string }
 	lowStar: { count: number; share: number }
 	replyRate: number
-	ownershipSignals: { date: string; excerpt: string }[]
+	ownershipSignals: { date: string; excerpt: string; source: "owner reply" | "customer" }[]
+	bursts: { date: string; count: number }[]
 	themes: Theme[]
 	questions: string[]
 	limits: string[]
@@ -97,7 +99,7 @@ const THEMES: { key: string; label: string; pattern: RegExp; question: string }[
 
 const QUESTION_FOR: Record<string, string> = Object.fromEntries(THEMES.map((t) => [t.key, t.question]))
 
-const OWNERSHIP =/\b(new owners?|new management|under new|taken over|took over|changed (hands|owners|ownership)|sold (it|the (business|place|restaurant|shop))|previous owner|old owner|bought (it|the place))\b/i
+const OWNERSHIP = /\b(since taking over|new owners?|new management|under new|taken over|took over|changed (hands|owners|ownership)|sold (it|the (business|place|restaurant|shop))|previous owner|old owner|bought (it|the place))\b/i
 
 const round1 = (n: number) => Math.round(n * 10) / 10
 const pct = (a: number, b: number) => (b ? Math.round((100 * a) / b) : 0)
@@ -107,6 +109,18 @@ export function excerpt(text: string, max = 180): string {
 	if (clean.length <= max) return clean
 	const cut = clean.slice(0, max)
 	return `${cut.slice(0, cut.lastIndexOf(" ") > 60 ? cut.lastIndexOf(" ") : max)}...`
+}
+
+const RECENTLY = /\b(recently|just)\b/i
+
+/** An excerpt that keeps the matched phrase in view, trimmed to whole words. */
+export function excerptAround(text: string, pattern: RegExp, max = 200): string {
+	const clean = text.replace(/<br\s*\/?>/gi, " ").replace(/\s+/g, " ").trim()
+	const at = clean.search(pattern)
+	if (at < 0 || clean.length <= max) return excerpt(clean, max)
+	const start = Math.max(0, at - 60)
+	const from = start === 0 ? 0 : clean.indexOf(" ", start) + 1
+	return `${from > 0 ? "..." : ""}${excerpt(clean.slice(from), max)}`
 }
 
 function dateOf(r: Review) {
@@ -165,16 +179,34 @@ export function analyzeReviews(
 		.filter((t) => t.count > 0)
 		.sort((a, b) => b.recentCount - a.recentCount || b.count - a.count)
 
-	const ownershipSignals = reviews
+	// Google does not date owner replies here, and new owners often answer old
+	// reviews, so a reply's date is only the date of the review it answers.
+	// Replies saying "recently" or "just" took over sit near the handover, so
+	// they lead; customer mentions show what changed, so the newest lead.
+	const ownerSaid = reviews
+		.filter((r) => OWNERSHIP.test(r.ownerReply))
+		.sort(
+			(a, b) =>
+				Number(RECENTLY.test(b.ownerReply)) - Number(RECENTLY.test(a.ownerReply)) ||
+				dateOf(a).localeCompare(dateOf(b)),
+		)
+		.slice(0, 2)
+		.map((r) => ({ date: dateOf(r).slice(0, 7), excerpt: excerptAround(r.ownerReply, OWNERSHIP), source: "owner reply" as const }))
+	const customersSaid = reviews
 		.filter((r) => OWNERSHIP.test(r.text))
 		.sort((a, b) => dateOf(b).localeCompare(dateOf(a)))
-		.slice(0, 4)
-		.map((r) => ({ date: dateOf(r).slice(0, 7), excerpt: excerpt(r.text, 200) }))
+		.slice(0, 2)
+		.map((r) => ({ date: dateOf(r).slice(0, 7), excerpt: excerptAround(r.text, OWNERSHIP), source: "customer" as const }))
+	const ownershipSignals = [...ownerSaid, ...customersSaid]
+	const bursts = findBursts(rated)
 
 	const questions = [
 		...(ownershipSignals.length
 			? ["Reviews mention a change of owner or management. When did it happen, and what are sales before and after?"]
 			: []),
+		...bursts.map(
+			(b) => `${b.count} reviews of 1 or 2 stars landed within two days around ${b.date}. What happened then?`,
+		),
 		...themes.slice(0, 4).map((t) => QUESTION_FOR[t.key]),
 	]
 	if (questions.length < 3) {
@@ -194,12 +226,37 @@ export function analyzeReviews(
 		years,
 		trend: { recentAvg: avg(recent), earlierAvg: avg(earlier), recentLabel: "last 18 months" },
 		lowStar: { count: low.length, share: pct(low.length, rated.length) },
-		replyRate: pct(reviews.filter((r) => r.ownerReply).length, reviews.length),
+		replyRate: pct(reviews.filter((r) => r.ownerReply.trim()).length, reviews.length),
 		ownershipSignals,
+		bursts,
 		themes,
 		questions: questions.slice(0, 5),
 		limits,
 	}
+}
+
+const BURST_WINDOW_MS = 2 * 24 * 60 * 60 * 1000
+
+/** Three or more 1 and 2-star reviews inside two days: one bad event, or a pile-on. */
+export function findBursts(reviews: Review[]): { date: string; count: number }[] {
+	const times = reviews
+		.filter((r) => (r.stars as number) <= 2 && r.publishedAt)
+		.map((r) => Date.parse(r.publishedAt as string))
+		.filter((t) => !Number.isNaN(t))
+		.sort((a, b) => a - b)
+	const bursts: { date: string; count: number }[] = []
+	let i = 0
+	while (i < times.length) {
+		let j = i
+		while (j + 1 < times.length && times[j + 1] - times[i] <= BURST_WINDOW_MS) j++
+		if (j - i + 1 >= 3) {
+			bursts.push({ date: new Date(times[i]).toISOString().slice(0, 10), count: j - i + 1 })
+			i = j + 1
+		} else {
+			i++
+		}
+	}
+	return bursts
 }
 
 /** Word-overlap score between the name a buyer typed and the listing found. */

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 
-import { type Place, type Review, analyzeReviews, excerpt, nameMatchScore } from "./analyze"
+import { type Place, type Review, analyzeReviews, excerpt, excerptAround, nameMatchScore } from "./analyze"
 
 const place: Place = {
   name: "Donut Spot",
@@ -12,7 +12,7 @@ const place: Place = {
   url: "https://maps.google.com/?cid=1",
 }
 const now = new Date("2026-10-29T00:00:00Z")
-const r = (stars: number, publishedAt: string, text = "", ownerReply = false): Review => ({
+const r = (stars: number, publishedAt: string, text = "", ownerReply = ""): Review => ({
   stars,
   text,
   publishedAt,
@@ -23,7 +23,7 @@ test("counts low stars, reply rate, and the recent versus earlier trend", () => 
   const report = analyzeReviews(
     place,
     [
-      r(5, "2023-03-01T00:00:00Z", "great", true),
+      r(5, "2023-03-01T00:00:00Z", "great", "Thanks!"),
       r(5, "2023-06-01T00:00:00Z"),
       r(2, "2026-05-01T00:00:00Z", "Staff was rude"),
       r(1, "2026-08-01T00:00:00Z", "Cold donuts and rude cashier"),
@@ -85,4 +85,47 @@ test("nameMatchScore ignores filler words and punctuation", () => {
   assert.equal(nameMatchScore("The Donut Spot LLC", "Donut Spot"), 1)
   assert.equal(nameMatchScore("Lucky Lime", "Walmart Supercenter"), 0)
   assert.equal(nameMatchScore("Joe's Pizza & Wings", "Joe's Pizza"), 2 / 3)
+})
+
+test("owner replies that say they recently took over lead the ownership signals", () => {
+  const report = analyzeReviews(
+    place,
+    [
+      r(5, "2025-02-01T00:00:00Z", "Love it", "We just recently took over and plan to keep the recipes."),
+      r(3, "2024-12-25T00:00:00Z", "Few choices", "We're the new owners, and since taking over we added more."),
+      r(5, "2026-01-01T00:00:00Z", "Great", "Thank you!"),
+    ],
+    now,
+  )
+  assert.deepEqual(
+    report.ownershipSignals.map((s) => [s.date, s.source]),
+    [
+      ["2025-02", "owner reply"],
+      ["2024-12", "owner reply"],
+    ],
+  )
+  assert.match(report.questions[0], /change of owner/)
+})
+
+test("three 1 or 2-star reviews inside two days are flagged as a burst", () => {
+  const report = analyzeReviews(
+    place,
+    [
+      r(1, "2025-12-11T22:27:00Z"),
+      r(1, "2025-12-11T23:37:00Z"),
+      r(1, "2025-12-12T00:16:00Z"),
+      r(1, "2025-12-20T00:00:00Z"),
+      r(2, "2023-01-01T00:00:00Z"),
+    ],
+    now,
+  )
+  assert.deepEqual(report.bursts, [{ date: "2025-12-11", count: 3 }])
+  assert.ok(report.questions.some((q) => q.includes("within two days around 2025-12-11")))
+})
+
+test("excerptAround keeps the matched phrase in view", () => {
+  const text = `${"Thanks for the kind words. ".repeat(10)}We recently took over the shop and kept the recipes.`
+  const cut = excerptAround(text, /took over/)
+  assert.ok(cut.includes("took over"))
+  assert.ok(cut.startsWith("..."))
 })

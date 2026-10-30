@@ -142,7 +142,25 @@ function ReportView({ report }: { report: BuyReport }) {
           <ul className="space-y-2">
             {report.ownershipSignals.map((s) => (
               <li key={s.date + s.excerpt}>
-                <span className="agency-small">{s.date}</span> "{s.excerpt}"
+                <span className="agency-small">
+                  {s.source === "owner reply"
+                    ? `Owner reply to a review from ${s.date}`
+                    : `Customer, ${s.date}`}
+                </span>{" "}
+                "{s.excerpt}"
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {report.bursts.length > 0 && (
+        <section>
+          <h3>Clusters of bad reviews</h3>
+          <ul className="space-y-1">
+            {report.bursts.map((b) => (
+              <li key={b.date}>
+                {b.count} reviews of 1 or 2 stars within two days, starting {b.date}
               </li>
             ))}
           </ul>
