@@ -87,7 +87,7 @@ const THEMES: { key: string; label: string; pattern: RegExp; question: string }[
 	{
 		key: "clean",
 		label: "Cleanliness or smell",
-		pattern: /\b(dirty|filthy|smell|smelled|stink|roach|cockroach|bug|hair in|mold|unsanitary|gross bathroom|cleanliness|unclean|not clean|wasn'?t cleaned)\b/i,
+		pattern: /\b(dirty(?! (martini|chai|rice|fries|horchata|soda|coke|dr\.? pepper))|filthy|smell(s|ed)? (so )?(bad|terrible|awful|horrible|gross|funny|off|rank)|smell(s|ed)?\W+(like )?(\w+ ){0,3}(urine|sewage|pee|garbage|trash|mold|spoiled|chemical\w*)|smells like that|(bad|foul|strange) (smell|odor)|stink\w*|health codes?|code violations?|condemned|roach|cockroach|bug|hair in|mold|unsanitary|gross bathroom|cleanliness|unclean|not clean|wasn'?t cleaned)\b/i,
 		question: "Can you see the last three years of health inspection reports?",
 	},
 	{
@@ -233,6 +233,12 @@ export function analyzeReviews(
 		"Reviews are customer opinions, not verified facts. Use them to decide what to ask, not as a verdict.",
 	]
 	if ((place.reviewCount ?? 0) < 30) limits.push("Under 30 reviews: too few to read a reliable pattern.")
+	// Room Service Vintage changed owners in 2025 and no review said so.
+	if (!ownershipSignals.length) {
+		limits.push(
+			"No review or owner reply here mentions a change of owner. Customers often do not notice one, so ask the seller how long they have owned it.",
+		)
+	}
 
 	// Chains share a name, so the first match can be the wrong branch.
 	const branchNote = BRANCH.test(place.name)

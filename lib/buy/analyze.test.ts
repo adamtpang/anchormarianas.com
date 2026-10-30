@@ -179,3 +179,29 @@ test("a staff no-show is a booking problem, not a wrong order", () => {
   assert.ok(keys.includes("booking"))
   assert.ok(!keys.includes("orders"))
 })
+
+test("smell needs a bad-smell phrase, and health code complaints count as cleanliness", () => {
+  const report = analyzeReviews(
+    place,
+    [
+      r(1, "2026-04-01T00:00:00Z", "The flower is expensive and tastes nothing like it smelled."),
+      r(1, "2026-06-01T00:00:00Z", "In violation of about 12 health codes."),
+      r(1, "2026-02-01T00:00:00Z", "When I walked in it smelled terrible, like spoiled meat."),
+      r(2, "2025-08-01T00:00:00Z", "Smells like straight sewage inside"),
+    ],
+    now,
+  )
+  assert.equal(report.themes.find((t) => t.key === "clean")?.count, 3)
+})
+
+test("a dirty martini is not a cleanliness complaint", () => {
+  const report = analyzeReviews(place, [r(3, "2026-06-01T00:00:00Z", "Slow night, but they made a wonderful dirty martini.")], now)
+  assert.equal(report.themes.find((t) => t.key === "clean"), undefined)
+})
+
+test("no ownership mention says so instead of implying there was no change", () => {
+  const quiet = analyzeReviews(place, [r(5, "2026-06-01T00:00:00Z", "Great shop")], now)
+  assert.ok(quiet.limits.some((l) => l.includes("ask the seller how long they have owned it")))
+  const told = analyzeReviews(place, [r(4, "2026-06-01T00:00:00Z", "Under new management, still good")], now)
+  assert.ok(!told.limits.some((l) => l.includes("ask the seller how long")))
+})
