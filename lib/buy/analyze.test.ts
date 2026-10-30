@@ -168,3 +168,14 @@ test("trend compares the last 18 months with earlier once each has five reviews"
   assert.equal(report.trend.earlierAvg, 5)
   assert.equal(report.trend.recentAvg, 3.6)
 })
+
+test("a staff no-show is a booking problem, not a wrong order", () => {
+  const report = analyzeReviews(
+    place,
+    [r(1, "2026-08-01T00:00:00Z", "Locked building, no one showed up and no one could contact me about missing my appointment.")],
+    now,
+  )
+  const keys = report.themes.map((t) => t.key)
+  assert.ok(keys.includes("booking"))
+  assert.ok(!keys.includes("orders"))
+})

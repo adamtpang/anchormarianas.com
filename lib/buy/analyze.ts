@@ -63,7 +63,7 @@ const THEMES: { key: string; label: string; pattern: RegExp; question: string }[
 	{
 		key: "booking",
 		label: "Bookings moved, cancelled, or lost",
-		pattern: /\b(reschedul\w*|cancell?ed (my|our) (appointment|booking|reservation)|push(ed)? (back )?my appointment|no[- ]show|double[- ]booked|gave (away )?my (appointment|spot|slot))\b/i,
+		pattern: /\b(reschedul\w*|cancell?ed (my|our) (appointment|booking|reservation)|push(ed)? (back )?my appointment|no[- ]show|(no one|nobody) (showed|was there) (up )?for my|(no one|nobody) showed up|missed my appointment|missing my appointment|double[- ]booked|gave (away )?my (appointment|spot|slot))\b/i,
 		question: "How are appointments booked and confirmed, and how often are they moved or missed?",
 	},
 	{
@@ -93,7 +93,7 @@ const THEMES: { key: string; label: string; pattern: RegExp; question: string }[
 	{
 		key: "orders",
 		label: "Wrong or missing orders",
-		pattern: /\b(wrong order|got (it|my order) wrong|missing (items?|from my order|my)|forgot (my|our|the|to (add|include|give))|never (came|arrived|showed)|messed up|incorrect order)\b/i,
+		pattern: /\b(wrong order|got (it|my order) wrong|missing (items?|from my order|my (order|food|drink|item|sauce|side)s?)|forgot (my|our|the|to (add|include|give))|never (came|arrived|showed)|messed up|incorrect order)\b/i,
 		question: "How are orders taken and tracked, and what share are online or delivery?",
 	},
 	{
