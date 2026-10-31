@@ -1,18 +1,22 @@
 "use client"
 
 import Link from "next/link"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { exportTargetsCsv } from "@/lib/buy/csv"
+import { targetSpokeWithOwner } from "@/lib/buy/conversations"
+import { fitScore } from "@/lib/buy/fit"
 import { applyFilters, DEFAULT_FILTERS, industryOptions, SORT_OPTIONS, type TargetFilters } from "@/lib/buy/filter"
-import { formatMoney, STARTER_INDUSTRIES, STATUSES, SUCCESSORS, telHref, type Status, type Successor } from "@/lib/buy/model"
+import { formatMoney, localToday, STARTER_INDUSTRIES, STATUSES, SUCCESSORS, telHref, type Status, type Successor } from "@/lib/buy/model"
 import { downloadText } from "./download"
 import { useBuy } from "./provider"
 
 const control = "w-full border border-input bg-background px-3 py-2 text-base"
 
 export function TargetBrowser() {
-  const { targets } = useBuy()
+  const { targets, setSpokeWithOwner } = useBuy()
   const [filters, setFilters] = useState<TargetFilters>(DEFAULT_FILTERS)
+  const [today, setToday] = useState("")
+  useEffect(() => setToday(localToday()), [])
   const result = useMemo(() => applyFilters(targets, filters), [targets, filters])
   const industries = useMemo(() => {
     const known = new Set<string>([...STARTER_INDUSTRIES, ...industryOptions(targets)])
@@ -127,6 +131,7 @@ export function TargetBrowser() {
         <ul className="divide-y divide-border border-y border-border">
           {result.targets.map((target) => {
             const call = telHref(target.phone)
+            const fit = today ? fitScore(target, today) : null
             return (
               <li key={target.id} className="grid gap-3 py-5 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_auto] md:items-center">
                 <div className="min-w-0">
@@ -151,6 +156,11 @@ export function TargetBrowser() {
                     {`, successor ${target.successor}`}
                   </p>
                   <p className="font-mono-anchor text-xs">{target.status}</p>
+                  {fit ? (
+                    <p className="mt-1 text-sm">
+                      <span className="font-medium">Fit {fit.score} of {fit.max}.</span> {fit.reason}
+                    </p>
+                  ) : null}
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {call ? (
@@ -163,6 +173,14 @@ export function TargetBrowser() {
                   <Link href={`/buy/targets/${target.id}`} className="inline-flex min-h-11 items-center px-3 text-sm underline">
                     Edit
                   </Link>
+                  <label className="inline-flex min-h-11 items-center gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={targetSpokeWithOwner(target)}
+                      onChange={(event) => setSpokeWithOwner(target.id, event.target.checked)}
+                    />
+                    Spoke with owner
+                  </label>
                 </div>
               </li>
             )

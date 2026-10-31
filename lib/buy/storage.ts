@@ -6,6 +6,7 @@ import {
   isOutcome,
   isStatus,
   isSuccessor,
+  successorFromText,
 } from "./model"
 
 export type DeskLoad =
@@ -38,7 +39,7 @@ function sanitizeCall(value: unknown): CallLog | null {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null
   if (followUp && !/^\d{4}-\d{2}-\d{2}$/.test(followUp)) return null
   if (!isOutcome(outcome)) return null
-  return { id, date, outcome, notes, followUp }
+  return { id, date, outcome, notes, followUp, spokeWithOwner: value.spokeWithOwner === true }
 }
 
 function sanitizeSources(value: unknown): Sources | null {
@@ -82,6 +83,17 @@ export function sanitizeTarget(value: unknown): Target | null {
   if (!sources) return null
   if (!Array.isArray(value.calls)) return null
   const calls = value.calls.map(sanitizeCall).filter((call): call is CallLog => Boolean(call))
+  const zip = text(value.zip, 10) ?? ""
+  const charterDate = text(value.charterDate, 10) ?? ""
+  if (charterDate && !/^\d{4}-\d{2}-\d{2}$/.test(charterDate)) return null
+  const credentials = text(value.credentials, 80) ?? ""
+  const licensed = text(value.licensedCpaFirm, 20)
+  const licensedCpaFirm = licensed ? successorFromText(licensed) : "unknown"
+  if (!licensedCpaFirm) return null
+  const preparerCount = value.preparerCount == null || value.preparerCount === ""
+    ? null
+    : money(value.preparerCount)
+  if (preparerCount === "bad" || (preparerCount != null && preparerCount > 100000)) return null
   return {
     id,
     name,
@@ -100,6 +112,12 @@ export function sanitizeTarget(value: unknown): Target | null {
     status,
     calls,
     sample: value.sample === true,
+    zip,
+    charterDate,
+    preparerCount,
+    credentials,
+    licensedCpaFirm,
+    spokeWithOwner: value.spokeWithOwner === true,
     createdAt,
     updatedAt,
   }

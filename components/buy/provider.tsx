@@ -14,6 +14,8 @@ type BuyStore = {
   importTargets: (rows: Target[]) => void
   logCall: (id: string, call: Omit<CallLog, "id">, status: Status) => void
   setStatus: (id: string, status: Status) => void
+  setSpokeWithOwner: (id: string, value: boolean) => void
+  restoreDesk: (targets: Target[]) => void
   clearSamples: () => void
   loadSamples: () => void
   reset: () => void
@@ -87,9 +89,10 @@ export function BuyProvider({ children }: { children: ReactNode }) {
     setTargets((current) =>
       current.map((item) =>
         item.id === id
-          ? {
+            ? {
               ...item,
               status,
+              spokeWithOwner: item.spokeWithOwner || call.spokeWithOwner,
               updatedAt: new Date().toISOString(),
               calls: [...item.calls, { ...call, id: newId() }],
             }
@@ -103,6 +106,28 @@ export function BuyProvider({ children }: { children: ReactNode }) {
     setTargets((current) =>
       current.map((item) => (item.id === id ? { ...item, status, updatedAt: new Date().toISOString() } : item)),
     )
+  }
+
+  function setSpokeWithOwner(id: string, value: boolean) {
+    setPersist(true)
+    setTargets((current) =>
+      current.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              spokeWithOwner: value,
+              calls: value ? item.calls : item.calls.map((call) => ({ ...call, spokeWithOwner: false })),
+              updatedAt: new Date().toISOString(),
+            }
+          : item,
+      ),
+    )
+  }
+
+  function restoreDesk(next: Target[]) {
+    setError(null)
+    setPersist(true)
+    setTargets(next)
   }
 
   function clearSamples() {
@@ -136,6 +161,8 @@ export function BuyProvider({ children }: { children: ReactNode }) {
         importTargets,
         logCall,
         setStatus,
+        setSpokeWithOwner,
+        restoreDesk,
         clearSamples,
         loadSamples,
         reset,

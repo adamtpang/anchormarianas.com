@@ -16,10 +16,13 @@ import {
   SUCCESSORS,
   cleanHttpUrl,
   newId,
+  parseCharterDate,
+  parseCount,
   parseMoney,
   parseYears,
 } from "@/lib/buy/model"
 import { CallHistory, CallLogger } from "./call-log"
+import { OutreachDrafts } from "./drafts"
 import { useBuy } from "./provider"
 
 type Draft = {
@@ -38,6 +41,12 @@ type Draft = {
   notes: string
   sample: boolean
   sources: Sources
+  zip: string
+  charterDate: string
+  preparerCount: string
+  credentials: string
+  licensedCpaFirm: Successor
+  spokeWithOwner: boolean
 }
 
 function emptyDraft(): Draft {
@@ -57,6 +66,12 @@ function emptyDraft(): Draft {
     notes: "",
     sample: false,
     sources: {},
+    zip: "",
+    charterDate: "",
+    preparerCount: "",
+    credentials: "",
+    licensedCpaFirm: "unknown",
+    spokeWithOwner: false,
   }
 }
 
@@ -77,6 +92,12 @@ function toDraft(target: Target): Draft {
     notes: target.notes,
     sample: target.sample,
     sources: { ...target.sources },
+    zip: target.zip,
+    charterDate: target.charterDate,
+    preparerCount: target.preparerCount == null ? "" : String(target.preparerCount),
+    credentials: target.credentials,
+    licensedCpaFirm: target.licensedCpaFirm,
+    spokeWithOwner: target.spokeWithOwner,
   }
 }
 
@@ -122,7 +143,7 @@ function Pair({
 
 export function TargetForm({ mode, targetId }: { mode: "new" | "edit"; targetId?: string }) {
   const router = useRouter()
-  const { ready, targets, saveTarget, deleteTarget } = useBuy()
+  const { ready, targets, saveTarget, deleteTarget, setSpokeWithOwner } = useBuy()
   const existing = targets.find((target) => target.id === targetId)
   const [draft, setDraft] = useState<Draft | null>(null)
   const [createdId, setCreatedId] = useState("")
@@ -163,16 +184,20 @@ export function TargetForm({ mode, targetId }: { mode: "new" | "edit"; targetId?
     const revenue = parseMoney(draft.revenue)
     const profit = parseMoney(draft.profit)
     const years = parseYears(draft.years)
+    const charterDate = parseCharterDate(draft.charterDate)
+    const preparerCount = parseCount(draft.preparerCount)
     if (website === "invalid") problems.push("Website must be an http or https URL, or blank.")
     if (revenue === "invalid" || profit === "invalid") problems.push("Revenue and profit must be numbers, or blank.")
     if (years === "invalid") problems.push("Years in business must be a whole number, or blank.")
+    if (charterDate === "invalid") problems.push("Charter date must be YYYY-MM-DD, or blank.")
+    if (preparerCount === "invalid") problems.push("Preparer count must be a whole number, or blank.")
     const sources: Sources = {}
     for (const [field, url] of Object.entries(draft.sources) as [SourceField, string][]) {
       const cleaned = cleanHttpUrl(url)
       if (cleaned === "invalid") problems.push(`Source URL for ${field} must be http or https.`)
       else if (cleaned) sources[field] = cleaned
     }
-    if (problems.length > 0 || website === "invalid" || revenue === "invalid" || profit === "invalid" || years === "invalid") {
+    if (problems.length > 0 || website === "invalid" || revenue === "invalid" || profit === "invalid" || years === "invalid" || charterDate === "invalid" || preparerCount === "invalid") {
       setErrors(problems)
       setMessage("")
       return
@@ -197,6 +222,12 @@ export function TargetForm({ mode, targetId }: { mode: "new" | "edit"; targetId?
       status: draft.status,
       calls: existing?.calls ?? [],
       sample: draft.sample,
+      zip: draft.zip.trim(),
+      charterDate: charterDate || "",
+      preparerCount,
+      credentials: draft.credentials.trim(),
+      licensedCpaFirm: draft.licensedCpaFirm,
+      spokeWithOwner: draft.spokeWithOwner,
       createdAt: existing?.createdAt ?? new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     }
@@ -274,6 +305,50 @@ export function TargetForm({ mode, targetId }: { mode: "new" | "edit"; targetId?
             </select>
           </label>
         </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          <label className="block space-y-1.5" htmlFor="target-zip">
+            <span className="text-sm font-medium">ZIP</span>
+            <Input id="target-zip" value={draft.zip} onChange={(event) => update("zip", event.target.value)} />
+          </label>
+          <label className="block space-y-1.5" htmlFor="target-charter">
+            <span className="text-sm font-medium">Charter date</span>
+            <Input id="target-charter" value={draft.charterDate} placeholder="YYYY-MM-DD" onChange={(event) => update("charterDate", event.target.value)} />
+          </label>
+          <label className="block space-y-1.5" htmlFor="target-preparers">
+            <span className="text-sm font-medium">Preparer count</span>
+            <Input id="target-preparers" inputMode="numeric" value={draft.preparerCount} onChange={(event) => update("preparerCount", event.target.value)} />
+          </label>
+          <label className="block space-y-1.5" htmlFor="target-credentials">
+            <span className="text-sm font-medium">Credentials</span>
+            <Input id="target-credentials" value={draft.credentials} placeholder="CPA, EA" onChange={(event) => update("credentials", event.target.value)} />
+          </label>
+          <div className="space-y-2">
+            <label className="block space-y-1.5" htmlFor="target-cpa-firm">
+              <span className="text-sm font-medium">Licensed CPA firm</span>
+              <select id="target-cpa-firm" className="w-full border border-input bg-background px-3 py-2 text-base" value={draft.licensedCpaFirm} onChange={(event) => update("licensedCpaFirm", event.target.value)}>
+                {SUCCESSORS.map((item) => (
+                  <option key={item} value={item}>{item}</option>
+                ))}
+              </select>
+            </label>
+            <p className="text-xs text-muted-foreground">
+              Check by hand at{" "}
+              <a className="underline" href="https://portal.tsbpa.texas.gov/php/fpl/frmlookup.php" target="_blank" rel="noreferrer">the TSBPA firm lookup</a>.
+            </p>
+          </div>
+        </div>
+        <label className="flex min-h-11 items-center gap-3 text-sm">
+          <input
+            type="checkbox"
+            checked={draft.spokeWithOwner}
+            onChange={(event) => {
+              const checked = event.target.checked
+              setDraft((current) => (current ? { ...current, spokeWithOwner: checked } : current))
+              if (existing) setSpokeWithOwner(existing.id, checked)
+            }}
+          />
+          Spoke with owner
+        </label>
         <label className="block space-y-1.5" htmlFor="target-notes">
           <span className="text-sm font-medium">Notes</span>
           <Textarea id="target-notes" value={draft.notes} onChange={(event) => update("notes", event.target.value)} rows={4} />
@@ -288,6 +363,8 @@ export function TargetForm({ mode, targetId }: { mode: "new" | "edit"; targetId?
         </div>
         {message ? <p role="status" className="text-sm">{message}</p> : null}
       </form>
+
+      <OutreachDrafts name={draft.name} ownerName={draft.ownerName} city={draft.city} />
 
       {mode === "edit" && existing ? (
         <section className="space-y-4 border-t border-border pt-8">

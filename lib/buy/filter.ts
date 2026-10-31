@@ -1,9 +1,11 @@
 import { parseAgeRange } from "./age"
+import { fitScore } from "./fit"
 import {
   type Status,
   type Successor,
   type Target,
   STATUSES,
+  localToday,
   parseMoney,
   parseYears,
 } from "./model"
@@ -18,6 +20,7 @@ export type TargetSort =
   | "age-desc"
   | "status"
   | "updated-desc"
+  | "fit-desc"
 
 export type TargetFilters = {
   query: string
@@ -63,6 +66,7 @@ export const SORT_OPTIONS: { value: TargetSort; label: string }[] = [
   { value: "age-desc", label: "Owner age, oldest first" },
   { value: "status", label: "Status, pipeline order" },
   { value: "updated-desc", label: "Recently updated" },
+  { value: "fit-desc", label: "Fit score, high to low" },
 ]
 
 type Bound = number | null
@@ -113,6 +117,10 @@ function compareTargets(left: Target, right: Target, sort: TargetSort): number {
   }
   if (sort === "status") {
     return STATUSES.indexOf(left.status) - STATUSES.indexOf(right.status) || byName
+  }
+  if (sort === "fit-desc") {
+    const today = localToday()
+    return fitScore(right, today).score - fitScore(left, today).score || byName
   }
   return right.updatedAt.localeCompare(left.updatedAt) || byName
 }

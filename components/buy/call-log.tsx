@@ -31,6 +31,7 @@ export function CallLogger({ target }: { target: Target }) {
   const [outcome, setOutcome] = useState<Outcome>("no answer")
   const [notes, setNotes] = useState("")
   const [followUp, setFollowUp] = useState("")
+  const [spoke, setSpoke] = useState(false)
   const [message, setMessage] = useState("")
 
   useEffect(() => setDate(localToday()), [])
@@ -47,11 +48,12 @@ export function CallLogger({ target }: { target: Target }) {
     }
     logCall(
       target.id,
-      { date, outcome, notes: notes.trim(), followUp },
+      { date, outcome, notes: notes.trim(), followUp, spokeWithOwner: spoke },
       suggestedStatus(target.status, outcome),
     )
     setNotes("")
     setFollowUp("")
+    setSpoke(false)
     setMessage("Saved on this device.")
   }
 
@@ -78,6 +80,10 @@ export function CallLogger({ target }: { target: Target }) {
       <label className="block space-y-1.5">
         <span className="text-sm font-medium">Next follow-up</span>
         <input className={control} type="date" value={followUp} onChange={(event) => setFollowUp(event.target.value)} />
+      </label>
+      <label className="flex min-h-11 items-center gap-3 text-sm">
+        <input type="checkbox" checked={spoke} onChange={(event) => setSpoke(event.target.checked)} />
+        Spoke with owner
       </label>
       <p className="text-xs text-muted-foreground">
         Saving updates the stage when it is earlier in the pipeline. Not selling moves the target to Passed. Change the stage if that guess is wrong.

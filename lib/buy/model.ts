@@ -38,6 +38,7 @@ export type CallLog = {
   outcome: Outcome
   notes: string
   followUp: string
+  spokeWithOwner: boolean
 }
 
 export type Target = {
@@ -58,6 +59,12 @@ export type Target = {
   status: Status
   calls: CallLog[]
   sample: boolean
+  zip: string
+  charterDate: string
+  preparerCount: number | null
+  credentials: string
+  licensedCpaFirm: Successor
+  spokeWithOwner: boolean
   createdAt: string
   updatedAt: string
 }
@@ -104,6 +111,21 @@ export function successorFromText(value: string): Successor | null {
   const key = value.trim().toLowerCase()
   if (!key) return "unknown"
   return SUCCESSORS.find((item) => item === key) ?? null
+}
+
+export function parseCharterDate(value: string): string | null | "invalid" {
+  const trimmed = value.trim()
+  if (!trimmed) return ""
+  const day = trimmed.slice(0, 10)
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) return "invalid"
+  return day
+}
+
+export function parseCount(value: string): number | null | "invalid" {
+  const trimmed = value.trim()
+  if (!trimmed) return null
+  if (!/^\d{1,5}$/.test(trimmed)) return "invalid"
+  return Number(trimmed)
 }
 
 export function parseMoney(value: string): number | null | "invalid" {

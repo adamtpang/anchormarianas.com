@@ -6,6 +6,8 @@ import {
   clip,
   cleanHttpUrl,
   newId,
+  parseCharterDate,
+  parseCount,
   parseMoney,
   parseYears,
   statusFromText,
@@ -37,6 +39,11 @@ export const CSV_COLUMNS = [
   "source_owner_name",
   "source_owner_age",
   "source_successor",
+  "zip",
+  "charter_date",
+  "preparer_count",
+  "credentials",
+  "licensed_cpa_firm",
 ] as const
 
 export type CsvColumn = (typeof CSV_COLUMNS)[number]
@@ -66,6 +73,11 @@ export const CSV_COLUMN_HELP: { name: CsvColumn; required: boolean; detail: stri
   { name: "source_owner_name", required: false, detail: "Source URL for the owner name." },
   { name: "source_owner_age", required: false, detail: "Source URL for owner age." },
   { name: "source_successor", required: false, detail: "Source URL for the successor answer." },
+  { name: "zip", required: false, detail: "Five-digit ZIP. The New Braunfels radius list lives in the desk config." },
+  { name: "charter_date", required: false, detail: "YYYY-MM-DD charter date, used for tenure." },
+  { name: "preparer_count", required: false, detail: "How many preparers share this business name in the source file." },
+  { name: "credentials", required: false, detail: "Credential tokens such as CPA or EA." },
+  { name: "licensed_cpa_firm", required: false, detail: "yes, no, or unknown. Blank becomes unknown." },
 ]
 
 const SOURCE_COLUMN: Partial<Record<CsvColumn, SourceField>> = {
@@ -163,7 +175,7 @@ export type CsvError = { line: number; message: string }
 
 export type CsvImport = { targets: Target[]; errors: CsvError[] }
 
-const IMPORT_LIMIT = 500
+const IMPORT_LIMIT = 5000
 
 export function importTargetsCsv(text: string, now = new Date().toISOString()): CsvImport {
   const parsed = parseCsv(text)
@@ -208,6 +220,13 @@ export function importTargetsCsv(text: string, now = new Date().toISOString()): 
       errors.push({ line, message: "Status must be New, Contacted, Talking, Interested, NDA, LOI, Passed, or blank." })
       continue
     }
+    const charterDate = parseCharterDate(cellAt(row, header, "charter_date"))
+    const preparerCount = parseCount(cellAt(row, header, "preparer_count"))
+    const licensedCpaFirm = successorFromText(cellAt(row, header, "licensed_cpa_firm"))
+    if (charterDate === "invalid" || preparerCount === "invalid" || !licensedCpaFirm) {
+      errors.push({ line, message: "Charter date, preparer count, and licensed CPA firm must match the column format or be blank." })
+      continue
+    }
     const sources: Sources = {}
     let sourceError = ""
     for (const [column, field] of Object.entries(SOURCE_COLUMN) as [CsvColumn, SourceField][]) {
@@ -240,6 +259,12 @@ export function importTargetsCsv(text: string, now = new Date().toISOString()): 
       status,
       calls: [],
       sample: false,
+      zip: clip(cellAt(row, header, "zip"), 10),
+      charterDate: charterDate || "",
+      preparerCount,
+      credentials: clip(cellAt(row, header, "credentials"), 80),
+      licensedCpaFirm,
+      spokeWithOwner: false,
       createdAt: now,
       updatedAt: now,
     })
@@ -284,6 +309,11 @@ export function exportTargetsCsv(targets: Target[]): string {
       source_owner_name: sourceValue(target, "ownerName"),
       source_owner_age: sourceValue(target, "ownerAge"),
       source_successor: sourceValue(target, "successor"),
+      zip: target.zip,
+      charter_date: target.charterDate,
+      preparer_count: target.preparerCount == null ? "" : String(target.preparerCount),
+      credentials: target.credentials,
+      licensed_cpa_firm: target.licensedCpaFirm,
     }
     lines.push(CSV_COLUMNS.map((column) => csvCell(values[column])).join(","))
   }

@@ -1,4 +1,28 @@
-import { type Target, shiftDate } from "./model"
+import { type CallLog, type Target, shiftDate } from "./model"
+
+type RawCall = Omit<CallLog, "spokeWithOwner">
+type RawTarget = Omit<Target, "zip" | "charterDate" | "preparerCount" | "credentials" | "licensedCpaFirm" | "spokeWithOwner" | "calls"> & {
+  calls: RawCall[]
+  zip?: string
+  charterDate?: string
+  preparerCount?: number | null
+  credentials?: string
+  licensedCpaFirm?: Target["licensedCpaFirm"]
+  spokeWithOwner?: boolean
+}
+
+function finish(target: RawTarget): Target {
+  return {
+    zip: "",
+    charterDate: "",
+    preparerCount: null,
+    credentials: "",
+    licensedCpaFirm: "unknown",
+    spokeWithOwner: false,
+    ...target,
+    calls: target.calls.map((call) => ({ spokeWithOwner: false, ...call })),
+  }
+}
 
 // Fictional rows for an empty desk. Every name, phone, and site is obviously fake.
 
@@ -8,7 +32,7 @@ function source(slug: string, field: string): string {
 
 export function createSampleTargets(today: string): Target[] {
   const stamp = `${today}T18:00:00.000Z`
-  const bookkeeping: Target = {
+  const bookkeeping = {
     id: "sample-bookkeeping",
     name: "Sample Bookkeeping Co (FAKE)",
     industry: "Texas bookkeeping and tax firms",
@@ -20,7 +44,12 @@ export function createSampleTargets(today: string): Target[] {
     yearsInBusiness: 22,
     ownerName: "Pat Example",
     ownerAge: "67",
-    successor: "no",
+    successor: "no" as const,
+    zip: "78130",
+    charterDate: "2004-06-01",
+    preparerCount: 4,
+    credentials: "CPA",
+    licensedCpaFirm: "unknown" as const,
     sources: {
       name: source("sample-bookkeeping", "name"),
       revenue: source("sample-bookkeeping", "revenue"),
@@ -43,7 +72,7 @@ export function createSampleTargets(today: string): Target[] {
     createdAt: stamp,
     updatedAt: stamp,
   }
-  const tax: Target = {
+  const tax = {
     id: "sample-tax-desk",
     name: "Sample Tax Desk (FAKE)",
     industry: "Texas bookkeeping and tax firms",
@@ -55,7 +84,12 @@ export function createSampleTargets(today: string): Target[] {
     yearsInBusiness: 14,
     ownerName: "Sam Sample",
     ownerAge: "60-65",
-    successor: "unknown",
+    successor: "unknown" as const,
+    zip: "78155",
+    charterDate: "2018-03-01",
+    preparerCount: 1,
+    credentials: "EA",
+    licensedCpaFirm: "no" as const,
     sources: { phone: source("sample-tax-desk", "phone") },
     notes: "Fictional sample row. Not a real business.",
     status: "Contacted",
@@ -72,7 +106,7 @@ export function createSampleTargets(today: string): Target[] {
     createdAt: stamp,
     updatedAt: stamp,
   }
-  const insurance: Target = {
+  const insurance = {
     id: "sample-insurance",
     name: "Sample Insurance Agency (FAKE)",
     industry: "Commercial insurance agencies",
@@ -84,7 +118,11 @@ export function createSampleTargets(today: string): Target[] {
     yearsInBusiness: 31,
     ownerName: "Casey Fiction",
     ownerAge: "71",
-    successor: "yes",
+    successor: "yes" as const,
+    zip: "78130",
+    preparerCount: 8,
+    credentials: "",
+    licensedCpaFirm: "yes" as const,
     sources: { website: source("sample-insurance", "website") },
     notes: "Fictional sample row. Not a real business.",
     status: "New",
@@ -93,7 +131,7 @@ export function createSampleTargets(today: string): Target[] {
     createdAt: stamp,
     updatedAt: stamp,
   }
-  const distributor: Target = {
+  const distributor = {
     id: "sample-distributor",
     name: "Sample Distributor Co (FAKE)",
     industry: "B2B distributors",
@@ -105,7 +143,11 @@ export function createSampleTargets(today: string): Target[] {
     yearsInBusiness: 18,
     ownerName: "Riley Placeholder",
     ownerAge: "54",
-    successor: "no",
+    successor: "no" as const,
+    zip: "99999",
+    preparerCount: 20,
+    credentials: "",
+    licensedCpaFirm: "unknown" as const,
     sources: { revenue: source("sample-distributor", "revenue") },
     notes: "Fictional sample row. Not a real business.",
     status: "Interested",
@@ -122,7 +164,7 @@ export function createSampleTargets(today: string): Target[] {
     createdAt: stamp,
     updatedAt: stamp,
   }
-  const payroll: Target = {
+  const payroll = {
     id: "sample-payroll",
     name: "Sample Payroll Shop (FAKE)",
     industry: "Texas bookkeeping and tax firms",
@@ -151,5 +193,5 @@ export function createSampleTargets(today: string): Target[] {
     createdAt: stamp,
     updatedAt: stamp,
   }
-  return [bookkeeping, tax, insurance, distributor, payroll]
+  return [bookkeeping, tax, insurance, distributor, payroll].map((item) => finish(item as RawTarget))
 }

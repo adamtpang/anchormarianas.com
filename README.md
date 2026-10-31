@@ -89,6 +89,18 @@ or import a CSV. Column names are listed on `/buy/import`. A sample file is at
 `content/buy/sample-targets.csv`. Calls are placed only when you tap a `tel:`
 link. The desk does not send calls, texts, or email.
 
+To build a local import file from the public IRS PTIN Texas extract and the
+Texas Comptroller franchise file, run:
+
+```bash
+npx tsx scripts/buy/seed-tx-preparers.ts --counts-only
+npx tsx scripts/buy/seed-tx-preparers.ts
+```
+
+The CSV is written to `data/private/tx-preparers.csv`, which is gitignored.
+Do not commit that file. Import it from `/buy/import` on the machine where
+you want the list.
+
 ## Hosted AI security
 
 The public `/api/scan`, `/api/audit`, and `/api/build` routes fail closed in
