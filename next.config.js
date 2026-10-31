@@ -14,17 +14,27 @@ const contentSecurityPolicy = [
   "frame-src 'none'",
 ].join('; ')
 
+const privateDeskHeaders = [
+  { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+  { key: 'Cache-Control', value: 'private, no-store' },
+]
+
 const nextConfig = {
   async headers() {
-    return [{
-      source: '/:path*',
-      headers: [
-        { key: 'Content-Security-Policy', value: contentSecurityPolicy },
-        { key: 'X-Content-Type-Options', value: 'nosniff' },
-        { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-        { key: 'X-Frame-Options', value: 'DENY' },
-      ],
-    }]
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'Content-Security-Policy', value: contentSecurityPolicy },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+        ],
+      },
+      { source: '/buy', headers: privateDeskHeaders },
+      { source: '/buy/:path*', headers: privateDeskHeaders },
+      { source: '/buy-gate', headers: privateDeskHeaders },
+    ]
   },
 }
 
