@@ -25,7 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/build",
     "/pricing",
     "/menu",
-    "/buy",
+    // The public review report lives at /check. /buy is a private desk and stays out of the sitemap.
+    "/check",
     "/services",
     "/work",
     "/about",
