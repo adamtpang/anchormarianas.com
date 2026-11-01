@@ -18,7 +18,7 @@ export function AgencyServices() {
     { icon: Code2, title: "Webapps", body: "Bookings, customer portals and tools for your team.", label: "Business webapps" },
     { icon: Wrench, title: "Care", body: "Updates, hosting and support. Scoped separately.", label: "Ongoing care" },
   ]
-  return <div className="agency-grid">{cards.map(c => <article className="agency-card" key={c.label}><c.icon className="agency-icon" size={28} aria-hidden /><h3>{c.title}</h3><p>{c.body}</p></article>)}</div>
+  return <div className="agency-grid">{cards.map(c => <div className="agency-card" key={c.label}><c.icon className="agency-icon" size={28} aria-hidden /><h3>{c.title}</h3><p>{c.body}</p></div>)}</div>
 }
 export function AgencyProcess() {
   return <section className="agency-tint"><div className="agency-shell agency-section"><div className="agency-section-heading"><h2>How it works</h2></div><ol className="agency-grid agency-process">{[
@@ -36,7 +36,7 @@ export function AgencyPackages() {
     { title: "Business website", price: "Fixed quote", detail: "Room for the whole business.", points: ["Multiple service and company pages", "Design around your customer journey", "Content and integrations scoped together", "Launch checks and ownership handoff"], note: "Price and delivery date agreed before work starts." },
     { title: "Webapp MVP", price: app.price, detail: "The first version of one useful workflow.", points: ["One core workflow, built end to end", "Authentication, database and deployment", "Source code and walkthrough", "One round of revisions in week one"], note: "Five-day package for an agreed MVP scope. Larger apps are quoted separately." },
   ]
-  return <div className="agency-grid">{packages.map((p, i) => <article className={`agency-card agency-package ${i === 1 ? "agency-package-featured" : ""}`} key={p.title}><h3>{p.title}</h3><p>{p.detail}</p><div className="agency-price">{p.price}</div><ul>{p.points.map(point => <li key={point}><Check size={17} aria-hidden /><span>{point}</span></li>)}</ul><Link href="/contact" className="agency-button">Start a project <ArrowRight size={16} aria-hidden /></Link><p className="agency-small">{p.note}</p></article>)}</div>
+  return <div className="agency-grid">{packages.map((p, i) => <div className={`agency-card agency-package ${i === 1 ? "agency-package-featured" : ""}`} key={p.title}><h3>{p.title}</h3><p>{p.detail}</p><div className="agency-price">{p.price}</div><ul>{p.points.map(point => <li key={point}><Check size={17} aria-hidden /><span>{point}</span></li>)}</ul><Link href="/contact" className="agency-button">Start a project <ArrowRight size={16} aria-hidden /></Link><p className="agency-small">{p.note}</p></div>)}</div>
 }
 export function AgencyFAQ() {
   return <div className="agency-faq">{[
