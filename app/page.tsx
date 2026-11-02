@@ -1,4 +1,6 @@
 import type { Metadata } from "next"
+import Link from "next/link"
+import { HomeOverview } from "@/components/home-overview"
 import { Button } from "@/components/ui/button"
 import site from "@/content/site.json"
 
@@ -155,6 +157,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section aria-labelledby="check-heading" className="scroll-mt-28 border-t border-border" id="buyer-check">
+        <div className="journey-wrap py-16 sm:py-24">
+          <div className="mx-auto max-w-4xl">
+            <h2 id="check-heading">Checking a business before you buy it</h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              If you are buying a business from someone else, the free check reads up to 150 of its newest public Google reviews. It returns the rating trend, recurring complaints with real quotes, signs of a change of owner, and questions to ask before you sign.
+            </p>
+            <div className="mt-8">
+              <Button asChild className="w-full border-muted-foreground text-foreground sm:w-auto" size="lg" variant="outline">
+                <Link href="/check">Check a business for free</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section aria-labelledby="status-heading" className="border-y border-border bg-secondary">
         <div className="journey-wrap py-14 sm:py-20">
           <div className="mx-auto max-w-4xl">
@@ -166,23 +184,25 @@ export default function HomePage() {
         </div>
       </section>
 
+      <HomeOverview />
+
       <section aria-labelledby="contact-heading" className="scroll-mt-28" id="contact">
         <div className="journey-wrap py-16 sm:py-28">
           <div className="mx-auto max-w-4xl">
             <h2 id="contact-heading">Selling your firm?</h2>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Send a note to Adam. This is the same email already published on this site.
+              Send a note to Adam. This is the same email already published on this site. Website and webapp work remains on the services page.
             </p>
             <div className="mt-8 flex flex-col items-start gap-4">
               <Button asChild size="lg">
                 <a href={sellerMail}>Email Adam</a>
               </Button>
-              <a
-                className="text-base text-foreground underline underline-offset-4"
-                href={sellerMail}
-              >
+              <a className="text-base text-foreground underline underline-offset-4" href={sellerMail}>
                 {site.email}
               </a>
+              <Link className="text-base text-foreground underline underline-offset-4" href="/services">
+                Services
+              </Link>
             </div>
           </div>
         </div>
