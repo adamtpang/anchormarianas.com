@@ -2,6 +2,8 @@
 
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { targetSpokeWithOwner } from "@/lib/buy/conversations"
+import { fitScore } from "@/lib/buy/fit"
 import { type Status, STATUSES, isStatus, localToday, telHref } from "@/lib/buy/model"
 import { bucketLabel, callQueue, queueBucket } from "@/lib/buy/queue"
 import { CallHistory, CallLogger } from "./call-log"
@@ -10,7 +12,7 @@ import { useBuy } from "./provider"
 const control = "w-full border border-input bg-background px-3 py-2 text-base"
 
 export function CallQueue() {
-  const { targets, setStatus } = useBuy()
+  const { targets, setStatus, setSpokeWithOwner } = useBuy()
   const [today, setToday] = useState("")
   const [dueOnly, setDueOnly] = useState(true)
   useEffect(() => setToday(localToday()), [])
@@ -54,6 +56,7 @@ export function CallQueue() {
           {queue.map((target, index) => {
             const bucket = queueBucket(target, today)
             const call = telHref(target.phone)
+            const fit = fitScore(target, today)
             return (
               <li key={target.id} className="space-y-3 py-5">
                 <p className="font-mono-anchor text-xs text-muted-foreground">
@@ -76,6 +79,15 @@ export function CallQueue() {
                   {`, successor ${target.successor}`}
                   {target.city ? `. ${target.city}` : ""}
                 </p>
+                <p className="text-sm"><span className="font-medium">Fit {fit.score} of {fit.max}.</span> {fit.reason}</p>
+                <label className="flex min-h-11 items-center gap-3 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={targetSpokeWithOwner(target)}
+                    onChange={(event) => setSpokeWithOwner(target.id, event.target.checked)}
+                  />
+                  Spoke with owner
+                </label>
                 <label className="block space-y-1.5">
                   <span className="text-sm font-medium">Stage</span>
                   <select

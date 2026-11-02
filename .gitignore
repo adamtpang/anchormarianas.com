@@ -14,6 +14,9 @@ tsconfig.tsbuildinfo
 /reports/anchorscan/
 /.anchor/scan-raw/
 
+# Private buy-desk seed output. Real preparer rows never belong in git.
+/data/private/
+
 # Private operating data. Keep these outside the public repository.
 /.anchor/call-sheet*.md
 /.anchor/eod-*.md

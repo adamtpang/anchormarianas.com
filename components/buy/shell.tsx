@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState, type ReactNode } from "react"
+import { CONVERSATION_GOAL, ownerConversationCount } from "@/lib/buy/conversations"
 import { localToday } from "@/lib/buy/model"
 import { isDueToday } from "@/lib/buy/queue"
 import { useBuy } from "./provider"
@@ -26,6 +27,7 @@ export function BuyShell({ children }: { children: ReactNode }) {
   useEffect(() => setToday(localToday()), [])
   const samples = targets.some((target) => target.sample)
   const due = today ? targets.filter((target) => isDueToday(target, today)).length : 0
+  const conversations = ownerConversationCount(targets)
 
   return (
     <div>
@@ -44,6 +46,7 @@ export function BuyShell({ children }: { children: ReactNode }) {
           <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
             Targets, notes, and call logs stay in this browser&apos;s localStorage. They are not uploaded, and they are not in the repository.
           </p>
+          <p className="mt-3 text-sm font-medium">Owner conversations: {conversations} of {CONVERSATION_GOAL}</p>
           <nav aria-label="Buy desk" className="mt-5 flex flex-wrap gap-2">
             {LINKS.map((link) => {
               const active = current(link.href, pathname)
