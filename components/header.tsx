@@ -36,7 +36,7 @@ export function Header() {
             ))}
             <ThemeToggle />
             <Button asChild size="sm" className="rounded-md px-4">
-              <Link href="/contact">Start a project &rarr;</Link>
+              <Link href="/#contact">Selling your firm?</Link>
             </Button>
           </nav>
 
