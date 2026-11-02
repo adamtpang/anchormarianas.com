@@ -60,6 +60,7 @@ body { font-family: var(--font-inter), system-ui, sans-serif; }
   text-wrap: balance;
 }
 main h1, .agency-page h1 { font-size: var(--heading-1); line-height: 1.2; }
+.hold-home h1 { font-size: clamp(2.35rem, 4.8vw, 3.75rem); line-height: 1.08; letter-spacing: -0.04em; }
 main h2, .agency-page h2 { font-size: var(--heading-2); line-height: 1.25; }
 main h3, .agency-page h3 { font-size: var(--heading-3); line-height: 1.4; }
 .agency-page { --agency-tint: hsl(var(--surface-tint)); --agency-highlight: hsl(var(--surface-highlight)); }

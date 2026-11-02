@@ -54,8 +54,8 @@ export function MobileNav() {
 
           <div className="mt-auto pt-8 space-y-3">
             <Button className="w-full rounded-md" asChild>
-              <Link href="/contact" onClick={() => setOpen(false)}>
-                Start a project &rarr;
+              <Link href="/#contact" onClick={() => setOpen(false)}>
+                Selling your firm?
               </Link>
             </Button>
             <div className="text-sm text-muted-foreground space-y-2 pt-2">

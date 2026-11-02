@@ -23,9 +23,9 @@ const geistMono = Geist_Mono({
   display: "swap",
 })
 
-const title = "Anchor Marianas | Websites & Webapps for Businesses"
+const title = "Anchor Marianas | An AI-first home for small businesses"
 const description =
-  "Websites and webapps for businesses. Clear scope, fixed-price packages and direct support from Anchor Marianas. Based in Guam, working remotely."
+  "Anchor Marianas buys successful, non-technical small businesses and runs them with AI. We are in the search stage. Texas bookkeeping and tax-prep firms are first."
 
 export const metadata: Metadata = {
   title,
@@ -33,11 +33,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://anchormarianas.com"),
   keywords: [
     "Anchor Marianas",
-    "Anchor Scan",
-    "Guam business",
-    "Google reviews analysis",
-    "AI for Guam businesses",
-    "customer review diagnostic",
+    "AI holding company",
+    "Texas bookkeeping firms",
+    "tax prep succession",
+    "small business acquisition",
+    "Guam",
   ],
   authors: [{ name: "Anchor Marianas" }],
   creator: "Anchor Marianas",

@@ -8,16 +8,18 @@ const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["Organization", "ProfessionalService"],
+      "@type": "Organization",
       "@id": `${SITE_URL}/#business`,
       name: siteConfig.companyName,
       legalName: siteConfig.legalName,
       url: SITE_URL,
       description: siteConfig.elevator,
       email: siteConfig.email,
-      telephone: siteConfig.phone,
-      areaServed: [{ "@type": "Place", name: "Guam" }, { "@type": "Country", name: "United States" }],
-      priceRange: "$",
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "Texas" },
+        { "@type": "Place", name: "Guam" },
+        { "@type": "Country", name: "United States" },
+      ],
       founder: { "@id": `${SITE_URL}/#founder` },
       sameAs: [
         siteConfig.socials.x,
