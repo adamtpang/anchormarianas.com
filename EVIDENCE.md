@@ -78,3 +78,12 @@ as a fully dated receipt.
 - Private receipts and customer records stay outside this public repository.
 - After each meaningful ship, report delivery, conversation, or sale, add one
   row above.
+
+## 2026-10-31: Next.js critical RCE patch (branch security/next-rce-2026-10-31)
+
+- next 15.5.23 -> 15.5.28 on patching GHSA-673q-mjm6-r5xr and GHSA-2464-fhr4-w9xw. Mode: next+audit fix, never --force.
+- Build: `npm run build` passed.
+- beware.dog code-audit --no-deps, code findings: 3 (0 crit/high) -> 3 (0 crit/high).
+- beware.dog OSV dependency findings: 25 (13 crit/high, 6 next) -> 2 (2 crit/high, 0 next).
+- npm audit (critical/high/total): 2c/5h/12t -> 0c/2h/2t.
+- Not pushed or deployed; merging and deploying is Adam's call.
